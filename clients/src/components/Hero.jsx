@@ -37,7 +37,6 @@ const Hero = () => {
     [img13, nyu],
     [nyu2, img14],
     [img4, columbia],
-
     [img2, bowdoin],
     [alto, img1],
     [cambridge, img3],
@@ -45,7 +44,6 @@ const Hero = () => {
     [img15, oxford],
     [peking, img16],
     [img10, minerve],
-
     [img5, cornell],
   ];
 
