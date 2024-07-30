@@ -41,13 +41,13 @@ export default function SignInStudentPage() {
     }
 
     return (
-        <div className="mt-8 grow flex-center">
-            <div className="mb-60">
-                <h1 className="h1-semibold text-center mb-4">Login</h1>
-                <form className="max-w-md mx-auto p-6 space-y-2 border border-gray-200 rounded-2xl shrink-0 shadow-md" 
+        <div className="flex items-center h-full w-full justify-center " style={{ backgroundColor: "#060724" }}>
+            <div className="mb-60 mt-16">
+                <h1 className="h1-semibold text-center text-white mb-4">Login</h1>
+                <form className="max-w-md mx-auto p-12 mt-6 space-y-2 border border-gray-200 rounded-2xl shrink-0 shadow-md" 
                 onSubmit={loginUser}>
                     <input
-                        className="input-field"
+                        className="border p-4 rounded-lg w-full mb-4"
                         type="email"
                         placeholder="your@email.com"
                         value={email}
@@ -55,22 +55,25 @@ export default function SignInStudentPage() {
                     />
                     {emailError && <div className="text-red-500">{emailError}</div>}
                     <input
-                        className="input-field"
+                        className="border p-4 rounded-lg w-full mb-4"
                         type="password"
                         placeholder="password"
                         value={password}
                         onChange={ev => setPassword(ev.target.value)}
                     />
                     {passwordError && <div className="text-red-500">{passwordError}</div>}
-                    <button className="submit-button">Login</button>
+                   <div className="mt-6">
+                   <button className="bg-orange-500 text-white text-xl mt-4 py-2 px-4 rounded w-full">
+                   SignIn</button>
+                   </div>
                     <div className="text-center py-2 text-gray-500">
-                        <Link className="underline  text-black" to={"/forgot-password"}>
+                        <Link className="underline  text-white" to={"/forgot-password"}>
                             Forgot Password?
                         </Link>
                     </div>
                     <div className="text-center py-2 text-gray-500">
                         Don't have an account yet?{" "}
-                        <Link className="underline text-black" to={"/RegisterStudentPage"}>
+                        <Link className="underline text-white" to={"/RegisterStudentPage"}>
                             Register now
                         </Link>
                     </div>

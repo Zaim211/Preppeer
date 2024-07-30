@@ -43,9 +43,9 @@ const RegisterStudentPage = () => {
   }
 
   return (
-    <div className="flex items-center  h-full justify-center m-32" >
-      <div className="w-full max-w-lg m-32 p-8 shadow-lg rounded-lg" style={{ backgroundColor: "#060724" }}>
-        <h1 className="text-4xl font-bold mb-4 mt-4 text-white text-center">Register Student</h1>
+    <div className="flex items-center  h-full w-full justify-center " style={{ backgroundColor: "#060724" }}>
+      <div className="w-full max-w-xl p-12 border-gray-950 shadow-lg rounded-lg" >
+        <h1 className="text-4xl font-bold mb-12 text-white text-center">Register Student</h1>
         {success && (
           <p className="text-green-500 mb-4 text-center">{success}</p>
         )}
@@ -55,7 +55,7 @@ const RegisterStudentPage = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex gap-4">
             <div className="flex-1">
-              <label htmlFor="username" className="block text-2xl font-semibold text-white mb-1">Full Name</label>
+              <label htmlFor="username" className="block text-xl font-semibold text-white mb-1">Full Name</label>
               <input
                 type="text"
                 placeholder="Enter your name"
@@ -68,7 +68,7 @@ const RegisterStudentPage = () => {
             </div>
 
             <div className="flex-1">
-              <label htmlFor="email" className="block text-white text-2xl font-semibold mb-1">Email</label>
+              <label htmlFor="email" className="block text-white text-xl font-semibold mb-1">Email</label>
               <input
                 type="email"
                 id="email"
@@ -84,7 +84,7 @@ const RegisterStudentPage = () => {
 
           <div className="flex gap-4 mt-4">
             <div className="flex-1 mt-4 mb-4">
-              <label htmlFor="password" className="block font-semibold text-white text-2xl mb-1">Password</label>
+              <label htmlFor="password" className="block font-semibold text-white text-xl mb-1">Password</label>
               <input
                 type="password"
                 id="password"
@@ -107,8 +107,6 @@ const RegisterStudentPage = () => {
           </Link>
         </div>
         </form>
-
-        
       </div>
     </div>
   );
