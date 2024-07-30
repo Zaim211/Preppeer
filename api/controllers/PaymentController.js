@@ -1,10 +1,11 @@
 
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const { createAppointment } = require("../services/createAppointment");
 
 class PaymentController {
     static async createPaymentIntent(req,res){
-        const {amount,currency} = req.body;
+        const {amount,currency,appointmentDate,appointmentTime,duration,studentId,consultantId} = req.body;
         // Create a PaymentIntent with the order amount and currency
         try{
             const paymentIntent = await stripe.paymentIntents.create({
@@ -14,6 +15,15 @@ class PaymentController {
                     enabled: true
                 }
             });
+            await createAppointment({
+                paymentIntentId: paymentIntent.id,
+                appointmentDate,
+                appointmentTime,
+                duration,
+                price: amount,
+                consultantId,
+                studentId,
+            })
             res.status(201).json({
                 clientSecret: paymentIntent.client_secret
             });

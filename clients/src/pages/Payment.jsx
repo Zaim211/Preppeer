@@ -33,7 +33,12 @@ const Payment = () => {
     );
   }
 
-  
+    // Convert date string to Date object
+  const dateObj = new Date(date);
+
+  // Format date and time
+  const formattedDate = dateObj.toLocaleDateString();
+  const formattedTime = dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
 
   return (
     <div className="p-6 md:p-12 bg-gray-100 mb-32">
@@ -95,7 +100,7 @@ const Payment = () => {
           currency: 'usd',
           amount: Math.round(price * 100)
         }}>
-          <CheckoutForm amount={Math.round(price * 100)} />
+          <CheckoutForm amount={Math.round(price * 100)} consultantId={id} studentId={user.id} appointmentDate={formattedDate} appointmentTime={formattedTime} duration={30} />
         </Elements>}
       </div>
     </div>

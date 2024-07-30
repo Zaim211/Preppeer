@@ -2,7 +2,7 @@ import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-function CheckoutForm({amount}) {
+function CheckoutForm({amount, consultantId, studentId, appointmentDate, appointmentTime, duration}) {
 
     const stripe = useStripe()
     const elements = useElements()
@@ -17,7 +17,12 @@ function CheckoutForm({amount}) {
                 try{
                     const response = await axios.post("/api/payment/createIntent",{
                             amount:amount,
-                            currency:"usd"
+                            currency:"usd",
+                            appointmentDate,
+                            appointmentTime,
+                            duration,
+                            studentId,
+                            consultantId
                         },
                         {
                         headers:{

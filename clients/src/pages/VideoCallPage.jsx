@@ -68,6 +68,7 @@ const VideoCallPage = () => {
         user: {
           username: user.username,
           email: user.email,
+          id: user._id,
         },
         price: consultant.price[0],
         duration: selectedDuration,
