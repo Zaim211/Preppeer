@@ -13,7 +13,7 @@ const upload = multer({ storage: storage });
 router.get("/api/preppeer", AppController.preppeer);
 
 // Routes for the authentication
-
+router.get('/api/currentUserRole', AuthController.getCurrentUserRole);
 router.post("/api/registerStudent", AuthController.registerStudent);
 router.post("/api/SignInStudent", AuthController.SignInStudent);
 router.get('/api/profileStudent', AuthController.profileStudent);

@@ -8,6 +8,33 @@ const bcrypt = require("bcryptjs");
 const bcryptSalt = bcrypt.genSaltSync(10);
 
 class AuthController {
+
+  static async getCurrentUserRole(req, res) {
+    const { token } = req.cookies;
+    if (token) {
+      jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) {
+          return res.status(401).json({ error: "Unauthorized" });
+        }
+        try {
+          const student = await Student.findById(userData.id);
+          if (student) {
+            return res.json({ role: 'student' });
+          }
+          const consultant = await Consultant.findById(userData.id);
+          if (consultant) {
+            return res.json({ role: 'consultant' });
+          }
+          return res.status(404).json({ error: "User not found" });
+        } catch (error) {
+          res.status(500).json({ error: error.message });
+        }
+      });
+    } else {
+      res.status(401).json({ error: "No token provided" });
+    }
+  }
+
   static async registerStudent(req, res) {
     const { username, email, password } = req.body;
 
@@ -25,48 +52,49 @@ class AuthController {
     }
   }
 
+ 
   static async SignInStudent(req, res) {
     const { email, password } = req.body;
-
     try {
-      const userDoc = await Student.findOne({ email });
-      console.log("userDoc", userDoc);
-
-      if (!userDoc) {
-        return res.status(404).json({ message: "Email not found" });
-      }
-
-      const passOk = bcrypt.compareSync(password, userDoc.password);
-      if (!passOk) {
-        return res.status(401).json({ message: "Invalid password" });
-      }
-
-      if (!jwtSecret) {
-        console.error("JWT secret key is not defined.");
-        return res.status(500).json({ error: "Internal server error" });
-      }
-
-      jwt.sign(
-        {
-          email: userDoc.email,
-          id: userDoc._id,
-        },
-        jwtSecret,
-        { expiresIn: "24h" },
-
-        (err, token) => {
-          if (err) {
-            console.error("JWT signing error:", err);
-            return res.status(500).json({ error: "Internal server error" });
-          }
-          res.cookie("token", token, { httpOnly: true }).json(userDoc);
+        const userDoc = await Student.findOne({ email });
+        console.log("userDoc", userDoc);
+        
+        if (!userDoc) {
+            return res.status(404).json({ message: "Email not found" });
         }
-      );
+
+        const passOk = bcrypt.compareSync(password, userDoc.password);
+        if (!passOk) {
+            return res.status(401).json({ message: "Invalid password" });
+        }
+
+        if (!jwtSecret) {
+            console.error("JWT secret key is not defined.");
+            return res.status(500).json({ error: "Internal server error" });
+        }
+
+        jwt.sign(
+            {
+                email: userDoc.email,
+                id: userDoc._id,
+            },
+            jwtSecret,
+            { expiresIn: "24h" },
+            
+            (err, token) => {
+                if (err) {
+                    console.error("JWT signing error:", err);
+                    return res.status(500).json({ error: "Internal server error" });
+                }
+                res.cookie("token", token, { httpOnly: true }).json({ user: userDoc, token });
+            }
+        );
     } catch (error) {
-      console.error("Error during login:", error);
-      res.status(500).json({ error: "Internal server error" });
+        console.error("Error during login:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-  }
+}
+
 
   static async resetPasswordStudent(req, res) {
     mongoose.connect(process.env.MONGO_URL);
@@ -280,9 +308,9 @@ class AuthController {
 
   static async googleLogin(req, res) {
     try {
-      const { name, email, photoURL } = req.body;
+      const { username, email, photoURL } = req.body;
 
-      let userDoc = await User.findOne({ email });
+      let userDoc = await Student.findOne({ email });
       if (userDoc) {
         const token = jwt.sign({ id: userDoc._id }, jwtSecret);
         const { password, ...rest } = userDoc.toObject();
@@ -298,8 +326,8 @@ class AuthController {
           Math.random().toString(36).slice(-8) +
           Math.random().toString(36).slice(-8);
         const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
-        const newUser = await User.create({
-          name,
+        const newUser = await Student.create({
+          username,
           email,
           password: hashedPassword,
           profilePicture: photoURL,

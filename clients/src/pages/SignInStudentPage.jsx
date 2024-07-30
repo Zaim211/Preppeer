@@ -3,7 +3,6 @@ import { Navigate, Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import axios from "axios";
 
-
 export default function SignInStudentPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +17,8 @@ export default function SignInStudentPage() {
         setPasswordError("");
         try {
             const { data } = await axios.post("/api/SignInStudent", { email, password });
-            setUser(data);
+            localStorage.setItem('token', data.token); // Store the token
+            setUser(data.user);
             setRedirect(true);
         } catch (error) {
             if (error.response && error.response.data) {

@@ -22,7 +22,6 @@ const IndexPage = () => {
   const mentorsSectionRef = useRef(null);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const fetchConsultants = async () => {
       try {
@@ -82,7 +81,6 @@ const IndexPage = () => {
     setVisibleConsultants(8);
     updateURL(selectedFilter, newSelectedSubcategories);
   };
-
 
   const updateURL = (filter, subcategories) => {
     // Update the URL to reflect the current filters
@@ -226,9 +224,11 @@ const IndexPage = () => {
               .slice(0, visibleConsultants)
               .map((consultant) => (
                 <Link
-                  
-                  to={`/insider/${consultant._id}?name=${encodeURIComponent(consultant.name)}&category=${encodeURIComponent(consultant.major.join(','))}`}
-
+                  to={`/insider/${consultant._id}?name=${encodeURIComponent(
+                    consultant.name
+                  )}&category=${encodeURIComponent(
+                    consultant.major.join(",")
+                  )}`}
                   key={consultant._id}
                   className="bg-white rounded-lg relative shadow-lg overflow-hidden"
                 >
@@ -276,147 +276,152 @@ const IndexPage = () => {
       </section>
 
       {isModalOpen && (
-  <section className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">
-    <div className="bg-white p-10 h-62 rounded-lg w-full md:w-1/3 lg:w-1/4 xl:w-1/5 relative">
-      <button
-        onClick={() => setIsModalOpen(false)}
-        className="absolute top-2 right-2 text-black text-4xl"
-        aria-label="Close"
-      >
-        &times;
-      </button>
-      <h2 className="text-2xl font-semibold mb-10 underline">Filters</h2>
-
-      {/* Region filter */}
-      <div className="mb-4">
-        <h3 className="font-semibold text-lg underline">Region</h3>
-        <div className="flex flex-wrap gap-2 mt-2">
-          {/* Replace with actual regions */}
-          {["North America", "Europe", "Asia"].map((region) => (
-            <label
-              key={region}
-              className="flex items-center gap-2 cursor-pointer"
+        <section className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">
+          <div className="bg-white p-10 h-62 rounded-lg w-full md:w-1/3 lg:w-1/4 xl:w-1/5 relative">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-2 right-2 text-black text-4xl"
+              aria-label="Close"
             >
-              <input
-                type="checkbox"
-                checked={selectedRegions.includes(region)}
-                onChange={() => handleRegionChange(region)}
-              />
-              {region}
-            </label>
-          ))}
-        </div>
-      </div>
+              &times;
+            </button>
+            <h2 className="text-2xl font-semibold mb-10 underline">Filters</h2>
 
-      {/* Language filter */}
-      <div className="mb-4">
-        <h3 className="font-semibold text-lg underline">Language</h3>
-        <div className="flex flex-wrap gap-2">
-          {/* Replace with actual languages */}
-          {["English", "Spanish", "Chinese"].map((language) => (
-            <label
-              key={language}
-              className="flex items-center gap-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                checked={selectedLanguages.includes(language)}
-                onChange={() => handleLanguageChange(language)}
-              />
-              {language}
-            </label>
-          ))}
-        </div>
-      </div>
+            {/* Region filter */}
+            <div className="mb-4">
+              <h3 className="font-semibold text-lg underline">Region</h3>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {/* Replace with actual regions */}
+                {["North America", "Europe", "Asia"].map((region) => (
+                  <label
+                    key={region}
+                    className="flex items-center gap-2 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedRegions.includes(region)}
+                      onChange={() => handleRegionChange(region)}
+                    />
+                    {region}
+                  </label>
+                ))}
+              </div>
+            </div>
 
-      {/* Major filter */}
-      <div className="mb-4">
-        <h3 className="font-semibold text-lg underline">Major</h3>
-        <div className="flex flex-wrap gap-2">
-          {/* Replace with actual majors */}
-          {["Computer Science", "Business", "Engineering"].map((major) => (
-            <label
-              key={major}
-              className="flex items-center gap-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                checked={selectedMajors.includes(major)}
-                onChange={() => handleMajorChange(major)}
-              />
-              {major}
-            </label>
-          ))}
-        </div>
-      </div>
+            {/* Language filter */}
+            <div className="mb-4">
+              <h3 className="font-semibold text-lg underline">Language</h3>
+              <div className="flex flex-wrap gap-2">
+                {/* Replace with actual languages */}
+                {["English", "Spanish", "Chinese"].map((language) => (
+                  <label
+                    key={language}
+                    className="flex items-center gap-2 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedLanguages.includes(language)}
+                      onChange={() => handleLanguageChange(language)}
+                    />
+                    {language}
+                  </label>
+                ))}
+              </div>
+            </div>
 
-      {/* Subcategory filter */}
-      {selectedFilterObj && (
-        <div className="mb-4">
-          <h3 className="font-semibold text-lg underline">Subcategories</h3>
-          <div className="flex flex-wrap gap-2">
-            {selectedFilterObj.subcategories.map((subcategory) => (
-              <label
-                key={subcategory}
-                className="flex items-center gap-2 cursor-pointer"
+            {/* Major filter */}
+            <div className="mb-4">
+              <h3 className="font-semibold text-lg underline">Major</h3>
+              <div className="flex flex-wrap gap-2">
+                {/* Replace with actual majors */}
+                {["Computer Science", "Business", "Engineering"].map(
+                  (major) => (
+                    <label
+                      key={major}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedMajors.includes(major)}
+                        onChange={() => handleMajorChange(major)}
+                      />
+                      {major}
+                    </label>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Subcategory filter */}
+            {selectedFilterObj && (
+              <div className="mb-4">
+                <h3 className="font-semibold text-lg underline">
+                  Subcategories
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedFilterObj.subcategories.map((subcategory) => (
+                    <label
+                      key={subcategory}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedSubcategories.includes(subcategory)}
+                        onChange={() => handleSubcategoryClick(subcategory)}
+                      />
+                      {subcategory}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Price range filter */}
+            <div className="mb-4">
+              <h3 className="font-semibold text-lg underline mb-2">
+                Price Range
+              </h3>
+              <input
+                type="range"
+                min="0"
+                max="1000"
+                step="10"
+                value={priceRange[0]}
+                onChange={(e) => handlePriceRangeChange(e, 0)}
+                className="w-full"
+              />
+              <input
+                type="range"
+                min="0"
+                max="1000"
+                step="10"
+                value={priceRange[1]}
+                onChange={(e) => handlePriceRangeChange(e, 1)}
+                className="w-full"
+              />
+              <div className="flex justify-between">
+                <span>${priceRange[0]}</span>
+                <span>${priceRange[1]}</span>
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-4">
+              <button
+                onClick={resetFilters}
+                className="bg-gray-300 px-4 py-2 rounded-lg"
               >
-                <input
-                  type="checkbox"
-                  checked={selectedSubcategories.includes(subcategory)}
-                  onChange={() => handleSubcategoryClick(subcategory)}
-                />
-                {subcategory}
-              </label>
-            ))}
+                Reset
+              </button>
+              <button
+                onClick={handleApplyFilters}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
+                Apply
+              </button>
+            </div>
           </div>
-        </div>
+        </section>
       )}
-
-      {/* Price range filter */}
-      <div className="mb-4">
-        <h3 className="font-semibold text-lg underline mb-2">Price Range</h3>
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          step="10"
-          value={priceRange[0]}
-          onChange={(e) => handlePriceRangeChange(e, 0)}
-          className="w-full"
-        />
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          step="10"
-          value={priceRange[1]}
-          onChange={(e) => handlePriceRangeChange(e, 1)}
-          className="w-full"
-        />
-        <div className="flex justify-between">
-          <span>${priceRange[0]}</span>
-          <span>${priceRange[1]}</span>
-        </div>
-      </div>
-
-      <div className="flex justify-end gap-4">
-        <button
-          onClick={resetFilters}
-          className="bg-gray-300 px-4 py-2 rounded-lg"
-        >
-          Reset
-        </button>
-        <button
-          onClick={handleApplyFilters}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-        >
-          Apply
-        </button>
-      </div>
-    </div>
-  </section>
-        )}
-      
     </>
   );
 };
