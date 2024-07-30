@@ -3,8 +3,9 @@ import axios from "axios";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import { uniqueFilters } from "../constants";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cover from "../components/Cover";
+import Footer from "../components/Footer";
 
 const IndexPage = () => {
   const [consultants, setConsultants] = useState([]);
@@ -270,10 +271,12 @@ const IndexPage = () => {
             </button>
           </div>
         )}
-        <div className="w-full" style={{ backgroundColor: "#060724" }}>
-          <Cover />
-        </div>
       </section>
+
+      <div className="w-full" style={{ backgroundColor: "#060724" }}>
+        <Cover />
+      </div>
+      <Footer />
 
       {isModalOpen && (
         <section className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">

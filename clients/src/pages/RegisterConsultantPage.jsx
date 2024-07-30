@@ -1,4 +1,4 @@
-import zebo from "../assets/images/mentors/img13.png";
+import logo from "../assets/logo.png";
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
@@ -184,7 +184,7 @@ const RegisterConsultantPage = () => {
 
   return (
     <>
-      <div className="w-full flex"  style={{ backgroundColor: "#060724" }}>
+      <div className="w-full flex" style={{ backgroundColor: "#060724" }}>
         {success && (
           <p className="text-green-600 text-center mb-4">{success}</p>
         )}
@@ -192,10 +192,8 @@ const RegisterConsultantPage = () => {
           <p className="text-red-600 text-center mb-4">{errors.submit}</p>
         )}
 
-      
-
         <div className="shadow-2xl border-blue-950 p-32 m-4 rounded-lg text-lg h-full w-full">
-          <Link to={"/"} className="mb-6 flex">
+          <Link to={"/"} className=" flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -209,9 +207,14 @@ const RegisterConsultantPage = () => {
               />
             </svg>
           </Link>
-          <h1 className="text-bold mb-10 text-white text-4xl">
-          Create an account
-          </h1>
+          <div className="flex items-center mb-10">
+            <h1 className="text-bold  text-white text-4xl">
+              Create an account
+            </h1>
+            <div className="flex justify-center sm:justify-start mt-4">
+              <img src={logo} alt="logo" className="w-32 h-22 object-cover" />
+            </div>
+          </div>
           <div className="flex justify-between w-[90%] gap-2 mb-12">
             {[1, 2, 3].map((step) => (
               <div
@@ -236,7 +239,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="name"
                       className="block text-lg font-semibold mb-1"
                     >
-                       <span className="text-white">Full Name *</span>
+                      <span className="text-white">Full Name *</span>
                     </label>
                     <input
                       type="text"
@@ -254,7 +257,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="email"
                       className="block text-lg font-semibold mb-1"
                     >
-                       <span className="text-white">Email *</span>
+                      <span className="text-white">Email *</span>
                     </label>
                     <input
                       type="email"
@@ -276,7 +279,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="password"
                       className="block text-lg font-semibold mb-1"
                     >
-                       <span className="text-white">Password *</span>
+                      <span className="text-white">Password *</span>
                     </label>
                     <input
                       type="password"
@@ -296,8 +299,9 @@ const RegisterConsultantPage = () => {
                       htmlFor="country"
                       className="block text-lg font-semibold mb-1"
                     >
-                    
-                      <span className="text-white">Location of University *</span>
+                      <span className="text-white">
+                        Location of University *
+                      </span>
                     </label>
                     <input
                       type="text"
@@ -319,7 +323,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="universityCountry"
                       className="block text-lg font-semibold mb-1"
                     >
-                       <span className="text-white">Country of Origin *</span>
+                      <span className="text-white">Country of Origin *</span>
                     </label>
                     <input
                       type="text"
@@ -340,7 +344,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="admission"
                       className="block text-lg font-semibold mb-1"
                     >
-                       <span className="text-white">Languages fluent *</span>
+                      <span className="text-white">Languages fluent *</span>
                     </label>
                     <select
                       value={language}
@@ -383,7 +387,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="major"
                     className="block text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Major *</span>
+                    <span className="text-white">Major *</span>
                   </label>
                   <select
                     value={major}
@@ -425,7 +429,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="admission"
                     className="block text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Admission *</span>
+                    <span className="text-white">Admission *</span>
                   </label>
                   <select
                     id="admission"
@@ -456,7 +460,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="price"
                     className="block text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Price *</span>
+                    <span className="text-white">Price *</span>
                   </label>
                   {priceOptions.map((option) => (
                     <div key={option.value} className="flex items-center">
@@ -486,7 +490,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="bio"
                     className="block text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Bio *</span>
+                    <span className="text-white">Bio *</span>
                   </label>
                   <textarea
                     id="bio"
@@ -504,7 +508,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="category"
                     className="block text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Category *</span>
+                    <span className="text-white">Category *</span>
                   </label>
                   <select
                     id="category"
@@ -550,7 +554,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="subcategories"
                     className="block text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Subcategories *</span>
+                    <span className="text-white">Subcategories *</span>
                   </label>
                   {subcategories.length > 0 && (
                     <div>
@@ -585,7 +589,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="photo"
                     className="block text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Profile Photo *</span>
+                    <span className="text-white">Profile Photo *</span>
                   </label>
                   <PhotoProfile
                     addedPhotos={addedPhotos}
@@ -600,7 +604,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="availability"
                     className="block text-white text-lg font-semibold mb-1"
                   >
-                     <span className="text-white">Availability *</span>
+                    <span className="text-white">Availability *</span>
                   </label>
                   <div className="flex space-x-4">
                     <DatePicker
@@ -665,11 +669,14 @@ const RegisterConsultantPage = () => {
             </div>
           </form>
           <div className="text-center py-4 text-xl text-white">
-          Already a member?{' '}
-          <Link className="underline text-white" to={"/be-an-insider/SignInConsltantPage"}>
-            SignIn
-          </Link>
-        </div>
+            Already a member?{" "}
+            <Link
+              className="underline text-white"
+              to={"/be-an-insider/SignInConsltantPage"}
+            >
+              SignIn
+            </Link>
+          </div>
         </div>
       </div>
     </>
