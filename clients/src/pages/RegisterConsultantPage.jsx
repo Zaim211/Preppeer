@@ -80,7 +80,7 @@ const RegisterConsultantPage = () => {
         password,
         price,
         major,
-        admission, // Include admission in the request
+        admission,
         country,
         language,
         universityCountry,
@@ -184,7 +184,7 @@ const RegisterConsultantPage = () => {
 
   return (
     <>
-      <div className="mx-auto container mt-8 mb-10 flex">
+      <div className="w-full flex"  style={{ backgroundColor: "#060724" }}>
         {success && (
           <p className="text-green-600 text-center mb-4">{success}</p>
         )}
@@ -192,33 +192,15 @@ const RegisterConsultantPage = () => {
           <p className="text-red-600 text-center mb-4">{errors.submit}</p>
         )}
 
-        <div className="md:w-1/2 mt-10 flex-1 ml-32 md:mb-0">
-          <img src={zebo} alt="Hero" className="w-90 h-120 object ml-14" />
-          <div className="flex items-center w-[486px] ml-14 pb-2 h-120 bg-black flex-1 justify-center">
-            <h1 className="text-xl text-center text-white mt-2">
-              "Preppeer has been a great way <br /> to monetize my audience &{" "}
-              <br />
-              create super fans"
-              <br />
-              <h1 className="mt-4 text-md font-bold"> Zebo Furqatzoda</h1>
-              <p className="text-sm text-gra-400">Philosophy & Economics </p>
-            </h1>
-          </div>
-          <div className="text-center py-4 text-xl text-black">
-          Already a member?{' '}
-          <Link className="underline text-black" to={"/be-an-insider/SignInConsltantPage"}>
-            SignIn
-          </Link>
-        </div>
-        </div>
+      
 
-        <div className="bg-white shadow-lg rounded-lg text-lg w-full m-10 p-10">
+        <div className="shadow-2xl border-blue-950 p-32 m-4 rounded-lg text-lg h-full w-full">
           <Link to={"/"} className="mb-6 flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="w-12 h-12"
+              class="w-12 h-12 text-white"
             >
               <path
                 fill-rule="evenodd"
@@ -227,10 +209,10 @@ const RegisterConsultantPage = () => {
               />
             </svg>
           </Link>
-          <h1 className="text-bold mb-10 text-4xl">
-            Create an account, or log in
+          <h1 className="text-bold mb-10 text-white text-4xl">
+          Create an account
           </h1>
-          <div className="flex justify-between gap-2 mb-6">
+          <div className="flex justify-between w-[90%] gap-2 mb-12">
             {[1, 2, 3].map((step) => (
               <div
                 key={step}
@@ -245,7 +227,7 @@ const RegisterConsultantPage = () => {
             ))}
           </div>
 
-          <form onSubmit={handleSubmit} className="w-full">
+          <form onSubmit={handleSubmit} className="w-[90%]">
             {currentStep === 1 && (
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -254,7 +236,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="name"
                       className="block text-lg font-semibold mb-1"
                     >
-                      Full Name <span className="text-black">*</span>
+                       <span className="text-white">Full Name *</span>
                     </label>
                     <input
                       type="text"
@@ -272,7 +254,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="email"
                       className="block text-lg font-semibold mb-1"
                     >
-                      Email <span className="text-black">*</span>
+                       <span className="text-white">Email *</span>
                     </label>
                     <input
                       type="email"
@@ -294,7 +276,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="password"
                       className="block text-lg font-semibold mb-1"
                     >
-                      Password <span className="text-black">*</span>
+                       <span className="text-white">Password *</span>
                     </label>
                     <input
                       type="password"
@@ -314,8 +296,8 @@ const RegisterConsultantPage = () => {
                       htmlFor="country"
                       className="block text-lg font-semibold mb-1"
                     >
-                      Location of University{" "}
-                      <span className="text-black">*</span>
+                    
+                      <span className="text-white">Location of University *</span>
                     </label>
                     <input
                       type="text"
@@ -337,7 +319,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="universityCountry"
                       className="block text-lg font-semibold mb-1"
                     >
-                      Country of Origin <span className="text-black">*</span>
+                       <span className="text-white">Country of Origin *</span>
                     </label>
                     <input
                       type="text"
@@ -358,7 +340,7 @@ const RegisterConsultantPage = () => {
                       htmlFor="admission"
                       className="block text-lg font-semibold mb-1"
                     >
-                      Language fluent <span className="">*</span>
+                       <span className="text-white">Languages fluent *</span>
                     </label>
                     <select
                       value={language}
@@ -401,12 +383,12 @@ const RegisterConsultantPage = () => {
                     htmlFor="major"
                     className="block text-lg font-semibold mb-1"
                   >
-                    Major <span className="text-black">*</span>
+                     <span className="text-white">Major *</span>
                   </label>
                   <select
                     value={major}
                     onChange={handleMajorChange}
-                    className="border border-gray-300 p-2 w-full rounded-lg"
+                    className="border text-black border-gray-300 p-2 w-full rounded-lg"
                   >
                     <option value="">Select your major</option>
                     {majors.map((m) => (
@@ -443,7 +425,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="admission"
                     className="block text-lg font-semibold mb-1"
                   >
-                    Admission <span className="">*</span>
+                     <span className="text-white">Admission *</span>
                   </label>
                   <select
                     id="admission"
@@ -474,7 +456,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="price"
                     className="block text-lg font-semibold mb-1"
                   >
-                    Price <span className="text-black">*</span>
+                     <span className="text-white">Price *</span>
                   </label>
                   {priceOptions.map((option) => (
                     <div key={option.value} className="flex items-center">
@@ -488,7 +470,7 @@ const RegisterConsultantPage = () => {
                       />
                       <label
                         htmlFor={`price-${option.value}`}
-                        className="text-lg"
+                        className="text-lg text-white"
                       >
                         {option.label}
                       </label>
@@ -504,13 +486,13 @@ const RegisterConsultantPage = () => {
                     htmlFor="bio"
                     className="block text-lg font-semibold mb-1"
                   >
-                    Bio <span className="text-black">*</span>
+                     <span className="text-white">Bio *</span>
                   </label>
                   <textarea
                     id="bio"
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
-                    className="border border-gray-300 p-8 w-full rounded-lg"
+                    className="border text-start border-gray-300 p-4 pb-32 w-[50%] rounded-lg"
                   ></textarea>
                   {errors.bio && (
                     <p className="text-red-600 text-sm mt-1">{errors.bio}</p>
@@ -522,7 +504,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="category"
                     className="block text-lg font-semibold mb-1"
                   >
-                    Category <span className="text-black">*</span>
+                     <span className="text-white">Category *</span>
                   </label>
                   <select
                     id="category"
@@ -568,7 +550,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="subcategories"
                     className="block text-lg font-semibold mb-1"
                   >
-                    Subcategories <span className="text-black">*</span>
+                     <span className="text-white">Subcategories *</span>
                   </label>
                   {subcategories.length > 0 && (
                     <div>
@@ -584,7 +566,7 @@ const RegisterConsultantPage = () => {
                           />
                           <label
                             htmlFor={`subcategory-${subcat}`}
-                            className="text-lg"
+                            className="text-lg text-white"
                           >
                             {subcat}
                           </label>
@@ -603,7 +585,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="photo"
                     className="block text-lg font-semibold mb-1"
                   >
-                    Profile Photo <span className="text-black">*</span>
+                     <span className="text-white">Profile Photo *</span>
                   </label>
                   <PhotoProfile
                     addedPhotos={addedPhotos}
@@ -616,9 +598,9 @@ const RegisterConsultantPage = () => {
                 <div>
                   <label
                     htmlFor="availability"
-                    className="block text-lg font-semibold mb-1"
+                    className="block text-white text-lg font-semibold mb-1"
                   >
-                    Availability <span className="text-black">*</span>
+                     <span className="text-white">Availability *</span>
                   </label>
                   <div className="flex space-x-4">
                     <DatePicker
@@ -682,6 +664,12 @@ const RegisterConsultantPage = () => {
               )}
             </div>
           </form>
+          <div className="text-center py-4 text-xl text-white">
+          Already a member?{' '}
+          <Link className="underline text-white" to={"/be-an-insider/SignInConsltantPage"}>
+            SignIn
+          </Link>
+        </div>
         </div>
       </div>
     </>

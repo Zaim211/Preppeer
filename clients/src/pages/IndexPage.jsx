@@ -270,7 +270,7 @@ const IndexPage = () => {
             </button>
           </div>
         )}
-        <div className="w-full">
+        <div className="w-full" style={{ backgroundColor: "#060724" }}>
           <Cover />
         </div>
       </section>
