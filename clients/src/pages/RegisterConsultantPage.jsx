@@ -16,7 +16,6 @@ import {
 } from "../constants";
 
 const RegisterConsultantPage = () => {
-  const [currentStep, setCurrentStep] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [major, setMajor] = useState([]);
@@ -99,14 +98,6 @@ const RegisterConsultantPage = () => {
         submit: "An error occurred while registering the consultant",
       });
     }
-  };
-
-  const nextStep = () => {
-    setCurrentStep(currentStep + 1);
-  };
-
-  const previousStep = () => {
-    setCurrentStep(currentStep - 1);
   };
 
   const handleStartDateChange = (date) => {
@@ -207,7 +198,7 @@ const RegisterConsultantPage = () => {
               />
             </svg>
           </Link>
-          <div className="flex items-center mb-10">
+          <div className="flex items-center">
             <h1 className="text-bold  text-white text-4xl">
               Create an account
             </h1>
@@ -215,173 +206,194 @@ const RegisterConsultantPage = () => {
               <img src={logo} alt="logo" className="w-32 h-22 object-cover" />
             </div>
           </div>
-          <div className="flex justify-between w-[90%] gap-2 mb-12">
-            {[1, 2, 3].map((step) => (
-              <div
-                key={step}
-                className={`flex-1 text-center py-2 rounded-lg ${
-                  currentStep >= step
-                    ? "bg-orange-600 text-white  "
-                    : "bg-gray-300 text-gray-700"
-                }`}
-              >
-                Step {step}
+
+          <form
+            onSubmit={handleSubmit}
+            className="w-[90%] shadow-2xl border-blue-950 rounded-lg p-4"
+          >
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Full Name *</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="border border-gray-300 p-2 w-full rounded-lg"
+                  />
+                  {errors.name && (
+                    <p className="text-red-600 text-sm mt-1">{errors.name}</p>
+                  )}
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Email *</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="border border-gray-300 p-2 w-full rounded-lg"
+                  />
+                  {errors.email && (
+                    <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+                  )}
+                </div>
               </div>
-            ))}
-          </div>
-
-          <form onSubmit={handleSubmit} className="w-[90%]">
-            {currentStep === 1 && (
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-lg font-semibold mb-1"
-                    >
-                      <span className="text-white">Full Name *</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="border border-gray-300 p-2 w-full rounded-lg"
-                    />
-                    {errors.name && (
-                      <p className="text-red-600 text-sm mt-1">{errors.name}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-lg font-semibold mb-1"
-                    >
-                      <span className="text-white">Email *</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="border border-gray-300 p-2 w-full rounded-lg"
-                    />
-                    {errors.email && (
-                      <p className="text-red-600 text-sm mt-1">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Password *</span>
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="border border-gray-300 p-2 w-full rounded-lg"
+                  />
+                  {errors.password && (
+                    <p className="text-red-600 text-sm mt-1">
+                      {errors.password}
+                    </p>
+                  )}
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="password"
-                      className="block text-lg font-semibold mb-1"
-                    >
-                      <span className="text-white">Password *</span>
-                    </label>
-                    <input
-                      type="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="border border-gray-300 p-2 w-full rounded-lg"
-                    />
-                    {errors.password && (
-                      <p className="text-red-600 text-sm mt-1">
-                        {errors.password}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="country"
-                      className="block text-lg font-semibold mb-1"
-                    >
-                      <span className="text-white">
-                        Location of University *
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      id="country"
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                      className="border border-gray-300 p-2 w-full rounded-lg"
-                    />
-                    {errors.country && (
-                      <p className="text-red-600 text-sm mt-1">
-                        {errors.country}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <label
+                    htmlFor="country"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Location of University *</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="country"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="border border-gray-300 p-2 w-full rounded-lg"
+                  />
+                  {errors.country && (
+                    <p className="text-red-600 text-sm mt-1">
+                      {errors.country}
+                    </p>
+                  )}
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="universityCountry"
-                      className="block text-lg font-semibold mb-1"
-                    >
-                      <span className="text-white">Country of Origin *</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="universityCountry"
-                      value={universityCountry}
-                      onChange={(e) => setUniversityCountry(e.target.value)}
-                      className="border border-gray-300 p-2 w-full rounded-lg"
-                    />
-                    {errors.universityCountry && (
-                      <p className="text-red-600 text-sm mt-1">
-                        {errors.universityCountry}
-                      </p>
-                    )}
-                  </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="universityCountry"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Country of Origin *</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="universityCountry"
+                    value={universityCountry}
+                    onChange={(e) => setUniversityCountry(e.target.value)}
+                    className="border border-gray-300 p-2 w-full rounded-lg"
+                  />
+                  {errors.universityCountry && (
+                    <p className="text-red-600 text-sm mt-1">
+                      {errors.universityCountry}
+                    </p>
+                  )}
+                </div>
 
-                  <div className="flex-1">
-                    <label
-                      htmlFor="admission"
-                      className="block text-lg font-semibold mb-1"
-                    >
-                      <span className="text-white">Languages fluent *</span>
-                    </label>
-                    <select
-                      value={language}
-                      onChange={handleLanguageChange}
-                      className="border border-gray-300 p-2 w-full rounded-lg"
-                    >
-                      <option value="">Select an Admission</option>
-                      {languages.map((l) => (
-                        <option key={l} value={l}>
+                <div className="flex-1">
+                  <label
+                    htmlFor="admission"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Languages fluent *</span>
+                  </label>
+                  <select
+                    value={language}
+                    onChange={handleLanguageChange}
+                    className="border border-gray-300 p-2 w-full rounded-lg"
+                  >
+                    <option value="">Select an Admission</option>
+                    {languages.map((l) => (
+                      <option key={l} value={l}>
+                        {l}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.language && (
+                    <p className="text-red-500">{errors.language}</p>
+                  )}
+                  {language.length > 0 && (
+                    <div className="mt-2">
+                      {language.map((l) => (
+                        <span
+                          key={l}
+                          className="inline-block bg-green-200 text-green-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2"
+                        >
                           {l}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.language && (
-                      <p className="text-red-500">{errors.language}</p>
-                    )}
-                    {language.length > 0 && (
-                      <div className="mt-2">
-                        {language.map((l) => (
-                          <span
-                            key={l}
-                            className="inline-block bg-green-200 text-green-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2"
+                          <button
+                            type="button"
+                            onClick={() => removeLanguage(l)}
+                            className="ml-2 text-red-500"
                           >
-                            {l}
-                            <button
-                              type="button"
-                              onClick={() => removeLanguage(l)}
-                              className="ml-2 text-red-500"
-                            >
-                              &times;
-                            </button>
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                            &times;
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="">
+                  <label
+                    htmlFor="bio"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Bio *</span>
+                  </label>
+                  <textarea
+                    id="bio"
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                    className="border text-lg border-gray-300 pl-4 pr-4 pb-32 pt-4 w-[100%] rounded-lg"
+                  ></textarea>
+                  {errors.bio && (
+                    <p className="text-red-600 text-sm mt-1">{errors.bio}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="photo"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Profile Photo *</span>
+                  </label>
+                  <PhotoProfile
+                    addedPhotos={addedPhotos}
+                    onChange={setAddedPhotos}
+                  />
+                  {errors.image && (
+                    <p className="text-red-600 text-sm mt-1">{errors.image}</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex-1">
                   <label
                     htmlFor="major"
@@ -451,58 +463,8 @@ const RegisterConsultantPage = () => {
                   )}
                 </div>
               </div>
-            )}
 
-            {currentStep === 2 && (
-              <div className="space-y-6">
-                <div className="">
-                  <label
-                    htmlFor="price"
-                    className="block text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Price *</span>
-                  </label>
-                  {priceOptions.map((option) => (
-                    <div key={option.value} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id={`price-${option.value}`}
-                        value={option.value}
-                        checked={price.includes(option.value)}
-                        onChange={handlePriceChange}
-                        className="mr-2"
-                      />
-                      <label
-                        htmlFor={`price-${option.value}`}
-                        className="text-lg text-white"
-                      >
-                        {option.label}
-                      </label>
-                    </div>
-                  ))}
-                  {errors.price && (
-                    <p className="text-red-600 text-sm mt-1">{errors.price}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="bio"
-                    className="block text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Bio *</span>
-                  </label>
-                  <textarea
-                    id="bio"
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    className="border text-start border-gray-300 p-4 pb-32 w-[50%] rounded-lg"
-                  ></textarea>
-                  {errors.bio && (
-                    <p className="text-red-600 text-sm mt-1">{errors.bio}</p>
-                  )}
-                </div>
-
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label
                     htmlFor="category"
@@ -551,56 +513,6 @@ const RegisterConsultantPage = () => {
 
                 <div>
                   <label
-                    htmlFor="subcategories"
-                    className="block text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Subcategories *</span>
-                  </label>
-                  {subcategories.length > 0 && (
-                    <div>
-                      {subcategories.map((subcat) => (
-                        <div key={subcat} className="flex items-center">
-                          <input
-                            type="checkbox"
-                            id={`subcategory-${subcat}`}
-                            value={subcat}
-                            checked={subcategories.includes(subcat)}
-                            onChange={handleSubcategoryChange}
-                            className="mr-2"
-                          />
-                          <label
-                            htmlFor={`subcategory-${subcat}`}
-                            className="text-lg text-white"
-                          >
-                            {subcat}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {currentStep === 3 && (
-              <div className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="photo"
-                    className="block text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Profile Photo *</span>
-                  </label>
-                  <PhotoProfile
-                    addedPhotos={addedPhotos}
-                    onChange={setAddedPhotos}
-                  />
-                  {errors.image && (
-                    <p className="text-red-600 text-sm mt-1">{errors.image}</p>
-                  )}
-                </div>
-                <div>
-                  <label
                     htmlFor="availability"
                     className="block text-white text-lg font-semibold mb-1"
                   >
@@ -637,38 +549,80 @@ const RegisterConsultantPage = () => {
                   )}
                 </div>
               </div>
-            )}
 
-            <div className="mt-6 flex justify-end">
-              {currentStep > 1 && (
-                <button
-                  type="button"
-                  onClick={() => setCurrentStep(currentStep - 1)}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg mr-2"
-                >
-                  Previous
-                </button>
-              )}
-              {currentStep < 3 && (
-                <button
-                  type="button"
-                  onClick={() => setCurrentStep(currentStep + 1)}
-                  className="bg-orange-600 text-white px-4 py-2 rounded-lg"
-                >
-                  Next
-                </button>
-              )}
-              {currentStep === 3 && (
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-                >
-                  Submit
-                </button>
-              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="">
+                  <label
+                    htmlFor="price"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Price *</span>
+                  </label>
+                  {priceOptions.map((option) => (
+                    <div key={option.value} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={`price-${option.value}`}
+                        value={option.value}
+                        checked={price.includes(option.value)}
+                        onChange={handlePriceChange}
+                        className="mr-2"
+                      />
+                      <label
+                        htmlFor={`price-${option.value}`}
+                        className="text-lg text-white"
+                      >
+                        {option.label}
+                      </label>
+                    </div>
+                  ))}
+                  {errors.price && (
+                    <p className="text-red-600 text-sm mt-1">{errors.price}</p>
+                  )}
+                </div>
+                <div>
+                  <label
+                    htmlFor="subcategories"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Subcategories *</span>
+                  </label>
+                  {subcategories.length > 0 && (
+                    <div>
+                      {subcategories.map((subcat) => (
+                        <div key={subcat} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            id={`subcategory-${subcat}`}
+                            value={subcat}
+                            checked={subcategories.includes(subcat)}
+                            onChange={handleSubcategoryChange}
+                            className="mr-2"
+                          />
+                          <label
+                            htmlFor={`subcategory-${subcat}`}
+                            className="text-lg text-white"
+                          >
+                            {subcat}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center mt-32">
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
+                Submit
+              </button>
             </div>
           </form>
-          <div className="text-center py-4 text-xl text-white">
+          <div className="text-center items-center flex justify-center mr-32 py-4 mt-12 text-xl text-white">
             Already a member?{" "}
             <Link
               className="underline text-white"
