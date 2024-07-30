@@ -136,11 +136,11 @@ const Cover = () => {
   </div>
   <div className="relative z-10 flex flex-col  items-center justify-center text-center p-16">
     <div className="mt-32">
-    <h1 className="text-5xl font-bold mb-12">
+    <h1 className="text-6xl font-semibold mb-12">
       Book calls with <span className="text-orange-600">insiders</span> to supercharge <br />
       <span className="px-64">your applications</span>
     </h1>
-    <p className="text-4xl font-bold mb-6 mt-32">
+    <p className="text-6xl font-semibold mb-6 mt-32">
       Get insider information to gain real competitive advantage
     </p>
     <button className="bg-orange-500 text-white mt-12 px-6 py-3 font-bold text-2xl rounded-xl shadow-lg hover:bg-orange-600 transition-colors">
