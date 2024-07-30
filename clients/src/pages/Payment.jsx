@@ -1,11 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import CheckoutForm from '../components/CheckoutForm';
+import {Elements} from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js';
 
 const Payment = () => {
   const { id } = useParams();
   const { state } = useLocation();
   const [consultant, setConsultant] = useState(null);
+  const [stripePromise] = useState(() => loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY));
   
   const { date, user, price, duration } = state || {};
 
@@ -28,6 +32,8 @@ const Payment = () => {
       </div>
     );
   }
+
+  
 
   return (
     <div className="p-6 md:p-12 bg-gray-100 mb-32">
@@ -84,46 +90,13 @@ const Payment = () => {
         </div>
 
         {/* Right Side: Card Payment Information */}
-        <div className="flex-1 bg-white border border-gray-300 rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-bold mb-4">Card Payment</h2>
-          <form>
-            <div className="mb-4">
-              <label htmlFor="cardNumber" className="block text-lg font-semibold mb-2">Card Number:</label>
-              <input
-                type="text"
-                id="cardNumber"
-                placeholder="**** **** **** ****"
-                className="border border-gray-300 p-3 rounded-lg w-full"
-              />
-            </div>
-            <div className="mb-4 flex gap-4">
-              <div className="flex-1">
-                <label htmlFor="expiryDate" className="block text-lg font-semibold mb-2">Expiry Date:</label>
-                <input
-                  type="text"
-                  id="expiryDate"
-                  placeholder="MM/YY"
-                  className="border border-gray-300 p-3 rounded-lg w-full"
-                />
-              </div>
-              <div className="flex-1">
-                <label htmlFor="cvv" className="block text-lg font-semibold mb-2">CVV:</label>
-                <input
-                  type="text"
-                  id="cvv"
-                  placeholder="***"
-                  className="border border-gray-300 p-3 rounded-lg w-full"
-                />
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full w-full shadow-md hover:bg-blue-600 transition duration-300"
-            >
-              Complete Payment
-            </button>
-          </form>
-        </div>
+        {stripePromise && <Elements stripe={stripePromise} options={{
+          mode:'payment',
+          currency: 'usd',
+          amount: Math.round(price * 100)
+        }}>
+          <CheckoutForm amount={Math.round(price * 100)} />
+        </Elements>}
       </div>
     </div>
   );
