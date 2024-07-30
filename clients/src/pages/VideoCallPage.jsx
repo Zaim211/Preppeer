@@ -1,21 +1,22 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import dollar from "../assets/icons/dollar.svg";
 import Informations from "../components/Informations";
 import { details } from "../constants";
+import { UserContext } from "../UserContext.jsx";
 
 const VideoCallPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [consultant, setConsultant] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+
   const [selectedDuration, setSelectedDuration] = useState("15");
   const [errors, setErrors] = useState({});
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const fetchConsultant = async () => {
@@ -31,9 +32,7 @@ const VideoCallPage = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name) newErrors.name = "Name is required";
-    if (!email) newErrors.email = "Email is required";
-    if (!email.includes("@")) newErrors.email = "Email must be valid";
+
     if (!selectedDuration)
       newErrors.selectedDuration = "Call duration is required";
     setErrors(newErrors);
@@ -58,18 +57,19 @@ const VideoCallPage = () => {
         price = 20;
     }
 
-    navigate("/video-call/:id/payment", {
+    navigate(`/insider/payment/${consultant._id}`, {
       state: {
         date: selectedDate,
         consultant: {
+          id : consultant._id,
           name: consultant.name,
           profilePicture: consultant.profilePicture[0],
         },
         user: {
-          name,
-          email,
+          username: user.username,
+          email: user.email,
         },
-        price,
+        price: consultant.price[0],
         duration: selectedDuration,
       },
     });
@@ -142,7 +142,7 @@ const VideoCallPage = () => {
           <div className="border rounded-lg shadow-lg">
             <h2 className="text-2xl p-4 font-bold text-gray-800">About Me</h2>
             <p className="text-xl font-semibold p-4 text-ellipsis leading-[40px]">
-              {consultant.bio}
+              {consultant?.bio}
             </p>
             <div className="p-4 w-full">
               <div className="flex pb-4">
@@ -203,13 +203,10 @@ const VideoCallPage = () => {
                 >
                   Full Name <span className="text-black">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="border border-gray-300 p-2 w-full rounded-lg"
-                />
+                <div className="border border-gray-300 p-2 w-full rounded-lg">
+                  {user?.username}
+                </div>
+
                 {errors.name && (
                   <p className="text-red-600 text-sm mt-1">{errors.name}</p>
                 )}
@@ -222,13 +219,9 @@ const VideoCallPage = () => {
                 >
                   Email <span className="text-black">*</span>
                 </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="border border-gray-300 p-2 w-full rounded-lg"
-                />
+                <div className="border border-gray-300 p-2 w-full rounded-lg">
+                  {user?.email}
+                </div>
                 {errors.email && (
                   <p className="text-red-600 text-sm mt-1">{errors.email}</p>
                 )}

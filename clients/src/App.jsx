@@ -29,23 +29,24 @@ function App() {
   <Routes>
     <Route path="/" element={<Layout />} >
     <Route index element={<IndexPage />} />
-    <Route path="/insider/:id" element={<VideoCallPage />} />
+
+    {/* Authentication */}
     <Route path="/ConsultantProfile" element={<ConsultantProfilePage />} />
     <Route path='/StudentProfile' element={<StudentProfilePage />} />
     <Route path="/RegisterStudentPage" element={<RegisterStudentPage />} />
     <Route path="/be-an-insider/RegisterConsultantPage" element={<RegisterConsultantPage />} />
     <Route path="/SignInStudentPage" element={<SignInStudentPage />} />
     <Route path="/be-an-insider/SignInConsltantPage" element={<SignInConsltantPage />} />
-    <Route path="/OurMissions" element={<OurMissions />}/>
 
+    {/* pages */}
+    <Route path="/OurMissions" element={<OurMissions />}/>
+    <Route path="/insider/:id" element={<VideoCallPage />} />
     <Route path="/be-an-insider" element={<MemberPage />} />
     <Route path="/blog" element={<Blog />} />
-
-    <Route path='/video-call/:id/payment' element={<Payment />} />
-
+    <Route path='/insider/payment/:id' element={<Payment />} />
     <Route path="/market/:id" element={<Market />} />
-
     <Route path='/giftcard' element={<CardGift />} />
+    
     </Route>
   </Routes>
   </UserContextProvider>

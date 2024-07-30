@@ -17,6 +17,7 @@ router.get("/api/preppeer", AppController.preppeer);
 router.post("/api/registerStudent", AuthController.registerStudent);
 router.post("/api/SignInStudent", AuthController.SignInStudent);
 router.get('/api/profileStudent', AuthController.profileStudent);
+router.post("/api/reset-password-student", AuthController.resetPasswordStudent);
 router.post('/api/google', AuthController.googleLogin);
 
 router.post("/api/registerConsultant", AuthController.registerConsultant);

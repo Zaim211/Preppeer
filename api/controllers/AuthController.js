@@ -9,11 +9,7 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 
 class AuthController {
   static async registerStudent(req, res) {
-    const {
-      username,
-      email,
-      password,
-    } = req.body;
+    const { username, email, password } = req.body;
 
     try {
       const student = await Student.create({
@@ -31,30 +27,72 @@ class AuthController {
 
   static async SignInStudent(req, res) {
     const { email, password } = req.body;
+
     try {
-      const student = await Student.findOne({ email });
-      if (!student) {
-        return res.status(401).json({ error: "Invalid email or password" });
+      const userDoc = await Student.findOne({ email });
+      console.log("userDoc", userDoc);
+
+      if (!userDoc) {
+        return res.status(404).json({ message: "Email not found" });
       }
-      const isPasswordValid = bcrypt.compareSync(password, student.password);
-      if (!isPasswordValid) {
-        return res.status(401).json({ error: "Invalid email or password" });
+
+      const passOk = bcrypt.compareSync(password, userDoc.password);
+      if (!passOk) {
+        return res.status(401).json({ message: "Invalid password" });
       }
+
       if (!jwtSecret) {
+        console.error("JWT secret key is not defined.");
         return res.status(500).json({ error: "Internal server error" });
       }
-      const token = jwt.sign(
+
+      jwt.sign(
         {
-          email: student.email,
-          id: student._id,
+          email: userDoc.email,
+          id: userDoc._id,
         },
         jwtSecret,
-        { expiresIn: "24h" }
+        { expiresIn: "24h" },
+
+        (err, token) => {
+          if (err) {
+            console.error("JWT signing error:", err);
+            return res.status(500).json({ error: "Internal server error" });
+          }
+          res.cookie("token", token, { httpOnly: true }).json(userDoc);
+        }
       );
-      res.cookie("token", token, { httpOnly: true });
-      return res.json({ message: "Student signed in successfully" });
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      console.error("Error during login:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  }
+
+  static async resetPasswordStudent(req, res) {
+    mongoose.connect(process.env.MONGO_URL);
+    const { email, newPassword } = req.body;
+
+    if (!email || !newPassword) {
+      return res
+        .status(400)
+        .json({ error: "Email and new password are required" });
+    }
+
+    try {
+      const user = await Student.findOne({ email });
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const hashedPassword = bcrypt.hashSync(newPassword, 10);
+      user.password = hashedPassword;
+      await user.save();
+
+      res.json({ message: "Password reset successfully" });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "An error occurred while resetting the password" });
     }
   }
 
@@ -80,7 +118,6 @@ class AuthController {
       res.status(401).json({ error: "No token provided" });
     }
   }
-  
 
   static async registerConsultant(req, res) {
     const {
@@ -99,7 +136,7 @@ class AuthController {
       availabilityEnd,
       moreInfo,
       bio,
-      admission
+      admission,
     } = req.body;
     try {
       const consultant = await Consultant.create({
@@ -151,7 +188,7 @@ class AuthController {
         { expiresIn: "24h" }
       );
       res.cookie("token", token, { httpOnly: true });
-    
+
       return res.json({ message: "Consultant signed in successfully" });
     } catch (error) {
       return res.status(400).json({ error: error.message });
@@ -170,21 +207,43 @@ class AuthController {
           if (!consultant) {
             return res.status(404).json({ error: "Consultant not found" });
           }
-          const { 
-            name, email, _id, profilePicture,
-            university, major, country,
-            language, price, category, subcategories,
+          const {
+            name,
+            email,
+            _id,
+            profilePicture,
+            university,
+            major,
+            country,
+            language,
+            price,
+            category,
+            subcategories,
             universityCountry,
-            admission, bio, availabilityStart,
+            admission,
+            bio,
+            availabilityStart,
             availabilityEnd,
             moreInfo,
           } = consultant;
-          res.json({ 
-            name, email, _id, profilePicture,
-            university, major, country, price,
-            language, universityCountry, category,
-            bio, admission, availabilityStart,
-            availabilityEnd, moreInfo, subcategories,
+          res.json({
+            name,
+            email,
+            _id,
+            profilePicture,
+            university,
+            major,
+            country,
+            price,
+            language,
+            universityCountry,
+            category,
+            bio,
+            admission,
+            availabilityStart,
+            availabilityEnd,
+            moreInfo,
+            subcategories,
           });
         } catch (error) {
           res.status(500).json({ error: error.message });
@@ -194,7 +253,7 @@ class AuthController {
       res.status(401).json({ error: "No token provided" });
     }
   }
-  
+
   static async logoutUser(req, res) {
     res.cookie("token", "").json(true);
   }
@@ -204,7 +263,7 @@ class AuthController {
     try {
       const consultant = await Consultant.findById(id);
       res.json({ consultant });
-      console.log('consultant', consultant);
+      console.log("consultant", consultant);
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }
@@ -219,10 +278,8 @@ class AuthController {
     }
   }
 
-
   static async googleLogin(req, res) {
     try {
-  
       const { name, email, photoURL } = req.body;
 
       let userDoc = await User.findOne({ email });
@@ -231,14 +288,15 @@ class AuthController {
         const { password, ...rest } = userDoc.toObject();
         res
           .status(200)
-          .cookie('token', token, {
+          .cookie("token", token, {
             httpOnly: true,
-            sameSite: 'Strict',
+            sameSite: "Strict",
           })
           .json(rest);
       } else {
         const generatedPassword =
-          Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+          Math.random().toString(36).slice(-8) +
+          Math.random().toString(36).slice(-8);
         const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
         const newUser = await User.create({
           name,
@@ -250,19 +308,17 @@ class AuthController {
         const { password, ...rest } = newUser.toObject();
         res
           .status(200)
-          .cookie('token', token, {
+          .cookie("token", token, {
             httpOnly: true,
-            sameSite: 'Strict',
+            sameSite: "Strict",
           })
           .json(rest);
       }
     } catch (e) {
-      console.error('Error during Google login:', e);
-      res.status(422).json({ error: 'Unable to process Google login' });
+      console.error("Error during Google login:", e);
+      res.status(422).json({ error: "Unable to process Google login" });
     }
   }
-  
-
 }
 
 module.exports = AuthController;

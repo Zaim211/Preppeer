@@ -3,7 +3,7 @@ import axios from "axios";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import { uniqueFilters } from "../constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Cover from "../components/Cover";
 
 const IndexPage = () => {
@@ -13,7 +13,6 @@ const IndexPage = () => {
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [selectedFilterObj, setSelectedFilterObj] = useState(null);
   const [visibleConsultants, setVisibleConsultants] = useState(8);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRegions, setSelectedRegions] = useState([]);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
@@ -21,12 +20,13 @@ const IndexPage = () => {
   const [priceRange, setPriceRange] = useState([0, 100]);
 
   const mentorsSectionRef = useRef(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchConsultants = async () => {
       try {
         const response = await axios.get("/api/registerConsultant");
-        console.log("response", response);
         setConsultants(response.data.consultants);
         setFilteredConsultants(response.data.consultants);
       } catch (error) {
@@ -64,6 +64,7 @@ const IndexPage = () => {
     const filterObj = uniqueFilters.find((f) => f.value === selectedFilter);
     setSelectedFilterObj(filterObj);
     setSelectedSubcategories([]);
+    updateURL(filterObj ? filterObj.value : "", []);
   }, [selectedFilter]);
 
   const handleFilterClick = (filter) => {
@@ -73,12 +74,22 @@ const IndexPage = () => {
   };
 
   const handleSubcategoryClick = (subcategory) => {
-    setSelectedSubcategories((prevSelected) =>
-      prevSelected.includes(subcategory)
-        ? prevSelected.filter((sc) => sc !== subcategory)
-        : [...prevSelected, subcategory]
-    );
+    const newSelectedSubcategories = selectedSubcategories.includes(subcategory)
+      ? selectedSubcategories.filter((sc) => sc !== subcategory)
+      : [...selectedSubcategories, subcategory];
+
+    setSelectedSubcategories(newSelectedSubcategories);
     setVisibleConsultants(8);
+    updateURL(selectedFilter, newSelectedSubcategories);
+  };
+
+
+  const updateURL = (filter, subcategories) => {
+    // Update the URL to reflect the current filters
+    const params = new URLSearchParams();
+    if (filter) params.set("topic", filter);
+    subcategories.forEach((subcat) => params.append("tag[]", subcat));
+    navigate({ search: params.toString() });
   };
 
   const loadMoreConsultants = () => {
@@ -104,6 +115,7 @@ const IndexPage = () => {
     setPriceRange([0, 1000]);
     setFilteredConsultants(consultants);
     setIsModalOpen(false);
+    updateURL("", []);
   };
 
   const handleRegionChange = (region) => {
@@ -214,7 +226,9 @@ const IndexPage = () => {
               .slice(0, visibleConsultants)
               .map((consultant) => (
                 <Link
-                  to={`/insider/${consultant._id}`}
+                  
+                  to={`/insider/${consultant._id}?name=${encodeURIComponent(consultant.name)}&category=${encodeURIComponent(consultant.major.join(','))}`}
+
                   key={consultant._id}
                   className="bg-white rounded-lg relative shadow-lg overflow-hidden"
                 >
@@ -262,7 +276,7 @@ const IndexPage = () => {
       </section>
 
       {isModalOpen && (
-  <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">
+  <section className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">
     <div className="bg-white p-10 h-62 rounded-lg w-full md:w-1/3 lg:w-1/4 xl:w-1/5 relative">
       <button
         onClick={() => setIsModalOpen(false)}
@@ -400,9 +414,9 @@ const IndexPage = () => {
         </button>
       </div>
     </div>
-  </div>
-)}
-
+  </section>
+        )}
+      
     </>
   );
 };

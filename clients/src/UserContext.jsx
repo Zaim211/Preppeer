@@ -1,5 +1,60 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+// import axios from "axios";
+// import { createContext, useEffect, useState } from "react";
+
+// // Create the UserContext
+// export const UserContext = createContext({});
+
+// // Create the UserContextProvider component
+// export const UserContextProvider = ({ children }) => {
+//   const [user, setUser] = useState(null);
+//   const [consultant, setConsultant] = useState(null);
+//   const [ready, setReady] = useState(false);
+
+//   useEffect(() => {
+//     if(!consultant) {
+//       fetchProfile();
+//     } 
+//   }, [consultant]);
+
+//   useEffect(() => {
+//     if (!user) {
+//       fetchUserProfile();
+//     }
+//   }, [user]);
+  
+
+//   const fetchUserProfile = async () => {
+//     try {
+//       const { data } = await axios.get("/api/profileStudent");
+//       console.log('data', data);
+//       setUser(data);
+//     } catch (error) {
+//     console.log('no user found', error);
+//     } finally {
+//       setReady(true);
+//     }
+//   };
+
+//   const fetchProfile = async () => {
+//     try {
+//       const { data } = await axios.get("/api/profileConsultant");
+//       // console.log('data', data);
+//       setConsultant(data);
+//     } catch (error) {
+//       return;
+//     } finally {
+//       setReady(true);
+//     }
+//   };
+
+//   return (
+//     <UserContext.Provider value={{ consultant, setConsultant, ready, user, setUser }}>
+//       {children}
+//     </UserContext.Provider>
+//   );
+// };
+import axios from 'axios';
+import { createContext, useEffect, useState } from 'react';
 
 // Create the UserContext
 export const UserContext = createContext({});
@@ -11,40 +66,30 @@ export const UserContextProvider = ({ children }) => {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if(!consultant) {
-      fetchProfile();
-    } 
-  }, [consultant]);
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (token) {
+          // Fetch the user role
+          const { data: { role } } = await axios.get('/api/currentUserRole', { headers: { Authorization: `Bearer ${token}` } });
+          if (role === 'student') {
+            const { data } = await axios.get('/api/profileStudent', { headers: { Authorization: `Bearer ${token}` } });
+            console.log('data', data);
+            setUser(data);
+          } else if (role === 'consultant') {
+            const { data } = await axios.get('/api/profileConsultant', { headers: { Authorization: `Bearer ${token}` } });
+            setConsultant(data);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data', error);
+      } finally {
+        setReady(true);
+      }
+    };
 
-  useEffect(() => {
-    if (!user) {
-      fetchUserProfile();
-    }
-  }, [user]);
-  
-
-  const fetchUserProfile = async () => {
-    try {
-      const { data } = await axios.get("/api/profile");
-      setUser(data);
-    } catch (error) {
-      return;
-    } finally {
-      setReady(true);
-    }
-  };
-
-  const fetchProfile = async () => {
-    try {
-      const { data } = await axios.get("/api/profileConsultant");
-      console.log('data', data);
-      setConsultant(data);
-    } catch (error) {
-      return;
-    } finally {
-      setReady(true);
-    }
-  };
+    fetchUserData();
+  }, []);
 
   return (
     <UserContext.Provider value={{ consultant, setConsultant, ready, user, setUser }}>

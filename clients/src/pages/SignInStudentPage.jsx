@@ -1,100 +1,81 @@
-import React, { useContext, useState } from 'react';
-import axios from 'axios';
-import { Link, Navigate } from 'react-router-dom';
-import { UserContext } from '../UserContext';
+import { useContext, useState } from "react";
+import { Navigate, Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
+import axios from "axios";
 
 
+export default function SignInStudentPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [redirect, setRedirect] = useState(false);
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const { setUser } = useContext(UserContext);
 
-const SignInStudentPage = () => {
-  const { setStudent } = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [redirect, setRedirect] = useState(false);
-
-  const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const newErrors = {};
-    if (!email) newErrors.email = 'Email is required';
-    if (!email.includes('@')) newErrors.email = 'Email is invalid';
-    if (!password) newErrors.password = 'Password is required';
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
+    async function loginUser(ev) {
+        ev.preventDefault();
+        setEmailError("");
+        setPasswordError("");
+        try {
+            const { data } = await axios.post("/api/SignInStudent", { email, password });
+            setUser(data);
+            setRedirect(true);
+        } catch (error) {
+            if (error.response && error.response.data) {
+                const { message } = error.response.data;
+                if (message === "Email not found") {
+                    setEmailError("This email doesn't exist in database.");
+                } else if (message === "Invalid password") {
+                    setPasswordError("Password not valid. Please try again.");
+                } else {
+                    alert("Login failed. Please try again.");
+                }
+            } else {
+                alert("Login failed. Please try again.");
+            }
+        }
     }
 
-    try {
-      const { data } = await axios.post('/api/SignInStudent', { email, password });
-      setStudent(data);
-      setSuccess('Login successful');
-      setRedirect(true);
-      setErrors({});
-    } catch (error) {
-      setErrors({ submit: 'An error occurred while signing in' });
+    if (redirect) {
+        return <Navigate to={"/"} />;
     }
-  };
 
-  if (redirect) {
-    return <Navigate to="/" />;
-  }
-
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <h1 className="text-2xl font-bold mb-4 text-center">Sign In</h1>
-        {success && <p className="text-green-500 mb-4 text-center">{success}</p>}
-        {errors.submit && <p className="text-red-500 mb-4 text-center">{errors.submit}</p>}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block font-semibold mb-1">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={ev => setEmail(ev.target.value)}
-              className="border p-2 w-full"
-            />
-            {errors.email && <p className="text-red-500">{errors.email}</p>}
-          </div>
-          
-          <div>
-            <label htmlFor="password" className="block font-semibold mb-1">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={ev => setPassword(ev.target.value)}
-              className="border p-2 w-full"
-            />
-            {errors.password && <p className="text-red-500">{errors.password}</p>}
-          </div>
-
-          <button
-            type="submit"
-            className="bg-black text-white py-2 px-4 rounded w-full"
-          >
-            Sign In
-          </button>
-          {/* <OAuth /> */}
-        </form>
-        
-        <div className="text-center py-4 text-gray-500">
-          Don't have an account?{' '}
-          <Link className="underline text-black" to="/RegisterStudentPage">
-            Register
-          </Link>
+    return (
+        <div className="mt-8 grow flex-center">
+            <div className="mb-60">
+                <h1 className="h1-semibold text-center mb-4">Login</h1>
+                <form className="max-w-md mx-auto p-6 space-y-2 border border-gray-200 rounded-2xl shrink-0 shadow-md" 
+                onSubmit={loginUser}>
+                    <input
+                        className="input-field"
+                        type="email"
+                        placeholder="your@email.com"
+                        value={email}
+                        onChange={ev => setEmail(ev.target.value)}
+                    />
+                    {emailError && <div className="text-red-500">{emailError}</div>}
+                    <input
+                        className="input-field"
+                        type="password"
+                        placeholder="password"
+                        value={password}
+                        onChange={ev => setPassword(ev.target.value)}
+                    />
+                    {passwordError && <div className="text-red-500">{passwordError}</div>}
+                    <button className="submit-button">Login</button>
+                    <div className="text-center py-2 text-gray-500">
+                        <Link className="underline  text-black" to={"/forgot-password"}>
+                            Forgot Password?
+                        </Link>
+                    </div>
+                    <div className="text-center py-2 text-gray-500">
+                        Don't have an account yet?{" "}
+                        <Link className="underline text-black" to={"/RegisterStudentPage"}>
+                            Register now
+                        </Link>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-export default SignInStudentPage;
+    );
+}

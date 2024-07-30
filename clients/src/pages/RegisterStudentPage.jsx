@@ -39,7 +39,7 @@ const RegisterStudentPage = () => {
   };
 
   if (redirect) {
-    return <Navigate to={'/'} />;
+    return <Navigate to={'/SignInStudentPage'} />;
   }
 
   return (

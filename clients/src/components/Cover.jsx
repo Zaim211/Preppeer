@@ -6,7 +6,7 @@ import logo from "../assets/logo.png";
 const Cover = () => {
   return (
     <>
-      {/* First background image with opacity on the right half */}
+      
       <div
         className="relative text-white min-h-screen bg-cover bg-center"
         style={{ backgroundImage: `url(${hero2})` }}
@@ -43,7 +43,7 @@ const Cover = () => {
         </div>
       </div>
 
-      {/* Second background image with full opacity */}
+     
       <div
         className="relative text-white min-h-screen bg-cover bg-center"
         style={{ backgroundImage: `url(${hero2})` }}

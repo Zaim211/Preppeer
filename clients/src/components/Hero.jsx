@@ -3,56 +3,55 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { UserContext } from "../UserContext";
 
-// images for the front cards
-import img1 from "../assets/images/mentors/img1.png";
-import img2 from "../assets/images/mentors/img2.png";
-import img3 from "../assets/images/mentors/img3.png";
-import img4 from "../assets/images/mentors/img4.png";
-import img5 from "../assets/images/mentors/img5.png";
-import img6 from "../assets/images/mentors/img6.png";
-import img7 from "../assets/images/mentors/img7.png";
-import img8 from "../assets/images/mentors/img8.png";
-import img9 from "../assets/images/mentors/img9.png";
-import img10 from "../assets/images/mentors/img10.jpeg";
-import img11 from "../assets/images/mentors/img11.png";
-import img12 from "../assets/images/mentors/img12.png";
-import img13 from "../assets/images/mentors/img13.png";
-import img14 from "../assets/images/mentors/img14.png";
-import img15 from "../assets/images/mentors/img15.png";
-import img16 from "../assets/images/mentors/img16.jpg";
-
-import alto from '../assets/images/University_Logos/Aalto-University.png'
-import bowdoin from '../assets/images/University_Logos/Bowdoin.png'
-import columbia from '../assets/images/University_Logos/columbia-university.png'
-import cornell from '../assets/images/University_Logos/Cornell-University.png'
-import dartmouth from '../assets/images/University_Logos/Dartmouth.png'
-import cambridge from '../assets/images/University_Logos/university-of-cambridge.png'
-import hongkong from '../assets/images/University_Logos/Hong-Kong-University.png'
-import nayyang from '../assets/images/University_Logos/Nanyang_Technological_University.png'
-import minerve from '../assets/images/University_Logos/Minerva.png'
-import nyu from '../assets/images/University_Logos/NYU-Abu-Dhabi.png'
-import nys from '../assets/images/University_Logos/national-university-of-singapore.png'
-import nyu2 from '../assets/images/University_Logos/NYU.png'
-import oxford from '../assets/images/University_Logos/Oxford.png'
-import peking from '../assets/images/University_Logos/Peking.png'
-import jhu from '../assets/images/University_Logos/jhu.png'
+import {
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img8,
+  img10,
+  img13,
+  img14,
+  img15,
+  img16,
+  alto,
+  bowdoin,
+  cambridge,
+  nyu2,
+  columbia,
+  cornell,
+  hongkong,
+  minerve,
+  nyu,
+  oxford,
+  peking,
+} from "../assets/index.js";
 
 const Hero = () => {
-  const { consultant } = useContext(UserContext);
+  const { consultant, user } = useContext(UserContext);
 
-  // Define 16 images
   const imagePairs = [
-    [img1, alto], [img2, bowdoin], [img3, cambridge], [img4, columbia],
-    [img5, cornell], [img6, cornell], [img13, nyu], [img8, hongkong],
-    [img15, oxford], [img10, minerve], [img14, nyu2], [img16, peking],
-    // [img13, nyu], [img14, nyu2],[img9, jhu] , [img12, nys]
+    [cornell, img6],
+    [img13, nyu],
+    [nyu2, img14],
+    [img4, columbia],
+
+    [img2, bowdoin],
+    [alto, img1],
+    [cambridge, img3],
+    [hongkong, img8],
+    [img15, oxford],
+    [peking, img16],
+    [img10, minerve],
+
+    [img5, cornell],
   ];
 
-  // Initialize state to manage flipped cards
   const [flippedCards, setFlippedCards] = useState(Array(16).fill(false));
 
   useEffect(() => {
-    // Function to get 3 unique random indices
     const getRandomIndices = () => {
       const indices = new Set();
       while (indices.size < 3) {
@@ -63,39 +62,40 @@ const Hero = () => {
 
     const interval = setInterval(() => {
       const flipIndices = getRandomIndices();
-      setFlippedCards(prev => {
+      setFlippedCards((prev) => {
         const newFlipped = [...prev];
-        flipIndices.forEach(index => {
+        flipIndices.forEach((index) => {
           newFlipped[index] = true;
         });
         return newFlipped;
       });
 
-      // Reset flip after 4 seconds
       setTimeout(() => {
-        setFlippedCards(prev => {
+        setFlippedCards((prev) => {
           const newFlipped = [...prev];
-          flipIndices.forEach(index => {
+          flipIndices.forEach((index) => {
             newFlipped[index] = false;
           });
           return newFlipped;
         });
-      }, 4000); // 4 seconds delay
-    }, 6000); // 6 seconds for each flip sequence
+      }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
 
-
-
-
   return (
-    <div className="relative h-[80%] flex w-full" style={{ backgroundColor: "#060724" }}>
-      {/* Sponsor images container */}
+    <div
+      className="relative h-[80%] flex w-full"
+      style={{ backgroundColor: "#060724" }}
+    >
       <div className="relative w-full mt-2 mb-1 md:w-1/2">
         <div className="grid grid-cols-4 gap-10">
           {imagePairs.map((pair, index) => (
-            <div key={index} className={`flip-card ${flippedCards[index] ? "flipped" : ""}`}>
+            <div
+              key={index}
+              className={`flip-card ${flippedCards[index] ? "flipped" : ""}`}
+            >
               <div className="flip-card-inner">
                 <div
                   className="flip-card-front"
@@ -111,7 +111,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Text and button on the right */}
       <div className="flex flex-col w-full md:w-1/2 justify-center pl-4 pb-12 text-center md:text-left">
         <div className="flex items-center justify-between pl-60 gap-6 mt-40 mb-16">
           <div className="flex items-center gap-6">
@@ -133,10 +132,10 @@ const Hero = () => {
             >
               Be an insider
             </Link>
-            
+
             <Link
-              to='/RegisterStudentPage'
-              
+              to={user ? "/StudentProfile" : "/RegisterStudentPage"}
+              StudentProfile
               className="underline text-2xl text-white font-bold transition"
             >
               Login
@@ -144,16 +143,23 @@ const Hero = () => {
           </div>
           <div>
             <Link to="/" className="flex-shrink-0">
-              <img src={logo} alt="logo" className="w-42 h-24 mr-10 object-cover" />
+              <img
+                src={logo}
+                alt="logo"
+                className="w-42 h-24 mr-10 object-cover"
+              />
             </Link>
           </div>
         </div>
         <div className="mb-32 ml-16 mt-10">
           <h1 className="text-6xl font-bold sm:text-3xl md:text-4xl  text-white mb-10">
-            Book calls with <span className="text-orange-600 leading-[160%]">insiders</span>
+            Book calls with{" "}
+            <span className="text-orange-600 leading-[160%]">insiders</span>
             <br /> to supercharge your
             <br />
-            <span className="underline leading-[160%]">college applications.</span>
+            <span className="underline leading-[160%]">
+              college applications.
+            </span>
           </h1>
           <Link
             to="#"
