@@ -49,7 +49,7 @@ const Cover = () => {
                 <img
                   src={img13}
                   alt="Default"
-                  className="w-full h-64 object-cover mb-4 rounded-lg"
+                  className="w-full h-72 object-cover mb-4 rounded-lg"
                 />
                 <h2 className="text-xl text-black font-bold mb-4">
                   Zebo Furqatzoda
@@ -60,7 +60,7 @@ const Cover = () => {
                 <img
                   src={img13}
                   alt="Default"
-                  className="w-full h-64 object-cover mb-4 rounded-lg"
+                  className="w-full h-72 object-cover mb-4 rounded-lg"
                 />
                 <h2 className="text-xl text-black font-bold mb-4">
                   Zebo Furqatzoda
@@ -71,7 +71,7 @@ const Cover = () => {
                 <img
                   src={img13}
                   alt="Default"
-                  className="w-full h-64 object-cover mb-4 rounded-lg"
+                  className="w-full h-72 object-cover mb-4 rounded-lg"
                 />
                 <h2 className="text-xl text-black font-bold mb-4">
                   Zebo Furqatzoda
@@ -82,7 +82,7 @@ const Cover = () => {
                 <img
                   src={img13}
                   alt="Default"
-                  className="w-full h-64 object-cover mb-4 rounded-lg"
+                  className="w-full h-72 object-cover mb-4 rounded-lg"
                 />
                 <h2 className="text-xl text-black font-bold mb-4">
                   Zebo Furqatzoda
