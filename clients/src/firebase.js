@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
 
 
-
 const firebaseConfig = {
-    apiKey: "AIzaSyDdtjJjgPzGELvH4hK0VRo8cWnX6ZCTsTM",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "prepeer-9a6dd.firebaseapp.com",
     projectId: "prepeer-9a6dd",
     storageBucket: "prepeer-9a6dd.appspot.com",
@@ -12,5 +11,4 @@ const firebaseConfig = {
     measurementId: "G-29B8V9Z46N"
   };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);

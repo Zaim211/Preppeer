@@ -69,7 +69,7 @@ const Payment = () => {
             </div>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-32">
             <p className="text-2xl underline font-semibold mb-2">Student Informations:</p>
             <p className="text-lg text-gray-700 mb-4">
               <strong>Name:</strong> {user?.username}
