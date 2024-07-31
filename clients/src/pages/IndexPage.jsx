@@ -219,7 +219,7 @@ const IndexPage = () => {
           </div>
         )}
 
-        <div className="bg-gray-200 w-full">
+        <div className="bg-gray-200 w-full mb-16">
           <div className="grid grid-cols-4 gap-4">
             {filteredConsultants
               .slice(0, visibleConsultants)
