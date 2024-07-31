@@ -2,7 +2,9 @@ const { Router } = require('express');
 const AppController = require('../controllers/AppController');
 const AuthController = require('../controllers/AuthController');
 const FilesController = require('../controllers/FileController');
+const PaymentController = require('../controllers/PaymentController');
 const multer = require('multer');
+const express = require('express')
 const router = Router();
 
 // Use memory storage
@@ -26,6 +28,9 @@ router.get('/api/profileConsultant', AuthController.getConsultantProfile);
 router.get('/api/registerConsultant/:id', AuthController.getConsultantById);
 router.get('/api/registerConsultant', AuthController.getAllConsultants);
 
+// Routes for payment
+router.post('/api/payment/createIntent', PaymentController.createPaymentIntent);
+router.post('/api/payment/webhook',express.raw({type: 'application/json'}), PaymentController.receivePaymentWebhook);
 
 
 router.post('/api/logout', AuthController.logoutUser);
