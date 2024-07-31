@@ -17,8 +17,15 @@ mongoose.connect(process.env.MONGO_URL, {
   });
 
 
-// middleware to parse incoming requests
-app.use(express.json());
+// middleware to parse incoming requests and convert the body to json except for the webhook
+app.use((req, res, next) => {
+    if (req.originalUrl === '/api/payment/webhook') {
+      next();
+    } else {
+      express.json()(req, res, next);
+    }
+  }
+);
 // middleware to parse cookies
 app.use(cookieParser());
 

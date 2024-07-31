@@ -74,6 +74,7 @@ const VideoCallPage = () => {
           price: consultant.price[0],
           duration: selectedDuration,
         },
+<<<<<<< HEAD
       });
     
 
@@ -93,6 +94,17 @@ const VideoCallPage = () => {
     //     duration: selectedDuration,
     //   },
     // });
+=======
+        user: {
+          username: user.username,
+          email: user.email,
+          id: user._id,
+        },
+        price: consultant.price[0],
+        duration: selectedDuration,
+      },
+    });
+>>>>>>> 0f571361cb9ba23b3f1528f6e59d9491d82175fb
   };
 
   const formatTime = (dateString) => {
