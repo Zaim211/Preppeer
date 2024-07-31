@@ -45,12 +45,11 @@ class PaymentController {
 
     static async receivePaymentWebhook(req,res){
         console.log('Webhook received');
-        const webhookSecret = "whsec_97232d13943d090d93fe49b1d19b0e41506e3742505260f288e633507596595b"
         const sig = req.headers['stripe-signature'];
           let event;
 
         try {
-            event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+            event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
             console.log('Webhook verified');
         } catch (err) {
             console.error('Webhook verification failed:', err.message);
