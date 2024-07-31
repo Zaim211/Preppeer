@@ -74,37 +74,8 @@ const VideoCallPage = () => {
           price: consultant.price[0],
           duration: selectedDuration,
         },
-<<<<<<< HEAD
-      });
-    
 
-    // navigate(`/insider/payment/${consultant._id}`, {
-    //   state: {
-    //     date: selectedDate,
-    //     consultant: {
-    //       id : consultant._id,
-    //       name: consultant.name,
-    //       profilePicture: consultant.profilePicture[0],
-    //     },
-    //     user: {
-    //       username: user.username,
-    //       email: user.email,
-    //     },
-    //     price: consultant.price[0],
-    //     duration: selectedDuration,
-    //   },
-    // });
-=======
-        user: {
-          username: user.username,
-          email: user.email,
-          id: user._id,
-        },
-        price: consultant.price[0],
-        duration: selectedDuration,
-      },
-    });
->>>>>>> 0f571361cb9ba23b3f1528f6e59d9491d82175fb
+      });
   };
 
   const formatTime = (dateString) => {
