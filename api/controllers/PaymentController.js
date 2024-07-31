@@ -61,21 +61,18 @@ class PaymentController {
         switch (event.type) {
             case 'charge.failed':
             const chargeFailed = event.data.object;
-            console.log('charge failed!!!');
+            console.log('---Charge failed for payment intent: ',chargeFailed.payment_intent);
             await updateAppointmentPaymentStatus(chargeFailed.payment_intent,'failed');
-            console.log('Payment status updated to failed for payment intent:', chargeFailed.payment_intent);
             break;
             case 'charge.refunded':
             const chargeRefunded = event.data.object;
-            console.log('charge refunded!!!');
+            console.log('---Charge refunded for payment intent: ',chargeRefunded.payment_intent);
             await updateAppointmentPaymentStatus(chargeRefunded.payment_intent,'refunded');
-            console.log('Payment status updated to refunded for payment intent:', chargeRefunded.payment_intent);
             break;
             case 'charge.succeeded':
-            console.log('charge succeeded!!!');
-            const chargeSucceeded = event.data.object;
+                const chargeSucceeded = event.data.object;
+                console.log('---Charge succeeded for payment intent: ', chargeSucceeded.payment_intent);
             await updateAppointmentPaymentStatus(chargeSucceeded.payment_intent,'success');
-            console.log('Payment status updated to success for payment intent:', chargeSucceeded.payment_intent);
             // Send emails to the student, consultant and the admin team
             break;
             default:
