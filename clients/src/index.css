@@ -76,21 +76,22 @@
   }
 }
 
-@keyframes moveLeftToRight {
-  from {
-    transform: translateX(0%);
+
+@keyframes scrollLeftToRight {
+  0% {
+    transform: translateX(0);
   }
-  to {
-    transform: translateX(-100%);
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@keyframes moveRightToLeft {
-  from {
+@keyframes scrollRightToLeft {
+  0% {
     transform: translateX(0%);
   }
-  to {
-    transform: translateX(100%);
+  100% {
+    transform: translateX(50%);
   }
 }
 
@@ -98,24 +99,40 @@
   overflow: hidden;
 }
 
-.row-0, .row-1, .row-2 {
+.sponsor-row {
   display: flex;
-  width: 200%; /* This is important for continuous scrolling */
+  flex-wrap: nowrap;
   overflow: hidden;
+  white-space: nowrap;
+}
+
+.sponsor-row > .flex {
+  display: flex;
+  width: 200%;
   animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
-.row-0 {
-  animation: moveLeftToRight 5s linear infinite;
+
+.row-0 > .flex {
+  animation: scrollLeftToRight 5s linear infinite;
 }
 
-.row-2 {
-  animation: moveRightToLeft 5s linear infinite;
+.row-1 > .flex {
+  animation: scrollRightToLeft 5s linear infinite;
+  width: 200%;
+}
+
+.row-2 > .flex {
+  animation: scrollLeftToRight 5s linear infinite;
 }
 
 .sponsor-row img {
-  margin-right: 30px; /* Space between images */
+  margin-right: 10px;
+  flex-shrink: 0;
 }
+
+
 
 
 

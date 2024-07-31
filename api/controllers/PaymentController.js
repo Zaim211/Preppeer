@@ -1,5 +1,3 @@
-
-
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { createAppointment } = require("../services/createAppointment");
 const { updateAppointmentPaymentStatus } = require("../services/updateAppointmentPaymentStatus");
