@@ -84,6 +84,8 @@ async function sendEmailsToMeetingParticipantsAndAdmin(appointmentId,paymentStat
             subject: 'Failed Meeting Booking',
             html: `<h1>Meeting between student: ${student.email} and consultant: ${consultant.email} failed. Please follow up.</h1>`
         }
+        await sendEmails([studentEmailData, adminEmailData]);
+        console.log('Emails sent to student and admin');
     }
 }
 

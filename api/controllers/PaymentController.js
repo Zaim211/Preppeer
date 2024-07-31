@@ -63,6 +63,8 @@ class PaymentController {
             const chargeFailed = event.data.object;
             console.log('---Charge failed for payment intent: ',chargeFailed.payment_intent);
             await updateAppointmentPaymentStatus(chargeFailed.payment_intent,'failed');
+            // Send emails to the student and admin to notify about the failed payment
+            await sendEmailsToMeetingParticipantsAndAdmin(appointmentId,'failed');
             break;
             case 'charge.refunded':
             const chargeRefunded = event.data.object;
