@@ -43,7 +43,8 @@ function CheckoutForm({amount, consultantId, studentId, appointmentDate, appoint
     // Write a function that handles form submission
     const handlePaymentSubmit = async () => {
         setIsLoading(true)
-        if(!stripe || !elements){
+        try{
+            if(!stripe || !elements){
             return
         }
         const {error: submitError} = await elements.submit()
@@ -55,13 +56,19 @@ function CheckoutForm({amount, consultantId, studentId, appointmentDate, appoint
         const {error} = await stripe.confirmPayment({
             elements,
             clientSecret,
-            redirect: 'if_required',
             confirmParams:{
-                return_url: 'http://localhost:5173/success'
+                return_url: 'http://localhost:5173/booking-confirmed'
             }
         })
         if(error){
             setError(error.message)
+            setIsLoading(false)
+        }
+        }catch(error){
+            console.error("Error confirming payment:",error)
+            setError(error.message)
+            setIsLoading(false)
+        } finally {
             setIsLoading(false)
         }
     }

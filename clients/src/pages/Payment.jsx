@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import CheckoutForm from '../components/CheckoutForm';
 import {Elements} from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
@@ -10,8 +10,12 @@ const Payment = () => {
   const { state } = useLocation();
   const [consultant, setConsultant] = useState(null);
   const [stripePromise] = useState(() => loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY));
-  
+  const navigate = useNavigate();
   const { date, user, price, duration } = state || {};
+
+  if(!date || !user || !price || !duration) {
+    navigate('/404');
+  }
 
   useEffect(() => {
     const fetchConsultant = async () => {
