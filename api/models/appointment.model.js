@@ -5,7 +5,7 @@ const appointmentSchema = new mongoose.Schema({
   appointmentDate: { type: Date, required: true },
   appointmentTime: { type: String, required: true },
   duration: { type: Number, required: true },
-  paymentStatus: { type: String,enum: ['pending', 'success', 'failed'], default: 'pending' },
+  paymentStatus: { type: String,enum: ['pending', 'success', 'failed', 'refunded'], default: 'pending' },
   price: { type: Number, required: true },
   consultant: { type: mongoose.Schema.Types.ObjectId, ref: 'Consultant', required: true },
   student: { type: mongoose.Schema.Types.ObjectId, ref: 'Student', required: true },
