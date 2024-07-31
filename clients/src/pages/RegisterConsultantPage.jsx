@@ -210,6 +210,7 @@ const RegisterConsultantPage = () => {
           <form
             onSubmit={handleSubmit}
             className="w-[90%] shadow-2xl border-blue-950 rounded-lg p-4"
+            
           >
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -551,15 +552,16 @@ const RegisterConsultantPage = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="">
+                <div className="flex-1">
                   <label
                     htmlFor="price"
                     className="block text-lg font-semibold mb-1"
                   >
                     <span className="text-white">Price *</span>
                   </label>
+                  <div className="flex gap-12 items-center">
                   {priceOptions.map((option) => (
-                    <div key={option.value} className="flex items-center">
+                    <div key={option.value} className="flex font-bold items-center">
                       <input
                         type="checkbox"
                         id={`price-${option.value}`}
@@ -570,7 +572,7 @@ const RegisterConsultantPage = () => {
                       />
                       <label
                         htmlFor={`price-${option.value}`}
-                        className="text-lg text-white"
+                        className="text-xl text-white font-bold"
                       >
                         {option.label}
                       </label>
@@ -579,6 +581,7 @@ const RegisterConsultantPage = () => {
                   {errors.price && (
                     <p className="text-red-600 text-sm mt-1">{errors.price}</p>
                   )}
+                  </div>
                 </div>
                 <div>
                   <label
@@ -587,6 +590,7 @@ const RegisterConsultantPage = () => {
                   >
                     <span className="text-white">Subcategories *</span>
                   </label>
+                  <div className="flex gap-12 items-center">
                   {subcategories.length > 0 && (
                     <div>
                       {subcategories.map((subcat) => (
@@ -601,14 +605,16 @@ const RegisterConsultantPage = () => {
                           />
                           <label
                             htmlFor={`subcategory-${subcat}`}
-                            className="text-lg text-white"
+                            className="text-xl text-white"
                           >
                             {subcat}
                           </label>
                         </div>
                       ))}
+                    
                     </div>
                   )}
+                    </div>
                 </div>
               </div>
             </div>
@@ -616,17 +622,17 @@ const RegisterConsultantPage = () => {
             <div className="flex items-center justify-center mt-32">
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                className="bg-orange-500 text-white px-4 py-2 rounded-lg"
               >
                 Submit
               </button>
             </div>
           </form>
-          <div className="text-center items-center flex justify-center mr-32 py-4 mt-12 text-xl text-white">
-            Already a member?{" "}
+          <div className="text-center gap-2 items-center flex justify-center mr-32 py-4 mt-12 text-xl text-white">
+            Already a member?
             <Link
               className="underline text-white"
-              to={"/be-an-insider/SignInConsltantPage"}
+              to={"/SignInConsltantPage"}
             >
               SignIn
             </Link>

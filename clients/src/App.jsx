@@ -34,9 +34,9 @@ function App() {
     <Route path="/ConsultantProfile" element={<ConsultantProfilePage />} />
     <Route path='/StudentProfile' element={<StudentProfilePage />} />
     <Route path="/RegisterStudentPage" element={<RegisterStudentPage />} />
-    <Route path="/be-an-insider/RegisterConsultantPage" element={<RegisterConsultantPage />} />
+    <Route path="/RegisterConsultantPage" element={<RegisterConsultantPage />} />
     <Route path="/SignInStudentPage" element={<SignInStudentPage />} />
-    <Route path="/be-an-insider/SignInConsltantPage" element={<SignInConsltantPage />} />
+    <Route path="/SignInConsltantPage" element={<SignInConsltantPage />} />
 
     {/* pages */}
     <Route path="/OurMissions" element={<OurMissions />}/>

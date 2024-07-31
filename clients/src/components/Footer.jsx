@@ -28,7 +28,7 @@ const Footer = () => {
               <Link to="/terms" className="hover:underline">Terms</Link>
             </div>
             <p className="text-xl text-white text-center sm:text-left">
-              Prepeer 2024. ALL RIGHTS RESERVED
+              Preppeer 2024. ALL RIGHTS RESERVED
             </p>
             <Link to='/' className="flex justify-center sm:justify-start mt-4">
               <img src={logo} alt="logo" className="w-32 h-22 object-cover" />

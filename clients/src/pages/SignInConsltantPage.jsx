@@ -41,14 +41,14 @@ const SignInConsltantPage = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <h1 className="text-2xl font-bold mb-4 text-center">SignIn Mentors</h1>
+    <div className="flex items-center justify-center min-h-screen" style={{ backgroundColor: "#060724" }}>
+      <div className="w-full max-w-md p-8 border-blue-950  shadow-lg rounded-lg">
+        <h1 className="text-2xl text-white font-bold mb-4 text-center">SignIn</h1>
         {success && <p className="text-green-500 mb-4 text-center">{success}</p>}
         {errors.submit && <p className="text-red-500 mb-4 text-center">{errors.submit}</p>}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" >
           <div>
-            <label htmlFor="email" className="block font-semibold mb-1">Email</label>
+            <label htmlFor="email" className="block text-white font-semibold mb-1">Email</label>
             <input
               type="email"
               id="email"
@@ -62,7 +62,7 @@ const SignInConsltantPage = () => {
           </div>
           
           <div>
-            <label htmlFor="password" className="block font-semibold mb-1">Password</label>
+            <label htmlFor="password" className="block text-xl text-white font-semibold mb-1">Password</label>
             <input
               type="password"
               id="password"
@@ -77,15 +77,15 @@ const SignInConsltantPage = () => {
 
           <button
             type="submit"
-            className="bg-black text-white py-2 px-4 rounded w-full"
+            className="bg-orange-500 text-white text-xl py-2 px-4 rounded w-full"
           >
             Sign In
           </button>
         </form>
 
-        <div className="text-center py-4 text-gray-500">
+        <div className="text-center py-4 text-xl text-gray-500">
           Don't have an account?{' '}
-          <Link className="underline text-black" to="/be-an-insider/RegisterConsultantPage">
+          <Link className="underline text-xl text-white" to="/RegisterConsultantPage">
             Register
           </Link>
         </div>

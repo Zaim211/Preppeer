@@ -87,7 +87,7 @@ const Hero = () => {
       className="relative h-[80%] flex w-full"
       style={{ backgroundColor: "#060724" }}
     >
-      <div className="relative w-full mt-2 mb-1 md:w-1/2">
+      <div className="relative hidden w-full mt-2 md:w-1/2 mb-1 md:block">
         <div className="grid grid-cols-4 gap-10">
           {imagePairs.map((pair, index) => (
             <div
@@ -125,7 +125,7 @@ const Hero = () => {
               Blog
             </Link>
             <Link
-              to={consultant ? "/ConsultantProfile" : "/be-an-insider"}
+              to={consultant ? "/ConsultantProfile" : "/RegisterConsultantPage"}
               className="underline text-2xl text-white font-bold transition"
             >
               Be an insider
@@ -150,7 +150,8 @@ const Hero = () => {
           </div>
         </div>
         <div className="mb-32 ml-16 mt-10">
-          <h1 className="text-6xl font-bold sm:text-3xl md:text-4xl  text-white mb-10">
+          {/* <h1 className="text-6xl font-bold sm:text-3xl md:text-4xl  text-white mb-10"> */}
+          <h1 className="text-4xl md:text-4xl font-bold text-white mb-4">
             Book calls with{" "}
             <span className="text-orange-600 leading-[160%]">insiders</span>
             <br /> to supercharge your
@@ -163,6 +164,7 @@ const Hero = () => {
             to="#"
             className="bg-orange-600 p-2 rounded-lg inline-block mt-10 mb-16"
           >
+            {/* <button className="text-white text-xl font-bold text-center flex items-center"> */}
             <button className="text-white text-xl font-bold text-center flex items-center">
               Find an Insider
               <svg

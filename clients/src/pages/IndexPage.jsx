@@ -150,7 +150,7 @@ const IndexPage = () => {
     <>
       <Hero />
       <About />
-      <nav className="bg-gray-200">
+      <nav className="bg-gray-200 w-full">
         <h2 className="font-bold text-6xl mt-12 p-6">
           <span className="text-orange-600">In</span>siders{" "}
           <span className="text-orange-600">At</span> Your Fingertips

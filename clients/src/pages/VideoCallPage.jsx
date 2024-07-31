@@ -57,22 +57,42 @@ const VideoCallPage = () => {
         price = 20;
     }
 
-    navigate(`/insider/payment/${consultant._id}`, {
-      state: {
-        date: selectedDate,
-        consultant: {
-          id : consultant._id,
-          name: consultant.name,
-          profilePicture: consultant.profilePicture[0],
+ 
+      const path = user ? `/insider/payment/${consultant._id}` : "/SignInStudentPage";
+      navigate(path, {
+        state: {
+          date: selectedDate,
+          consultant: {
+            id: consultant._id,
+            name: consultant.name,
+            profilePicture: consultant.profilePicture[0],
+          },
+          user: user ? {
+            username: user.username,
+            email: user.email,
+          } : null,
+          price: consultant.price[0],
+          duration: selectedDuration,
         },
-        user: {
-          username: user.username,
-          email: user.email,
-        },
-        price: consultant.price[0],
-        duration: selectedDuration,
-      },
-    });
+      });
+    
+
+    // navigate(`/insider/payment/${consultant._id}`, {
+    //   state: {
+    //     date: selectedDate,
+    //     consultant: {
+    //       id : consultant._id,
+    //       name: consultant.name,
+    //       profilePicture: consultant.profilePicture[0],
+    //     },
+    //     user: {
+    //       username: user.username,
+    //       email: user.email,
+    //     },
+    //     price: consultant.price[0],
+    //     duration: selectedDuration,
+    //   },
+    // });
   };
 
   const formatTime = (dateString) => {
@@ -203,7 +223,7 @@ const VideoCallPage = () => {
                 >
                   Full Name <span className="text-black">*</span>
                 </label>
-                <div className="border border-gray-300 p-2 w-full rounded-lg">
+                <div className="border border-gray-300 p-4 w-full rounded-lg">
                   {user?.username}
                 </div>
 
@@ -219,7 +239,7 @@ const VideoCallPage = () => {
                 >
                   Email <span className="text-black">*</span>
                 </label>
-                <div className="border border-gray-300 p-2 w-full rounded-lg">
+                <div className="border border-gray-300 p-4 w-full rounded-lg">
                   {user?.email}
                 </div>
                 {errors.email && (
@@ -271,7 +291,7 @@ const VideoCallPage = () => {
               />
             </div>
           </div>
-
+          
           <div className="flex justify-center mt-4">
             <button
               className="bg-orange-500 text-white font-semibold py-2 px-6 rounded-full shadow-md"
