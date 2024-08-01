@@ -37,7 +37,7 @@ export default function PhotoProfile({ addedPhotos, onChange }) {
               />
               <button
                 onClick={(ev) => removePhoto(ev, link)}
-                className="cursor-pointer absolute bottom-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl py-2 px-3"
+                className="cursor-pointer absolute bottom-1 right-1 text-orange-500 bg-black bg-opacity-50 rounded-2xl py-2 px-3"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,5 @@
 import logo from "../assets/logo.png";
+import hero2 from "../assets/images/hero2.png";
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
@@ -183,7 +184,7 @@ const RegisterConsultantPage = () => {
           <p className="text-red-600 text-center mb-4">{errors.submit}</p>
         )}
 
-        <div className="shadow-2xl border-blue-950 p-32 m-4 rounded-lg text-lg h-full w-full">
+        <div className="shadow-2xl border-blue-950 p-32 m-2 rounded-lg text-lg h-full w-full">
           <Link to={"/"} className=" flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +200,7 @@ const RegisterConsultantPage = () => {
             </svg>
           </Link>
           <div className="flex items-center">
-            <h1 className="text-bold  text-white text-4xl">
+            <h1 className="text-bold  text-white text-6xl">
               Create an account
             </h1>
             <div className="flex justify-center sm:justify-start mt-4">
@@ -209,8 +210,7 @@ const RegisterConsultantPage = () => {
 
           <form
             onSubmit={handleSubmit}
-            className="w-[90%] shadow-2xl border-blue-950 rounded-lg p-4"
-            
+            className="w-[90%] shadow-2xl border-blue-950 rounded-lg p-2"
           >
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -358,41 +358,7 @@ const RegisterConsultantPage = () => {
                   )}
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="">
-                  <label
-                    htmlFor="bio"
-                    className="block text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Bio *</span>
-                  </label>
-                  <textarea
-                    id="bio"
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    className="border text-lg border-gray-300 pl-4 pr-4 pb-32 pt-4 w-[100%] rounded-lg"
-                  ></textarea>
-                  {errors.bio && (
-                    <p className="text-red-600 text-sm mt-1">{errors.bio}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="photo"
-                    className="block text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Profile Photo *</span>
-                  </label>
-                  <PhotoProfile
-                    addedPhotos={addedPhotos}
-                    onChange={setAddedPhotos}
-                  />
-                  {errors.image && (
-                    <p className="text-red-600 text-sm mt-1">{errors.image}</p>
-                  )}
-                </div>
-              </div>
+             
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex-1">
@@ -560,27 +526,32 @@ const RegisterConsultantPage = () => {
                     <span className="text-white">Price *</span>
                   </label>
                   <div className="flex gap-12 items-center">
-                  {priceOptions.map((option) => (
-                    <div key={option.value} className="flex font-bold items-center">
-                      <input
-                        type="checkbox"
-                        id={`price-${option.value}`}
-                        value={option.value}
-                        checked={price.includes(option.value)}
-                        onChange={handlePriceChange}
-                        className="mr-2"
-                      />
-                      <label
-                        htmlFor={`price-${option.value}`}
-                        className="text-xl text-white font-bold"
+                    {priceOptions.map((option) => (
+                      <div
+                        key={option.value}
+                        className="flex font-bold items-center"
                       >
-                        {option.label}
-                      </label>
-                    </div>
-                  ))}
-                  {errors.price && (
-                    <p className="text-red-600 text-sm mt-1">{errors.price}</p>
-                  )}
+                        <input
+                          type="checkbox"
+                          id={`price-${option.value}`}
+                          value={option.value}
+                          checked={price.includes(option.value)}
+                          onChange={handlePriceChange}
+                          className="mr-2"
+                        />
+                        <label
+                          htmlFor={`price-${option.value}`}
+                          className="text-xl text-white font-bold"
+                        >
+                          {option.label}
+                        </label>
+                      </div>
+                    ))}
+                    {errors.price && (
+                      <p className="text-red-600 text-sm mt-1">
+                        {errors.price}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -591,35 +562,70 @@ const RegisterConsultantPage = () => {
                     <span className="text-white">Subcategories *</span>
                   </label>
                   <div className="flex gap-12 items-center">
-                  {subcategories.length > 0 && (
-                    <div>
-                      {subcategories.map((subcat) => (
-                        <div key={subcat} className="flex items-center">
-                          <input
-                            type="checkbox"
-                            id={`subcategory-${subcat}`}
-                            value={subcat}
-                            checked={subcategories.includes(subcat)}
-                            onChange={handleSubcategoryChange}
-                            className="mr-2"
-                          />
-                          <label
-                            htmlFor={`subcategory-${subcat}`}
-                            className="text-xl text-white"
-                          >
-                            {subcat}
-                          </label>
-                        </div>
-                      ))}
-                    
-                    </div>
+                    {subcategories.length > 0 && (
+                      <div>
+                        {subcategories.map((subcat) => (
+                          <div key={subcat} className="flex items-center">
+                            <input
+                              type="checkbox"
+                              id={`subcategory-${subcat}`}
+                              value={subcat}
+                              checked={subcategories.includes(subcat)}
+                              onChange={handleSubcategoryChange}
+                              className="mr-2"
+                            />
+                            <label
+                              htmlFor={`subcategory-${subcat}`}
+                              className="text-xl text-white"
+                            >
+                              {subcat}
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="">
+                  <label
+                    htmlFor="bio"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Bio *</span>
+                  </label>
+                  <textarea
+                    id="bio"
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                    className="border text-lg border-gray-300 pl-4 pr-4 pb-32 pt-20 w-[100%] rounded-lg"
+                  ></textarea>
+                  {errors.bio && (
+                    <p className="text-red-600 text-sm mt-1">{errors.bio}</p>
                   )}
-                    </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="photo"
+                    className="block text-lg font-semibold mb-1"
+                  >
+                    <span className="text-white">Profile Photo *</span>
+                  </label>
+                  <PhotoProfile
+                    addedPhotos={addedPhotos}
+                    onChange={setAddedPhotos}
+                  />
+                  {errors.image && (
+                    <p className="text-red-600 text-sm mt-1">{errors.image}</p>
+                  )}
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-center mt-32">
+            <div className="flex items-center justify-center mb-6 mt-32">
               <button
                 type="submit"
                 className="bg-orange-500 text-white px-4 py-2 rounded-lg"
@@ -628,14 +634,36 @@ const RegisterConsultantPage = () => {
               </button>
             </div>
           </form>
-          <div className="text-center gap-2 items-center flex justify-center mr-32 py-4 mt-12 text-xl text-white">
+          <div className="text-center gap-2 items-center flex justify-center mr-16 py-4 mt-12 text-2xl text-white">
             Already a member?
-            <Link
-              className="underline text-white"
-              to={"/SignInConsltantPage"}
-            >
+            <Link className="underline text-white" to={"/SignInConsltantPage"}>
               SignIn
             </Link>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="relative flex w-full"
+        style={{ backgroundColor: "#060724" }}
+      >
+        <div
+          className="relative w-full z-10 flex flex-col 
+        items-center text-center px-8 py-24 "
+        >
+          <Link to="/">
+            <img src={logo} alt="logo" className="w-64 h-auto object-cover" />
+          </Link>
+          <div className="flex flex-col items-center w-full">
+            <h1 className="text-6xl text-white font-semibold mb-6">
+              Welcome to PrepPeer!
+            </h1>
+            <p className="font-semibold text-white text-6xl mb-6 mt-2">
+              Great to have you onboard! Mentor!
+            </p>
+            <button className="bg-orange-500 text-white px-6 py-3 mt-12 font-bold text-xl md:text-2xl rounded-xl shadow-lg hover:bg-orange-600 transition-colors">
+              Join us on slack
+            </button>
           </div>
         </div>
       </div>
