@@ -16,17 +16,18 @@ import {
   img14,
   img15,
   img16,
-  alto,
+  img12,
+  pekingUni,
   bowdoin,
   cambridge,
   nyu2,
-  columbia,
+  columbiaUni,
   cornell,
   hongkong,
   minerve,
   nyu,
-  oxford,
-  peking,
+  oxfordUni,
+  nus
 } from "../assets/index.js";
 
 const Hero = () => {
@@ -36,13 +37,13 @@ const Hero = () => {
     [cornell, img6],
     [img13, nyu],
     [nyu2, img14],
-    [img4, columbia],
+    [img4, columbiaUni],
     [img2, bowdoin],
-    [alto, img1],
+    [nus, img12],
     [cambridge, img3],
     [hongkong, img8],
-    [img15, oxford],
-    [peking, img16],
+    [img15, oxfordUni],
+    [pekingUni, img16],
     [img10, minerve],
     [img5, cornell],
   ];
@@ -87,7 +88,7 @@ const Hero = () => {
       className="relative h-[80%] flex w-full"
       style={{ backgroundColor: "#060724" }}
     >
-      <div className="relative hidden w-full mt-2 md:w-1/2 mb-1 md:block">
+      <div className="relative hidden  w-full mt-2 md:w-1/2 mb-1 md:block">
         <div className="grid grid-cols-4 gap-10">
           {imagePairs.map((pair, index) => (
             <div

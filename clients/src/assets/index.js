@@ -30,6 +30,10 @@ import nyu2 from '../assets/images/University_Logos/NYU.png'
 import oxford from '../assets/images/University_Logos/Oxford.png'
 import peking from '../assets/images/University_Logos/Peking.png'
 import jhu from '../assets/images/University_Logos/jhu.png'
+import nus from '../assets/images/University_Logos/nus.png'
+import oxfordUni from '../assets/images/University_Logos/oxford-uni.png'
+import pekingUni from '../assets/images/University_Logos/peking-uni.png'
+import columbiaUni from '../assets/images/University_Logos/columbia-uni.png'
 
 // Import images
 
@@ -67,5 +71,5 @@ export {
     antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako,
     cocacola, jpmorgan, roland, shoroq, slush,
     c5, erasmus, lumiere, techgirls, notredame, opensociety,
-    technovation, virginia, yygs
+    technovation, virginia, yygs, nus, oxfordUni, pekingUni, columbiaUni
 }
