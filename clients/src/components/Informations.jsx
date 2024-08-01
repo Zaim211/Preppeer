@@ -13,27 +13,27 @@ const Informations = () => {
   };
 
   return (
-    <div className="px-8 py-12 border rounded-lg shadow-lg mx-auto max-w-screen-lg">
-      <h2 className="text-xl font-bold mb-8 text-center">What other mentors have asked us…</h2>
+    <div className="px-8 py-12  border rounded-lg shadow-lg mx-auto max-w-screen-lg">
+      <h2 className="text-6xl font-bold mb-8 text-center">FAQs</h2>
       <div className="space-y-12">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-300 rounded-lg shadow-md"
+            className=" border-b-2 border-black rounded-lg shadow-md"
           >
             <div
               className="p-8 cursor-pointer flex items-center justify-between"
               onClick={() => handleToggle(index)}
             >
-              <h3 className="text-xl font-bold">{faq.question}</h3>
+              <h3 className="text-2xl font-bold">{faq.question}</h3>
               {expandedIndex === index ? (
-                <FaChevronUp className="text-gray-500" />
+                <FaChevronUp className="text-black" />
               ) : (
-                <FaChevronDown className="text-gray-500" />
+                <FaChevronDown className="text-black" />
               )}
             </div>
             {expandedIndex === index && (
-              <div className="p-6 text-gray-700 text-lg font-bold italic">{faq.answer}</div>
+              <div className="p-6 text-gray-700 text-xl font-bold italic">{faq.answer}</div>
             )}
           </div>
         ))}

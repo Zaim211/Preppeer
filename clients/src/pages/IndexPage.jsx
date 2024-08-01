@@ -6,6 +6,7 @@ import { uniqueFilters } from "../constants";
 import { Link, useNavigate } from "react-router-dom";
 import Cover from "../components/Cover";
 import Footer from "../components/Footer";
+import Informations from "../components/Informations";
 
 const IndexPage = () => {
   const [consultants, setConsultants] = useState([]);
@@ -164,7 +165,7 @@ const IndexPage = () => {
                   key={index}
                   className={`flex flex-col items-center cursor-pointer ${
                     selectedFilter === filter.value
-                      ? " text-black font-semibold border-black  bg-slate-300 rounded-lg border"
+                      ? " text-white font-semibold border-gray-700 bg-primary rounded-md border"
                       : "text-black border-black font-semibold rounded-lg border"
                   }`}
                   onClick={() => handleFilterClick(filter.value)}
@@ -208,7 +209,7 @@ const IndexPage = () => {
                 key={index}
                 className={`cursor-pointer ${
                   selectedSubcategories.includes(subcat.value)
-                    ? " text-black font-semibold border-black  bg-slate-300 rounded-lg border"
+                    ? " text-white font-semibold border-black  bg-primary rounded-lg border"
                     : "text-black border-black font-semibold rounded-lg border"
                 } p-2 border border-black rounded-lg`}
                 onClick={() => handleSubcategoryClick(subcat.value)}
@@ -295,12 +296,11 @@ const IndexPage = () => {
                         />
                       </svg>
                       <p className="text-xl text-black font-semibold">
-                        {consultant.price[0]} {' '}
-                       
+                        {consultant.price[0]}{" "}
                       </p>
                       <span className="text-xl font-bold text-black">
-                    • Session
-                  </span>
+                        • Session
+                      </span>
                     </div>
                     <p className="two-line-ellipsis font-semibold text-gray-900 text-lg">
                       {consultant.bio}
@@ -323,9 +323,15 @@ const IndexPage = () => {
         )}
       </section>
 
+      <div className="p-12 bg-gray-200">
+            <Informations />
+        </div>
+
+
       <div className="w-full" style={{ backgroundColor: "#060724" }}>
         <Cover />
       </div>
+      
       <Footer />
 
       {isModalOpen && (

@@ -77,21 +77,25 @@
 }
 
 
+
+
 @keyframes scrollLeftToRight {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-60%);
   }
 }
+
 
 @keyframes scrollRightToLeft {
   0% {
     transform: translateX(0%);
   }
+  
   100% {
-    transform: translateX(50%);
+    transform: translateX(100%);
   }
 }
 
@@ -116,19 +120,21 @@
 
 .row-0 > .flex {
   animation: scrollLeftToRight 5s linear infinite;
+  width: 100%;
 }
 
 .row-1 > .flex {
   animation: scrollRightToLeft 5s linear infinite;
-  width: 200%;
+
 }
 
 .row-2 > .flex {
   animation: scrollLeftToRight 5s linear infinite;
+  width: 100%;
 }
 
 .sponsor-row img {
-  margin-right: 10px;
+  
   flex-shrink: 0;
 }
 

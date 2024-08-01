@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import dollar from "../assets/icons/dollar.svg";
-import Informations from "../components/Informations";
 import { details } from "../constants";
 import { UserContext } from "../UserContext.jsx";
 
@@ -171,9 +170,7 @@ const VideoCallPage = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12">
-            <Informations />
-          </div>
+
         </div>
       </div>
 

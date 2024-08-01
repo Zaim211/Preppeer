@@ -168,7 +168,7 @@ export const details = [
 
 export const faqs = [
   {
-    question: "How much can I make?",
+    question: "What is the main benefit of talking to current students through your service?",
     answer: (
       <>
         We have some experts that sell out within a few minutes and some that
@@ -179,7 +179,7 @@ export const faqs = [
     ),
   },
   {
-    question: "Is there a minimum time commitment?",
+    question: "How do I book a call with a current student?",
     answer: (
       <>
         You can add as many sessions as you'd like. There are no minimums or
@@ -190,7 +190,7 @@ export const faqs = [
     ),
   },
   {
-    question: "How long are the sessions?",
+    question: "What kind of questions can I ask during the call?",
     answer: (
       <>
         Experts can choose to offer sessions ranging from 15 minutes to 3 hours.
@@ -201,7 +201,7 @@ export const faqs = [
     ),
   },
   {
-    question: "How much should I charge?",
+    question: "How are the students selected for the calls?",
     answer: (
       <>
         We recommend taking your hourly rate and adding a 20% premium to it. We
@@ -211,7 +211,7 @@ export const faqs = [
     ),
   },
   {
-    question: "Do I have to prepare for these sessions?",
+    question: "How long is each call and what is the cost?",
     answer: (
       <>
         No. Just join the video call, listen to the caller's questions, and help
@@ -222,13 +222,12 @@ export const faqs = [
     ),
   },
   {
-    question: "Do I have to pay a subscription fee to join Preppeer?",
+    question: "Can I book multiple calls with students from different universities?",
     answer: (
       <>
-        Prepeer is free to join. We only make money when our experts do and also
-        believe in a fair pricing model. For bookings through our marketplace,
-        we ask for a 30% commission. For bookings that our experts produce, we
-        ask for a 10% commission.
+      Absolutely! You can book calls with students from as many
+universities as you wish, helping you gather a broad range of
+perspectives to make an informed decision.
       </>
     ),
   },
