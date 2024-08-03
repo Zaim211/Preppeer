@@ -13,8 +13,9 @@ async function updateAppointmentPaymentStatus(paymentIntent, status) {
         }
 
         appointment.paymentStatus = status;
-        await appointment.save();
+        const appointmentData = await appointment.save();
         console.log(`Appointment payment status for intent ${paymentIntent} updated to: ${status}`);
+        return appointmentData._id;
     } catch (error) {
         console.error('Error updating appointment payment status:', error);
         throw new Error('Failed to update appointment payment status.');

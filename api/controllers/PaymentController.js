@@ -1,5 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { createAppointment } = require("../services/createAppointment");
+const { sendEmailsToMeetingParticipantsAndAdmin } = require("../services/sendEmail");
 const { updateAppointmentPaymentStatus } = require("../services/updateAppointmentPaymentStatus");
 
 class PaymentController {
@@ -60,6 +61,8 @@ class PaymentController {
             const chargeFailed = event.data.object;
             console.log('---Charge failed for payment intent: ',chargeFailed.payment_intent);
             await updateAppointmentPaymentStatus(chargeFailed.payment_intent,'failed');
+            // Send emails to the student and admin to notify about the failed payment
+            await sendEmailsToMeetingParticipantsAndAdmin(appointmentId,'failed');
             break;
             case 'charge.refunded':
             const chargeRefunded = event.data.object;
@@ -69,8 +72,9 @@ class PaymentController {
             case 'charge.succeeded':
                 const chargeSucceeded = event.data.object;
                 console.log('---Charge succeeded for payment intent: ', chargeSucceeded.payment_intent);
-            await updateAppointmentPaymentStatus(chargeSucceeded.payment_intent,'success');
+            const appointmentId = await updateAppointmentPaymentStatus(chargeSucceeded.payment_intent,'success');
             // Send emails to the student, consultant and the admin team
+            await sendEmailsToMeetingParticipantsAndAdmin(appointmentId,'success');
             break;
             default:
             console.log(`Unhandled event type ${event.type}`);
