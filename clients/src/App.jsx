@@ -19,6 +19,7 @@ import Market from './pages/Market'
 import Blog from './pages/Blog'
 import NotFound from './pages/NotFound'
 import BookingConfirmationPage from './pages/BookingConfirmationPage'
+import Consultant from './pages/Consultant'
 
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -48,6 +49,7 @@ function App() {
     <Route path='/insider/payment/:id' element={<Payment />} />
     <Route path="/market/:id" element={<Market />} />
     <Route path='/giftcard' element={<CardGift />} />
+    <Route path='/consultant/:id' element={<Consultant/>} />
 
     <Route path='/booking-confirmed' element={<BookingConfirmationPage/>} />
 
