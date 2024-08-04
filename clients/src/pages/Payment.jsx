@@ -1,21 +1,23 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import CheckoutForm from '../components/CheckoutForm';
 import {Elements} from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
+import { UserContext } from '../UserContext';
 
 const Payment = () => {
   const { id } = useParams();
   const { state } = useLocation();
   const [consultant, setConsultant] = useState(null);
   const [stripePromise] = useState(() => loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY));
-  const navigate = useNavigate();
-  const { date, user, price, duration } = state || {};
+  // const navigate = useNavigate();
+  const { date, price, duration } = state || {};
+  const { user } = useContext(UserContext);
 
-  if(!date || !user || !price || !duration) {
-    navigate('/404');
-  }
+  // if(!date || !price || !duration) {
+  //   navigate('/404');
+  // }
 
   useEffect(() => {
     const fetchConsultant = async () => {
@@ -104,7 +106,14 @@ const Payment = () => {
           currency: 'usd',
           amount: Math.round(price * 100)
         }}>
-          <CheckoutForm amount={Math.round(price * 100)} consultantId={id} studentId={user.id} appointmentDate={formattedDate} appointmentTime={formattedTime} duration={30} />
+          <CheckoutForm 
+          amount={Math.round(price * 100)} 
+          consultantId={id} 
+          studentId={user?._id} 
+          appointmentDate={formattedDate} 
+          appointmentTime={formattedTime} 
+          duration={30} 
+          />
         </Elements>}
       </div>
     </div>

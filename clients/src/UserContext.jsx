@@ -23,6 +23,7 @@ export const UserContextProvider = ({ children }) => {
             setUser(data);
           } else if (role === 'consultant') {
             const { data } = await axios.get('/api/profileConsultant', { headers: { Authorization: `Bearer ${token}` } });
+            console.log('dataConsultant', data);
             setConsultant(data);
           }
         }

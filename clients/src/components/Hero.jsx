@@ -4,7 +4,6 @@ import logo from "../assets/logo.png";
 import { UserContext } from "../UserContext";
 
 import {
-  img1,
   img2,
   img3,
   img4,
@@ -84,11 +83,8 @@ const Hero = () => {
   }, []);
 
   return (
-    <div
-      className="relative h-[80%] flex w-full"
-      style={{ backgroundColor: "#060724" }}
-    >
-      <div className="relative hidden  w-full mt-2 md:w-1/2 mb-1 md:block">
+    <div className="relative h-[80vh] flex w-full sm:w-full bg-primary">
+      <div className="relative  w-full mt-2 md:w-1/2  mb-1 md:block">
         <div className="grid grid-cols-4 gap-10">
           {imagePairs.map((pair, index) => (
             <div
@@ -110,32 +106,25 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full md:w-1/2 justify-center pl-4 pb-12 text-center md:text-left">
-        <div className="flex items-center justify-between pl-60 gap-6 mt-40 mb-16">
-          <div className="flex items-center gap-6">
-            <Link
-              to="/OurMissions"
-              className="underline text-2xl text-white font-bold transition"
-            >
-              Mission
-            </Link>
-            <Link
-              to="/blog"
-              className="underline text-2xl text-white font-bold transition"
-            >
-              Blog
-            </Link>
-            <Link
+      <div className="flex flex-col  w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
+        <div className="flex items-center  justify-end pl-40  mt-40 mb-16">
+          <div className="flex p-20-semibold  items-center gap-6">
+          <Link
               to={consultant ? "/ConsultantProfile" : "/RegisterConsultantPage"}
-              className="underline text-2xl text-white font-bold transition"
+              className="underline p-20-semibold text-white "
             >
               Be an insider
             </Link>
-
+            <Link
+              to="/OurMissions"
+              className="underline p-20-semibold  text-white"
+            >
+              Insights
+            </Link>
             <Link
               to={user ? "/StudentProfile" : "/RegisterStudentPage"}
               StudentProfile
-              className="underline text-2xl text-white font-bold transition"
+              className="underline p-20-semibold text-white"
             >
               Login
             </Link>
@@ -145,16 +134,16 @@ const Hero = () => {
               <img
                 src={logo}
                 alt="logo"
-                className="w-42 h-24 mr-10 object-cover"
+                className="w-50 h-32 mr-10 object-cover"
               />
             </Link>
           </div>
         </div>
-        <div className="mb-32 ml-16 mt-10">
-          {/* <h1 className="text-6xl font-bold sm:text-3xl md:text-4xl  text-white mb-10"> */}
-          <h1 className="text-4xl md:text-4xl font-bold text-white mb-4">
+        
+        <div className="mb-32 ml-20 mt-5">
+          <h1 className="p-24-bold font-bold text-white mb-4">
             Book calls with{" "}
-            <span className="text-orange-600 leading-[160%]">insiders</span>
+            <span className="text-secondary leading-[160%]">insiders</span>
             <br /> to supercharge your
             <br />
             <span className="underline leading-[160%]">
@@ -163,10 +152,9 @@ const Hero = () => {
           </h1>
           <Link
             to="#"
-            className="bg-orange-600 p-2 rounded-lg inline-block mt-10 mb-16"
+            className="bg-secondary p-2 rounded-lg inline-block mt-10 mb-16"
           >
-            {/* <button className="text-white text-xl font-bold text-center flex items-center"> */}
-            <button className="text-white text-xl font-bold text-center flex items-center">
+            <button className="text-white p-20-semibold text-xl font-bold text-center flex items-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -183,6 +171,8 @@ const Hero = () => {
             </button>
           </Link>
         </div>
+
+        
       </div>
     </div>
   );

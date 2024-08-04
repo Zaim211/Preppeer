@@ -16,6 +16,10 @@ export default {
     },
     extend: {
       
+      scrollbar: {
+        hide: 'overflow: hidden; scrollbar-width: none; -ms-overflow-style: none;',
+        hideWebkit: 'overflow: hidden; scrollbar-width: none; -ms-overflow-style: none;'
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -36,14 +40,8 @@ export default {
           700: "#384262",
         },
         primary: "#060724",
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
+        secondary: "#eb7f67",
+        destructive: "#051C2C",
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -75,5 +73,39 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.scrollbar-thin': {
+          scrollbarColor: 'rgb(6, 7, 36) rgb(229, 231, 235)',
+          scrollbarWidth: 'thin',
+        },
+        '.scrollbar-webkit': {
+          '&::-webkit-scrollbar': {
+            width: '1px',
+            height: '1px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'rgb(6, 7, 36)',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgb(6, 7, 36)',
+            borderRadius: '5px',
+            border: '1px solid rgb(6, 7, 36)',
+          },
+        },
+        '.scrollbar-hidden': {
+          /* Hide scrollbar for IE, Edge, and Firefox */
+          '-ms-overflow-style': 'none',  /* IE and Edge */
+          'scrollbar-width': 'none',  /* Firefox */
+          /* Hide scrollbar for Chrome, Safari, and Opera */
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
+  
 }

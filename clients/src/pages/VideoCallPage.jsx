@@ -27,6 +27,7 @@ const VideoCallPage = () => {
       }
     };
     fetchConsultant();
+    
   }, [id]);
 
   const validateForm = () => {
@@ -121,7 +122,7 @@ const VideoCallPage = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full">
+            {/* <div className="w-full">
               <div className="flex w-full flex-col items-center md:items-start mt-4">
                 <p className="text-xl font-bold text-orange-500">
                   ${consultant.price[0]}{" "}
@@ -136,7 +137,7 @@ const VideoCallPage = () => {
                   {formatTime(consultant.availabilityEnd)}
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mt-14">

@@ -3,7 +3,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 function CheckoutForm({amount, consultantId, studentId, appointmentDate, appointmentTime, duration}) {
-
+    
     const stripe = useStripe()
     const elements = useElements()
     const [clientSecret,setClientSecret] = useState("")
@@ -15,6 +15,7 @@ function CheckoutForm({amount, consultantId, studentId, appointmentDate, appoint
         (
             async function(){
                 try{
+                    console.log("Creating payment intent", amount, consultantId, studentId, appointmentDate, appointmentTime, duration)
                     const response = await axios.post("/api/payment/createIntent",{
                             amount:amount,
                             currency:"usd",
@@ -29,6 +30,7 @@ function CheckoutForm({amount, consultantId, studentId, appointmentDate, appoint
                             "Content-Type":"application/json"
                         },
                     })
+                    console.log(response)
                     if(response.status === 201){
                         setClientSecret(response.data.clientSecret)
                     }
@@ -92,3 +94,4 @@ function CheckoutForm({amount, consultantId, studentId, appointmentDate, appoint
 }
 
 export default CheckoutForm
+

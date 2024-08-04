@@ -291,7 +291,6 @@ class AuthController {
     try {
       const consultant = await Consultant.findById(id);
       res.json({ consultant });
-      console.log("consultant", consultant);
     } catch (error) {
       return res.status(400).json({ error: error.message });
     }

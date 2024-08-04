@@ -1,5 +1,4 @@
 import logo from "../assets/logo.png";
-import hero2 from "../assets/images/hero2.png";
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
@@ -176,7 +175,7 @@ const RegisterConsultantPage = () => {
 
   return (
     <>
-      <div className="w-full flex" style={{ backgroundColor: "#060724" }}>
+      <div className="w-full flex bg-primary">
         {success && (
           <p className="text-green-600 text-center mb-4">{success}</p>
         )}
@@ -327,7 +326,7 @@ const RegisterConsultantPage = () => {
                     onChange={handleLanguageChange}
                     className="border border-gray-300 p-2 w-full rounded-lg"
                   >
-                    <option value="">Select an Admission</option>
+                    <option value=""></option>
                     {languages.map((l) => (
                       <option key={l} value={l}>
                         {l}

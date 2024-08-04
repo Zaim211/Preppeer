@@ -79,6 +79,7 @@
 
 
 
+
 @keyframes scrollLeftToRight {
   0% {
     transform: translateX(0);
@@ -204,17 +205,6 @@
 
 
 
-.grid-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 10px;
-  perspective: 1000px;
-}
-
 .flip-card {
   width: 206px;
   height: 170px;
@@ -254,6 +244,21 @@
   background-color: #f1f1f1;
 }
 
+@media (max-width: 768px) {
+  .flip-card {
+    width: 90px;
+    height: 90px;
+    perspective: 1000px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-card {
+    width: 120px;
+    height: 100px;
+    margin: 2px;
+  }
+}
 
 
 .auth {
@@ -311,12 +316,17 @@
 
   /* 24 */
   .p-24-bold {
-    @apply font-bold text-[24px] leading-[120%];
+    @apply  font-semibold text-[42px] leading-tight;
   }
 
   /* 20 */
   .p-20-semibold {
-    @apply font-semibold text-[20px]  leading-tight;
+    @apply font-semibold text-[24px]  leading-tight;
+    @media (max-width: 375px) {
+      .p-20-regular {
+        @apply text-[18px] leading-[100%]; /* Adjusted size for small screens */
+      }
+    }
   }
 
   .p-20-regular {
@@ -394,7 +404,16 @@
     @apply bg-red-100 text-red-900;
   }
 
-  
+  .mobile {
+    @apply flex mt-64 gap-4 pr-12 items-center text-center;
+  }
+  .mobile-description {
+    @apply text-lg text-white;
+  }
+
+  .mobile-button {
+    @apply text-lg  font-bold text-center text-white;
+  }
 
   /* Home Page */
   .home {

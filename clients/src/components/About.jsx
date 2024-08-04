@@ -15,7 +15,6 @@ const About = () => {
 
   const renderRow = (images, animationClass) => {
 
-
     return (
       <div className={`sponsor-row ${animationClass}`}>
         <div className="flex gap-6">
@@ -36,8 +35,8 @@ const About = () => {
     <div className="md:p-12 flex flex-col border-t items-center w-full bg-gray-200">
       <div className="w-full max-w-full">
         <div className="flex items-center justify-between">
-          <h1 className="text-4xl font-bold text-center flex-1">
-            Video chat with <span className="underline">vetted</span> insiders
+          <h1 className="text-4xl text-destructive font-bold text-center flex-1">
+            Video chat with <span className="underline text-destructive">vetted</span> insiders
             who go to...
           </h1>
         </div>
