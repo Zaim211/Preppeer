@@ -4,6 +4,8 @@ import {
   oxford, peking, jhu, antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
   shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs,
 } from "../assets";
+import AboutMobile from "./AboutMobile";
+import { useMediaQuery } from "react-responsive";
 
 const About = () => {
   const universities1 = [ bowdoin, columbia, cornell, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys];
@@ -31,10 +33,20 @@ const About = () => {
     );
   };
 
+  const isMobileDevice = useMediaQuery({ query: '(max-width: 768px)' });
+
+  if (isMobileDevice) {
+    return (
+      <div className="w-full">
+        <AboutMobile />
+      </div>
+    );
+  }
+
   return (
-    <div className="md:p-12 flex flex-col border-t items-center w-full bg-gray-200">
-      <div className="w-full max-w-full">
-        <div className="flex items-center justify-between">
+    <div className="md:p-2 flex flex-col border-t items-center  w-full bg-gray-200">
+      <div className="w-full max-w-full mb-12">
+        <div className="flex items-center mt-12 justify-between">
           <h1 className="text-4xl text-destructive font-bold text-center flex-1">
             Video chat with <span className="underline text-destructive">vetted</span> insiders
             who go to...

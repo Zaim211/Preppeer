@@ -2,12 +2,11 @@ import React from "react";
 
 const FeedbackForm = () => {
   return (
-    <div className="bg-primary text-white p-16">
-      <h1 className="text-3xl font-bold mb-6">Feedback Form</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-32">
-     
+    <div className="bg-primary text-white p-8 sm:p-12 md:p-16">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Feedback Form</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
         <div className="space-y-4">
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <div className="space-y-2 w-full">
               <label htmlFor="firstName" className="block font-semibold">
                 First Name *
@@ -78,7 +77,7 @@ const FeedbackForm = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="mt-4 px-8 py-2 bg-secondary text-white rounded-full hover:bg-secondary-dark"
+              className="mt-4 px-4 sm:px-8 py-2 bg-secondary text-white rounded-full hover:bg-secondary-dark"
             >
               Send
             </button>

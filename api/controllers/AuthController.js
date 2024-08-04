@@ -185,6 +185,7 @@ class AuthController {
         availabilityEnd,
         moreInfo,
       });
+      console.log("consultant", consultant);
       res.json({ consultant });
     } catch (error) {
       return res.status(400).json({ error: error.message });

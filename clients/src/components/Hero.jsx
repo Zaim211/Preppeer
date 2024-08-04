@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { UserContext } from "../UserContext";
+import { useMediaQuery } from 'react-responsive';
 
 import {
   img2,
@@ -28,6 +29,7 @@ import {
   oxfordUni,
   nus
 } from "../assets/index.js";
+import NavMobile from "./NavMobile";
 
 const Hero = () => {
   const { consultant, user } = useContext(UserContext);
@@ -82,9 +84,20 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+
+  const isMobileDevice = useMediaQuery({ query: '(max-width: 768px)' });
+
+  if (isMobileDevice) {
+    return (
+      <div className="">
+        <NavMobile />
+      </div>
+    );
+  }
+
   return (
     <div className="relative h-[80vh] flex w-full sm:w-full bg-primary">
-      <div className="relative  w-full mt-2 md:w-1/2  mb-1 md:block">
+      <div className="relative aspect-auto w-full mt-2 md:w-1/2  mb-1 md:block">
         <div className="grid grid-cols-4 gap-10">
           {imagePairs.map((pair, index) => (
             <div
@@ -106,7 +119,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex flex-col  w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
+      <div className="flex flex-col aspect-auto w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
         <div className="flex items-center  justify-end pl-40  mt-40 mb-16">
           <div className="flex p-20-semibold  items-center gap-6">
           <Link
@@ -141,9 +154,9 @@ const Hero = () => {
         </div>
         
         <div className="mb-32 ml-20 mt-5">
-          <h1 className="p-24-bold font-bold text-white mb-4">
+          <h1 className=" text-4xl text-white mb-4">
             Book calls with{" "}
-            <span className="text-secondary leading-[160%]">insiders</span>
+            <span className="text-secondary  leading-[160%]">insiders</span>
             <br /> to supercharge your
             <br />
             <span className="underline leading-[160%]">
