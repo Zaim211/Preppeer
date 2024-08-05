@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import logo from "../assets/logo.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -7,7 +8,7 @@ import {
   languages,
   UniversityOptions,
 } from "../constants";
-import logo from "../assets/logo.png";
+import { Input } from "./ui/input";
 
 const ConsultantContent = () => {
   const [consultants, setConsultants] = useState([]);
@@ -128,10 +129,17 @@ const ConsultantContent = () => {
   return (
     <>
       <nav className="bg-gray-200 p-4 w-full">
-        <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl mt-4 mb-6">
+        <div className="flex justify-between items-center">
+        <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mt-16 mb-6">
           <span className="text-secondary">In</span>siders{" "}
           <span className="text-secondary">At</span> Your Fingertips
         </h2>
+        <img
+                src={logo}
+                alt="logo"
+                className="w-50 h-32 mr-10 object-cover"
+              />
+        </div>
         <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-4 space-x-4 md:space-x-6">
           {uniqueFilters.map((filter, index) => (
             <div
@@ -178,7 +186,7 @@ const ConsultantContent = () => {
         </div>
         <div className="flex justify-end mb-2">
         <button
-            className="text-black justify-end border-black items-end flex gap-2 p-4 font-semibold rounded-lg border ml-12"
+            className="text-black justify-end p-3 border-black items-end flex gap-2 lg:p-4 font-semibold rounded-lg border ml-12"
             onClick={toggleModal}
           >
             Filter
@@ -220,16 +228,16 @@ const ConsultantContent = () => {
                         alt={consultant.name}
                         className="w-40 mt-2 ml-2 h-40 object-cover rounded-full border-4 border-gray-300 shadow-lg"
                       />
-                      <button className="rounded-lg w-24 mb-16 h-12 mr-4 bg-secondary text-white text-center font-semibold hover:bg-blue-700">
+                      <button className="rounded-lg w-24 mb-16 h-12 mr-4 bg-secondary text-white text-center font-semibold">
                         Book a Call
                       </button>
                     </div>
-                    <div className="p-4">
+                    <div className="p-4 ">
                       <h2 className="text-2xl font-bold mb-4">
                         {consultant.name}
                       </h2>
-                      <div className="flex gap-2 m-2">
-                        <svg
+                      <div className="flex gap-4">
+                        {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
@@ -238,31 +246,33 @@ const ConsultantContent = () => {
                           <path d="M11.7 2.805a.75.75 0 0 1 .6 0A60.65 60.65 0 0 1 22.83 8.72a.75.75 0 0 1-.231 1.337 49.948 49.948 0 0 0-9.902 3.912l-.003.002c-.114.06-.227.119-.34.18a.75.75 0 0 1-.707 0A50.88 50.88 0 0 0 7.5 12.173v-.224c0-.131.067-.248.172-.311a54.615 54.615 0 0 1 4.653-2.52.75.75 0 0 0-.65-1.352 56.123 56.123 0 0 0-4.78 2.589 1.858 1.858 0 0 0-.859 1.228 49.803 49.803 0 0 0-4.634-1.527.75.75 0 0 1-.231-1.337A60.653 60.653 0 0 1 11.7 2.805Z" />
                           <path d="M13.06 15.473a48.45 48.45 0 0 1 7.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 0 1-.46.711 47.87 47.87 0 0 0-8.105 4.342.75.75 0 0 1-.832 0 47.87 47.87 0 0 0-8.104-4.342.75.75 0 0 1-.461-.71c.035-1.442.121-2.87.255-4.286.921.304 1.83.634 2.726.99v1.27a1.5 1.5 0 0 0-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.66a6.727 6.727 0 0 0 .551-1.607 1.5 1.5 0 0 0 .14-2.67v-.645a48.549 48.549 0 0 1 3.44 1.667 2.25 2.25 0 0 0 2.12 0Z" />
                           <path d="M4.462 19.462c.42-.419.753-.89 1-1.395.453.214.902.435 1.347.662a6.742 6.742 0 0 1-1.286 1.794.75.75 0 0 1-1.06-1.06Z" />
-                        </svg>
+                        </svg> */}
                         <p className="text-xl font-semibold">
                           {consultant.country}
                         </p>
                       </div>
 
-                      <div className="flex gap-2 text-xl m-2 font-semibold">
-                        <svg
+                      <div className="flex gap-3">
+                        {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                           className="size-6"
                         >
                           <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
-                        </svg>
+                        </svg> */}
 
+                        <div className="text-xl font-semibold">
                         {consultant.major.map((subcategory, index) => (
                           <span key={index}>
                             {subcategory}
-                            {index < consultant.major.length - 1 && " & "}
+                            {index < consultant.major.length - 1 && " &"}
                           </span>
                         ))}
+                        </div>
                       </div>
 
-                      <div className="flex m-2 gap-2">
+                      {/* <div className="flex m-2 gap-2">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -281,7 +291,7 @@ const ConsultantContent = () => {
                         <span className="text-xl font-bold text-black">
                           • Session
                         </span>
-                      </div>
+                      </div> */}
                       <p className="two-line-ellipsis font-semibold text-gray-900 text-lg">
                         {consultant.bio}
                       </p>
@@ -416,6 +426,28 @@ const ConsultantContent = () => {
           </div>
         </section>
       )}
+       <div className="bg-gray-200 justify-center flex">
+       <section className="flex flex-col md:flex-row justify-center border p-8 w-[70%] rounded-lg bg-gray-300  mb-12 gap-16 md:gap-24">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-lg md:text-xl font-bold">
+            Refer us and gain access to{" "}
+            <span className="text-secondary">exclusive discounts</span>.
+          </h2>
+          <div className="flex flex-col md:flex-row gap-4">
+            <Input placeholder="Full Name*" className="rounded-xl" />
+            <Input placeholder="Last Name*" className="rounded-xl" />
+          </div>
+          <Input placeholder="Email*" className="rounded-xl" />
+        </div>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-base md:text-lg">
+            Would you like to refer <strong>PrepPeer</strong> to someone?
+          </h2>
+          <Input placeholder="Their Name*" className="rounded-xl" />
+          <Input placeholder="Email*" className="rounded-xl" />
+        </div>
+      </section>
+       </div>
     </>
   );
 };

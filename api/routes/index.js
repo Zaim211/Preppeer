@@ -4,7 +4,8 @@ const AuthController = require('../controllers/AuthController');
 const FilesController = require('../controllers/FileController');
 const PaymentController = require('../controllers/PaymentController');
 const multer = require('multer');
-const express = require('express')
+const express = require('express');
+const FeedbackForm = require('../controllers/FeedbackForm');
 const router = Router();
 
 // Use memory storage
@@ -37,6 +38,10 @@ router.post('/api/logout', AuthController.logoutUser);
 
 // Route for uploading images
 router.post('/api/upload', upload.array('photos', 100), FilesController.uploadImages);
+
+// Route for Feedback
+
+router.post('/api/feedback', FeedbackForm.createFeedback);
 
 
 module.exports = router;

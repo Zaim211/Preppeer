@@ -19,7 +19,7 @@ const Cover = () => {
        className="relative text-white min-h-screen bg-cover bg-center flex items-center justify-center"
         style={{backgroundImage: `url(${hero2})`}}
     >
-      <img src={hero2} alt="hero" className="absolute inset-0 sm:w-2 object-cover w-full h-full" />
+      
       <div className="relative w-full flex">
         <div className="flex flex-col pl-32 pb-12 pt-12 h-[60%] w-full z-10 bg-gradient-to-r from-black/80 to-black/50">
           <div className="flex justify-between items-center">
