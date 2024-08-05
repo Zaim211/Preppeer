@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { UserContext } from "../UserContext";
@@ -163,11 +163,8 @@ const Hero = () => {
               college applications.
             </span>
           </h1>
-          <Link
-            to="#"
-            className="bg-secondary p-2 rounded-lg inline-block mt-10 mb-16"
-          >
-            <button className="text-white p-20-semibold text-xl font-bold text-center flex items-center">
+          <div className="bg-secondary p-2 rounded-lg inline-block mt-10 mb-16">
+            <button  className="text-white p-20-semibold text-xl font-bold text-center flex items-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +179,7 @@ const Hero = () => {
                 />
               </svg>
             </button>
-          </Link>
+          </div>
         </div>
 
         

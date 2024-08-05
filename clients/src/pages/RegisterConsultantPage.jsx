@@ -170,7 +170,7 @@ const RegisterConsultantPage = () => {
   };
 
   if (redirect) {
-    return <Navigate to={"/be-an-insider/SignInConsltantPage"} />;
+    return <Navigate to={"/SignInConsltantPage"} />;
   }
 
   return (
@@ -599,7 +599,7 @@ const RegisterConsultantPage = () => {
                     id="bio"
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
-                    className="border text-lg border-gray-300 pl-4 pr-4 pb-32 pt-20 w-[100%] rounded-lg"
+                    className="border text-lg border-gray-300 pl-4 pr-4 pt-2 pb-48 w-[100%] rounded-lg"
                   ></textarea>
                   {errors.bio && (
                     <p className="text-red-600 text-sm mt-1">{errors.bio}</p>

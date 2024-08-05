@@ -16,7 +16,7 @@ const AboutMobile = () => {
 
   const renderRow = (images) => (
     <div className="w-full mb-8">
-      <div className="flex gap-2 overflow-x-auto">
+      <div className="flex gap-4 mt-2 overflow-x-auto">
         {images.map((image, index) => (
           <img
             key={index}
@@ -39,7 +39,7 @@ const AboutMobile = () => {
       </div>
 
       {/* Logos with Titles */}
-      <div className="w-full">
+      <div className="w-full mt-6 mb-4">
         {renderRow(universities1)}
         {renderRow(sponsors)}
         {renderRow(programs)}

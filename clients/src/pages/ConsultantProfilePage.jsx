@@ -22,7 +22,7 @@ const ConsultantProfilePage = () => {
   };
 
   if (!consultant) {
-    return <Navigate to="/be-an-insider/SignInConsltantPage" />;
+    return <Navigate to="/SignInConsltantPage" />;
   }
 
   return (

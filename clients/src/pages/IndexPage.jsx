@@ -1,6 +1,5 @@
 import Hero from "../components/Hero";
 import About from "../components/About";
-
 import Cover from "../components/Cover";
 
 import ConsultantContent from "../components/ConsultantContent";

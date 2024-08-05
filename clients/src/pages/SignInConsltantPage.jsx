@@ -37,7 +37,7 @@ const SignInConsltantPage = () => {
   };
 
   if (redirect) {
-    return <Navigate to="/ConsultantProfile" />;
+    return <Navigate to="/" />;
   }
 
   return (
