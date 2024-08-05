@@ -11,9 +11,7 @@ const About = () => {
   const universities1 = [ bowdoin, columbia, cornell, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys];
   const universities2 = [ minerve, nyu, nys, nyu2, oxford, peking, jhu, alto, columbia, cornell, dartmouth ];
   const programs = [ c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs ];
-  const sponsors = [ antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, shoroq, slush,
-    c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs
-   ];
+  const sponsors = [ antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, shoroq, slush];
 
   const renderRow = (images, animationClass) => {
 
@@ -58,7 +56,7 @@ const About = () => {
             {renderRow(universities1, "row-0")}
             {renderRow(universities2, "row-0")}
           </div>
-          <div className="w-full">
+          <div className="w-full gap-16">
             {renderRow(sponsors, "row-1")}
           </div>
           <div className="w-full overflow-hidden flex gap-2 items-center justify-center">

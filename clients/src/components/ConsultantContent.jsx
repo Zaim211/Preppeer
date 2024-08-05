@@ -139,7 +139,6 @@ const ConsultantContent = () => {
     );
   }
 
-  // Calculate the indices for slicing
   const indexOfLastConsultant = currentPage * itemsPerPage;
   const indexOfFirstConsultant = indexOfLastConsultant - itemsPerPage;
   const paginatedConsultants = filteredConsultants.slice(
@@ -147,7 +146,7 @@ const ConsultantContent = () => {
     indexOfLastConsultant
   );
 
-  // Determine the total number of pages
+
   const totalPages = Math.ceil(filteredConsultants.length / itemsPerPage);
 
   return (
@@ -249,7 +248,7 @@ const ConsultantContent = () => {
                   />
                   <button
                     onClick={() => navigate(`/consultants/${consultant._id}`)}
-                    className="rounded-lg w-24 mb-12 h-12  bg-secondary text-white text-center font-semibold flex items-center justify-center"
+                    className="rounded-lg w-24 mb-12 h-12  bg-primary text-white text-center font-semibold flex items-center justify-center"
                   >
                     Book a Call
                   </button>
