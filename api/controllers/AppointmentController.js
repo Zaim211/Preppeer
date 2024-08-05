@@ -59,8 +59,10 @@ class AppointmentController {
                 while (slotStart < dayEnd) {
                 const slotEnd = moment(slotStart).add(30, 'minutes');
                 const isBooked = appointments.some(booking => 
+                    // Check if the booking date matches the current date
                     booking.appointmentDate.getTime() === currentDate.toDate().getTime() &&
-                    moment(booking.startTime, 'HH:mm').isBetween(slotStart, slotEnd, null, '[)')
+                    // Check if the booking time falls within the current time slot
+                    moment(booking.appointmentTime, 'HH:mm').isBetween(slotStart, slotEnd, null, '[)')
                 );
 
                 if (!isBooked) {
