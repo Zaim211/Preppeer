@@ -80,12 +80,6 @@ const NavMobile = () => {
             <Link to="/OurMissions" className="underline text-white text-lg">
               Insights
             </Link>
-            <Link
-              to={user ? "/StudentProfile" : "/RegisterStudentPage"}
-              className="underline text-white text-lg"
-            >
-              Login
-            </Link>
           </div>
           <Link to="/" className="flex-shrink-0 mb-4">
             <img src={logo} alt="logo" className="w-24 h-16 object-cover" />

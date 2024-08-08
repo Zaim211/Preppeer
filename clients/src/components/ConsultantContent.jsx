@@ -151,7 +151,7 @@ const ConsultantContent = () => {
 
   return (
     <>
-      <nav className="bg-gray-200 p-4 w-full">
+      <nav className="bg-gray-200 p-4 w-full" id='insiders'>
         <div className="flex justify-between mt-16 items-center">
           <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mt-16 mb-6">
             <span className="text-secondary">In</span>siders{" "}

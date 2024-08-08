@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { UserContext } from "../UserContext";
 import { useMediaQuery } from 'react-responsive';
@@ -33,6 +33,7 @@ import NavMobile from "./NavMobile";
 
 const Hero = () => {
   const { consultant, user } = useContext(UserContext);
+  const navigate = useNavigate()
 
   const imagePairs = [
     [cornell, img6],
@@ -95,6 +96,11 @@ const Hero = () => {
     );
   }
 
+  function scrollToSection(id){
+    const element = document.getElementById(id);
+    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
   return (
     <div className="relative h-[80vh] flex w-full sm:w-full bg-primary">
       <div className="relative aspect-auto w-full mt-2 md:w-1/2  mb-1 md:block">
@@ -134,13 +140,6 @@ const Hero = () => {
             >
               Insights
             </Link>
-            <Link
-              to={user ? "/StudentProfile" : "/RegisterStudentPage"}
-              StudentProfile
-              className="underline p-20-semibold text-white"
-            >
-              Login
-            </Link>
           </div>
           <div>
             <Link to="/" className="flex-shrink-0">
@@ -164,7 +163,7 @@ const Hero = () => {
             </span>
           </h1>
           <div className="bg-secondary p-2 rounded-lg inline-block mt-10 mb-16">
-            <button  className="text-white p-20-semibold text-xl font-bold text-center flex items-center">
+            <button onClick={()=> scrollToSection('insiders') }  className="text-white p-20-semibold text-xl font-bold text-center flex items-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"
