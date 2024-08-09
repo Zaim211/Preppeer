@@ -1,6 +1,6 @@
 import React from "react";
 import blogHero from "../assets/images/blogHero.png";
-import img4 from "../assets/images/img4.png";
+// import img4 from "../assets/images/img4.png";
 
 const BlogDetails = () => {
   return (
@@ -23,7 +23,7 @@ const BlogDetails = () => {
       </div>
 
       <div className="flex gap-6 p-6">
-        <img src={img4} alt="img4" className="w-32 h-32 object-cover" />
+        {/* <img src={img4} alt="img4" className="w-32 h-32 object-cover" /> */}
         <div className="flex-1">
           <h1 className="text-secondary font-bold text-2xl">Zebo Furqatzoda</h1>
           <p className="text-white text-xl">University + 2 liner</p>
