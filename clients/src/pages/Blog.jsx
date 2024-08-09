@@ -1,83 +1,95 @@
-import React, { useState } from "react";
-import logo from "../assets/logo.png";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import hero2 from "../assets/images/hero2.png";
+import logo from "../assets/logo.png";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [fullName, setFullName] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [hashtags, setHashtags] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isWriting, setIsWriting] = useState(false);
+  const [randomBlog, setRandomBlog] = useState(null);
+  const [showRandomBlog, setShowRandomBlog] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newBlog = {
-      title,
-      content,
-      id: Date.now(),
-      image: "https://via.placeholder.com/150",
+  // Fetch blogs from the backend when the component mounts
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get("/api/blog");
+        setBlogs(response.data);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
     };
-    setBlogs([newBlog, ...blogs]);
-    setTitle("");
-    setContent("");
-    setIsWriting(false);
-  };
 
-  const handleFilterChange = (filter) => {
-    setSelectedFilters((prevFilters) =>
-      prevFilters.includes(filter)
-        ? prevFilters.filter((f) => f !== filter)
-        : [...prevFilters, filter]
-    );
+    fetchBlogs();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/blog", {
+        fullName,
+        title,
+        content,
+        hashtags: hashtags.split(",").map((tag) => tag.trim()), // Convert hashtags to an array
+      });
+      const newBlog = response.data.blog;
+      setBlogs([newBlog, ...blogs]);
+      setFullName("");
+      setTitle("");
+      setContent("");
+      setHashtags("");
+      setIsWriting(false);
+    } catch (error) {
+      console.error("Error creating blog:", error);
+    }
   };
 
   const filteredBlogs = blogs.filter((blog) =>
     blog.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Function to fetch a random blog
+  const fetchRandomBlog = async () => {
+    try {
+      const response = await axios.get("/api/blog/random");
+      setRandomBlog(response.data);
+      setShowRandomBlog(true); // Show only the random blog
+    } catch (error) {
+      console.error("Error fetching random blog:", error);
+    }
+  };
+
   return (
     <>
-      <div className="w-full p-6 " style={{ backgroundColor: "#060724" }}>
+      <div className="w-full p-6 h-full" style={{ backgroundColor: "#060724" }}>
         <div className="flex justify-between items-start mt-10 mb-12">
           {/* Left Section */}
-          <div className="w-1/6 mb-12">
+          <div className="w-1/9 h-full mb-12">
             <Link to="/" className="flex items-center gap-4">
-              <h2 className="text-4xl text-white font-bold mb-4">Our Blog</h2>
-              <div className="flex justify-center sm:justify-start mt-4">
-                <img
-                  src={logo}
-                  alt="logo"
-                  className="w-22 h-16 mb-6 object-cover"
-                />
-              </div>
+              <h2 className="text-6xl text-white font-bold mb-4">
+                Ins<span className="text-secondary">i</span>ghts
+              </h2>
             </Link>
-            <div className="mb-4">
-              <h3 className="font-semibold text-white text-lg underline">
-                Categories
-              </h3>
-              <div className="flex flex-col text-white mt-2">
-                {["Category 1", "Category 2", "Category 3"].map((filter) => (
-                  <label
-                    key={filter}
-                    className="flex text-white items-center mb-2"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={selectedFilters.includes(filter)}
-                      onChange={() => handleFilterChange(filter)}
-                      className="mr-2 text-white"
-                    />
-                    {filter}
-                  </label>
-                ))}
-              </div>
+            <div className="flex justify-center mt-16 gap-4">
+              <button
+                onClick={fetchRandomBlog}
+                className="bg-secondary text-black font-bold flex items-center lg:text-xl px-2 py-0 rounded-lg"
+              >
+                Suprise me!
+                <img src={logo} alt="logo" className="w-16 h-18 object-cover" />
+              </button>
             </div>
           </div>
 
           {/* Center Section */}
-          <div className="w-1/2">
+          <div className="w-1/2 h-full">
             <div className="flex items-center mb-6">
               <input
                 type="text"
@@ -89,33 +101,74 @@ const Blog = () => {
             </div>
             <div>
               <h2 className="text-2xl text-white font-bold mb-4">Blog Posts</h2>
-              {filteredBlogs.length === 0 ? (
-                <p className="text-gray-500">No blog posts yet.</p>
-              ) : (
-                filteredBlogs.map((blog) => (
-                  <div
-                    key={blog.id}
-                    className="border border-gray-300 p-4 rounded-lg mb-4 shadow flex"
-                  >
+
+              {showRandomBlog && randomBlog ? (
+                <Link
+                  to={`/Insights/${randomBlog._id}`}
+                  key={randomBlog._id}
+                  className="border border-gray-300 w-[40%] rounded-lg shadow-lg flex flex-col items-start bg-white"
+                >
+                  <div className="relative w-full">
                     <img
-                      src={blog.image}
+                      src={randomBlog.image}
                       alt="Blog"
-                      className="w-32 h-32 object-cover mr-4"
+                      className="w-full h-full object-cover rounded-t-lg"
                     />
-                    <div>
-                      <h3 className="text-xl text-white font-semibold mb-2">
-                        {blog.title}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <h3 className="text-xl font-bold text-white bg-black bg-opacity-50 p-2 rounded">
+                        {randomBlog.title}
                       </h3>
-                      <p>{blog.content}</p>
                     </div>
                   </div>
-                ))
+                  
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold mb-2">
+                      {randomBlog.fullName}
+                    </h3>
+                    <p className="mb-2">{randomBlog.content}</p>
+                    <p className="text-gray-500">
+                      {randomBlog.hashtags.join(", ")}
+                    </p>
+                  </div>
+                </Link>
+              ) : filteredBlogs.length === 0 ? (
+                <p className="text-gray-500">No blog posts yet.</p>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {filteredBlogs.map((blog) => (
+                    <Link
+                      to={`/Insights/${blog._id}`}
+                      key={blog._id}
+                      className="border border-gray-300 rounded-lg shadow-lg flex flex-col items-start bg-white"
+                    >
+                      <div className="relative w-full">
+                        <img
+                          src={blog.image}
+                          alt="Blog"
+                          className="w-full object-cover rounded-t-lg"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <h3 className="text-xl font-bold text-white bg-black bg-opacity-50 p-2 rounded">
+                            {blog.title}
+                          </h3>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-xl font-bold mb-2">{blog.fullName}</h3>
+                        <p className="mb-2">{blog.content}</p>
+                        <p className="text-gray-500">
+                          {blog.hashtags.join(", ")}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               )}
             </div>
           </div>
 
           {/* Right Section */}
-          <div className="w-1/4">
+          <div className="w-1/5 h-full">
             <button
               onClick={() => setIsWriting(true)}
               className="bg-blue-500 text-white p-2 rounded-lg mt-6 hover:bg-blue-600 w-full mb-4"
@@ -126,8 +179,25 @@ const Blog = () => {
               <form onSubmit={handleSubmit} className="mb-8">
                 <div className="mb-4">
                   <label
+                    htmlFor="fullName"
+                    className="block text-lg font-medium text-white mb-2"
+                  >
+                    Full Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                    className="w-full p-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
                     htmlFor="title"
-                    className="block text-lg font-medium text-gray-700 mb-2"
+                    className="block text-lg font-medium text-white mb-2"
                   >
                     Title:
                   </label>
@@ -140,10 +210,27 @@ const Blog = () => {
                     className="w-full p-2 border border-gray-300 rounded-lg"
                   />
                 </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="hashtags"
+                    className="block text-lg font-medium text-white mb-2"
+                  >
+                    Hashtags:
+                  </label>
+                  <input
+                    type="text"
+                    id="hashtags"
+                    value={hashtags}
+                    onChange={(e) => setHashtags(e.target.value)}
+                    required
+                    className="w-full p-2 border border-gray-300 rounded-lg"
+                  />
+                </div>
                 <div className="mb-4">
                   <label
                     htmlFor="content"
-                    className="block text-lg font-medium text-gray-700 mb-2"
+                    className="block text-lg font-medium text-white mb-2"
                   >
                     Content:
                   </label>
@@ -164,38 +251,6 @@ const Blog = () => {
                 </button>
               </form>
             )}
-            <p className="text-gray-500 mt-4">
-              Write a new blog post to share your thoughts and ideas with the
-              community.
-            </p>
-          </div>
-        </div>
-        <div className="mb-20 w-px h-20 mx-auto" />
-      </div>
-
-      <div
-        className="relative text-white min-h-screen bg-cover bg-center flex items-center justify-start"
-        style={{ backgroundImage: `url(${hero2})` }}
-      >
-        <div className="absolute inset-0 bg-black/60 z-10 p-8 flex flex-col justify-center">
-          <div className="absolute top-0 left-0 p-4 mt-8">
-            <Link to="/">
-              <img
-                src={logo}
-                alt="logo"
-                className="w-40 h-auto object-cover mb-8"
-              />
-            </Link>
-          </div>
-          <div className="relative z-20 flex flex-col items-start text-left px-8 py-24">
-            <h3 className="text-6xl font-semibold mb-16">Your Feedback</h3>
-            <p className="text-4xl font-semibold mb-16">
-              Tell us about what you think, what you <br /> know, and what you
-              want.
-            </p>
-            <button className="bg-orange-500 text-white px-12 py-3 font-bold text-xl md:text-2xl rounded-xl shadow-lg hover:bg-orange-600 transition-colors">
-              Contact Us
-            </button>
           </div>
         </div>
       </div>
@@ -204,3 +259,4 @@ const Blog = () => {
 };
 
 export default Blog;
+

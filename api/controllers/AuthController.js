@@ -1,10 +1,12 @@
 const Student = require("../models/student.model");
 const Consultant = require("../models/consultant.model");
+const ConsultantScheduleModel = require("../models/consultantSchedule.model");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 
 const bcrypt = require("bcryptjs");
+const { default: mongoose } = require("mongoose");
 const bcryptSalt = bcrypt.genSaltSync(10);
 
 class AuthController {
@@ -147,50 +149,159 @@ class AuthController {
     }
   }
 
-  static async registerConsultant(req, res) {
-    const {
+  // static async registerConsultant(req, res) {
+  //   const {
+  //     name,
+  //     email,
+  //     password,
+  //     major,
+  //     price,
+  //     country,
+  //     language,
+  //     universityCountry,
+  //     addedPhotos,
+  //     category,
+  //     subcategories,
+  //     availabilityStart,
+  //     availabilityEnd,
+  //     moreInfo,
+  //     bio,
+  //     admission,
+  //   } = req.body;
+  //   try {
+  //     const consultant = await Consultant.create({
+  //       name,
+  //       email,
+  //       major,
+  //       password: bcrypt.hashSync(password, bcryptSalt),
+  //       country,
+  //       price,
+  //       language,
+  //       universityCountry,
+  //       profilePicture: addedPhotos,
+  //       admission,
+  //       category,
+  //       subcategories,
+  //       bio,
+  //       availabilityStart,
+  //       availabilityEnd,
+  //       moreInfo,
+  //     });
+  //     console.log("consultant", consultant);
+  //     res.json({ consultant });
+  //   } catch (error) {
+  //     return res.status(400).json({ error: error.message });
+  //   }
+  // }
+
+
+
+
+
+
+
+
+
+  
+// Register Consultant with Schedule
+
+
+// static async registerConsultant(req, res) {
+//   const {
+//     name,
+//     email,
+//     password,
+//     major,
+//     price,
+//     country,
+//     language,
+//     universityCountry,
+//     addedPhotos,
+//     category,
+//     subcategories,
+//     moreInfo,
+//     bio,
+//     admission,
+//     session
+//   } = req.body;
+
+//   try {
+//     const consultant = await Consultant.create({
+//       name,
+//       email,
+//       password: bcrypt.hashSync(password, bcryptSalt),
+//       country,
+//       price,
+//       major,
+//       language,
+//       universityCountry,
+//       profilePicture: addedPhotos,
+//       admission,
+//       category,
+//       subcategories,
+//       bio,
+//       moreInfo,
+//       session
+//     });
+//     console.log("consultant", consultant);
+//     res.status(201).json({ consultant });
+//   } catch (error) {
+
+//     console.error('Error registering consultant:', error);
+//     res.status(500).json({ error: 'Failed to register consultant', details: error.message });
+//   }
+// }
+
+static async registerConsultant(req, res) {
+  const {
+    name,
+    email,
+    password,
+    major,
+    price,
+    country,
+    language,
+    universityCountry,
+    addedPhotos,
+    category,
+    subcategories,
+    moreInfo,
+    bio,
+    admission,
+    session,
+    schedules // Add schedules field
+  } = req.body;
+
+  try {
+    const consultant = await Consultant.create({
       name,
       email,
-      password,
-      major,
-      price,
+      password: bcrypt.hashSync(password, bcryptSalt),
       country,
+      price,
+      major,
       language,
       universityCountry,
-      addedPhotos,
+      profilePicture: addedPhotos,
+      admission,
       category,
       subcategories,
-      availabilityStart,
-      availabilityEnd,
-      moreInfo,
       bio,
-      admission,
-    } = req.body;
-    try {
-      const consultant = await Consultant.create({
-        name,
-        email,
-        major,
-        password: bcrypt.hashSync(password, bcryptSalt),
-        country,
-        price,
-        language,
-        universityCountry,
-        profilePicture: addedPhotos,
-        admission,
-        category,
-        subcategories,
-        bio,
-        availabilityStart,
-        availabilityEnd,
-        moreInfo,
-      });
-      console.log("consultant", consultant);
-      res.json({ consultant });
-    } catch (error) {
-      return res.status(400).json({ error: error.message });
-    }
+      moreInfo,
+      session,
+      schedules // Save schedules
+    });
+    console.log("consultant", consultant);
+    res.status(201).json({ consultant });
+  } catch (error) {
+    console.error('Error registering consultant:', error);
+    res.status(500).json({ error: 'Failed to register consultant', details: error.message });
   }
+}
+
+
+
+
 
   static async SignInConsultant(req, res) {
     const { email, password } = req.body;

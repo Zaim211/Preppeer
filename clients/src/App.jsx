@@ -13,13 +13,12 @@ import ConsultantProfilePage from './pages/ConsultantProfilePage'
 import StudentProfilePage from './pages/StudentProfilePage'
 import OurMissions from './pages/OurMissions'
 import Payment from './pages/Payment'
-import CardGift from './pages/CardGift'
 import MemberPage from './pages/MemberPage'
-import Market from './pages/Market'
 import Blog from './pages/Blog'
 import NotFound from './pages/NotFound'
 import BookingConfirmationPage from './pages/BookingConfirmationPage'
 import Consultant from './pages/Consultant'
+import BlogDetails from './pages/BlogDetails'
 
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -42,13 +41,14 @@ function App() {
     <Route path="/SignInConsltantPage" element={<SignInConsltantPage />} />
 
     {/* pages */}
-    <Route path="/OurMissions" element={<OurMissions />}/>
+    <Route path="/Insights" element={<Blog />}/>
+    <Route path="/Insights/:id" element={<BlogDetails />}/>
+
+    
     <Route path="/insider/:id" element={<VideoCallPage />} />
     <Route path="/be-an-insider" element={<MemberPage />} />
     <Route path="/blog" element={<Blog />} />
     <Route path='/insider/payment/:id' element={<Payment />} />
-    <Route path="/market/:id" element={<Market />} />
-    <Route path='/giftcard' element={<CardGift />} />
     <Route path='/consultant/:id' element={<Consultant/>} />
 
     <Route path='/booking-confirmed' element={<BookingConfirmationPage/>} />

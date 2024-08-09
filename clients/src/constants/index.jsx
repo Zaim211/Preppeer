@@ -442,7 +442,7 @@ export const languages = [
   "Lithuanian", "Latvian", "Estonian", "Maltese", "Icelandic", "Albanian",
   "Serbian", "Macedonian", "Montenegrin", "Bosnian", "Kurdish", "Georgian",
   "Armenian", "Azerbaijani", "Kazakh", "Turkmen", "Uzbek", "Tajik", "Kyrgyz",
-  "Tatar", "Bashkir", "Mongolian", "Chinese", "Korean", "Japanese", "Vietnamese", 
+  "Tatar", "Bashkir", "Mongolian", "Chinese"
  
 ];
 

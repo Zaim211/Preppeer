@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import PhotoProfile from "../components/PhotoProfile";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { format } from "date-fns";
+
 import {
   majors,
   languages,
@@ -29,11 +28,26 @@ const RegisterConsultantPage = () => {
   const [addedPhotos, setAddedPhotos] = useState([]);
   const [category, setCategory] = useState([]);
   const [subcategories, setSubcategories] = useState([]); // Changed to array
-  const [availabilityStart, setAvailabilityStart] = useState(null);
-  const [availabilityEnd, setAvailabilityEnd] = useState(null);
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [schedules, setSchedules] = useState([{ dayOfWeek: '', workStart: '', workEnd: '' }]);
+ 
+  const handleScheduleChange = (index, event) => {
+    const { name, value } = event.target;
+    const newSchedules = schedules.map((schedule, i) => (
+      i === index ? { ...schedule, [name]: value } : schedule
+    ));
+    setSchedules(newSchedules);
+  };
+
+  const addSchedule = () => {
+    setSchedules([...schedules, { dayOfWeek: '', workStart: '', workEnd: '' }]);
+  };
+
+  const removeSchedule = (index) => {
+    setSchedules(schedules.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -47,7 +61,7 @@ const RegisterConsultantPage = () => {
     if (!password) newErrors.password = "Password is required";
     if (addedPhotos.length === 0) newErrors.image = "Image is required";
     if (!major) newErrors.major = "Major is required";
-    if (!admission) newErrors.admission = "Admission is required"; // Add validation for admission
+    if (!admission) newErrors.admission = "Admission is required";
     if (!country) newErrors.country = "Country is required";
     if (!language) newErrors.language = "Language is required";
     if (!universityCountry)
@@ -57,15 +71,15 @@ const RegisterConsultantPage = () => {
     if (subcategories.length === 0)
       newErrors.subcategory = "At least one subcategory is required";
     if (price <= 0) newErrors.price = "Price must be greater than zero";
-    if (!availabilityStart || !availabilityEnd)
-      newErrors.availability = "Availability dates are required";
-    if (
-      availabilityStart &&
-      availabilityEnd &&
-      availabilityEnd < availabilityStart
-    ) {
-      newErrors.availability = "End date must be after start date";
-    }
+
+    schedules.forEach((schedule, index) => {
+      if (!schedule.dayOfWeek && schedule.dayOfWeek !== 0)
+        newErrors[`scheduleDay${index}`] = "Day of week is required";
+      if (!schedule.workStart)
+        newErrors[`scheduleStart${index}`] = "Work start time is required";
+      if (!schedule.workEnd)
+        newErrors[`scheduleEnd${index}`] = "Work end time is required";
+    });
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -73,7 +87,7 @@ const RegisterConsultantPage = () => {
     }
 
     try {
-      await axios.post("/api/registerConsultant", {
+      const response = await axios.post("/api/registerConsultant", {
         name,
         email,
         password,
@@ -87,25 +101,18 @@ const RegisterConsultantPage = () => {
         addedPhotos: photosArray,
         category,
         subcategories,
-        availabilityStart: format(availabilityStart, "yyyy-MM-dd"),
-        availabilityEnd: format(availabilityEnd, "yyyy-MM-dd"),
+        schedules,
       });
+      console.log("Response from server:", response);
       setSuccess("Consultant registered successfully");
       setRedirect(true);
+      alert("Consultant registered successfully");
       setErrors({});
     } catch (error) {
       setErrors({
         submit: "An error occurred while registering the consultant",
       });
     }
-  };
-
-  const handleStartDateChange = (date) => {
-    setAvailabilityStart(date);
-  };
-
-  const handleEndDateChange = (date) => {
-    setAvailabilityEnd(date);
   };
 
   const handleCategoryChange = (e) => {
@@ -357,7 +364,6 @@ const RegisterConsultantPage = () => {
                   )}
                 </div>
               </div>
-             
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex-1">
@@ -477,43 +483,59 @@ const RegisterConsultantPage = () => {
                   )}
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="availability"
-                    className="block text-white text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Availability *</span>
-                  </label>
-                  <div className="flex space-x-4">
-                    <DatePicker
-                      selected={availabilityStart}
-                      onChange={handleStartDateChange}
-                      showTimeSelect
-                      showTimeSelectTwoColumns
-                      timeIntervals={1}
-                      timeCaption="Time"
-                      dateFormat="yyyy-MM-dd HH:mm:ss"
-                      timeFormat="HH:mm:ss"
-                      className="border border-gray-300 p-2 rounded-lg w-full"
-                    />
-                    <DatePicker
-                      selected={availabilityEnd}
-                      onChange={handleEndDateChange}
-                      showTimeSelect
-                      showTimeSelectTwoColumns
-                      timeIntervals={1}
-                      timeCaption="Time"
-                      dateFormat="yyyy-MM-dd HH:mm:ss"
-                      timeFormat="HH:mm:ss"
-                      className="border border-gray-300 p-2 rounded-lg w-full"
-                    />
-                  </div>
-                  {errors.availability && (
-                    <p className="text-red-600 text-sm mt-1">
-                      {errors.availability}
-                    </p>
-                  )}
-                </div>
+
+                  {/* schedules */}
+                <div className="flex flex-col gap-2">
+        <label htmlFor="schedules" className="text-white">Schedules:</label>
+        {schedules.map((schedule, index) => (
+          <div key={index} className="flex-col space-y-5 gap-6 mb-4">
+            <div className="flex items-center gap-2">
+              <label htmlFor={`scheduleDay${index}`} className="text-white">Day of Week:</label>
+              <input
+                type="number"
+                name="dayOfWeek"
+                id={`scheduleDay${index}`}
+                value={schedule.dayOfWeek}
+                onChange={(e) => handleScheduleChange(index, e)}
+                className="border border-gray-300 rounded-lg p-2"
+              />
+              {errors[`scheduleDay${index}`] && (
+                <p className="text-red-600">{errors[`scheduleDay${index}`]}</p>
+              )}
+              <button type="button" onClick={() => removeSchedule(index)} className="text-red-600">Remove</button>
+            </div>
+            <div className="flex items-center gap-2">
+              <label htmlFor={`scheduleStart${index}`} className="text-white">Work Start Time:</label>
+              <input
+                type="time"
+                name="workStart"
+                id={`scheduleStart${index}`}
+                value={schedule.workStart}
+                onChange={(e) => handleScheduleChange(index, e)}
+                className="border border-gray-300 rounded-lg p-2"
+              />
+              {errors[`scheduleStart${index}`] && (
+                <p className="text-red-600">{errors[`scheduleStart${index}`]}</p>
+              )}
+            </div>
+            <div className="flex items-center gap-2">
+              <label htmlFor={`scheduleEnd${index}`} className="text-white">Work End Time:</label>
+              <input
+                type="time"
+                name="workEnd"
+                id={`scheduleEnd${index}`}
+                value={schedule.workEnd}
+                onChange={(e) => handleScheduleChange(index, e)}
+                className="border border-gray-300 rounded-lg p-2"
+              />
+              {errors[`scheduleEnd${index}`] && (
+                <p className="text-red-600">{errors[`scheduleEnd${index}`]}</p>
+              )}
+            </div>
+          </div>
+        ))}
+        <button type="button" onClick={addSchedule} className="bg-blue-500 text-white p-2 rounded-lg">Add Schedule</button>
+      </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -633,6 +655,7 @@ const RegisterConsultantPage = () => {
               </button>
             </div>
           </form>
+
           <div className="text-center gap-2 items-center flex justify-center mr-16 py-4 mt-12 text-2xl text-white">
             Already a member?
             <Link className="underline text-white" to={"/SignInConsltantPage"}>
@@ -671,3 +694,5 @@ const RegisterConsultantPage = () => {
 };
 
 export default RegisterConsultantPage;
+
+

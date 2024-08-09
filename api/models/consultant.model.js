@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
 
+const scheduleSchema = new mongoose.Schema({
+  dayOfWeek: { type: Number, required: true },
+  workStart: { type: String, required: true },
+  workEnd: { type: String, required: true },
+});
+
 const consultantSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: {type:String, required:true},
+  name: { type: String },
+  email: { type: String, unique: true },
+  password: { type: String },
   major: { type: [String] },
   country: { type: String },
-  price: {type: [String]},
+  price: { type: [String] },
   language: { type: [String] },
   universityCountry: { type: String },
   category: { type: [String] },
@@ -14,9 +20,9 @@ const consultantSchema = new mongoose.Schema({
   profilePicture: { type: [String] },
   admission: { type: String },
   bio: { type: String },
-  availabilityStart: { type: Date },
-  availabilityEnd: { type: Date },
   moreInfo: { type: String },
+  sessions: { type: [String] },
+  schedules: { type: [scheduleSchema] }, // Add schedules field
 }, { timestamps: true });
 
 const ConsultantModel = mongoose.model('Consultant', consultantSchema);

@@ -147,7 +147,7 @@ const ConsultantContentMobile = () => {
               }`}
               onClick={() => handleFilterClick(filter.value)}
             >
-              <div className="w-32 md:w-52 px-2 h-16 flex items-center justify-center">
+              <div className="w-22 md:w-52 px-2 h-16 flex items-center justify-center">
                 <span className="text-center font-semibold text-sm md:text-base">
                   {filter.name}
                 </span>
@@ -157,7 +157,7 @@ const ConsultantContentMobile = () => {
         </div>
       </nav>
 
-      <section ref={mentorsSectionRef} className="w-full px-8 py-4 bg-gray-200">
+      <section ref={mentorsSectionRef} className="w-full px-4 py-4 bg-gray-200">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap">
             {selectedFilterObj &&
@@ -173,7 +173,11 @@ const ConsultantContentMobile = () => {
                       } p-2 border border-black rounded-sm`}
                       onClick={() => handleSubcategoryClick(subcat.value)}
                     >
+                      <div className="w-18 md:w-52 px-2 h-6 flex items-center justify-center">
+                       <span className="text-center font-semibold text-sm md:text-base">
                       {subcat.name}
+                       </span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -204,8 +208,8 @@ const ConsultantContentMobile = () => {
         </div>
 
         <div className="bg-gray-200 w-full mb-16">
-          <div className="flex md:grid-cols-4 mt-6 overflow-x-auto space-x-4  pb-4 gap-4">
-            <div className="flex flex-nowrap gap-4">
+          <div className="flex md:grid-cols-3 mt-6 overflow-x-auto space-x-1  pb-4">
+            <div className="flex flex-nowrap">
               {filteredConsultants
                 .slice(0, visibleConsultants)
                 .map((consultant) => (
@@ -218,40 +222,27 @@ const ConsultantContentMobile = () => {
                       consultant.major.join(",")
                     )}`}
                     key={consultant._id}
-                    className="bg-white w-80 rounded-lg relative shadow-lg  overflow-hidden flex-shrink-0"
+                    className="w-48 relative overflow-hidden flex-shrink-0"
                   >
-                    <div className="flex items-center justify-between">
                       <img
                         src={consultant.profilePicture}
                         alt={consultant.name}
-                        className="w-40 mt-2 ml-2 h-40 object-cover rounded-full border-4 border-gray-300 shadow-lg"
+                        className="w-48  ml-2 h-48 object-cover"
                       />
-                      <button className="rounded-lg w-24 mb-16 h-12 mr-4 bg-primary text-white text-center font-semibold">
-                        Book a Call
-                      </button>
-                    </div>
-                    <div className="p-4 ">
-                      <h2 className="text-2xl font-bold mb-4">
+                     
+                    <div className="p-2">
+                      <h2 className="text-xl font-bold">
                         {consultant.name}
                       </h2>
                       <div className="flex gap-4">
-                        <p className="text-xl font-semibold">
+                        <p className="text-md font-semibold">
                           {consultant.country}
                         </p>
                       </div>
 
-                      <div className="flex gap-3">
-                        <div className="text-xl font-semibold">
-                          {consultant.major.map((subcategory, index) => (
-                            <span key={index}>
-                              {subcategory}
-                              {index < consultant.major.length - 1 && " &"}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                    
 
-                      <p className="two-line-ellipsis font-semibold text-gray-900 text-lg">
+                      <p className="two-line-ellipsis font-semibold text-gray-600 text-md">
                         {consultant.bio}
                       </p>
                     </div>

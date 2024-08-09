@@ -39,7 +39,10 @@ const FeedbackForm = () => {
 
   return (
     <div className="bg-primary text-white p-8 sm:p-12 md:p-16">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Feedback Form</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+      Don't see your university in our marketplace? <br />
+      Fill out the form!
+        </h1>
       <form onSubmit={handleFeedback} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row gap-4">

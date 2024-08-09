@@ -69,26 +69,23 @@
 }
 
 
-
-
 @keyframes scrollLeftToRight {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-60%);
+    transform: translateX(-100%);
   }
 }
 
-
 @keyframes scrollRightToLeft {
+  100% {
+    transform: translateX(50%);
+  }
   0% {
     transform: translateX(0%);
   }
   
-  100% {
-    transform: translateX(0%);
-  }
 }
 
 .hide-scrollbar {
@@ -99,35 +96,31 @@
   display: flex;
   flex-wrap: nowrap;
   overflow: hidden;
-  white-space: nowrap;
+  animation-timing-function: linear;
 }
 
 .sponsor-row > .flex {
   display: flex;
-  width: 200%;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-
 .row-0 > .flex {
-  animation: scrollLeftToRight 5s linear infinite;
-  width: 100%;
+  animation: scrollLeftToRight 20s linear infinite;
 }
 
 .row-1 > .flex {
-  animation: scrollRightToLeft 5s linear infinite;
-
+  animation: scrollRightToLeft 20s linear infinite;
 }
 
 .row-2 > .flex {
-  animation: scrollLeftToRight 5s linear infinite;
-  width: 100%;
+  animation: scrollLeftToRight 20s linear infinite;
 }
 
 .sponsor-row img {
-  
   flex-shrink: 0;
+  width: 150px; /* Adjust the width as needed */
+  margin: 0 10px; /* Adjust spacing as needed */
 }
 
 

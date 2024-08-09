@@ -231,47 +231,32 @@ const ConsultantContent = () => {
         </div>
 
         <div className="bg-gray-200 w-full mb-16">
-          <div className="flex flex-wrap gap-4 mt-6 overflow-x-auto pl-4 pb-4">
+          <div className="flex flex-wrap  mt-6 overflow-x-auto pl-24 pb-4">
             {paginatedConsultants.map((consultant) => (
               <Link
                 key={consultant._id}
                 to={`/consultant/${consultant._id}?name=${encodeURIComponent(
                   consultant.name
                 )}&category=${encodeURIComponent(consultant.major.join(","))}`}
-                className="bg-white w-[23%] rounded-lg relative shadow-lg px-4 py-4 overflow-hidden flex-shrink-0"
+                className=" w-[23%] relative px-4 py-2 overflow-hidden"
               >
-                <div className="flex gap-4 items-center justify-between mb-4 mt-4">
+                <div className="flex  items-center justify-between mt-4">
                   <img
                     src={consultant.profilePicture}
                     alt={consultant.name}
-                    className="w-40 h-40 object-cover rounded-full border-4 border-gray-300 shadow-lg"
+                    className="w-full h-[300px]"
                   />
-                  <button
-                    onClick={() => navigate(`/consultants/${consultant._id}`)}
-                    className="rounded-lg w-24 mb-12 h-12  bg-primary text-white text-center font-semibold flex items-center justify-center"
-                  >
-                    Book a Call
-                  </button>
+                 
                 </div>
 
-                <div className="p-4">
-                  <h2 className="text-2xl font-bold mb-4">{consultant.name}</h2>
+                <div className="mt-2">
+                  <h2 className="text-2xl font-bold">{consultant.name}</h2>
                   <div className="flex gap-4 mb-2">
                     <p className="text-xl font-semibold">
                       {consultant.country}
                     </p>
                   </div>
-                  <div className="flex gap-3 mb-2">
-                    <div className="text-xl font-semibold">
-                      {consultant.major.map((subcategory, index) => (
-                        <span key={index}>
-                          {subcategory}
-                          {index < consultant.major.length - 1 && " & "}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="two-line-ellipsis font-semibold text-gray-900 text-lg">
+                  <p className="two-line-ellipsis font-semibold text-gray-600 text-lg">
                     {consultant.bio}
                   </p>
                 </div>
@@ -281,7 +266,7 @@ const ConsultantContent = () => {
         </div>
 
         <div className="flex justify-center gap-12 mt-4">
-          <button
+          {/* <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className="bg-primary text-white p-1  rounded-full"
@@ -300,13 +285,13 @@ const ConsultantContent = () => {
                 d="M15.75 19.5 8.25 12l7.5-7.5"
               />
             </svg>
-          </button>
+          </button> */}
           <div className="flex gap-2">
             {Array.from({ length: totalPages }, (_, index) => (
               <button
                 key={index}
                 onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2 rounded-full ${
+                className={`px-4 py-2 font-bold rounded-full ${
                   currentPage === index + 1
                     ? "bg-primary text-white p-4"
                     : " text-black text-lg"
@@ -316,7 +301,7 @@ const ConsultantContent = () => {
               </button>
             ))}
           </div>
-          <button
+          {/* <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
             className="bg-primary text-white p-1 rounded-full"
@@ -335,7 +320,7 @@ const ConsultantContent = () => {
                 d="m8.25 4.5 7.5 7.5-7.5 7.5"
               />
             </svg>
-          </button>
+          </button> */}
         </div>
       </section>
 
@@ -482,7 +467,7 @@ const ConsultantContent = () => {
               <span className="text-secondary">exclusive discounts</span>.
             </h2>
             <div className="flex flex-col md:flex-row gap-4">
-              <Input placeholder="Full Name*" className="rounded-xl" />
+              <Input placeholder="First Name*" className="rounded-xl" />
               <Input placeholder="Last Name*" className="rounded-xl" />
             </div>
             <Input placeholder="Email*" className="rounded-xl" />

@@ -46,6 +46,9 @@ router.post('/api/upload', upload.array('photos', 100), FilesController.uploadIm
 // Route for Feedback
 
 router.post('/api/feedback', FeedbackForm.createFeedback);
+router.post('/api/blog', FeedbackForm.createBlog);
+router.get('/api/blog', FeedbackForm.getBlogs);
+router.get('/api/blog/random', FeedbackForm.getRandomBlog);
 
 
 module.exports = router;
