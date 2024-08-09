@@ -32,7 +32,6 @@ function BookingModal({consultantName,consultantId}) {
 
     function validateForm(){
         try {
-            console.log(formData)
             formDataSchema.parse(formData);
             setErrors({});
             return true
@@ -47,15 +46,11 @@ function BookingModal({consultantName,consultantId}) {
         }
     }
 
-    console.log(formData)
-
     async function submitBookingHandler(){
         setIsSubmitting(true)
         try{
             const isFormValidated = validateForm()
-            console.log(isFormValidated)
             if(!isFormValidated) return
-            console.log('FORM VALIDATED')
             const response = await axios.post('/api/bookMeeting', formData)
             if(response.status === 201){
                 navigate('/booking-confirmed')
@@ -65,7 +60,6 @@ function BookingModal({consultantName,consultantId}) {
             if(axios.isAxiosError(error)){
                 console.error(error.response.data)
             }
-            console.log('Error submitting booking:',error)
         } finally {
             setIsSubmitting(false)
         }
@@ -83,7 +77,7 @@ function BookingModal({consultantName,consultantId}) {
         <InputBox title={'First Name'} isRequired={true} placeholder={'Enter first name'} value={formData.firstName} onChange={e => setFormData({...formData,firstName: e.target.value}) } error={errors.firstName} />
         <InputBox title={'Last Name'} isRequired={false} placeholder={'Enter last name'} value={formData.lastName} onChange={e => setFormData({...formData,lastName: e.target.value}) } error={errors.lastName} />
         <InputBox title={'Email'} isRequired={true} placeholder={'Enter email'} value={formData.email} onChange={e => setFormData({...formData,email: e.target.value}) } error={errors.email} />
-        <InputBox title={'Phone Number'} isRequired={false} placeholder={'Enter phone number'} value={formData.phone} onChange={e => setFormData({...formData,phone: e.target.value}) } error={errors.phone} />
+        <InputBox title={'Phone Number'} isRequired={true} placeholder={'Enter phone number'} value={formData.phone} onChange={e => setFormData({...formData,phone: e.target.value}) } error={errors.phone} />
         <Button onClick={submitBookingHandler} disabled={isSubmitting} className='text-white disabled:bg-orange-700 bg-orange-400 w-full text-lg hover:bg-orange-500 shadow-md' >{ isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Booking</>  : 'Book'}</Button>
       </div>
       <DialogDescription>
