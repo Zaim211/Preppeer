@@ -125,8 +125,8 @@ const Hero = () => {
       </div>
 
       <div className="flex flex-col aspect-auto w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
-        <div className="flex items-center  justify-end pl-40  mt-40 mb-16">
-          <div className="flex font-bold items-center gap-6">
+        <div className="flex items-center  justify-end pl-40 gap-6 mt-40 mb-16">
+          <div className="flex font-bold items-center gap-12">
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
               className="underline font-bold text-2xl text-white"
@@ -135,7 +135,7 @@ const Hero = () => {
             </a>
             <Link
               to="/Insights"
-              className="underline font-bold text-2xl  text-white"
+              className="underline font-bold text-2xl text-white"
             >
               Insights
             </Link>
@@ -145,7 +145,7 @@ const Hero = () => {
               <img
                 src={logo}
                 alt="logo"
-                className="w-50 h-32 mr-10 object-cover"
+                className="w-50 h-32 mr-1 object-cover"
               />
             </Link>
           </div>

@@ -236,16 +236,28 @@ perspectives to make an informed decision.
 
 export const uniqueFilters = [
   {
-    name: "Essays",
-    value: "Essays",
-    subcategories: [
-      { name: "Essay Writing", value: "Essay Writing"},
-      { name: "Essay Review", value: "Essay Review" }
-    ]
+    name: "Scholarships",
+    value: "Scholarships",
+    subcategories: []
   },
   {
-    name: "Extracurricular Activities",
-    value: "Extracurricular Activities",
+    name: "University Fit Check",
+    value: "University Fit Check",
+    subcategories: []
+  },
+  {
+    name: "Essays",
+    value: "Essays",
+    subcategories: []
+  },
+  {
+    name: "High School Internships",
+    value: "High School Internships",
+    subcategories: []
+  },
+  {
+    name: "Summer Schools",
+    value: "Summer Schools",
     subcategories: []
   },
   {
@@ -254,23 +266,28 @@ export const uniqueFilters = [
     subcategories: []
   },
   {
-    name: "High School Internships",
-    value: "High School Internships",
-    subcategories: [
-      { name: "college", value: "college" },
-      { name: "in-person", value: "in-person" },
-      { name: "hybrid", value: "hybrid" },
-    ]
+    name: "Self-initiated Projects",
+    value: "Self-initiated projects",
+    subcategories: []
   },
   {
-    name: "Self-initiated projects",
-    value: "Self-initiated projects",
+    name: "Volunteering",
+    value: "Volunteering",
+    subcategories: []
+  },
+  {
+    name: "Sports Admission",
+    value: "Sports Admission",
     subcategories: []
   },
   {
     name: "Competitions & Awards",
     value: "Competitions & Awards",
-    subcategories: []
+    subcategories: [
+      { name: "Olympiad", value: "Olympiad" },
+      { name: "Case competition", value: "Case competition"},
+      { name: "Essay competition", value: "Essay competition"}
+    ]
   },
   {
     name: "Public speaking",
@@ -281,21 +298,6 @@ export const uniqueFilters = [
     ]
   },
   {
-    name: "Summer Schools",
-    value: "Summer Schools",
-    subcategories: []
-  },
-  {
-    name: "University Reality/Fit Check ",
-    value: "University Reality/Fit Check ",
-    subcategories: []
-  },
-  {
-    name: "Sports Admission",
-    value: "Sports Admission",
-    subcategories: []
-  },
-  {
     name: "Tests",
     value: "Tests",
     subcategories: [
@@ -304,19 +306,6 @@ export const uniqueFilters = [
       { name: "LSAT", value: "LSAT" },
       { name: "BMAT", value: "BMAT" },
     ]
-  },
-  {
-    name: "Scholarships",
-    value: "Scholarships",
-    subcategories: [
-      { name: "Merit-based", value: "Merit-based" },
-      { name: "CSS profile", value: "CSS profile" },
-    ]
-  },
-  {
-    name: "Volunteering",
-    value: "Volunteering",
-    subcategories: []
   },
 ];
 

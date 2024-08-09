@@ -75,7 +75,7 @@ const FeedbackForm = () => {
 
           <div className="space-y-2">
             <label htmlFor="email" className="block font-semibold">
-              Email *
+              Email Address *
             </label>
             <input
               id="email"
