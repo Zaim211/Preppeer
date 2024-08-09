@@ -32,8 +32,7 @@ import {
 import NavMobile from "./NavMobile";
 
 const Hero = () => {
-  const { consultant, user } = useContext(UserContext);
-  const navigate = useNavigate()
+ 
 
   const imagePairs = [
     [cornell, img6],
@@ -127,16 +126,16 @@ const Hero = () => {
 
       <div className="flex flex-col aspect-auto w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
         <div className="flex items-center  justify-end pl-40  mt-40 mb-16">
-          <div className="flex p-20-semibold  items-center gap-6">
+          <div className="flex font-bold items-center gap-6">
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
-              className="underline p-20-semibold text-white"
+              className="underline font-bold text-2xl text-white"
             >
               Be an insider
             </a>
             <Link
               to="/OurMissions"
-              className="underline p-20-semibold  text-white"
+              className="underline font-bold text-2xl  text-white"
             >
               Insights
             </Link>
@@ -153,7 +152,7 @@ const Hero = () => {
         </div>
         
         <div className="mb-32 ml-20 mt-5">
-          <h1 className=" text-4xl text-white mb-4">
+          <h1 className=" text-4xl font-bold text-white mb-4">
             Book calls with{" "}
             <span className="text-secondary  leading-[160%]">insiders</span>
             <br /> to supercharge your
@@ -162,8 +161,8 @@ const Hero = () => {
               college applications.
             </span>
           </h1>
-          <div className="bg-secondary p-2 rounded-lg inline-block mt-10 mb-16">
-            <button onClick={()=> scrollToSection('insiders') }  className="text-white p-20-semibold text-xl font-bold text-center flex items-center">
+          <div className="bg-secondary px-6 py-2 rounded-lg inline-block mt-10 mb-16">
+            <button onClick={()=> scrollToSection('insiders') }  className="text-white  text-xl font-bold text-center flex items-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"
