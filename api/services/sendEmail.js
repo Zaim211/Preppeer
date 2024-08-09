@@ -97,6 +97,7 @@ async function sendMeetingConfirmationEmailToAdminAndStudent(studentEmail, consu
         from: `PrepPeer <${systemEmail}>`,
         to: studentEmail,
         subject: `Meeting with ${consultant.name} booked`,
+        reply_to: 'sr@shahidrizwan.com',
         html: `
         <div>
         <h3>Welcome to PrepPeer!</h3>
