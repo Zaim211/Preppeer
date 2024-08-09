@@ -134,7 +134,7 @@ const Hero = () => {
               Be an insider
             </a>
             <Link
-              to="/OurMissions"
+              to="/Insights"
               className="underline font-bold text-2xl  text-white"
             >
               Insights
