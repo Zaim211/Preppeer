@@ -6,14 +6,17 @@ import axios from 'axios'
 import { Loader2 } from 'lucide-react'
 import { z } from 'zod'
 import { useNavigate } from 'react-router-dom'
+import { Textarea } from '../ui/textarea'
 
 
 const formDataSchema = z.object({
   consultantId: z.string().min(1,"Consultant ID is required"),
-  firstName: z.string().min(1,"First name is required"),
-  lastName: z.string(),
+  fullName: z.string().min(1,"Full name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().min(1,"Phone number is required")
+  phone: z.string().optional(),
+  currentGrade: z.string().optional(),
+  language: z.string().optional(),
+  questions: z.string().optional()
 });
 
 function BookingModal({consultantName,consultantId}) {
@@ -22,10 +25,13 @@ function BookingModal({consultantName,consultantId}) {
     const [isSubmitting,setIsSubmitting] = useState(false)
     const [formData,setFormData] = useState({
         consultantId: consultantId,
-        firstName:'',
-        lastName:'',
+        fullName: '',
+        currentGrade: '',
+        language: '',
         email:'',
         phone:'',
+        questions:''
+
     })
     const [errors,setErrors] = useState({})
     const navigate = useNavigate()
@@ -74,10 +80,14 @@ function BookingModal({consultantName,consultantId}) {
     <DialogHeader >
       <DialogTitle>Please Fill the form to book a call with {consultantName}</DialogTitle>
       <div className='flex flex-col gap-4 py-8'>
-        <InputBox title={'First Name'} isRequired={true} placeholder={'Enter first name'} value={formData.firstName} onChange={e => setFormData({...formData,firstName: e.target.value}) } error={errors.firstName} />
-        <InputBox title={'Last Name'} isRequired={false} placeholder={'Enter last name'} value={formData.lastName} onChange={e => setFormData({...formData,lastName: e.target.value}) } error={errors.lastName} />
+        <InputBox title={'Full Name'} isRequired={true} placeholder={'Enter full name'} value={formData.fullName} onChange={e => setFormData({...formData,fullName: e.target.value}) } error={errors.fullName} />
         <InputBox title={'Email'} isRequired={true} placeholder={'Enter email'} value={formData.email} onChange={e => setFormData({...formData,email: e.target.value}) } error={errors.email} />
-        <InputBox title={'Phone Number'} isRequired={true} placeholder={'Enter phone number'} value={formData.phone} onChange={e => setFormData({...formData,phone: e.target.value}) } error={errors.phone} />
+        <div className='grid grid-cols-2 gap-2'>
+          <InputBox title={'Current Grade'} isRequired={false} placeholder={'Enter current grade'} value={formData.currentGrade} onChange={e => setFormData({...formData,currentGrade: e.target.value}) } error={errors.currentGrade} />
+          <InputBox title={'Language'} isRequired={false} placeholder={'Enter your language'} value={formData.language} onChange={e => setFormData({...formData,language: e.target.value}) } error={errors.language} />
+        </div>
+        <InputBox title={'Whatsapp/WeChat Number (Optional)'} isRequired={false} placeholder={'Enter whatsapp/wechat number'} value={formData.phone} onChange={e => setFormData({...formData,phone: e.target.value}) } error={errors.phone} />
+        <TextAreaBox title={``} isRequired={false} placeholder={'Answers (no word limit)'} value={formData.questions} onChange={e => setFormData({...formData,questions: e.target.value}) } error={errors.questions} />
         <Button onClick={submitBookingHandler} disabled={isSubmitting} className='text-white disabled:bg-orange-700 bg-orange-400 w-full text-lg hover:bg-orange-500 shadow-md' >{ isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Booking</>  : 'Book'}</Button>
       </div>
       <DialogDescription>
@@ -95,8 +105,20 @@ export default BookingModal
 export function InputBox({title,value,placeholder,onChange, isRequired, error}) {
     return (
         <div className='flex flex-col gap-2'>
-            <p className='text-md font-semibold'>{title}{isRequired ? '*' : ''}</p>
+            <p className='text-sm font-semibold'>{title}{isRequired ? '*' : ''}</p>
             <Input placeholder={placeholder} value={value} onChange={onChange} />
+            {error && <p className='text-red-500 text-sm'>{error}</p>}
+        </div>
+    )
+}
+
+export function TextAreaBox({value,placeholder,onChange, error}) {
+    return (
+        <div className='flex flex-col gap-2'>
+            <p className='text-md'>To personalize the session and maximize its value, 
+please let us know <strong>the questions you want to discuss with the mentor</strong>.
+We aim to deliver the most value for you.</p>
+            <Textarea placeholder={placeholder} value={value} onChange={onChange} />
             {error && <p className='text-red-500 text-sm'>{error}</p>}
         </div>
     )

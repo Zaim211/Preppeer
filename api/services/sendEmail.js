@@ -90,14 +90,15 @@ async function sendEmailsToMeetingParticipantsAndAdmin(appointmentId,paymentStat
     }
 }
 
-async function sendMeetingConfirmationEmailToAdminAndStudent(studentEmail, consultantId){
-    const consultant = await ConsultantModel.findById(consultantId);
+async function sendMeetingConfirmationEmailToAdminAndStudent(payload){
+    const consultant = await ConsultantModel.findById(payload.consultantId);
     const systemEmail = process.env.SYSTEM_EMAIL;
+    const adminEmail = process.env.ADMIN_EMAIL;
     const studentEmailData = {
         from: `PrepPeer <${systemEmail}>`,
-        to: studentEmail,
+        to: payload.email,
         subject: `Meeting with ${consultant.name} booked`,
-        reply_to: 'sr@shahidrizwan.com',
+        reply_to: adminEmail,
         html: `
         <div>
         <h3>Welcome to PrepPeer!</h3>
@@ -106,9 +107,21 @@ async function sendMeetingConfirmationEmailToAdminAndStudent(studentEmail, consu
     }
     const adminEmailData = {
         from: `PrepPeer <${systemEmail}>`,
-        to: 'sr@shahidrizwan.com',
+        to: adminEmail,
         subject: 'New Meeting Booking 🔔',
-        html: `<h3>Meeting between student: ${studentEmail} and consultant: ${consultant.email} booked. Please follow up.</h3>`
+        html: `
+        <div>
+            <h3>New Meeting Booking Details:</h3>
+            <br>
+            <p>Booked Consultant Name: ${consultant.name}</p>
+            <p>Student Name: ${payload.fullName}</p>
+            <p>Student Email: ${payload.email}</p>
+            <p>Student Whatsapp/WeChat Number: ${payload.phone}</p>
+            <p>Student Current Grade: ${payload.currentGrade}</p>
+            <p>Student Language: ${payload.language}</p>
+            <p>Student Questions: ${payload.questions}</p>
+        </div>
+        `
     }
     await sendEmails([studentEmailData, adminEmailData]);
     console.log('Meeting confirmation mails sent to student and admin');

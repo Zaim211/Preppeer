@@ -2,10 +2,12 @@ const { z } = require('zod');
 
 const meetingPayloadSchema = z.object({
   consultantId: z.string().min(1,"Consultant ID is required"),
-  firstName: z.string().min(1,"First name is required"),
-  lastName: z.string(),
+  fullName: z.string().min(1,"Full name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().min(1,"Phone number is required")
+  phone: z.string().optional(),
+  currentGrade: z.string().optional(),
+  language: z.string().optional(),
+  questions: z.string().optional()
 });
 
 module.exports = {

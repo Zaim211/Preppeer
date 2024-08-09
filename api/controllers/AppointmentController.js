@@ -163,7 +163,7 @@ class AppointmentController {
       await StudentMeetingModel.create([payload], { session });
 
       // Send confirmation email
-      await sendMeetingConfirmationEmailToAdminAndStudent(payload.email, payload.consultantId);
+      await sendMeetingConfirmationEmailToAdminAndStudent(payload);
 
       await session.commitTransaction();
       res.status(201).json({ message: 'Meeting booked successfully' });
