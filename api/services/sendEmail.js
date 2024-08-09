@@ -96,7 +96,7 @@ async function sendMeetingConfirmationEmailToAdminAndStudent(studentEmail, consu
     const studentEmailData = {
         from: `PrepPeer <${systemEmail}>`,
         to: studentEmail,
-        subject: `Meeting with ${consultant.name} confirmed`,
+        subject: `Meeting with ${consultant.name} booked`,
         html: `
         <div>
         <h3>Welcome to PrepPeer!</h3>
