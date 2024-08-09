@@ -14,7 +14,7 @@ const formDataSchema = z.object({
   fullName: z.string().min(1,"Full name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
-  currentGrade: z.string().optional(),
+  currentGrade: z.string().min(1,'Current grade is required'),
   language: z.string().optional(),
   questions: z.string().optional()
 });
@@ -83,15 +83,15 @@ function BookingModal({consultantName,consultantId}) {
         <InputBox title={'Full Name'} isRequired={true} placeholder={'Enter full name'} value={formData.fullName} onChange={e => setFormData({...formData,fullName: e.target.value}) } error={errors.fullName} />
         <InputBox title={'Email'} isRequired={true} placeholder={'Enter email'} value={formData.email} onChange={e => setFormData({...formData,email: e.target.value}) } error={errors.email} />
         <div className='grid grid-cols-2 gap-2'>
-          <InputBox title={'Current Grade'} isRequired={false} placeholder={'Enter current grade'} value={formData.currentGrade} onChange={e => setFormData({...formData,currentGrade: e.target.value}) } error={errors.currentGrade} />
-          <InputBox title={'Language'} isRequired={false} placeholder={'Enter your language'} value={formData.language} onChange={e => setFormData({...formData,language: e.target.value}) } error={errors.language} />
+          <InputBox title={'Current Grade'} isRequired={true} placeholder={'Enter current grade'} value={formData.currentGrade} onChange={e => setFormData({...formData,currentGrade: e.target.value}) } error={errors.currentGrade} />
+          <InputBox title={'Languages Spoken Fluently'} isRequired={false} placeholder={'Enter your languages'} value={formData.language} onChange={e => setFormData({...formData,language: e.target.value}) } error={errors.language} />
         </div>
-        <InputBox title={'Whatsapp/WeChat Number (Optional)'} isRequired={false} placeholder={'Enter whatsapp/wechat number'} value={formData.phone} onChange={e => setFormData({...formData,phone: e.target.value}) } error={errors.phone} />
+        <InputBox title={'Whatsapp/WeChat Number'} isRequired={false} placeholder={'Enter whatsapp/wechat number'} value={formData.phone} onChange={e => setFormData({...formData,phone: e.target.value}) } error={errors.phone} />
         <TextAreaBox title={``} isRequired={false} placeholder={'Answers (no word limit)'} value={formData.questions} onChange={e => setFormData({...formData,questions: e.target.value}) } error={errors.questions} />
         <Button onClick={submitBookingHandler} disabled={isSubmitting} className='text-white disabled:bg-orange-700 bg-orange-400 w-full text-lg hover:bg-orange-500 shadow-md' >{ isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Booking</>  : 'Book'}</Button>
       </div>
       <DialogDescription>
-        Once submitted, our team will reach out to you to confirm the availability and schedule the call.
+        After submitting this form, you will receive an email from PrepPeer to confirm your submission and the mentor’s availability for the call.
       </DialogDescription>
     </DialogHeader>
   </DialogContent>

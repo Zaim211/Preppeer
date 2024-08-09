@@ -5,7 +5,7 @@ const meetingPayloadSchema = z.object({
   fullName: z.string().min(1,"Full name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
-  currentGrade: z.string().optional(),
+  currentGrade: z.string().min(1,'Current grade is required'),
   language: z.string().optional(),
   questions: z.string().optional()
 });
