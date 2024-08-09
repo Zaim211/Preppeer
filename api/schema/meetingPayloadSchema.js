@@ -7,7 +7,7 @@ const meetingPayloadSchema = z.object({
   phone: z.string().optional(),
   currentGrade: z.string().min(1,'Current grade is required'),
   language: z.string().optional(),
-  questions: z.string().optional()
+  questions: z.string().min(1,'Current grade is required')
 });
 
 module.exports = {

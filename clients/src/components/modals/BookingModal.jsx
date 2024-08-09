@@ -16,7 +16,7 @@ const formDataSchema = z.object({
   phone: z.string().optional(),
   currentGrade: z.string().min(1,'Current grade is required'),
   language: z.string().optional(),
-  questions: z.string().optional()
+  questions: z.string().min(1,'Questions are required')
 });
 
 function BookingModal({consultantName,consultantId}) {

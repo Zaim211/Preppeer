@@ -6,6 +6,7 @@ import FaqAccordion from "../components/FaqAccordion";
 import DescriptionWithTitle from "../components/ui/DescriptionWithTitle";
 import FeedbackForm from "../components/FeedbackForm";
 import AvailabilityModal from "../components/AvailabilityModal";
+import BookingModal from "../components/modals/BookingModal";
 
 function Consultant() {
   const { id } = useParams();
