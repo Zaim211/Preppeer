@@ -128,12 +128,12 @@ const Hero = () => {
       <div className="flex flex-col aspect-auto w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
         <div className="flex items-center  justify-end pl-40  mt-40 mb-16">
           <div className="flex p-20-semibold  items-center gap-6">
-          <Link
-              to={consultant ? "/ConsultantProfile" : "/RegisterConsultantPage"}
-              className="underline p-20-semibold text-white "
+          <a
+              href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
+              className="underline p-20-semibold text-white"
             >
               Be an insider
-            </Link>
+            </a>
             <Link
               to="/OurMissions"
               className="underline p-20-semibold  text-white"
