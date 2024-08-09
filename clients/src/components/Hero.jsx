@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { UserContext } from "../UserContext";
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from 'react-responsive';
 
 import {
   img2,
@@ -27,12 +27,13 @@ import {
   minerve,
   nyu,
   oxfordUni,
-  nus,
+  nus
 } from "../assets/index.js";
 import NavMobile from "./NavMobile";
 
 const Hero = () => {
-  const { consultant } = useContext(UserContext);
+  const { consultant, user } = useContext(UserContext);
+  const navigate = useNavigate()
 
   const imagePairs = [
     [cornell, img6],
@@ -78,13 +79,14 @@ const Hero = () => {
           });
           return newFlipped;
         });
-      }, 2000);
-    }, 3000);
+      }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
 
-  const isMobileDevice = useMediaQuery({ query: "(max-width: 768px)" });
+
+  const isMobileDevice = useMediaQuery({ query: '(max-width: 768px)' });
 
   if (isMobileDevice) {
     return (
@@ -92,6 +94,11 @@ const Hero = () => {
         <NavMobile />
       </div>
     );
+  }
+
+  function scrollToSection(id){
+    const element = document.getElementById(id);
+    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 
   return (
@@ -120,20 +127,19 @@ const Hero = () => {
 
       <div className="flex flex-col aspect-auto w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
         <div className="flex items-center  justify-end pl-40  mt-40 mb-16">
-          <div className="flex  items-center gap-6">
-            <Link
-              to={consultant ? "/ConsultantProfile" : "/RegisterConsultantPage"}
-              className="underline font-bold text-2xl text-white "
+          <div className="flex p-20-semibold  items-center gap-6">
+          <a
+              href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
+              className="underline p-20-semibold text-white"
             >
               Be an insider
-            </Link>
+            </a>
             <Link
-              to="/Insights"
-              className="underline font-bold text-2xl text-white"
+              to="/OurMissions"
+              className="underline p-20-semibold  text-white"
             >
               Insights
             </Link>
-            
           </div>
           <div>
             <Link to="/" className="flex-shrink-0">
@@ -145,21 +151,19 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-
+        
         <div className="mb-32 ml-20 mt-5">
-          <h1 className=" text-4xl text-white mb-4 font-bold">
+          <h1 className=" text-4xl text-white mb-4">
             Book calls with{" "}
-            <span className="text-secondary font-bold italic leading-[160%]">
-              insiders
-            </span>
+            <span className="text-secondary  leading-[160%]">insiders</span>
             <br /> to supercharge your
             <br />
-            <span className="underline font-bold leading-[160%]">
+            <span className="underline leading-[160%]">
               college applications.
             </span>
           </h1>
-          <div className="bg-secondary px-8 py-3 rounded-lg inline-block mt-10 mb-16">
-            <button className="text-white font-bold text-xl  text-center flex items-center">
+          <div className="bg-secondary p-2 rounded-lg inline-block mt-10 mb-16">
+            <button onClick={()=> scrollToSection('insiders') }  className="text-white p-20-semibold text-xl font-bold text-center flex items-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -176,6 +180,8 @@ const Hero = () => {
             </button>
           </div>
         </div>
+
+        
       </div>
     </div>
   );

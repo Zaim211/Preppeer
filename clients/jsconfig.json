@@ -2,12 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],
   "alias": {
-    "@components": "src/components",
-    "@lib": "src/lib",
   }
 }

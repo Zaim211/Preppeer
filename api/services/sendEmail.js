@@ -1,5 +1,6 @@
 const resend = require('resend');
 const AppointmentModel = require('../models/appointment.model');
+const ConsultantModel = require('../models/consultant.model');
 
 const resendClient = new resend.Resend(process.env.RESEND_API_KEY)
 
@@ -89,4 +90,41 @@ async function sendEmailsToMeetingParticipantsAndAdmin(appointmentId,paymentStat
     }
 }
 
-module.exports = { sendEmail, sendEmails, sendEmailsToMeetingParticipantsAndAdmin }
+async function sendMeetingConfirmationEmailToAdminAndStudent(payload){
+    const consultant = await ConsultantModel.findById(payload.consultantId);
+    const systemEmail = process.env.SYSTEM_EMAIL;
+    const adminEmail = process.env.ADMIN_EMAIL;
+    const studentEmailData = {
+        from: `PrepPeer <${systemEmail}>`,
+        to: payload.email,
+        subject: `Meeting with ${consultant.name} booked`,
+        reply_to: adminEmail,
+        html: `
+        <div>
+        <h3>Welcome to PrepPeer!</h3>
+        We have received your submission and will be in touch soon via email to coordinate the timing of your meeting with the mentor. We are excited to work with you!
+        </div>`
+    }
+    const adminEmailData = {
+        from: `PrepPeer <${systemEmail}>`,
+        to: adminEmail,
+        subject: 'New Meeting Booking 🔔',
+        html: `
+        <div>
+            <h3>New Meeting Booking Details:</h3>
+            <br>
+            <p>Booked Consultant Name: ${consultant.name}</p>
+            <p>Student Name: ${payload.fullName}</p>
+            <p>Student Email: ${payload.email}</p>
+            <p>Student Whatsapp/WeChat Number: ${payload.phone}</p>
+            <p>Student Current Grade: ${payload.currentGrade}</p>
+            <p>Student Language: ${payload.language}</p>
+            <p>Student Questions: ${payload.questions}</p>
+        </div>
+        `
+    }
+    await sendEmails([studentEmailData, adminEmailData]);
+    console.log('Meeting confirmation mails sent to student and admin');
+}
+
+module.exports = { sendEmail, sendEmails, sendEmailsToMeetingParticipantsAndAdmin, sendMeetingConfirmationEmailToAdminAndStudent }

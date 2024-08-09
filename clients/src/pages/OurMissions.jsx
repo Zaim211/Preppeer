@@ -113,7 +113,7 @@ const OurMissions = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="text-center mt-16">
+      {/* <section className="text-center mt-16">
         <h2 className="text-4xl font-semibold mb-8 text-gray-800">
           Join Us Today
         </h2>
@@ -127,7 +127,7 @@ const OurMissions = () => {
         >
           Sign Up
         </a>
-      </section>
+      </section> */}
     </div>
   );
 };
