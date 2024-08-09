@@ -15,7 +15,10 @@ function BookingConfirmationPage({amount, price, appointmentDate,appointmentTime
         <CheckCircleIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
         <h1 className="text-3xl font-bold text-gray-800 mb-4">Booking Confirmed!</h1>
         <p className="text-lg text-gray-600 mb-6">
-          Your booking has been successfully confirmed. Our team will reach out to for the availability and scheduling the call!
+          Welcome to PrepPeer!
+        </p>
+        <p className="text-lg text-gray-600 mb-6">
+          We have received your booking and will be in touch soon via email to coordinate the timing of your meeting with the mentor. We are excited to work with you!
         </p>
         {/* <div className="flex justify-center mb-6">
           <div className="bg-gray-200 border border-gray-300 rounded-lg p-4 w-full">

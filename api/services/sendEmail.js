@@ -97,12 +97,18 @@ async function sendMeetingConfirmationEmailToAdminAndStudent(payload){
     const studentEmailData = {
         from: `PrepPeer <${systemEmail}>`,
         to: payload.email,
-        subject: `Meeting with ${consultant.name} booked`,
+        subject: `Your booking with ${consultant.name} on PrepPeer has been confirmed!`,
         reply_to: adminEmail,
         html: `
         <div>
-        <h3>Welcome to PrepPeer!</h3>
-        We have received your submission and will be in touch soon via email to coordinate the timing of your meeting with the mentor. We are excited to work with you!
+        <p>Hello,</p>
+        <p>Thank you for scheduling a call with the PrepPeer mentor. We are thrilled that you are joining our marketplace and taking the opportunity to make your application unique by gaining insights from a current student.</p>
+        <p>We have forwarded the questions and topics you wish to discuss to the mentor to ensure that the call is productive and meaningful.</p>
+        <p>To help us coordinate the call, please provide your time zone and a few time slots that work best for you. We will then arrange a suitable time with the mentor and send you a Google Calendar invite.</p>
+        <p>Congratulations on taking proactive steps to enhance your university admissions prospects!</p>
+        <br>
+        <p>Best regards,</p>
+        <p>PrepPeer Team</p>
         </div>`
     }
     const adminEmailData = {
