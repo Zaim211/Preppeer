@@ -37,6 +37,8 @@ router.post('/api/payment/webhook',express.raw({type: 'application/json'}), Paym
 router.get('/api/consultant/:id/available-slots',AppointmentController.getAvailableSlotsForConsultant);
 router.post('/api/consultant/:id/schedule',AppointmentController.createConsultantSchedule);
 
+router.post('/api/bookMeeting', AppointmentController.createMeetingBooking);
+
 
 router.post('/api/logout', AuthController.logoutUser);
 

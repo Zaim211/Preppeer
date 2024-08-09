@@ -9,17 +9,19 @@ import { useNavigate } from 'react-router-dom'
 
 
 const formDataSchema = z.object({
+  consultantId: z.string().min(1,"Consultant ID is required"),
   firstName: z.string().min(1,"First name is required"),
   lastName: z.string(),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(1,"Phone number is required")
 });
 
-function BookingModal({consultantName}) {
+function BookingModal({consultantName,consultantId}) {
 
     const [isOpen,setIsOpen] = useState(false)
     const [isSubmitting,setIsSubmitting] = useState(false)
     const [formData,setFormData] = useState({
+        consultantId: consultantId,
         firstName:'',
         lastName:'',
         email:'',
@@ -30,6 +32,7 @@ function BookingModal({consultantName}) {
 
     function validateForm(){
         try {
+            console.log(formData)
             formDataSchema.parse(formData);
             setErrors({});
             return true
@@ -44,17 +47,20 @@ function BookingModal({consultantName}) {
         }
     }
 
+    console.log(formData)
+
     async function submitBookingHandler(){
         setIsSubmitting(true)
         try{
             const isFormValidated = validateForm()
+            console.log(isFormValidated)
             if(!isFormValidated) return
             console.log('FORM VALIDATED')
-            // const response = await axios.post('/api/bookCall', formData)
-            // if(response.status === 201){
-            //     navigate('/booking-confirmed')
-            //     setIsOpen(false)
-            // }
+            const response = await axios.post('/api/bookMeeting', formData)
+            if(response.status === 201){
+                navigate('/booking-confirmed')
+                setIsOpen(false)
+            }
         } catch (error) {
             if(axios.isAxiosError(error)){
                 console.error(error.response.data)

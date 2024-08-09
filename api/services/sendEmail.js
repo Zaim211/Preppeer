@@ -1,5 +1,6 @@
 const resend = require('resend');
 const AppointmentModel = require('../models/appointment.model');
+const ConsultantModel = require('../models/consultant.model');
 
 const resendClient = new resend.Resend(process.env.RESEND_API_KEY)
 
@@ -89,4 +90,23 @@ async function sendEmailsToMeetingParticipantsAndAdmin(appointmentId,paymentStat
     }
 }
 
-module.exports = { sendEmail, sendEmails, sendEmailsToMeetingParticipantsAndAdmin }
+async function sendMeetingConfirmationEmailToAdminAndStudent(studentEmail, consultantId){
+    const consultant = await ConsultantModel.findById(consultantId);
+    const systemEmail = process.env.SYSTEM_EMAIL;
+    const studentEmailData = {
+        from: `PrepPeer <${systemEmail}>`,
+        to: studentEmail,
+        subject: `Meeting with ${consultant.name} confirmed`,
+        html: `<h1>Your meeting booking with ${consultant.email} confirmed. Our team will reach out to you for the payment and availability for scheduling the meeting.</h1>`
+    }
+    const adminEmailData = {
+        from: `PrepPeer <${systemEmail}>`,
+        to: 'sr@shahidrizwan.com',
+        subject: 'Failed Meeting Booking',
+        html: `<h1>Meeting between student: ${studentEmail} and consultant: ${consultant.email} booked. Please follow up.</h1>`
+    }
+    await sendEmails([studentEmailData, adminEmailData]);
+    console.log('Meeting confirmation mails sent to student and admin');
+}
+
+module.exports = { sendEmail, sendEmails, sendEmailsToMeetingParticipantsAndAdmin, sendMeetingConfirmationEmailToAdminAndStudent }

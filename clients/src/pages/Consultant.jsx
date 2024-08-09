@@ -52,7 +52,7 @@ function Consultant() {
           <div className="flex flex-col gap-4 md:gap-8">
             <h2 className="text-3xl md:text-5xl font-bold">{consultant.name}</h2>
     
-            <BookingModal consultantName={consultant.name} />
+            <BookingModal consultantName={consultant.name} consultantId={id} />
             <div className="flex flex-col gap-1 md:gap-2">
               <p className="text-xl md:text-3xl font-bold">{consultant.country}</p>
               <p className="text-xl md:text-3xl font-bold">{consultant.major}</p>
