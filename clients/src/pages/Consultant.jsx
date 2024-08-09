@@ -6,6 +6,8 @@ import FeedbackForm from "../components/FeedbackForm";
 import AvailabilityModal from "../components/AvailabilityModal";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "../components/ui/button";
+import BookingModal from "../components/modals/BookingModal";
 
 function Consultant() {
     const { id } = useParams();
@@ -49,9 +51,8 @@ function Consultant() {
           {/* Consultant profile */}
           <div className="flex flex-col gap-4 md:gap-8">
             <h2 className="text-3xl md:text-5xl font-bold">{consultant.name}</h2>
-            <p className="bg-secondary rounded-lg w-fit px-2 py-1 md:px-2 md:py-2">
-              Next available 7.25
-            </p>
+    
+            <BookingModal consultantName={consultant.name} />
             <div className="flex flex-col gap-1 md:gap-2">
               <p className="text-xl md:text-3xl font-bold">{consultant.country}</p>
               <p className="text-xl md:text-3xl font-bold">{consultant.major}</p>
@@ -72,13 +73,7 @@ function Consultant() {
             <div className="flex flex-col gap-2 md:gap-4">
               <div className="flex flex-col md:flex-row gap-2 md:gap-4">
                 <p className="text-xl md:text-3xl font-bold text-secondary">Book a call</p>
-                <button 
-                   className="text-white bg-secondary font-bold 
-                   text-lg py-1 px-2 rounded-lg"
-                  onClick={openModal}
-                 >
-                  See Availability
-                </button>
+                
               </div>
               <div className="flex flex-col md:flex-row gap-2">
                 <p className="bg-white shadow-md p-2 rounded-lg">$30/30 mins</p>
