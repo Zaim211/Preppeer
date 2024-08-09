@@ -146,12 +146,11 @@ const ConsultantContent = () => {
     indexOfLastConsultant
   );
 
-
   const totalPages = Math.ceil(filteredConsultants.length / itemsPerPage);
 
   return (
     <>
-      <nav className="bg-gray-200 p-4 w-full" id='insiders'>
+      <nav className="bg-gray-200 p-4 w-full" id="insiders">
         <div className="flex justify-between mt-16 items-center">
           <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mt-16 mb-6">
             <span className="text-secondary">In</span>siders{" "}
@@ -246,7 +245,6 @@ const ConsultantContent = () => {
                     alt={consultant.name}
                     className="w-full h-[300px]"
                   />
-                 
                 </div>
 
                 <div className="mt-2">
@@ -266,26 +264,6 @@ const ConsultantContent = () => {
         </div>
 
         <div className="flex justify-center gap-12 mt-4">
-          {/* <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="bg-primary text-white p-1  rounded-full"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 19.5 8.25 12l7.5-7.5"
-              />
-            </svg>
-          </button> */}
           <div className="flex gap-2">
             {Array.from({ length: totalPages }, (_, index) => (
               <button
@@ -301,26 +279,6 @@ const ConsultantContent = () => {
               </button>
             ))}
           </div>
-          {/* <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="bg-primary text-white p-1 rounded-full"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m8.25 4.5 7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button> */}
         </div>
       </section>
 
@@ -344,7 +302,7 @@ const ConsultantContent = () => {
                   <select
                     value={selectedLanguage}
                     onChange={handleLanguageChange}
-                    className="border border-gray-300 p-2 w-full rounded-lg"
+                    className="border border-gray-300 p-2 w-full rounded-sm"
                   >
                     <option value="">Select Language</option>
                     {languages.map((language) => (
@@ -364,7 +322,7 @@ const ConsultantContent = () => {
                   <select
                     value={selectedRegions}
                     onChange={handleRegionChange}
-                    className="border border-gray-300 p-2 w-full rounded-lg"
+                    className="border border-gray-300 p-2 w-full rounded-sm"
                   >
                     <option value="">Select Region</option>
                     {countries.map((reg) => (
@@ -384,7 +342,7 @@ const ConsultantContent = () => {
                   <select
                     value={selectedCountries}
                     onChange={handleUniversityLocation}
-                    className="border border-gray-300 p-2 w-full rounded-lg"
+                    className="border border-gray-300 p-2 w-full rounded-sm"
                   >
                     <option value="">Select Country</option>
                     {UniversityOptions.map((Uni) => (
@@ -459,40 +417,41 @@ const ConsultantContent = () => {
           </div>
         </section>
       )}
-     
-      <div className="bg-gray-200 justify-center flex">
-  <section className="flex flex-col md:flex-row mt-32 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-12 gap-16 md:gap-24">
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg md:text-xl font-bold">
-        Refer us and gain access to{" "}
-        <span className="text-secondary">exclusive discounts</span>.
-      </h2>
-      <div className="flex flex-col md:flex-row gap-4">
-        <Input placeholder="First Name*" className="rounded-xl" />
-        <Input placeholder="Last Name*" className="rounded-xl" />
-      </div>
-      <Input placeholder="Email Address*" className="rounded-xl" />
-    </div>
-    <div className="flex flex-col gap-4">
-      <h2 className="text-base md:text-lg">
-        Would you like to refer <strong>PrepPeer</strong> to someone?
-      </h2>
-      <div className="flex flex-col md:flex-row gap-4">
-      <Input placeholder="Their Name*" className="rounded-xl" />
-      <Input placeholder="Email*" className="rounded-xl" />
-      </div>
-      <select className="rounded-lg p-2  border-gray-300">
-  <option value="" disabled selected hidden>Select role*</option>
-  <option value="mentor">As a mentor</option>
-  <option value="mentee">As a mentee</option>
-</select>
-<button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
-        Send
-      </button>
-    </div>
-  </section>
-</div>
 
+      <div className="bg-gray-200 justify-center flex">
+        <section className="flex flex-col md:flex-row mt-32 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-12 gap-16 md:gap-24">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-lg md:text-xl font-bold">
+              Refer us and gain access to{" "}
+              <span className="text-secondary">exclusive discounts</span>.
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Input placeholder="First Name*" className="rounded-xl" />
+              <Input placeholder="Last Name*" className="rounded-xl" />
+            </div>
+            <Input placeholder="Email Address*" className="rounded-xl" />
+          </div>
+          <div className="flex flex-col gap-4">
+            <h2 className="text-base md:text-lg">
+              Would you like to refer <strong>PrepPeer</strong> to someone?
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Input placeholder="Their Name*" className="rounded-xl" />
+              <Input placeholder="Email*" className="rounded-xl" />
+            </div>
+            <select className="rounded-lg p-2  border-gray-300">
+              <option value="" disabled selected hidden>
+                Select role*
+              </option>
+              <option value="mentor">As a mentor</option>
+              <option value="mentee">As a mentee</option>
+            </select>
+            <button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
+              Send
+            </button>
+          </div>
+        </section>
+      </div>
     </>
   );
 };
