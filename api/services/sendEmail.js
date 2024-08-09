@@ -106,7 +106,7 @@ async function sendMeetingConfirmationEmailToAdminAndStudent(studentEmail, consu
     const adminEmailData = {
         from: `PrepPeer <${systemEmail}>`,
         to: 'sr@shahidrizwan.com',
-        subject: 'Failed Meeting Booking',
+        subject: 'New Meeting Booking 🔔',
         html: `<h3>Meeting between student: ${studentEmail} and consultant: ${consultant.email} booked. Please follow up.</h3>`
     }
     await sendEmails([studentEmailData, adminEmailData]);
