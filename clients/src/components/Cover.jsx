@@ -21,12 +21,12 @@ const Cover = () => {
     >
       
       <div className="relative w-full flex">
-        <div className="flex flex-col p-12 pb-12 pt-12 h-[60%] w-full z-10 bg-gradient-to-r from-black/80 to-black/50">
+        <div className="flex flex-col p-16 mt-12 mb-12 h-[80%] w-full z-10 bg-gradient-to-r from-black/80 to-black/50">
           <div className="flex justify-between items-center">
             <h1 className="text-4xl font-semibold mb-6">
               Why <span className="text-secondary">PrepPeer ?</span>
             </h1>
-            <p className="pr-12 text-xl">One critical insight can make or break your battle plan.</p>
+            <p className="pr-12 text-xl mt-12">One critical insight can make or break your battle plan.</p>
           </div>
           <div>
             <h1 className="text-2xl mt-12 font-semibold">Differentiate Yourself</h1>

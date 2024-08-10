@@ -95,7 +95,7 @@ const Blog = () => {
 
   return (
     <>
-      <div className="w-full p-6 h-full" style={{ backgroundColor: "#060724" }}>
+      <div className="w-full p-6 " style={{ backgroundColor: "#060724" }}>
         <div className="flex justify-between items-start mt-10 mb-12">
           {/* Left Section */}
           <div className="w-[20%] h-full mb-12">

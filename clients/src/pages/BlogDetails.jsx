@@ -6,13 +6,13 @@ const BlogDetails = () => {
   return (
     <div className="w-full p-12" style={{ backgroundColor: "#060724" }}>
       <div className="p-8">
-        <Link to={'/'} className="text-6xl text-white font-bold mb-2">
+        <Link to={'/'} className="text-5xl text-white font-bold mb-2">
           Ins<span className="text-secondary">i</span>ghts
         </Link>
       </div>
       <div className="flex-1 p-6 justify-center">
       
-        <h1 className="text-white text-4xl font-bold mt-8">
+        <h1 className="text-white text-3xl font-bold mt-8">
           Navigating Pre-College Summers: A Guide for Parents and Students
         </h1>
       </div>
