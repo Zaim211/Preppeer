@@ -52,7 +52,7 @@ const About = () => {
           Mentors:
           </h1>
        <div>
-       <p className="mt-2 font-semibold">
+       <p className="mt-2 font-lg text-2xl text-destructive s">
         Educated at Leading Universities/Trained in Top Summer Programs/Selected for Prestigious Internships
         </p>
        </div>
