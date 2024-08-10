@@ -17,13 +17,13 @@ const About = () => {
 
     return (
       <div className={`sponsor-row ${animationClass}`}>
-        <div className="flex gap-6">
+        <div className="flex gap-6 mb-6">
           {images.concat(images).map((image, index) => (
             <img
               key={index}
               src={image}
               alt={`Image ${index}`}
-              className="h-32 w-32 object-contain"
+              className="h-20 w-20 object-contain"
             />
           ))}
         </div>
@@ -42,25 +42,31 @@ const About = () => {
   }
 
   return (
-    <div className="md:p-2 flex flex-col border-t items-center  w-full bg-gray-200">
-      <div className="w-full max-w-full mb-12">
-        <div className="flex items-center mt-12 justify-between">
-          <h1 className="text-4xl text-destructive font-bold text-center flex-1">
-            Video chat with <span className="underline text-destructive">vetted</span> insiders
-            who go to...
+    <div className="md:p-2 flex flex-col border-t  w-full bg-gray-200">
+      <div className="w-full max-w-full mb-6">
+        <div className="flex-1 p-4 justify-start mt-4">
+         
+          <h1 className="text-3xl text-destructive font-bold">
+          Our <span className="underline">Vetted</span>{" "} 
+          <span className=" text-secondary">Insider</span>{" "}
+          Mentors:
           </h1>
+       <div>
+       <p className="mt-2 font-semibold">
+        Educated at Leading Universities/Trained in Top Summer Programs/Selected for Prestigious Internships
+        </p>
+       </div>
         </div>
-
-        <div className="mt-12 max-w-auto w-full space-y-16 hide-scrollbar">
+        <div className="mt-12 max-w-auto w-full space-y-4 hide-scrollbar">
           <div className="w-full overflow-hidden">
             {renderRow(universities1, "row-0")}
             {renderRow(universities2, "row-0")}
           </div>
-          <div className="w-full gap-16">
+          <div className="w-full gap-8">
             {renderRow(sponsors, "row-1")}
           </div>
           <div className="w-full overflow-hidden flex gap-2 items-center justify-center">
-            {renderRow(programs, "row-2")}
+            {renderRow(programs, "row-0")}
           </div>
         </div>
       </div>

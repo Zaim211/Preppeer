@@ -1,38 +1,38 @@
 import React from "react";
-import blogHero from "../assets/images/blogHero.png";
 import img4 from "../assets/images/img4.png";
+import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
   return (
     <div className="w-full p-12" style={{ backgroundColor: "#060724" }}>
       <div className="p-8">
-        <h2 className="text-6xl text-white font-bold mb-4">
+        <Link to={'/'} className="text-6xl text-white font-bold mb-2">
           Ins<span className="text-secondary">i</span>ghts
-        </h2>
+        </Link>
       </div>
       <div className="flex-1 p-6 justify-center">
-        <img
-          src={blogHero}
-          alt="hero3"
-          className="items-center h-[400px] object-contain"
-        />
-        <h1 className="text-white text-6xl font-bold mt-8">
-          Navigating Pre-College Summers: A <br /> Guide for Parents and
-          Students
+      
+        <h1 className="text-white text-4xl font-bold mt-8">
+          Navigating Pre-College Summers: A Guide for Parents and Students
         </h1>
       </div>
 
-      <div className="flex gap-6 p-6">
-        <img src={img4} alt="img4" className="w-32 h-32 object-cover" />
-        <div className="flex-1">
-          <h1 className="text-secondary font-bold text-2xl">Zebo Furqatzoda</h1>
-          <p className="text-white text-xl">University + 2 liner</p>
-        </div>
-      </div>
+<div className="flex gap-6 p-6">
+       
+       <div className="flex-1">
+       <img src={img4} alt="img4" className="w-32 h-32 object-cover" /> 
+         <h1 className="text-secondary font-bold text-2xl">Zebo Furqatzoda</h1>
+         <p className="text-white text-xl">University + 2 liner</p>
+       </div>
+</div>
+
+
+  
+      
 
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-white p-12 max-w-12xl mx-auto">
-          <p className="text-white text-xl  mb-6">June 4, 2024</p>
+        <p className="text-white text-xl  mb-6">June 4, 2024</p>
           <p className="text-white text-2xl leading-12">
             College summers can be stressful for both parents and high school
             students, particularly since there's no one definitive way to gain

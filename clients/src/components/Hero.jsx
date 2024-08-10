@@ -47,6 +47,11 @@ const Hero = () => {
     [pekingUni, img16],
     [img10, minerve],
     [img5, cornell],
+    [img5, cornell],
+    [img5, cornell],
+    [img5, cornell],
+    [img5, cornell],
+   
   ];
 
   const [flippedCards, setFlippedCards] = useState(Array(16).fill(false));
@@ -101,9 +106,9 @@ const Hero = () => {
   }
 
   return (
-    <div className="relative h-[80vh] flex w-full sm:w-full bg-primary">
-      <div className="relative aspect-auto w-full mt-2 md:w-1/2  mb-1 md:block">
-        <div className="grid grid-cols-4 gap-10">
+    <div className="aspect-auto  flex w-full sm:w-full bg-primary">
+      <div className="w-[50%] mt-2 md:w-1/2 h-max-auto h-full mb-1 md:block">
+        <div className="grid-container">
           {imagePairs.map((pair, index) => (
             <div
               key={index}
@@ -113,29 +118,29 @@ const Hero = () => {
                 <div
                   className="flip-card-front"
                   style={{ backgroundImage: `url(${pair[0]})` }}
-                ></div>
+                />
                 <div
                   className="flip-card-back"
                   style={{ backgroundImage: `url(${pair[1]})` }}
-                ></div>
+                />
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="flex flex-col aspect-auto w-full md:w-[50%] justify-center pl-4 pb-12 text-center md:text-left">
-        <div className="flex items-center  justify-end pl-40 gap-6 mt-40 mb-16">
+      <div className="flex lg:flex-wrap  w-[50%]  justify-center text-center md:text-left">
+        <div className="flex items-center  ml-60 gap-6 mb-12">
           <div className="flex font-bold items-center gap-12">
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
-              className="underline font-bold text-2xl text-white"
+              className="underline font-bold text-xl text-white"
             >
               Be an insider
             </a>
             <Link
               to="/Insights"
-              className="underline font-bold text-2xl text-white"
+              className="underline font-bold text-xl text-white"
             >
               Insights
             </Link>
@@ -145,14 +150,14 @@ const Hero = () => {
               <img
                 src={logo}
                 alt="logo"
-                className="w-50 h-32 mr-1 object-cover"
+                className="w-20 h-20 mr-1 object-cover"
               />
             </Link>
           </div>
         </div>
         
-        <div className="mb-32 ml-20 mt-5">
-          <h1 className=" text-4xl font-bold text-white mb-4">
+        <div className=" mr-10">
+          <h1 className="text-3xl font-bold text-white mb-2">
             Book calls with{" "}
             <span className="text-secondary  leading-[160%]">insiders</span>
             <br /> to supercharge your
@@ -182,6 +187,7 @@ const Hero = () => {
 
         
       </div>
+      
     </div>
   );
 };

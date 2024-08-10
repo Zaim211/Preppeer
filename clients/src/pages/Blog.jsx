@@ -81,9 +81,6 @@ const Blog = () => {
       : blog.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // const filteredBlogs = blogs.filter((blog) =>
-  //   blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
 
   // Function to fetch a random blog
   const fetchRandomBlog = async () => {
@@ -101,7 +98,7 @@ const Blog = () => {
       <div className="w-full p-6 h-full" style={{ backgroundColor: "#060724" }}>
         <div className="flex justify-between items-start mt-10 mb-12">
           {/* Left Section */}
-          <div className="w-1/9 h-full mb-12">
+          <div className="w-[20%] h-full mb-12">
             <Link to="/" className="flex items-center gap-4">
               <h2 className="text-6xl text-white font-bold mb-4">
                 Ins<span className="text-secondary">i</span>ghts
@@ -120,7 +117,7 @@ const Blog = () => {
                 </label>
               ))}
             </div>
-            <div className="flex justify-center mt-16 gap-4">
+            <div className="flex justify-start mt-16 gap-4">
               <button
                 onClick={fetchRandomBlog}
                 className="bg-secondary text-black font-bold flex items-center lg:text-xl px-4 py-0 rounded-lg"
@@ -132,7 +129,7 @@ const Blog = () => {
           </div>
 
           {/* Center Section */}
-          <div className="w-1/2 h-full">
+          <div className="w-[60%] h-full">
             <div className="flex items-center mb-6">
               <input
                 type="text"

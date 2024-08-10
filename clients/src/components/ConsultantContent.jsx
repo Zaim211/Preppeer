@@ -151,18 +151,18 @@ const ConsultantContent = () => {
   return (
     <>
       <nav className="bg-gray-200 p-4 w-full" id="insiders">
-        <div className="flex justify-between mt-16 items-center">
-          <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mt-16 mb-6">
+        <div className="flex justify-between items-center">
+          <h2 className="font-bold text-4xl ">
             <span className="text-secondary">In</span>siders{" "}
             <span className="text-secondary">At</span> Your Fingertips
           </h2>
           <img
             src={logo}
             alt="logo"
-            className="lg:w-50 lg:h-32 lg:mr-10 w-20 mt-6 object-cover"
+            className="lg:w-50 lg:h-32 lg:mr-10 w-20 object-cover"
           />
         </div>
-        <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-2 space-x-2 md:space-x-6">
+        <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-1 space-x-4">
           {uniqueFilters.map((filter, index) => (
             <div
               key={index}
@@ -173,7 +173,7 @@ const ConsultantContent = () => {
               }`}
               onClick={() => handleFilterClick(filter.value)}
             >
-              <div className="w-32 md:w-52 px-2 h-16 flex items-center justify-center">
+              <div className="w-32 py-2 px-1 h-12 flex items-center justify-center">
                 <span className="text-center font-semibold text-sm md:text-base">
                   {filter.name}
                 </span>
@@ -230,29 +230,29 @@ const ConsultantContent = () => {
         </div>
 
         <div className="bg-gray-200 w-full mb-16">
-          <div className="flex flex-wrap  mt-6 overflow-x-auto pl-24 pb-4">
+          <div className="flex flex-wrap  mt-2 overflow-x-auto pl-12 pb-4">
             {paginatedConsultants.map((consultant) => (
               <Link
                 key={consultant._id}
                 to={`/consultant/${consultant._id}?name=${encodeURIComponent(
                   consultant.name
                 )}&category=${encodeURIComponent(consultant.major.join(","))}`}
-                className=" w-[23%] relative px-4 py-2 overflow-hidden"
+                className="w-[23%] relative px-4 py-2 overflow-hidden"
               >
                 <div className="flex  items-center justify-between mt-4">
                   <img
                     src={consultant.profilePicture}
                     alt={consultant.name}
-                    className="w-full h-[300px]"
+                    className="w-full h-[300px] object-cover"
                   />
                 </div>
 
                 <div className="mt-2">
                   <h2 className="text-2xl font-bold">{consultant.name}</h2>
                   <div className="flex gap-4 mb-2">
-                    <p className="text-xl font-semibold">
+                    {/* <p className="text-xl font-semibold">
                       {consultant.country}
-                    </p>
+                    </p> */}
                   </div>
                   <p className="two-line-ellipsis font-semibold text-gray-600 text-lg">
                     {consultant.bio}
