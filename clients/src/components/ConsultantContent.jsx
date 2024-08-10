@@ -292,10 +292,10 @@ const ConsultantContent = () => {
             >
               &times;
             </button>
-            <h2 className="text-4xl mb-16 font-semibold">Filters</h2>
+            {/* <h2 className="text-2xl font-semibold">Filters</h2> */}
             <div className="flex-cols gap-6">
-              <div className="mb-6">
-                <h3 className="font-semibold text-2xl underline">
+              <div className="">
+                <h3 className="font-semibold text-xl underline">
                   Language Fluency
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -314,8 +314,8 @@ const ConsultantContent = () => {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <h3 className="font-semibold text-2xl underline">
+              <div className="mt-4">
+                <h3 className="font-semibold text-xl underline">
                   Location of University
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -334,8 +334,8 @@ const ConsultantContent = () => {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <h3 className="font-semibold text-2xl underline">
+              <div className="mt-4">
+                <h3 className="font-semibold text-xl underline">
                   Country of Origin
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -354,8 +354,8 @@ const ConsultantContent = () => {
                 </div>
               </div>
 
-              <div className="mb-4">
-                <h3 className="font-semibold text-2xl underline">Major</h3>
+              <div className="mt-4">
+                <h3 className="font-semibold text-xl underline">Major</h3>
                 <div className="flex-1 gap-2 mt-2">
                   {[
                     "STEM",
@@ -411,7 +411,7 @@ const ConsultantContent = () => {
                 className="bg-secondary text-white font-bold flex items-center text-2xl px-6 py-2 rounded-lg"
               >
                 Apply
-                <img src={logo} alt="logo" className="w-24 h-16 object-cover" />
+                <img src={logo} alt="logo" className="w-14 h-10 object-cover" />
               </button>
             </div>
           </div>
@@ -437,7 +437,7 @@ const ConsultantContent = () => {
             </h2>
             <div className="flex flex-col md:flex-row gap-4">
               <Input placeholder="Their Name*" className="rounded-xl" />
-              <Input placeholder="Email*" className="rounded-xl" />
+              <Input placeholder="Email Address*" className="rounded-xl" />
             </div>
             <select className="rounded-lg p-2  border-gray-300">
               <option value="" disabled selected hidden>
