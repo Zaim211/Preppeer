@@ -20,6 +20,11 @@ import {
 const NavMobile = () => {
   const { consultant, user } = useContext(UserContext);
 
+  function scrollToSection(id){
+    const element = document.getElementById(id);
+    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
   const imagePairs = [
     [cornell, img6],
     [img3, nyu],
@@ -71,13 +76,13 @@ const NavMobile = () => {
         <div className="flex  items-center md:items-end mb-8">
          
           <div className="flex  gap-4">
-            <Link
-              to={consultant ? "/ConsultantProfile" : "/RegisterConsultantPage"}
-              className="underline text-white text-lg"
+            <a
+              href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
+              className="underline font-bold text-xl text-white"
             >
               Be an insider
-            </Link>
-            <Link to="/OurMissions" className="underline text-white text-lg">
+            </a>
+            <Link to="/Insights" className="underline text-white text-lg">
               Insights
             </Link>
           </div>
@@ -95,7 +100,7 @@ const NavMobile = () => {
             <span className="underline">college applications.</span>
           </h1>
           <Link to="#" className="bg-secondary p-2 rounded-lg inline-block mt-6">
-            <button className="text-white text-lg font-bold flex items-center">
+            <button onClick={()=>scrollToSection('insiders')} className="text-white text-lg font-bold flex items-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"

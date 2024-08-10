@@ -18,7 +18,7 @@ import Blog from './pages/Blog'
 import NotFound from './pages/NotFound'
 import BookingConfirmationPage from './pages/BookingConfirmationPage'
 import Consultant from './pages/Consultant'
-// import BlogDetails from './pages/BlogDetails'
+import BlogDetails from './pages/BlogDetails'
 
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -42,7 +42,7 @@ function App() {
 
     {/* pages */}
     <Route path="/Insights" element={<Blog />}/>
-    {/* <Route path="/Insights/:id" element={<BlogDetails />}/> */}
+    <Route path="/Insights/:id" element={<BlogDetails />}/>
 
     
     <Route path="/insider/:id" element={<VideoCallPage />} />
