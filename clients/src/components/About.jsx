@@ -18,7 +18,7 @@ const About = () => {
     return (
       <div className={`sponsor-row ${animationClass}`}>
         <div className="flex gap-6 mb-6">
-          {images.concat(images).map((image, index) => (
+          {[...images,...images].map((image, index) => (
             <img
               key={index}
               src={image}
@@ -48,25 +48,21 @@ const About = () => {
          
           <h1 className="text-3xl text-destructive font-bold">
           Our <span className="underline">Vetted</span>{" "} 
-          <span className=" text-secondary">Insider</span>{" "}
-          Mentors:
+          <span className=" text-secondary">Insiders:</span>
           </h1>
        <div>
        <p className="mt-2 font-lg text-2xl text-destructive s">
-        Educated at Leading Universities/Trained in Top Summer Programs/Selected for Prestigious Internships
+        Educated at Leading Universities, Trained in Top Summer Programs, Selected for Prestigious Internships.
         </p>
        </div>
         </div>
         <div className="mt-12 max-w-auto w-full space-y-4 hide-scrollbar">
           <div className="w-full overflow-hidden">
             {renderRow(universities1, "row-0")}
-            {renderRow(universities2, "row-0")}
+            {renderRow(universities2, "row-1")}
           </div>
           <div className="w-full gap-8">
-            {renderRow(sponsors, "row-1")}
-          </div>
-          <div className="w-full overflow-hidden flex gap-2 items-center justify-center">
-            {renderRow(programs, "row-0")}
+            {renderRow([...sponsors,programs], "row-0")}
           </div>
         </div>
       </div>
