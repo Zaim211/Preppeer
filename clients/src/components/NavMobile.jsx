@@ -9,7 +9,7 @@ import {
   img5,
   img6,
   img8,
-  cornell,
+  cornel,
   hongkong,
   minerve,
   nyu,
@@ -21,7 +21,7 @@ const NavMobile = () => {
   const { consultant, user } = useContext(UserContext);
 
   const imagePairs = [
-    [cornell, img6],
+    [cornel, img6],
     [img3, nyu],
     [img5, minerve],
     [img2, hongkong],

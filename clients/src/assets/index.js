@@ -18,9 +18,8 @@ import img16 from "../assets/images/mentors/img16.jpg";
 import alto from '../assets/images/University_Logos/Aalto-University.png'
 import bowdoin from '../assets/images/University_Logos/Bowdoin.png'
 import columbia from '../assets/images/University_Logos/columbia-university.png'
-import cornell from '../assets/images/University_Logos/Cornell-University.png'
 import dartmouth from '../assets/images/University_Logos/Dartmouth.png'
-import cambridge from '../assets/images/University_Logos/university-of-cambridge.png'
+import cambridge from '../assets/images/University_Logos/cambridge.png'
 import hongkong from '../assets/images/University_Logos/Hong-Kong-University.png'
 import nayyang from '../assets/images/University_Logos/Nanyang_Technological_University.png'
 import minerve from '../assets/images/University_Logos/Minerva.png'
@@ -34,6 +33,10 @@ import nus from '../assets/images/University_Logos/nus.png'
 import oxfordUni from '../assets/images/University_Logos/oxford-uni.png'
 import pekingUni from '../assets/images/University_Logos/peking-uni.png'
 import columbiaUni from '../assets/images/University_Logos/columbia-uni.png'
+import cornel from '../assets/images/University_Logos/cornel.png';
+import newyu from '../assets/images/University_Logos/newyu.png';
+import alt from '../assets/images/University_Logos/alt.png';
+
 
 // Import images
 
@@ -63,13 +66,15 @@ import technovation from '../assets/images/Programs-Logo/Technovation.png';
 import virginia from '../assets/images/Programs-Logo/Virginia-Tech.jpg';
 import yygs from '../assets/images/Programs-Logo/YYGS.jpg';
 
+
 export {
     img1, img2, img3, img4, img5, img6, img7, img8, img9, 
     img10, img11, img12, img13, img14, img15, img16,
-    alto, bowdoin, columbia, cornell, dartmouth, cambridge, hongkong,
-    nayyang, minerve, nyu, nys, nyu2, oxford, peking, jhu,
+    alto, bowdoin, columbia, dartmouth, cambridge, hongkong,
+    nayyang, minerve, nys, nyu, oxford, peking, jhu,
     antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako,
-    cocacola, jpmorgan, roland, shoroq, slush,
+    cocacola, jpmorgan, roland, shoroq, slush, cornel,
     c5, erasmus, lumiere, techgirls, notredame, opensociety,
-    technovation, virginia, yygs, nus, oxfordUni, pekingUni, columbiaUni
+    technovation, virginia, yygs, nus, oxfordUni, pekingUni, columbiaUni,
+    newyu, nyu2, alt
 }
