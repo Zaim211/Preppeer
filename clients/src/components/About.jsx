@@ -1,4 +1,3 @@
-import React from "react";
 import { 
   alto, bowdoin, columbia, cornell, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys, nyu2,
   oxford, peking, jhu, antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
@@ -18,14 +17,16 @@ const About = () => {
     return (
       <div className={`sponsor-row ${animationClass}`}>
         <div className="flex gap-6 mb-6">
-          {[...images,...images].map((image, index) => (
-            <img
+          {[...images,...images].map((image, index) => {
+            return (
+              <img
               key={index}
               src={image}
               alt={`Image ${index}`}
               className="h-20 w-20 object-contain"
             />
-          ))}
+            )
+          })}
         </div>
       </div>
     );
@@ -62,7 +63,7 @@ const About = () => {
             {renderRow(universities2, "row-1")}
           </div>
           <div className="w-full gap-8">
-            {renderRow([...sponsors,programs], "row-0")}
+            {renderRow([...sponsors,...programs], "row-0")}
           </div>
         </div>
       </div>
