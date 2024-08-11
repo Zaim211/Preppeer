@@ -11,7 +11,7 @@ import axios from "axios";
 import { UserContextProvider } from './UserContext'
 import ConsultantProfilePage from './pages/ConsultantProfilePage'
 import StudentProfilePage from './pages/StudentProfilePage'
-import OurMissions from './pages/OurMissions'
+// import OurMissions from './pages/OurMissions'
 import Payment from './pages/Payment'
 import MemberPage from './pages/MemberPage'
 import Blog from './pages/Blog'

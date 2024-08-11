@@ -1,5 +1,4 @@
-import React from "react";
-import img4 from "../assets/images/img4.png";
+import { img4 } from "../assets";
 import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
@@ -34,23 +33,23 @@ const BlogDetails = () => {
         <div className="text-white p-12 max-w-12xl mx-auto">
         <p className="text-white text-xl  mb-6">June 4, 2024</p>
           <p className="text-white text-2xl leading-12">
-            College summers can be stressful for both parents and high school
+            {`College summers can be stressful for both parents and high school
             students, particularly since there's no one definitive way to gain
             admission to your target universities. We've all heard that the
             college admissions process is holistic, but often we're left
-            wondering how to stand out among thousands of other applicants.
+            wondering how to stand out among thousands of other applicants.`}
           </p>
 
           <p className="text-white text-2xl leading-12 mt-12">
-            It's never too early to start thinking about university admissions,
+            {`It's never too early to start thinking about university admissions,
             as your profile is built over years, not just months. The stories
             you can tell are typically developed through sustained effort and
-            experiences over time.
+            experiences over time.`}
           </p>
 
           <p className="text-white text-2xl leading-12 mt-12">
-            If you're a parent looking to guide your child towards a meaningful
-            summer or a student aiming for a productive break, this is for you.
+            {`If you're a parent looking to guide your child towards a meaningful
+            summer or a student aiming for a productive break, this is for you.`}
           </p>
 
           <h1 className="text-secondary mb-4 text-3xl font-bold text-start mt-12">
@@ -66,8 +65,8 @@ const BlogDetails = () => {
 
           <div className="mt-14">
             <h3 className="mb-4 text-2xl">
-              Here's a snapshot of my pre-college summer in 2021 and the lessons
-              I learned from it:
+              {`Here's a snapshot of my pre-college summer in 2021 and the lessons
+              I learned from it:`}
             </h3>
             <h1 className="text-3xl font-bold mb-4 mt-12">2021 Summer</h1>
             <ul className="list-disc pl-12 space-y-2 text-lg">
@@ -81,8 +80,8 @@ const BlogDetails = () => {
               </li>
               <li className="text-xl ">
                 Selected for <span className="font-semibold text-xl ">TechGirls</span>:
-                Took a class at Virginia Tech on "How to Tell a Story with
-                Data."
+                {`Took a class at Virginia Tech on "How to Tell a Story with
+                Data."`}
               </li>
               <li className="text-xl ">
                 Applied for{" "}
@@ -128,9 +127,9 @@ const BlogDetails = () => {
                   reflect on your values
                 </h2>
                 <p className="text-xl  mb-4">
-                  There is no secret formula to get into your dream university.
+                  {`There is no secret formula to get into your dream university.
                   My summer activities reflect my values and what's meaningful
-                  to me.
+                  to me.`}
                 </p>
                 <p className="text-2xl font-semibold mb-4 mt-12">
                   Admissions officers want to read stories—your stories. They
@@ -156,7 +155,7 @@ const BlogDetails = () => {
                   2. Align Activities with Values
                 </h2>
                 <p className="text-xl  mb-4">
-                  Here's how my summer activities fit into my value categories:
+                  {`Here's how my summer activities fit into my value categories:`}
                 </p>
                 <div className="space-y-4">
                   <div>
