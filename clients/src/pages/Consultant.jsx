@@ -121,24 +121,40 @@ function Consultant() {
       <section className="flex flex-col my-12 md:my-24 gap-4 md:gap-8">
         <h2 className="text-2xl md:text-4xl font-bold">FAQs</h2>
         <FaqAccordion
-          title={"What is the main benefit of talking to current students through your service?"}
-          content={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`}
+          title={"Why did you build PrepPeer?"}
+          content={`Choosing the right university is tough without inside knowledge. PrepPeer provides prospective students with insights from current college students, which can be crucial for admissions and decision-making. We created PrepPeer to offer the resource we wished we had in high school. `}
         />
         <FaqAccordion
-          title={"How do I book a call with a current student?"}
-          content={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`}
+          title={"How does a 1:1 video consultation on PrepPeer work?"}
+          content={`Use filters to find the right insider for you. Once you book a call, we'll email you to coordinate the meeting time. Then, you'll have a 1:1 video consultation with the insider you selected.`}
         />
         <FaqAccordion
-          title={"What kind of questions can I ask during the call?"}
-          content={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`}
+          title={"How long are the sessions?"}
+          content={`Sessions are available in 30 or 60-minute durations, depending on your chosen package. We are exploring package options for multiple sessions. If you’re interested in packages of 3 to 5 sessions, please submit feedback via the form below.`}
         />
         <FaqAccordion
-          title={"How are the students selected for the calls?"}
-          content={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`}
+          title={"Can I book the same expert multiple times on PrepPeer?"}
+          content={`Yes, you can rebook the same insider if you found the previous session helpful. Alternatively, you can explore other insiders for different perspectives.`}
         />
         <FaqAccordion
-          title={`Can I book multiple calls with students from different universities?`}
-          content={`Absolutely! You can book calls with students from as many universities as you wish, helping you gather a broad range of perspectives to make an informed decision.`}
+          title={`How much can I accomplish during a virtual session?`}
+          content={`To maximize your session, submit your questions in advance during the booking process so we can pass them on to the insider. You can also ask additional questions during the call.`}
+        />
+        <FaqAccordion
+          title={`I’m a parent wanting to book a call with a current student. Can I do that?`}
+          content={`Absolutely! We encourage parents to book calls with current students to gain insights about universities their child is considering. This can help with the admissions process, building a university list, writing essays, and making the final decision.`}
+        />
+        <FaqAccordion
+          title={`Do you support international and U.S. domestic high schoolers?`}
+          content={`Yes, we support both international and U.S. domestic high schoolers. We have insiders from various backgrounds to provide valuable insights for all students.`}
+        />
+         <FaqAccordion
+          title={`Can I reschedule or cancel my session?`}
+          content={`Yes, you can reschedule at least 48 hours before the session. Cancellations or reschedules within 48 hours incur a fee to compensate the expert for the last-minute change. It’s important to manage these changes responsibly to ensure a smooth experience for everyone.`}
+        />
+         <FaqAccordion
+          title={`What if I’m not satisfied with the PrepPeer session?`}
+          content={`We aim to provide valuable experiences, but if you’re not satisfied, please let us know and we will work to make things right.`}
         />
       </section>
       <div className="justify-center flex">
@@ -155,15 +171,15 @@ function Consultant() {
       <Input placeholder="Email Address*" className="rounded-xl" />
     </div>
     <div className="flex flex-col gap-4">
-      <h2 className="text-base md:text-lg">
-        Would you like to refer <strong>PrepPeer</strong> to someone?
+      <h2 className="font-bold md:text-lg">
+        Would you like to refer <strong className="text-secondary">PrepPeer</strong> to someone?
       </h2>
       <div className="flex flex-col md:flex-row gap-4">
       <Input placeholder="Their Name*" className="rounded-xl" />
-      <Input placeholder="Email*" className="rounded-xl" />
+      <Input placeholder="Email Address*" className="rounded-xl" />
       </div>
       <select className="rounded-lg p-2  border-gray-300">
-  <option value="" disabled selected hidden>Select role*</option>
+  <option value="" disabled selected hidden>Select roles*</option>
   <option value="mentor">As a mentor</option>
   <option value="mentee">As a mentee</option>
 </select>

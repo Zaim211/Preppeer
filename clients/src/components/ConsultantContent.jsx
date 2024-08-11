@@ -8,7 +8,7 @@ import {
   languages,
   UniversityOptions,
 } from "../constants";
-import { Input } from "./ui/input";
+
 import { useMediaQuery } from "react-responsive";
 import ConsultantContentMobile from "./ConsultantContentMobile";
 
@@ -250,11 +250,16 @@ const ConsultantContent = () => {
                 <div className="mt-2">
                   <h2 className="text-2xl font-bold">{consultant.name}</h2>
                   <div className="flex gap-4 mb-2">
-                    {/* <p className="text-xl font-semibold">
+                    <p className="text-xl font-semibold">
                       {consultant.country}
-                    </p> */}
+                    </p>
                   </div>
-                  <p className="two-line-ellipsis font-semibold text-gray-600 text-lg">
+                  <div className="flex gap-4 mb-2">
+                    <p className="text-xl font-2xl">
+                      {consultant.major}
+                    </p>
+                  </div>
+                  <p className="two-line-ellipsis font-lg text-gray-800 text-lg">
                     {consultant.bio}
                   </p>
                 </div>

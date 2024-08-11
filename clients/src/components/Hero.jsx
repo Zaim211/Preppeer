@@ -140,7 +140,7 @@ const Hero = () => {
         <div className="flex items-center  ml-60 gap-6 mb-12">
           <div className="flex font-bold items-center gap-12">
           <a
-              href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
+              href='/RegisterConsultantPage'
               className="underline font-bold text-xl text-white"
             >
               Be an insider

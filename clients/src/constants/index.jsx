@@ -283,19 +283,12 @@ export const uniqueFilters = [
   {
     name: "Competitions & Awards",
     value: "Competitions & Awards",
-    subcategories: [
-      { name: "Olympiad", value: "Olympiad" },
-      { name: "Case competition", value: "Case competition"},
-      { name: "Essay competition", value: "Essay competition"}
-    ]
+    subcategories: []
   },
   {
     name: "Public speaking",
     value: "Public speaking",
-    subcategories: [
-      { name: "debate", value: "debate" },
-      { name: "MUN", value: "MUN" }
-    ]
+    subcategories: []
   },
   {
     name: "Tests",
@@ -311,19 +304,19 @@ export const uniqueFilters = [
 
   // Define categories and subcategories
   export const categories = [
+    "Scholarships",
+    "University Fit Check",
     "Essays",
-    "Extracurricular Activities",
-    "Research / Publications",
     "High School Internships",
-    "Self-initiated projects",
-    "Competitions & Awards",
+    "Summer Schools",
+    "Research / Publications",
     "Public speaking",
     "Summer Schools",
-    "University Reality/Fit Check",
+    "Self-initiated Projects",
     "Sports Admission",
     "Tests",
-    "Scholarships",
     "Volunteering",
+    "Competitions & Awards"
   ];
 
   export const subcategoriesMap = {
@@ -388,7 +381,11 @@ export const uniqueFilters = [
   export const priceOptions = [
     { value: 20, label: "$20/15min" },
     { value: 30, label: "$30/30min" },
+    { value: 40, label: "$40/30min" },
+    { value: 45, label: "$45/30min" },
+    { value: 50, label: "$50/1h" },
     { value: 40, label: "$40/1h" },
+
   ];
   export const UniversityOptions = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
