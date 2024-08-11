@@ -118,6 +118,38 @@ function Consultant() {
           </div>
         </div>
       </section>
+      <div className="justify-center flex">
+  <section className="flex flex-col md:flex-row mt-12 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
+    <div className="flex flex-col gap-4">
+      <h2 className="text-lg md:text-xl font-bold">
+        Refer us and gain access to{" "}
+        <span className="text-secondary">exclusive discounts</span>.
+      </h2>
+      <div className="flex flex-col md:flex-row gap-4">
+        <Input placeholder="First Name*" className="rounded-xl" />
+        <Input placeholder="Last Name*" className="rounded-xl" />
+      </div>
+      <Input placeholder="Email Address*" className="rounded-xl" />
+    </div>
+    <div className="flex flex-col gap-4">
+      <h2 className="font-bold md:text-lg">
+        Would you like to refer <strong className="text-secondary">PrepPeer</strong> to someone?
+      </h2>
+      <div className="flex flex-col md:flex-row gap-4">
+      <Input placeholder="Their Name*" className="rounded-xl" />
+      <Input placeholder="Email Address*" className="rounded-xl" />
+      </div>
+      <select className="rounded-lg p-2  border-gray-300">
+  <option value="" disabled selected hidden>Select roles*</option>
+  <option value="mentor">As a mentor</option>
+  <option value="mentee">As a mentee</option>
+</select>
+<button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
+        Send
+      </button>
+    </div>
+  </section>
+</div>
       <section className="flex flex-col my-12 md:my-24 gap-4 md:gap-8">
         <h2 className="text-2xl md:text-4xl font-bold">FAQs</h2>
         <FaqAccordion
@@ -157,38 +189,7 @@ function Consultant() {
           content={`We aim to provide valuable experiences, but if you’re not satisfied, please let us know and we will work to make things right.`}
         />
       </section>
-      <div className="justify-center flex">
-  <section className="flex flex-col md:flex-row mt-32 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-12 gap-16 md:gap-24">
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg md:text-xl font-bold">
-        Refer us and gain access to{" "}
-        <span className="text-secondary">exclusive discounts</span>.
-      </h2>
-      <div className="flex flex-col md:flex-row gap-4">
-        <Input placeholder="First Name*" className="rounded-xl" />
-        <Input placeholder="Last Name*" className="rounded-xl" />
-      </div>
-      <Input placeholder="Email Address*" className="rounded-xl" />
-    </div>
-    <div className="flex flex-col gap-4">
-      <h2 className="font-bold md:text-lg">
-        Would you like to refer <strong className="text-secondary">PrepPeer</strong> to someone?
-      </h2>
-      <div className="flex flex-col md:flex-row gap-4">
-      <Input placeholder="Their Name*" className="rounded-xl" />
-      <Input placeholder="Email Address*" className="rounded-xl" />
-      </div>
-      <select className="rounded-lg p-2  border-gray-300">
-  <option value="" disabled selected hidden>Select roles*</option>
-  <option value="mentor">As a mentor</option>
-  <option value="mentee">As a mentee</option>
-</select>
-<button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
-        Send
-      </button>
-    </div>
-  </section>
-</div>
+     
       <div className="mt-8 md:mt-16">
         <FeedbackForm />
       </div>
