@@ -50,7 +50,6 @@ const Blog = () => {
       const response = await axios.post("/api/blog", {
         fullName,
         title,
-
         hashtags: hashtags.split(",").map((tag) => tag.trim()), // Convert hashtags to an array
       });
       const newBlog = response.data.blog;
@@ -147,30 +146,30 @@ const Blog = () => {
                 <Link
                   to={`/Insights/${randomBlog._id}`}
                   key={randomBlog._id}
-                  className="border border-gray-300 w-[40%] rounded-lg shadow-lg flex flex-col items-start bg-white"
+                  className="border border-gray-300 w-[50%] rounded-lg shadow-lg flex flex-col items-start bg-white"
                 >
                   <div className="relative w-full">
-                    <img
-                      src={blogHero}
-                      alt="Blog"
-                      className="w-full h-full object-cover rounded-t-lg"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <h3 className="text-xl font-bold text-white bg-black bg-opacity-50 p-2 rounded">
-                        {randomBlog.title}
-                      </h3>
+                      <img
+                        src={blogHero}
+                        alt="Blog"
+                        className="w-full object-contain rounded-t-lg"
+                      />
                     </div>
-                  </div>
-
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold mb-2">
-                      {randomBlog.fullName}
-                    </h3>
-
-                    <p className="text-gray-500">
-                      {randomBlog.hashtags.join(", ")}
-                    </p>
-                  </div>
+                    <div className="p-4">
+                      <h3 className="text-xl font-bold mb-2">{randomBlog.fullName}</h3>
+                      <h3 className="text-xl font-bold text-black ">{randomBlog.title}</h3>
+                      
+                      <div className="text-black flex flex-wrap mt-4">
+                        {randomBlog.hashtags[0].split(' ').map((hashtag, index) => (
+                          <span
+                            key={index}
+                            className="bg-yellow-400 text-black px-2 font-bold py-1 rounded mr-2 mb-2"
+                          >
+                            {hashtag}
+                          </span>
+                        ))}
+                      </div>
+                        </div>
                 </Link>
               ) : filteredBlogs.length === 0 ? (
                 <p className="text-gray-500">No blog posts yet.</p>
