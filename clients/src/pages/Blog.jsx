@@ -73,13 +73,14 @@ const Blog = () => {
     );
   };
 
-  const filteredBlogs = blogs.filter((blog) =>
-    selectedFilters.length > 0
-      ? selectedFilters.some((filter) =>
-          blog.hashtags.includes(filter)
-        )
-      : blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredBlogs = blogs.filter((blog) => {
+    const matchesSearchTerm = blog.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilters = selectedFilters.length > 0
+      ? selectedFilters.every((filter) => blog.hashtags.some((tag) => tag.toLowerCase().includes(filter.toLowerCase())))
+      : true;
+
+    return matchesSearchTerm && matchesFilters;
+  });
 
 
   // Function to fetch a random blog

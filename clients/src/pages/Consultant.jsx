@@ -3,18 +3,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Input } from "../components/ui/input";
 import FaqAccordion from "../components/FaqAccordion";
-import DescriptionWithTitle from "../components/ui/DescriptionWithTitle";
-import FeedbackForm from "../components/FeedbackForm";
-import AvailabilityModal from "../components/AvailabilityModal";
 import BookingModal from "../components/modals/BookingModal";
 
 function Consultant() {
   const { id } = useParams();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [consultant, setConsultant] = useState(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     const fetchConsultant = async () => {
@@ -35,23 +30,47 @@ function Consultant() {
       </div>
     );
   }
+  const parseBio = (bio) => {
+    // Split sections by double line breaks for separating different titles
+    const sections = bio.split("\n\n");
+  
+    // Format each section
+    const formattedSections = sections.map((section, index) => {
+      // Split each section into title and content
+      const [title, ...content] = section.split("\n");
+      
+      return (
+        <div key={index} className="flex flex-col gap-4">
+          {/* Render the title in bold */}
+          <h3 className="text-lg font-bold">{title}</h3>
+          {/* Join and render the content */}
+          <p className="text-base">{content.join("\n")}</p>
+        </div>
+      );
+    });
+  
+    return formattedSections;
+  };
+  
+
 
   return (
     <div className="flex flex-col py-12 px-6 md:py-24 md:px-24 w-screen">
       <section className="grid gap-12 md:gap-24 md:grid-cols-[auto,1fr]">
-        <div className="flex flex-col gap-8 md:gap-12">
+        <div className="flex flex-col gap-2">
           <img
             src={consultant.profilePicture}
             alt={consultant.name}
-            className="w-full max-w-xs md:max-w-none"
+            className="w-full  object-cover max-w-xs md:max-w-none"
           />
+          <h2 className="text-3xl md:text-4xl font-bold">{consultant.name}</h2>
           <div className="flex flex-col gap-4 md:gap-8">
-            <h2 className="text-3xl md:text-5xl font-bold">{consultant.name}</h2>
+            
     
             <BookingModal consultantName={consultant.name} consultantId={id} />
-            <div className="flex flex-col gap-1 md:gap-2">
-              <p className="text-xl md:text-3xl font-bold">{consultant.country}</p>
-              <p className="text-xl md:text-3xl font-bold">{consultant.major}</p>
+            <div className="flex flex-col">
+              <p className="md:text-xl text-base">University: {consultant.country}</p>
+              <p className="md:text-xl ">Major: {consultant.major}</p>
             </div>
             <div>
               <p className="text-base md:text-lg">Country of Origin: {consultant.universityCountry}</p>
@@ -62,59 +81,10 @@ function Consultant() {
           </div>
         </div>
         <div className="flex flex-col gap-12 md:gap-16">
-          <div className="flex flex-col md:flex-row gap-4">
-            <img src="/src/assets/logo.png" className="w-24 md:w-32" alt="Consultant" />
-            <div className="flex flex-col gap-2 md:gap-4">
-              <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-                <p className="text-xl md:text-3xl font-bold text-secondary">Book a call</p>
-                <button 
-                   className="text-white bg-secondary font-bold 
-                   text-lg py-1 px-2 rounded-lg"
-                  onClick={openModal}
-                 >
-                  See Availability
-                </button>
-              </div>
-              <div className="flex flex-col md:flex-row gap-2">
-                <p className="bg-white shadow-md p-2 rounded-lg">$30/30 mins</p>
-                <p className="bg-white shadow-md p-2 rounded-lg">$50/60 mins</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 md:gap-8">
-            <DescriptionWithTitle
-              title="Scholarship"
-              description={[
-                `Recipient of a $320,000 scholarship at New York University Abu Dhabi and a $125,000 scholarship at United World College Singapore.`,
-              ]}
-            />
-            <DescriptionWithTitle
-              title="Summer School"
-              description={[
-                "Yale Young Global Scholars alum.",
-                `TechGirls finalist and participant in the Virginia Tech Summer Program.`,
-              ]}
-            />
-            <DescriptionWithTitle
-              title="Internship"
-              description={[
-                `Interned at venture capital firms such as Antler and Shorooq Partners.`,
-              ]}
-            />
-            <DescriptionWithTitle
-              title="Research"
-              description={[
-                `Collaborated with Stephen Turban from Harvard University on my research project.`,
-              ]}
-            />
-            <DescriptionWithTitle
-              title="Self-initiated Project"
-              description={[
-                `Co-founded Writerama, worked with over 350 students on essay writing and storytelling.`,
-                `Organized TEDx Singapore, leading a team of over 30 members.`,
-                `Co-organized Slush’D Abu Dhabi, the largest event for young entrepreneurs in the Middle East.`,
-              ]}
-            />
+         
+        <div className="flex flex-col gap-4 md:gap-8">
+            {/* Bio Section */}
+            {parseBio(consultant.bio)}
           </div>
         </div>
       </section>
@@ -153,7 +123,7 @@ function Consultant() {
       <section className="flex flex-col my-12 md:my-24 gap-4 md:gap-8">
         <h2 className="text-2xl md:text-4xl font-bold">FAQs</h2>
         <FaqAccordion
-          title={"Why did you build PrepPeer?"}
+          title={"Why did we build PrepPeer?"}
           content={`Choosing the right university is tough without inside knowledge. PrepPeer provides prospective students with insights from current college students, which can be crucial for admissions and decision-making. We created PrepPeer to offer the resource we wished we had in high school. `}
         />
         <FaqAccordion
@@ -189,11 +159,6 @@ function Consultant() {
           content={`We aim to provide valuable experiences, but if you’re not satisfied, please let us know and we will work to make things right.`}
         />
       </section>
-     
-      <div className="mt-8 md:mt-16">
-        <FeedbackForm />
-      </div>
-      <AvailabilityModal isOpen={isModalOpen} onRequestClose={closeModal} />
     </div>
   );
 }

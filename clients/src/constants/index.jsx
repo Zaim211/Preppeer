@@ -372,10 +372,20 @@ export const uniqueFilters = [
     "Electrical and Information Engineering"
   ];
 
-  export const admissions = [
-    "Music Admissions",
-    "Art Admissions",
-    "Film Admissions"
+  export const titles = [
+    "Scholarships",
+    "University Fit Check",
+    "Essays",
+    "High School Internships",
+    "Summer Schools",
+    "Research / Publications",
+    "Public speaking",
+    "Summer Schools",
+    "Self-initiated Projects",
+    "Sports Admission",
+    "Tests",
+    "Volunteering",
+    "Competitions & Awards"
   ];
 
   export const priceOptions = [
