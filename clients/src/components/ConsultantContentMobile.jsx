@@ -379,17 +379,17 @@ const ConsultantContentMobile = () => {
               <span className="text-secondary">exclusive discounts</span>.
             </h2>
             <div className="flex flex-col md:flex-row gap-4">
-              <Input placeholder="Full Name*" className="rounded-xl" />
+              <Input placeholder="First Name*" className="rounded-xl" />
               <Input placeholder="Last Name*" className="rounded-xl" />
             </div>
-            <Input placeholder="Email*" className="rounded-xl" />
+            <Input placeholder="Address Email*" className="rounded-xl" />
           </div>
           <div className="flex flex-col gap-4">
-            <h2 className="text-base md:text-lg">
-              Would you like to refer <strong>PrepPeer</strong> to someone?
+            <h2 className="font-bold md:text-lg">
+              Would you like to refer <strong className="text-secondary">PrepPeer</strong> to someone?
             </h2>
             <Input placeholder="Their Name*" className="rounded-xl" />
-            <Input placeholder="Email*" className="rounded-xl" />
+            <Input placeholder="Address Email*" className="rounded-xl" />
           </div>
         </section>
       </div>
