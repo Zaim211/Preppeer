@@ -63,16 +63,14 @@ function Consultant() {
             alt={consultant.name}
             className="w-full  object-cover max-w-xs md:max-w-none"
           />
-          <h2 className="text-3xl md:text-4xl font-bold">{consultant.name}</h2>
+          <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
           <div className="flex flex-col gap-4 md:gap-8">
             
     
             <BookingModal consultantName={consultant.name} consultantId={id} />
-            <div className="flex flex-col">
-              <p className="md:text-xl text-base">University: {consultant.country}</p>
-              <p className="md:text-xl ">Major: {consultant.major}</p>
-            </div>
             <div>
+            <p className="md:text-lg text-base">University: {consultant.country}</p>
+            <p className="md:text-lg ">Major: {consultant.major}</p>
               <p className="text-base md:text-lg">Country of Origin: {consultant.universityCountry}</p>
               <p className="text-base md:text-lg">
                 Languages: {consultant.language.join(", ")}
@@ -88,7 +86,7 @@ function Consultant() {
           </div>
         </div>
       </section>
-      <div className="justify-center flex">
+      <div className="justify-center flex mt-12">
   <section className="flex flex-col md:flex-row mt-12 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
     <div className="flex flex-col gap-4">
       <h2 className="text-lg md:text-xl font-bold">
