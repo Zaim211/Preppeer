@@ -43,24 +43,24 @@ import bi from '../assets/images/Company-Logos/B&I-capital.png';
 import boldr from '../assets/images/Company-Logos/Boldr.webp';
 import us from '../assets/images/Company-Logos/US.png';
 import vc from '../assets/images/Company-Logos/VC.png';
-import ey from '../assets/images/Company-Logos/EY.jpg';
+import ey from '../assets/images/Company-Logos/EY.png';
 import ibm from '../assets/images/Company-Logos/IBM.png';
 import mashreq from '../assets/images/Company-Logos/Mashreq.png';
 import coinhako from '../assets/images/Company-Logos/Coinhako.png';
 import cocacola from '../assets/images/Company-Logos/Coca-Cola.png';
-import jpmorgan from '../assets/images/Company-Logos/JPMorgan.jpg';
-import roland from '../assets/images/Company-Logos/Roland-Berger.jpg';
+import jpmorgan from '../assets/images/Company-Logos/JPMorgan.png';
+import roland from '../assets/images/Company-Logos/Roland-Berger.png';
 import shoroq from '../assets/images/Company-Logos/Shorooq.webp';
 import slush from '../assets/images/Company-Logos/slush_d.jpg';
 
-import c5 from '../assets/images/Programs-Logo/C5+1.jpeg';
-import erasmus from '../assets/images/Programs-Logo/Erasmus+.jpg';
+import c5 from '../assets/images/Programs-Logo/C5+1.png';
+import erasmus from '../assets/images/Programs-Logo/Erasmus+.png';
 import lumiere from '../assets/images/Programs-Logo/Lumiere.png';
-import techgirls from '../assets/images/Programs-Logo/TechGirls.jpg';
-import notredame from '../assets/images/Programs-Logo/Notre-Dame.jpg';
+import techgirls from '../assets/images/Programs-Logo/TechGirls.png';
+import notredame from '../assets/images/Programs-Logo/Notre-Dame.png';
 import opensociety from '../assets/images/Programs-Logo/Open-Society.png';
 import technovation from '../assets/images/Programs-Logo/Technovation.png';
-import virginia from '../assets/images/Programs-Logo/Virginia-Tech.jpg';
+import virginia from '../assets/images/Programs-Logo/Virginia-Tech.png';
 import yygs from '../assets/images/Programs-Logo/YYGS.jpg';
 
 export {
