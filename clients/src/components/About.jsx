@@ -1,5 +1,5 @@
 import { 
-  alto, bowdoin, columbia, cornell, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys, nyu2,
+  alto, bowdoin, columbia, cornel, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys, nyu2,
   oxford, peking, jhu, antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
   shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs,
 } from "../assets";
@@ -7,13 +7,60 @@ import AboutMobile from "./AboutMobile";
 import { useMediaQuery } from "react-responsive";
 
 const About = () => {
-  const universities1 = [ bowdoin, columbia, cornell, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys];
-  const universities2 = [ minerve, nyu, nys, nyu2, oxford, peking, jhu, alto, columbia, cornell, dartmouth ];
-  const programs = [ c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs ];
-  const sponsors = [ antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, shoroq, slush];
+  const universities1 = [
+    bowdoin,
+    columbia,
+    cornel,
+    dartmouth,
+    cambridge,
+    hongkong,
+    nayyang,
+    minerve,
+    nyu,
+    nys,
+  ];
+  const universities2 = [
+    minerve,
+    nyu,
+    nys,
+    nyu2,
+    oxford,
+    peking,
+    jhu,
+    alto,
+    columbia,
+    cornel,
+    dartmouth,
+  ];
+  const programs = [
+    c5,
+    erasmus,
+    lumiere,
+    techgirls,
+    notredame,
+    opensociety,
+    technovation,
+    virginia,
+    yygs,
+  ];
+  const sponsors = [
+    antler,
+    bi,
+    boldr,
+    us,
+    vc,
+    ey,
+    ibm,
+    mashreq,
+    coinhako,
+    cocacola,
+    jpmorgan,
+    roland,
+    shoroq,
+    slush,
+  ];
 
   const renderRow = (images, animationClass) => {
-
     return (
       <div className={`sponsor-row ${animationClass}`}>
         <div className="flex gap-6 mb-6">
@@ -32,7 +79,7 @@ const About = () => {
     );
   };
 
-  const isMobileDevice = useMediaQuery({ query: '(max-width: 768px)' });
+  const isMobileDevice = useMediaQuery({ query: "(max-width: 768px)" });
 
   if (isMobileDevice) {
     return (
@@ -69,6 +116,3 @@ const About = () => {
 };
 
 export default About;
-
-
-

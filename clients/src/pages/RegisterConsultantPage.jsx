@@ -10,7 +10,6 @@ import {
   languages,
   categories,
   subcategoriesMap,
-  admissions,
   priceOptions,
 } from "../constants";
 
@@ -18,36 +17,22 @@ const RegisterConsultantPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [major, setMajor] = useState([]);
-  const [admission, setAdmission] = useState("");
   const [country, setCountry] = useState("");
   const [language, setLanguage] = useState([]);
   const [universityCountry, setUniversityCountry] = useState("");
   const [password, setPassword] = useState("");
   const [price, setPrice] = useState([]);
   const [bio, setBio] = useState("");
+
   const [addedPhotos, setAddedPhotos] = useState([]);
   const [category, setCategory] = useState([]);
   const [subcategories, setSubcategories] = useState([]); // Changed to array
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
   const [redirect, setRedirect] = useState(false);
-  const [schedules, setSchedules] = useState([{ dayOfWeek: '', workStart: '', workEnd: '' }]);
+
  
-  const handleScheduleChange = (index, event) => {
-    const { name, value } = event.target;
-    const newSchedules = schedules.map((schedule, i) => (
-      i === index ? { ...schedule, [name]: value } : schedule
-    ));
-    setSchedules(newSchedules);
-  };
 
-  const addSchedule = () => {
-    setSchedules([...schedules, { dayOfWeek: '', workStart: '', workEnd: '' }]);
-  };
-
-  const removeSchedule = (index) => {
-    setSchedules(schedules.filter((_, i) => i !== index));
-  };
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -61,7 +46,7 @@ const RegisterConsultantPage = () => {
     if (!password) newErrors.password = "Password is required";
     if (addedPhotos.length === 0) newErrors.image = "Image is required";
     if (!major) newErrors.major = "Major is required";
-    if (!admission) newErrors.admission = "Admission is required";
+ 
     if (!country) newErrors.country = "Country is required";
     if (!language) newErrors.language = "Language is required";
     if (!universityCountry)
@@ -72,14 +57,7 @@ const RegisterConsultantPage = () => {
       newErrors.subcategory = "At least one subcategory is required";
     if (price <= 0) newErrors.price = "Price must be greater than zero";
 
-    schedules.forEach((schedule, index) => {
-      if (!schedule.dayOfWeek && schedule.dayOfWeek !== 0)
-        newErrors[`scheduleDay${index}`] = "Day of week is required";
-      if (!schedule.workStart)
-        newErrors[`scheduleStart${index}`] = "Work start time is required";
-      if (!schedule.workEnd)
-        newErrors[`scheduleEnd${index}`] = "Work end time is required";
-    });
+
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -93,7 +71,6 @@ const RegisterConsultantPage = () => {
         password,
         price,
         major,
-        admission,
         country,
         language,
         universityCountry,
@@ -101,7 +78,6 @@ const RegisterConsultantPage = () => {
         addedPhotos: photosArray,
         category,
         subcategories,
-        schedules,
       });
       console.log("Response from server:", response);
       setSuccess("Consultant registered successfully");
@@ -408,32 +384,7 @@ const RegisterConsultantPage = () => {
                     </div>
                   )}
                 </div>
-                <div>
-                  <label
-                    htmlFor="admission"
-                    className="block text-lg font-semibold mb-1"
-                  >
-                    <span className="text-white">Admission *</span>
-                  </label>
-                  <select
-                    id="admission"
-                    value={admission}
-                    onChange={(e) => setAdmission(e.target.value)}
-                    className="border border-gray-300 p-2 w-full rounded-lg"
-                  >
-                    <option value="">Select an Admission</option>
-                    {admissions.map((admissionOption) => (
-                      <option key={admissionOption} value={admissionOption}>
-                        {admissionOption}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.admission && (
-                    <p className="text-red-600 text-sm mt-1">
-                      {errors.admission}
-                    </p>
-                  )}
-                </div>
+           
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -483,59 +434,7 @@ const RegisterConsultantPage = () => {
                   )}
                 </div>
 
-
-                  {/* schedules */}
-                <div className="flex flex-col gap-2">
-        <label htmlFor="schedules" className="text-white">Schedules:</label>
-        {schedules.map((schedule, index) => (
-          <div key={index} className="flex-col space-y-5 gap-6 mb-4">
-            <div className="flex items-center gap-2">
-              <label htmlFor={`scheduleDay${index}`} className="text-white">Day of Week:</label>
-              <input
-                type="number"
-                name="dayOfWeek"
-                id={`scheduleDay${index}`}
-                value={schedule.dayOfWeek}
-                onChange={(e) => handleScheduleChange(index, e)}
-                className="border border-gray-300 rounded-lg p-2"
-              />
-              {errors[`scheduleDay${index}`] && (
-                <p className="text-red-600">{errors[`scheduleDay${index}`]}</p>
-              )}
-              <button type="button" onClick={() => removeSchedule(index)} className="text-red-600">Remove</button>
-            </div>
-            <div className="flex items-center gap-2">
-              <label htmlFor={`scheduleStart${index}`} className="text-white">Work Start Time:</label>
-              <input
-                type="time"
-                name="workStart"
-                id={`scheduleStart${index}`}
-                value={schedule.workStart}
-                onChange={(e) => handleScheduleChange(index, e)}
-                className="border border-gray-300 rounded-lg p-2"
-              />
-              {errors[`scheduleStart${index}`] && (
-                <p className="text-red-600">{errors[`scheduleStart${index}`]}</p>
-              )}
-            </div>
-            <div className="flex items-center gap-2">
-              <label htmlFor={`scheduleEnd${index}`} className="text-white">Work End Time:</label>
-              <input
-                type="time"
-                name="workEnd"
-                id={`scheduleEnd${index}`}
-                value={schedule.workEnd}
-                onChange={(e) => handleScheduleChange(index, e)}
-                className="border border-gray-300 rounded-lg p-2"
-              />
-              {errors[`scheduleEnd${index}`] && (
-                <p className="text-red-600">{errors[`scheduleEnd${index}`]}</p>
-              )}
-            </div>
-          </div>
-        ))}
-        <button type="button" onClick={addSchedule} className="bg-blue-500 text-white p-2 rounded-lg">Add Schedule</button>
-      </div>
+        
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -627,6 +526,8 @@ const RegisterConsultantPage = () => {
                     <p className="text-red-600 text-sm mt-1">{errors.bio}</p>
                   )}
                 </div>
+
+
 
                 <div>
                   <label

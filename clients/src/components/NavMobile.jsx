@@ -9,7 +9,7 @@ import {
   img5,
   img6,
   img8,
-  cornell,
+  cornel,
   hongkong,
   minerve,
   nyu,
@@ -26,7 +26,7 @@ const NavMobile = () => {
   }
 
   const imagePairs = [
-    [cornell, img6],
+    [cornel, img6],
     [img3, nyu],
     [img5, minerve],
     [img2, hongkong],
@@ -82,7 +82,7 @@ const NavMobile = () => {
             >
               Be an insider
             </a>
-            <Link to="/Insights" className="underline text-white text-lg">
+            <Link to="/Insights" className="underline text-white font-bold text-xl">
               Insights
             </Link>
           </div>
@@ -92,7 +92,7 @@ const NavMobile = () => {
         </div>
 
         <div className="text-center md:text-left">
-          <h1 className="text-2xl md:text-4xl text-white mb-6">
+          <h1 className="font-bold text-3xl text-white mb-6">
             Book calls with{" "}
             <span className="text-secondary">insiders</span>
             <br /> to supercharge your

@@ -6,6 +6,8 @@ import { useMediaQuery } from 'react-responsive';
 
 import {
   img2,
+  img1,
+  jhu,
   img3,
   img4,
   img5,
@@ -14,43 +16,48 @@ import {
   img10,
   img13,
   img14,
+  img9,
   img15,
   img16,
+  img11,
   img12,
+  img7,
   pekingUni,
   bowdoin,
   cambridge,
   nyu2,
   columbiaUni,
-  cornell,
+  cornel,
   hongkong,
+  dartmouth,
   minerve,
-  nyu,
+  alt,
   oxfordUni,
-  nus
+  nus,
+  
 } from "../assets/index.js";
 import NavMobile from "./NavMobile";
 
 const Hero = () => {
  
-
   const imagePairs = [
-    [cornell, img6],
-    [img13, nyu],
-    [nyu2, img14],
+    [cornel, img6],
+    [img13, nyu2],
+    
     [img4, columbiaUni],
     [img2, bowdoin],
     [nus, img12],
     [cambridge, img3],
     [hongkong, img8],
     [img15, oxfordUni],
+    [nyu2, img14],
     [pekingUni, img16],
     [img10, minerve],
-    [img5, cornell],
-    [img5, cornell],
-    [img5, cornell],
-    [img5, cornell],
-    [img5, cornell],
+    [img5, cornel],
+    [jhu, img9],
+    [img11, cornel],
+    [img7, dartmouth],
+    [img1, alt],
    
   ];
 
@@ -84,7 +91,7 @@ const Hero = () => {
           return newFlipped;
         });
       }, 4000);
-    }, 6000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
@@ -133,7 +140,7 @@ const Hero = () => {
         <div className="flex items-center  ml-60 gap-6 mb-12">
           <div className="flex font-bold items-center gap-12">
           <a
-              href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
+              href='/RegisterConsultantPage'
               className="underline font-bold text-xl text-white"
             >
               Be an insider
@@ -156,8 +163,8 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className=" mr-10">
-          <h1 className="text-3xl font-bold text-white mb-2">
+        <div className="mr-48">
+          <h1 className="text-3xl font-bold text-white mb-8">
             Book calls with{" "}
             <span className="text-secondary  leading-[160%]">insiders</span>
             <br /> to supercharge your

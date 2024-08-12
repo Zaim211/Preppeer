@@ -25,16 +25,19 @@ const CoverMobile = () => {
 
   return (
     <div 
-      className="flex border-t-black flex-col md:pl-32 md:pb-12 md:pt-12 h-full w-full bg-gray-200"
+      className="relative flex flex-col md:pl-32 md:pb-12 md:pt-12 h-full w-full bg-gray-200 bg-cover bg-center"
+      style={{ backgroundImage: `url(${hero2})` }}
     >
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full">
-        <h1 className="text-4xl p-4 md:text-6xl font-semibold md:mb-6 text-black">
+      <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
+      <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center w-full z-10">
+        <h1 className="text-4xl p-4 md:text-6xl font-semibold md:mb-2 text-white">
           Why <span className="text-secondary">PrepPeer ?</span>
         </h1>
+        <p className="font-lg p-2 text-white text-lg ">One critical insight can make or break your battle plan.</p>
       </div>
-      <div className="space-y-2 text-black">
+      <div className="relative space-y-2 text-white z-10">
         {questions.map((item, index) => (
-          <div key={index} className="p-4 rounded-lg">
+          <div key={index} className="p-4 rounded-lg bg-black/50 bg-opacity-70">
             <div 
               className="flex items-center justify-between text-xl md:text-4xl font-semibold cursor-pointer"
               onClick={() => toggleQuestion(index)}

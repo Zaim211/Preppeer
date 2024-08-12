@@ -1,4 +1,4 @@
-import { img4 } from "../assets";
+import blogHero from "../assets/images/blogHero.png";
 import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
@@ -10,7 +10,11 @@ const BlogDetails = () => {
         </Link>
       </div>
       <div className="flex-1 p-6 justify-center">
-      
+      <img
+                      src={blogHero}
+                      alt="Blog"
+                      className="w-full h-full object-cover rounded-t-lg"
+                    />
         <h1 className="text-white text-3xl font-bold mt-8">
           Navigating Pre-College Summers: A Guide for Parents and Students
         </h1>
@@ -19,7 +23,7 @@ const BlogDetails = () => {
 <div className="flex gap-6 p-6">
        
        <div className="flex-1">
-       <img src={img4} alt="img4" className="w-32 h-32 object-cover" /> 
+     
          <h1 className="text-secondary font-bold text-2xl">Zebo Furqatzoda</h1>
          <p className="text-white text-xl">University + 2 liner</p>
        </div>
