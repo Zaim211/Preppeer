@@ -1,46 +1,70 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { UserContext } from "../UserContext";
+
 import {
   img2,
+  img1,
+  jhu,
   img3,
   img4,
   img5,
   img6,
   img8,
+  img10,
+  img13,
+  img14,
+  img9,
+  img15,
+  img16,
+  img11,
+  img12,
+  img7,
+  pekingUni,
+  bowdoin,
+  cambridge,
+  nyu2,
+  columbiaUni,
   cornel,
   hongkong,
+  dartmouth,
   minerve,
-  nyu,
+  alt,
   oxfordUni,
-  nus
+  nus,
+  
 } from "../assets/index.js";
 
+
 const NavMobile = () => {
-  const { consultant, user } = useContext(UserContext);
-
-  function scrollToSection(id){
-    const element = document.getElementById(id);
-    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-  }
-
+ 
   const imagePairs = [
     [cornel, img6],
-    [img3, nyu],
-    [img5, minerve],
-    [img2, hongkong],
-    [nus, img8],
-    [img4, oxfordUni],
+    [img13, nyu2],
+    [img4, columbiaUni],
+    [img2, bowdoin],
+    [nus, img12],
+    [cambridge, img3],
+    [hongkong, img8],
+    [img15, oxfordUni],
+    [nyu2, img14],
+    [pekingUni, img16],
+    [img10, minerve],
+    [img5, cornel],
+    [jhu, img9],
+    [img11, cornel],
+    [img7, dartmouth],
+    [img1, alt],
   ];
 
-  const [flippedCards, setFlippedCards] = useState(Array(8).fill(false));
+
+  const [flippedCards, setFlippedCards] = useState(Array(16).fill(false));
 
   useEffect(() => {
     const getRandomIndices = () => {
       const indices = new Set();
       while (indices.size < 3) {
-        indices.add(Math.floor(Math.random() * 8));
+        indices.add(Math.floor(Math.random() * 16));
       }
       return Array.from(indices);
     };
@@ -64,8 +88,7 @@ const NavMobile = () => {
           return newFlipped;
         });
       }, 4000);
-    }, 6000);
-
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -120,25 +143,25 @@ const NavMobile = () => {
       </div>
 
       {/* Left side: 2x4 grid of images */}
-      {/* <div className="w-full md:w-1/2 flex flex-wrap">
+      <div className="w-[30%] flex flex-wrap-col3">
         {imagePairs.map((pair, index) => (
           <div
             key={index}
             className={`w-1/2 h-1/2 p-1 flip-card ${flippedCards[index] ? "flipped" : ""}`}
           >
-            <div className="flip-card-inner">
+            <div className="flip-card-inner-mobile">
               <div
-                className="flip-card-front"
+                className="flip-card-front-mobile"
                 style={{ backgroundImage: `url(${pair[0]})` }}
               ></div>
               <div
-                className="flip-card-back"
+                className="flip-card-back-mobile"
                 style={{ backgroundImage: `url(${pair[1]})` }}
               ></div>
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -14,20 +14,6 @@ const AboutMobile = () => {
   const programs = [c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs];
   const sponsors = [antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs];
 
-  // const renderRow = (images) => (
-  //   <div className="w-full mb-8">
-  //     <div className="flex gap-4 mt-2 overflow-x-auto">
-  //       {images.map((image, index) => (
-  //         <img
-  //           key={index}
-  //           src={image}
-  //           alt={`Logo ${index}`}
-  //           className="h-20 w-20 object-contain flex-shrink-0"
-  //         />
-  //       ))}
-  //     </div>
-  //   </div>
-  // );
   const renderRow = (images, animationClass) => {
     return (
       <div className={`sponsor-row ${animationClass}`}>

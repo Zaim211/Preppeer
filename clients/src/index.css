@@ -241,6 +241,57 @@
 
 
 
+.grid-container-mobile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  perspective: 1000px;
+}
+
+.flip-card-mobile {
+  width: 100%;
+  max-width: 108px; /* Ensure a max-width for larger screens */
+  height: auto;
+  aspect-ratio: 206 / 90; /* Maintain the aspect ratio */
+  perspective: 1000px;
+ 
+  padding-left: 10px;
+}
+
+.flip-card-inner-mobile {
+  position: relative;
+  width: 98%;
+  height: 96%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  background-color: #f1f1f1;
+}
+
+.flip-card.flipped-mobile .flip-card-inner-mobile {
+  transform: rotateY(180deg);
+  background-color: #f1f1f1;
+}
+
+.flip-card-front-mobile,
+.flip-card-back-mobile {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.flip-card-back-mobile {
+  transform: rotateY(180deg);
+  background-color: #f1f1f1;
+}
+
 
 
 

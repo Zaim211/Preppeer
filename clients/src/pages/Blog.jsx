@@ -24,6 +24,7 @@ const Blog = () => {
   const [fullName, setFullName] = useState("");
   const [title, setTitle] = useState("");
   const [hashtags, setHashtags] = useState("");
+  const [content, setContent] = useState("")
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isWriting, setIsWriting] = useState(false);
@@ -49,12 +50,14 @@ const Blog = () => {
       const response = await axios.post("/api/blog", {
         fullName,
         title,
+        content,
         hashtags: hashtags.split(",").map((tag) => tag.trim()),
       });
       const newBlog = response.data.blog;
       setBlogs([newBlog, ...blogs]);
       setFullName("");
       setTitle("");
+      setContent("");
       setHashtags("");
       setIsWriting(false);
     } catch (error) {
@@ -248,6 +251,20 @@ const Blog = () => {
                     required
                     className="w-full p-2 border border-gray-300 rounded-lg"
                   />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="content"
+                    className="block text-lg font-medium text-white mb-2"
+                  >
+                   Content:
+                  </label>
+                  <textarea
+                    id="content"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    className="border text-lg border-gray-300 pl-4 pr-4 pt-2 pb-48 w-[100%] rounded-lg"
+                  ></textarea>
                 </div>
 
                 <div className="mb-4">

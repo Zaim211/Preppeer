@@ -27,9 +27,9 @@ class FeedbackForm {
   }
 
   static async createBlog(req, res) {
-    const { fullName, title, hashtags } = req.body;
+    const { fullName, title, content, hashtags } = req.body;
 
-    if (!title || !hashtags) {
+    if (!fullName || !title || !hashtags || !content) {
       return res.status(400).json({ message: "Please fill all fields" });
     }
 
@@ -37,6 +37,7 @@ class FeedbackForm {
       const blog = await Blog.create({
         fullName,
         title,
+        content,
         hashtags,
       });
       console.log("Blog: ", blog);

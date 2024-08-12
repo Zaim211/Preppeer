@@ -58,7 +58,6 @@ const Hero = () => {
     [img11, cornel],
     [img7, dartmouth],
     [img1, alt],
-   
   ];
 
   const [flippedCards, setFlippedCards] = useState(Array(16).fill(false));
