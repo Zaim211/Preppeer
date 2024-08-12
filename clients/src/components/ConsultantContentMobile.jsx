@@ -126,14 +126,14 @@ const ConsultantContentMobile = () => {
     <>
       <nav className="bg-gray-200 p-4 w-full">
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mt-16 mb-6">
+          <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mb-6">
             <span className="text-secondary">In</span>siders{" "}
             <span className="text-secondary">At</span> Your Fingertips
           </h2>
           <img
             src={logo}
             alt="logo"
-            className="lg:w-50 lg:h-32 lg:mr-10 w-20 mt-6 object-cover"
+            className="lg:w-50 lg:h-32 lg:mr-10 w-20 mb-4 object-cover"
           />
         </div>
         <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-2 space-x-2 md:space-x-6">

@@ -35,7 +35,7 @@ const CoverMobile = () => {
         </h1>
         <p className="font-lg p-2 text-white text-lg ">One critical insight can make or break your battle plan.</p>
       </div>
-      <div className="relative space-y-2 text-white z-10">
+      <div className="relative space-y-4 mb-4 text-white z-10">
         {questions.map((item, index) => (
           <div key={index} className="p-4 rounded-lg bg-black/50 bg-opacity-70">
             <div 
