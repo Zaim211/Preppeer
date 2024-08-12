@@ -30,21 +30,36 @@ function Consultant() {
       </div>
     );
   }
+
   const parseBio = (bio) => {
     // Split sections by double line breaks for separating different titles
     const sections = bio.split("\n\n");
   
+    // Function to format lines based on the presence of "•"
+    const formatContent = (content) => {
+      return content.map((line, index) => {
+        const hasBullet = line.includes("•");
+        return hasBullet ? (
+          <span key={index} className="text-base">{line}</span>
+        ) : (
+          <strong key={index}>{line}</strong>
+        );
+      });
+    };
+  
     // Format each section
     const formattedSections = sections.map((section, index) => {
-      // Split each section into title and content
       const [title, ...content] = section.split("\n");
-      
+  
       return (
-        <div key={index} className="flex flex-col gap-4">
-          {/* Render the title in bold */}
+        <div key={index} className="flex flex-col">
+          {/* Always bold the section title */}
           <h3 className="text-lg font-bold">{title}</h3>
-          {/* Join and render the content */}
-          <p className="text-base">{content.join("\n")}</p>
+          <p className="text-lg">
+            {formatContent(content).map((line, idx) => (
+              <div key={idx}>{line}</div>
+            ))}
+          </p>
         </div>
       );
     });
@@ -52,8 +67,45 @@ function Consultant() {
     return formattedSections;
   };
   
+  // const parseBio = (bio) => {
+  //   // Split sections by double line breaks for separating different titles
+  //   const sections = bio.split("\n\n");
+  
+  //   // Function to format lines based on the presence of "•"
+  //   const formatContent = (content) => {
+  //     return content.map((line, index) => {
+  //       const hasBullet = line.includes("•");
+  //       return hasBullet ? (
+  //         <span key={index} className="text-base">{line}</span>
+  //       ) : (
+  //         <strong key={index}>{line}</strong>
+  //       );
+  //     });
+  //   };
+  
+  //   // Format each section
+  //   const formattedSections = sections.map((section, index) => {
+  //     const [title, ...content] = section.split("\n");
+  
+  //     return (
+  //       <div key={index} className="flex flex-col gap-16">
+  //         <h3 className="text-lg">{title}</h3>
+  //         <p className="text-lg mt-4">
+  //           {formatContent(content).map((line, idx) => (
+  //             <div key={idx}>{line}</div>
+  //           ))}
+  //         </p>
+  //       </div>
+  //     );
+  //   });
+  
+  //   return formattedSections;
+  // };
+  
+ 
 
 
+  
   return (
     <div className="flex flex-col py-12 px-6 md:py-24 md:px-24 w-screen">
       <section className="grid gap-12 md:gap-24 md:grid-cols-[auto,1fr]">
@@ -65,8 +117,6 @@ function Consultant() {
           />
           <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
           <div className="flex flex-col gap-4 md:gap-8">
-            
-    
             <BookingModal consultantName={consultant.name} consultantId={id} />
             <div>
             <p className="md:text-lg text-base">University: {consultant.country}</p>
@@ -81,9 +131,9 @@ function Consultant() {
         <div className="flex flex-col gap-12 md:gap-16">
          
         <div className="flex flex-col gap-4 md:gap-8">
-            {/* Bio Section */}
-            {parseBio(consultant.bio)}
-          </div>
+    {/* Bio Section */}
+    {parseBio(consultant.bio)}
+  </div>
         </div>
       </section>
       <div className="justify-center flex mt-12">

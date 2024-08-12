@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 
-const scheduleSchema = new mongoose.Schema({
-  dayOfWeek: { type: Number, required: true },
-  workStart: { type: String, required: true },
-  workEnd: { type: String, required: true },
-});
 
 const consultantSchema = new mongoose.Schema({
   name: { type: String },
