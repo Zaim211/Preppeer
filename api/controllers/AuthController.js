@@ -206,52 +206,6 @@ class AuthController {
 // Register Consultant with Schedule
 
 
-// static async registerConsultant(req, res) {
-//   const {
-//     name,
-//     email,
-//     password,
-//     major,
-//     price,
-//     country,
-//     language,
-//     universityCountry,
-//     addedPhotos,
-//     category,
-//     subcategories,
-//     moreInfo,
-//     bio,
-//     admission,
-//     session
-//   } = req.body;
-
-//   try {
-//     const consultant = await Consultant.create({
-//       name,
-//       email,
-//       password: bcrypt.hashSync(password, bcryptSalt),
-//       country,
-//       price,
-//       major,
-//       language,
-//       universityCountry,
-//       profilePicture: addedPhotos,
-//       admission,
-//       category,
-//       subcategories,
-//       bio,
-//       moreInfo,
-//       session
-//     });
-//     console.log("consultant", consultant);
-//     res.status(201).json({ consultant });
-//   } catch (error) {
-
-//     console.error('Error registering consultant:', error);
-//     res.status(500).json({ error: 'Failed to register consultant', details: error.message });
-//   }
-// }
-
 static async registerConsultant(req, res) {
   const {
     name,
@@ -265,11 +219,8 @@ static async registerConsultant(req, res) {
     addedPhotos,
     category,
     subcategories,
-    moreInfo,
     bio,
-    admission,
-    session,
-    schedules // Add schedules field
+  
   } = req.body;
 
   try {
@@ -283,21 +234,21 @@ static async registerConsultant(req, res) {
       language,
       universityCountry,
       profilePicture: addedPhotos,
-      admission,
       category,
       subcategories,
       bio,
-      moreInfo,
-      session,
-      schedules // Save schedules
+
     });
     console.log("consultant", consultant);
     res.status(201).json({ consultant });
   } catch (error) {
+
     console.error('Error registering consultant:', error);
     res.status(500).json({ error: 'Failed to register consultant', details: error.message });
   }
 }
+
+
 
 
 

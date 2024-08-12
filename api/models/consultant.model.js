@@ -18,11 +18,9 @@ const consultantSchema = new mongoose.Schema({
   category: { type: [String] },
   subcategories: { type: [String] },
   profilePicture: { type: [String] },
-  admission: { type: String },
   bio: { type: String },
-  moreInfo: { type: String },
-  sessions: { type: [String] },
-  schedules: { type: [scheduleSchema] }, // Add schedules field
+
+
 }, { timestamps: true });
 
 const ConsultantModel = mongoose.model('Consultant', consultantSchema);

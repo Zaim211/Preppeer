@@ -9,18 +9,12 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  content: {
-    type: String,
-    required: true,
-  },
+ 
   hashtags: {
     type: [String],
     default: [],
   },
-  image: {
-    type: String,
-    default: "https://via.placeholder.com/150", // Default image URL
-  }
+
 }, {timestamps: true});
 
 const Blog = mongoose.model("Blog", blogSchema);
