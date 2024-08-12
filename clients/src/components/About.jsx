@@ -47,14 +47,11 @@ const About = () => {
       <div className="w-full max-w-full mb-6">
         <div className="flex-1 p-4 justify-start mt-4">
          
-          <h1 className="text-3xl text-destructive font-bold">
+          <h1 className="text-3xl text-destructive font-bold mx-8">
           Our <span className="underline">Vetted</span>{" "} 
-          <span className=" text-secondary">Insiders:</span>
+          <span className=" text-secondary">Insiders:</span> Educated at <span className=" text-secondary">Leading Universities</span>, Trained in <span className=" text-secondary">Top Summer Programs</span>, Selected for <span className=" text-secondary">Prestigious Internships.</span>
           </h1>
        <div>
-       <p className="mt-2 font-lg text-2xl text-destructive s">
-        Educated at Leading Universities, Trained in Top Summer Programs, Selected for Prestigious Internships.
-        </p>
        </div>
         </div>
         <div className="mt-12 max-w-auto w-full space-y-4 hide-scrollbar">
