@@ -143,24 +143,27 @@ const NavMobile = () => {
       </div>
 
       {/* Left side: 2x4 grid of images */}
-      <div className="w-[30%] flex flex-wrap-col3">
-        {imagePairs.map((pair, index) => (
-          <div
-            key={index}
-            className={`w-1/2 h-1/2 p-1 flip-card ${flippedCards[index] ? "flipped" : ""}`}
-          >
-            <div className="flip-card-inner-mobile">
-              <div
-                className="flip-card-front-mobile"
-                style={{ backgroundImage: `url(${pair[0]})` }}
-              ></div>
-              <div
-                className="flip-card-back-mobile"
-                style={{ backgroundImage: `url(${pair[1]})` }}
-              ></div>
+
+      <div className="w-[100%] mt-2 gap-8 md:w-1/2 items-center justify-center h-max-auto h-full mb-1 md:block">
+        <div className="grid-container-mobile">
+          {imagePairs.map((pair, index) => (
+            <div
+              key={index}
+              className={`flip-card ${flippedCards[index] ? "flipped" : ""}`}
+            >
+              <div className="flip-card-inner">
+                <div
+                  className="flip-card-front"
+                  style={{ backgroundImage: `url(${pair[0]})` }}
+                />
+                <div
+                  className="flip-card-back"
+                  style={{ backgroundImage: `url(${pair[1]})` }}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

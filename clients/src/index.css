@@ -249,13 +249,15 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   perspective: 1000px;
+  padding: 10px;
+  gap: 6px;
 }
 
 .flip-card-mobile {
   width: 100%;
   max-width: 108px; /* Ensure a max-width for larger screens */
   height: auto;
-  aspect-ratio: 206 / 90; /* Maintain the aspect ratio */
+  aspect-ratio: 106 / 90; /* Maintain the aspect ratio */
   perspective: 1000px;
  
   padding-left: 10px;
@@ -271,7 +273,7 @@
   background-color: #f1f1f1;
 }
 
-.flip-card.flipped-mobile .flip-card-inner-mobile {
+.flip-card .flipped .flip-card-inner-mobile {
   transform: rotateY(180deg);
   background-color: #f1f1f1;
 }
