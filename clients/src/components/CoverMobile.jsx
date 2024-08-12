@@ -30,9 +30,10 @@ const CoverMobile = () => {
     >
       <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
       <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center w-full z-10">
-        <h1 className="text-4xl p-4 md:text-6xl font-semibold md:mb-6 text-white">
+        <h1 className="text-4xl p-4 md:text-6xl font-semibold md:mb-2 text-white">
           Why <span className="text-secondary">PrepPeer ?</span>
         </h1>
+        <p className="font-lg p-2 text-white text-lg ">One critical insight can make or break your battle plan.</p>
       </div>
       <div className="relative space-y-2 text-white z-10">
         {questions.map((item, index) => (

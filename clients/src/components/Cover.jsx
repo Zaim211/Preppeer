@@ -26,6 +26,7 @@ const Cover = () => {
             <h1 className="text-5xl font-semibold mb-2">
               Why <span className="text-secondary">PrepPeer ?</span>
             </h1>
+            
             <p className="font-lg text-2xl mt-6">One critical insight can make or break your battle plan.</p>
           </div>
           <div>
