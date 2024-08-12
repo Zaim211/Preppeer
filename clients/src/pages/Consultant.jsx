@@ -67,40 +67,7 @@ function Consultant() {
     return formattedSections;
   };
   
-  // const parseBio = (bio) => {
-  //   // Split sections by double line breaks for separating different titles
-  //   const sections = bio.split("\n\n");
-  
-  //   // Function to format lines based on the presence of "•"
-  //   const formatContent = (content) => {
-  //     return content.map((line, index) => {
-  //       const hasBullet = line.includes("•");
-  //       return hasBullet ? (
-  //         <span key={index} className="text-base">{line}</span>
-  //       ) : (
-  //         <strong key={index}>{line}</strong>
-  //       );
-  //     });
-  //   };
-  
-  //   // Format each section
-  //   const formattedSections = sections.map((section, index) => {
-  //     const [title, ...content] = section.split("\n");
-  
-  //     return (
-  //       <div key={index} className="flex flex-col gap-16">
-  //         <h3 className="text-lg">{title}</h3>
-  //         <p className="text-lg mt-4">
-  //           {formatContent(content).map((line, idx) => (
-  //             <div key={idx}>{line}</div>
-  //           ))}
-  //         </p>
-  //       </div>
-  //     );
-  //   });
-  
-  //   return formattedSections;
-  // };
+ 
   
  
 
@@ -119,10 +86,14 @@ function Consultant() {
           <div className="flex flex-col gap-4 md:gap-8">
             <BookingModal consultantName={consultant.name} consultantId={id} />
             <div>
-            <p className="md:text-lg text-base">University: {consultant.country}</p>
-            <p className="md:text-lg ">Major: {consultant.major}</p>
-              <p className="text-base md:text-lg">Country of Origin: {consultant.universityCountry}</p>
-              <p className="text-base md:text-lg">
+            <p className="text-base">
+  Price: ${consultant.price[0]} / 30mins &nbsp; | &nbsp; ${consultant.price[1]} / 60mins
+</p>
+
+            <p className="text-base">University: {consultant.country}</p>
+            <p className="text-base">Major: {consultant.major}</p>
+              <p className="text-base">Country of Origin: {consultant.universityCountry}</p>
+              <p className="text-base">
                 Languages: {consultant.language.join(", ")}
               </p>
             </div>

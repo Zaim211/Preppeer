@@ -245,31 +245,21 @@ const ConsultantContent = () => {
                     alt={consultant.name}
                     className="w-full h-[300px] object-cover"
                   />
-                  
                 </div>
 
                 <div className="mt-2 ml-20 justify-center flex-1">
                   <div className="flex-1 items-center gap-16">
                     <h2 className="text-2xl font-bold">{consultant.name}</h2>
-                  <p className="text-lg font-bold">
-                      {consultant.country}
-                    </p></div>
-
+                    <p className="text-lg font-bold">{consultant.country}</p>
+                  </div>
 
                   <div className="flex">
-                    <p className="text-lg font-semibold">
-                    {consultant.major}
-                    </p>
-               
-                  
-                    
+                    <p className="text-lg font-semibold">{consultant.major}</p>
                   </div>
-                  
-                  <div className="flex items-center gap-1 mb-4">
-               
 
-                  <p className="font-semibold text-lg">
-                    ${consultant.price[0]} / 30 mins
+                  <div className="flex items-center gap-1 mb-4">
+                    <p className="font-semibold text-lg">
+                      ${consultant.price[0]} / 30 mins
                     </p>
                   </div>
                 </div>
@@ -432,7 +422,6 @@ const ConsultantContent = () => {
           </div>
         </section>
       )}
-    
     </>
   );
 };
