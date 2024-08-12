@@ -53,8 +53,7 @@ const RegisterConsultantPage = () => {
       newErrors.universityCountry = "University Country is required";
     if (!bio) newErrors.bio = "Bio is required";
     if (!category) newErrors.category = "Category is required";
-    if (subcategories.length === 0)
-      newErrors.subcategory = "At least one subcategory is required";
+ 
     if (price <= 0) newErrors.price = "Price must be greater than zero";
 
 
@@ -445,7 +444,7 @@ const RegisterConsultantPage = () => {
                   >
                     <span className="text-white">Price *</span>
                   </label>
-                  <div className="flex gap-12 items-center">
+                  <div className="flex-1 gap-12 items-center">
                     {priceOptions.map((option) => (
                       <div
                         key={option.value}

@@ -25,17 +25,24 @@ const CoverMobile = () => {
 
   return (
     <div 
-      className="relative flex flex-col md:pl-32 md:pb-12 md:pt-12 h-full w-full bg-gray-200 bg-cover bg-center"
-      style={{ backgroundImage: `url(${hero2})` }}
+      className="relative flex flex-col md:pl-32 md:pb-12 md:pt-12  bg-gray-200 bg-cover bg-center"
+      style={{ 
+        backgroundImage: `url(${hero2})`, 
+        height: '90vh', 
+        width: '100vw', 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
       <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center w-full z-10">
-        <h1 className="text-4xl p-4 md:text-6xl font-semibold md:mb-2 text-white">
+        <h1 className="text-4xl mt-6 p-4 md:text-6xl font-semibold md:mb-2 text-white">
           Why <span className="text-secondary">PrepPeer ?</span>
         </h1>
-        <p className="font-lg p-2 text-white text-lg ">One critical insight can make or break your battle plan.</p>
+        <p className="font-lg p-2 text-white text-lg pl-4">One critical insight can make or break your battle plan.</p>
       </div>
-      <div className="relative space-y-4 mb-4 text-white z-10">
+      <div className="relative space-y-4 mb-4 mt-4 text-white z-10">
         {questions.map((item, index) => (
           <div key={index} className="p-4 rounded-lg bg-black/50 bg-opacity-70">
             <div 

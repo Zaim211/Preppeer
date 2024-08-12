@@ -311,7 +311,6 @@ export const uniqueFilters = [
     "Summer Schools",
     "Research / Publications",
     "Public speaking",
-    "Summer Schools",
     "Self-initiated Projects",
     "Sports Admission",
     "Tests",
@@ -320,17 +319,17 @@ export const uniqueFilters = [
   ];
 
   export const subcategoriesMap = {
-    "Essays": ["Essay Writing", "Essay Review"],
+    "Essays": [],
     "Research / Publications": [],
-    "High School Internships": ['college', "in-person", "hybrid"],
+    "High School Internships": [],
     "Self-initiated projects": [],
     "Competitions & Awards": [],
-    "Public speaking": ["debate", "MUN"],
+    "Public speaking": [],
     "Summer Schools": [],
     "University Reality/Fit Check": [],
     "Sports Admission": [],
-    "Tests": ["Language tests", "SAT/ACT", "LSAT", "BMAT"],
-    "Scholarships": ["Merit-based", "CSS profile"],
+    "Tests": ["SAT/ACT", "LSAT", "BMAT"],
+    "Scholarships": [],
     "Volunteering": [],
   };
 
@@ -389,12 +388,14 @@ export const uniqueFilters = [
   ];
 
   export const priceOptions = [
-    { value: 20, label: "$20/15min" },
     { value: 30, label: "$30/30min" },
     { value: 40, label: "$40/30min" },
     { value: 45, label: "$45/30min" },
-    { value: 50, label: "$50/1h" },
-    { value: 40, label: "$40/1h" },
+    { value: 60, label: "$60/60min" },
+    { value: 51, label: "$51/60min" },
+    { value: 80, label: "$80/60min" },
+    { value: 81, label: "$81/60min" },
+    { value: 50, label: "$50/60min" },
 
   ];
   export const UniversityOptions = [
