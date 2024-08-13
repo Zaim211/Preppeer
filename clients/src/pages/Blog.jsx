@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import blogHero from "../assets/images/blogHero.png";
+import bloghero1 from "../assets/images/bloghero1.png";
 import logo from "../assets/logo.png";
 
 const categories = [
@@ -125,7 +125,7 @@ const Blog = () => {
                 Ins<span className="text-secondary">i</span>ghts
               </h2>
             </Link>
-            <div className="flex flex-wrap lg:flex-col gap-2 mt-8">
+            <div className="flex-1 lg:flex-col gap-2 mt-8">
               {categories.map((category) => (
                 <label key={category} className="text-white flex items-center gap-2">
                   <input
@@ -150,8 +150,8 @@ const Blog = () => {
           </div>
 
           {/* Center Section */}
-          <div className="w-full lg:w-[60%]">
-            <div className="flex items-center mb-6 mt-6">
+          <div className="w-full mt-4 lg:w-[80%]">
+            {/* <div className="flex items-center mb-6 mt-6">
               <input
                 type="text"
                 placeholder="Search blogs..."
@@ -159,8 +159,8 @@ const Blog = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="p-2 border border-gray-300 rounded-lg w-full mr-4"
               />
-            </div>
-            <div>
+            </div> */}
+            <div  className="lg:w-[70%]">
               <h2 className="text-2xl text-white font-bold mb-4">Blog Posts</h2>
 
               {showRandomBlog && randomBlog ? (
@@ -171,7 +171,7 @@ const Blog = () => {
                 >
                   <div className="relative w-full">
                     <img
-                      src={blogHero}
+                      src={bloghero1}
                       alt="Blog"
                       className="w-full object-contain rounded-t-lg"
                     />
@@ -204,7 +204,7 @@ const Blog = () => {
                     >
                       <div className="relative w-full">
                         <img
-                          src={blogHero}
+                          src={bloghero1}
                           alt="Blog"
                           className="w-full object-contain rounded-t-lg"
                         />
@@ -232,7 +232,7 @@ const Blog = () => {
           </div>
 
           {/* Right Section */}
-          <div className="w-full lg:w-1/5">
+          {/* <div className="w-full lg:w-1/5">
             <button
               onClick={() => setIsWriting(true)}
               className="bg-blue-500 text-white p-2 rounded-lg mt-6 hover:bg-blue-600 w-full mb-4"
@@ -314,7 +314,7 @@ const Blog = () => {
                 </button>
               </form>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </>

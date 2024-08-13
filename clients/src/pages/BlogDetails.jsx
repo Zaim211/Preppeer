@@ -1,41 +1,30 @@
-import blogHero from "../assets/images/blogHero.png";
+import bloghero1 from "../assets/images/bloghero1.png";
 import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
   return (
     <div className="w-full p-2" style={{ backgroundColor: "#060724" }}>
-      <div className="p-8">
-        <Link to={'/'} className="text-5xl text-white font-bold mb-2">
+      <div className="px-8 py-2">
+        <Link to={'/'} className="text-5xl text-white font-bold">
           Ins<span className="text-secondary">i</span>ghts
         </Link>
       </div>
-      <div className="flex-1 p-6 justify-center">
+      <div className="flex-1 px-8 justify-center w-full">
       <img
-                      src={blogHero}
-                      alt="Blog"
-                      className="md:w-[50%] sm:w-[100%] h-full object-contain rounded-t-lg"
-                    />
+        src={bloghero1}
+        alt="Blog"
+        className="mt-4 object-contain rounded-t-lg"
+      />
         <h1 className="text-white text-3xl font-bold mt-8">
           Navigating Pre-College Summers: A Guide for Parents and Students
         </h1>
+        <h1 className="text-secondary mt-2 font-bold text-2xl">Zebo Furqatzoda</h1>
       </div>
+        
 
-<div className="flex gap-6 p-6">
-       
-       <div className="flex-1">
-     
-         <h1 className="text-secondary font-bold text-2xl">Zebo Furqatzoda</h1>
-         <p className="text-white text-xl">University + 2 liner</p>
-       </div>
-</div>
-
-
-  
-      
-
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex mt-12 justify-center items-center min-h-screen">
         <div className="text-white px-8 max-w-12xl mx-auto">
-        <p className="text-white text-xl  mb-6">June 4, 2024</p>
+
           <p className="text-white text-2xl leading-12">
             {`College summers can be stressful for both parents and high school
             students, particularly since there's no one definitive way to gain
@@ -168,8 +157,8 @@ const BlogDetails = () => {
                       a. Learning and Challenging Myself Academically:
                     </h3>
                     <ul className="list-disc pl-12 space-y-2 text-xl ">
-                      <li>Yale Young Global Scholars</li>
-                      <li>TechGirls & Virginia Tech</li>
+                      <li className="text-secondary">Yale Young Global Scholars</li>
+                      <li className="text-secondary">TechGirls & Virginia Tech</li>
                     </ul>
                   </div>
                   <div>
@@ -177,10 +166,10 @@ const BlogDetails = () => {
                       b. Doing What Gives Me Energy and Having Fun:
                     </h3>
                     <ul className="list-disc pl-12 space-y-2 text-xl ">
-                      <li>Applying to become a TEDxUWCSEAEast Organizer</li>
+                      <li>Applying to become a <span className="text-secondary">TEDxUWCSEAEast</span>  Organizer</li>
                       <li>Launching Writerama</li>
                       <li>
-                        Online class on Coursera on the Science of Well-Being
+                        Online class on <span className="text-secondary">Coursera</span>  on the Science of Well-Being
                       </li>
                     </ul>
                   </div>
