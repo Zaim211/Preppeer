@@ -14,6 +14,8 @@ import img13 from "../assets/images/mentors/img13.png";
 import img14 from "../assets/images/mentors/img14.png";
 import img15 from "../assets/images/mentors/img15.png";
 import img16 from "../assets/images/mentors/img16.jpg";
+import img30 from "../assets/images/mentors/img30.jpg";
+
 
 import alto from '../assets/images/University_Logos/Aalto-University.png'
 import bowdoin from '../assets/images/University_Logos/Bowdoin.png'
@@ -68,7 +70,7 @@ import yygs from '../assets/images/Programs-Logo/YYGS.jpg';
 
 
 export {
-    img1, img2, img3, img4, img5, img6, img7, img8, img9, 
+    img1, img30, img2, img3, img4, img5, img6, img7, img8, img9, 
     img10, img11, img12, img13, img14, img15, img16,
     alto, bowdoin, columbia, dartmouth, cambridge, hongkong,
     nayyang, minerve, nys, nyu, oxford, peking, jhu,

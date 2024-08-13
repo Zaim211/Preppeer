@@ -21,7 +21,7 @@ import {
   img16,
   img11,
   img12,
-  img7,
+  img30,
   pekingUni,
   bowdoin,
   cambridge,
@@ -56,7 +56,7 @@ const Hero = () => {
     [img5, cornel],
     [jhu, img9],
     [img11, cornel],
-    [img7, dartmouth],
+    [img30, dartmouth],
     [img1, alt],
   ];
 
