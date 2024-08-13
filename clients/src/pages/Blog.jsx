@@ -167,7 +167,7 @@ const Blog = () => {
                 <Link
                   to={`/Insights/${randomBlog._id}`}
                   key={randomBlog._id}
-                  className="border border-gray-300 rounded-lg shadow-lg flex flex-col items-start bg-white"
+                  className="border border-gray-300 w-[50%] rounded-lg shadow-lg flex flex-col items-start bg-white"
                 >
                   <div className="relative w-full">
                     <img
@@ -176,7 +176,7 @@ const Blog = () => {
                       className="w-full object-contain rounded-t-lg"
                     />
                   </div>
-                  <div className="p-4">
+                  <div className="p-2">
                     <h3 className="text-xl font-bold mb-2">{randomBlog.fullName}</h3>
                     <h3 className="text-xl font-bold text-black">{randomBlog.title}</h3>
 
@@ -195,12 +195,12 @@ const Blog = () => {
               ) : filteredBlogs.length === 0 ? (
                 <p className="text-gray-500">No blog posts yet.</p>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid gap-4">
                   {filteredBlogs.map((blog) => (
                     <Link
                       to={`/Insights/${blog._id}`}
                       key={blog._id}
-                      className="border border-gray-300 rounded-lg shadow-lg flex flex-col items-start bg-white"
+                      className="border w-[50%] border-gray-300 rounded-lg shadow-lg flex flex-col items-start bg-white"
                     >
                       <div className="relative w-full">
                         <img
