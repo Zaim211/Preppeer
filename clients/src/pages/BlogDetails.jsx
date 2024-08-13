@@ -63,7 +63,7 @@ const BlogDetails = () => {
           <p className="text-white text-2xl leading-12 mt-2">
             Summer holidays offer students a unique opportunity: there are no
             obligatory deadlines or school assignments to complete. This makes
-            summer the perfect time to develop your unique strengths and
+            summer the <span className="font-bold">perfect time to develop your unique strengths</span> and
             showcase what makes you special.
           </p>
 
@@ -76,38 +76,39 @@ const BlogDetails = () => {
             <ul className="list-disc pl-12 space-y-2 text-lg">
               <li className="text-xl ">
                 Got into{" "}
-                <span className="font-semibold text-xl ">
+                <span className=" text-secondary  ">
                   Yale Young Global Scholars
                 </span>
-                : A competitive 2-week program at Yale University for talented
+                : A competitive 2-week program at <span className="text-secondary">Yale University</span> for talented
                 high schoolers worldwide.
               </li>
               <li className="text-xl ">
-                Selected for <span className="font-semibold text-xl ">TechGirls</span>:
+                Selected for <span className="text-secondary">TechGirls</span>: {' '}
                 {`Took a class at Virginia Tech on "How to Tell a Story with
                 Data."`}
               </li>
               <li className="text-xl ">
                 Applied for{" "}
-                <span className="font-semibold text-xl ">
+                <span className="text-secondary ">
                   TEDxUWCSEAEast Organizer License
                 </span>
                 : Aiming to organize TEDx events.
               </li>
               <li className="text-xl ">
-                Launched <span className="font-semibold text-xl ">Writerama</span>: A
+                Launched <span className="text-secondary">Writerama</span>: A
                 social enterprise helping students tell their stories through
                 writing.
               </li>
               <li className="text-xl ">
                 Completed a{" "}
-                <span className="font-semibold">Coursera Class</span>: Took an
-                online class from Yale University on the Science of Well-Being.
+                <span className="text-secondary">Coursera Class</span>: Took an
+                online class from <span className="text-secondary">Yale University</span>  on the Science of Well-Being.
               </li>
               <li className="text-xl ">
                 Accepted into{" "}
-                <span className="font-semibold text-xl ">Lumiere Education</span>:
-                Received mentorship from Harvard alum Stephen Turban.
+                <span className="text-secondary">Lumiere Education</span>:
+                Received mentorship from Harvard alum <span className="text-secondary">
+                Stephen Turban. </span>
               </li>
               <li className="text-xl ">
                 Spent Time in <span className="font-semibold text-xl ">Singapore</span>:
@@ -144,7 +145,7 @@ const BlogDetails = () => {
                 <p className="text-2xl  mb-4 font-semibold mt-12">
                   Here are the values I identified after my reflection:
                 </p>
-                <ul className="list-disc pl-6 space-y-2 text-xl ">
+                <ul className="list-disc pl-12 space-y-2 text-xl ">
                   <li className="text-xl ">Learning and challenging myself academically</li>
                   <li>Doing what gives me energy and having fun</li>
                   <li>
@@ -198,25 +199,26 @@ const BlogDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="space-y-6 mt-6">
+            <div className="space-y-6 mt-12">
           <div>
-            <p className="text-xl font-bold mb-6">
+            <p className="text-2xl font-bold mb-6">
               You might ask, "Zebo, what should I do if I don’t know which
               activities to pick?"
             </p>
-            <p className="text-base mt-6 mb-4">
+            <p className="text-lg mt-6 mb-4">
               It's okay if you don't know which activities to pick at first. I
-              didn't either. I used my internal compass to choose activities: I
-              leaned into my strengths.
+              didn't either. I used my internal compass to choose activities:
+              {' '} <span className="font-bold">I leaned into my strengths.</span>
             </p>
-            <p className="text-base mt-6 mb-4">
-              Instead of trying to be a well-rounded student, I focused on what
-              energized me and what I was passionate about.
+            <p className="text-lg mt-6 mb-4">
+              Instead of trying to be a well-rounded student,<span className="font-bold">
+              {' '}I focused on what
+              energized me</span>  and what I was passionate about.
             </p>
-            <p className="text-lg font-bold mb-2">
+            <p className="text-2xl font-bold mt-8 mb-2">
               Ask yourself these questions:
             </p>
-            <ul className="list-disc pl-8">
+            <ul className="list-disc text-xl pl-8">
               <li>What gives me energy?</li>
               <li>What helps me lose track of time?</li>
               <li>What motivates me to jump out of bed in the morning?</li>
@@ -231,14 +233,13 @@ const BlogDetails = () => {
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold mb-2">The Challenge that I Faced</h3>
+            <h3 className="text-2xl font-bold mt-10 mb-2">The Challenge that I Faced</h3>
             <p className="text-lg">
               Before doing the activities on my list, seeing the common thread
               among my different activities. I spent a lot of time thinking
               about my unique "spike." Looking back, I learned that <span className="font-bold">
-              it's hard to
-              identify a common thread without experiencing the activities
-              first.
+              <span className="font-bold">it's hard to identify a common thread without experiencing the activities
+              first.</span>
               </span>
             </p>
             <p className="text-lg mt-4">
@@ -249,18 +250,18 @@ const BlogDetails = () => {
           </div>
 
           <div>
-            <h3 className="text-2xl font-semibold mb-2">
+            <h3 className="text-2xl mt-10 font-semibold mb-2">
               Connect the Dots & Summer Experiences
             </h3>
             <div className="p-4 gap-4">
             <p className="text-lg mb-4">
-              <strong>1.</strong> I love storytelling, which is why I applied
+              <strong>1.</strong> I <span className="font-bold">love storytelling</span>, which is why I applied
               to be a TEDx Organizer and founded Writerama, where we helped
               students develop their writing and storytelling skills.
             </p>
 
             <p className="text-lg mb-4">
-              <strong>2.</strong> I enjoy challenging myself in areas where I
+              <strong>2.</strong> I enjoy <span className="font-bold"></span> challenging myself in areas where I
               believe learning a new skill can enhance the meaning of what I
               love doing, such as storytelling. The course I took at Virginia
               Tech University on storytelling with data showed me that to deepen
@@ -269,26 +270,27 @@ const BlogDetails = () => {
             </p>
 
             <p className="text-lg">
-              <strong>3.</strong> Having fun and building relationships are
+              <strong>3.</strong> <span className="font-bold">Having fun and building relationships</span> are
               important to me. That’s why I spent time with friends and host
               families while exploring Singapore. I realized the crucial role
               that having fun plays while pursuing other academic and
               professional goals. I noticed that I tend to learn more about
               myself, my thoughts, and my actions when interacting with others.
               Engaging in group activities helped me be fully present. Later on,
-              I could ask friends and family more questions about my strengths
-              and what sets me apart. This reflection also helped me decide
+              <span className="font-bold"> I could ask friends and family more questions about my strengths
+              and what sets me apart.</span> This reflection also helped me decide
               which stories to share with the admissions officer.
             </p>
             </div>
-            <p className="text-xl mb-4 font-bold mt-4">
+            <p className="text-2xl mb-4 font-bold mt-8">
               Remember, stories and learning can come from various sources, also
               from ordinary activities in life.
             </p>
             <p className="text-lg mb-4">
               Amazing stories don't only come from academic settings, summer
-              camps, and classes. They can also stem from ordinary activities in
-              your life, such as cooking with your mom, helping your sibling, or,
+              camps, and classes. They can also stem from <span className="font-bold">
+              ordinary activities in
+              your life,</span> such as cooking with your mom, helping your sibling, or,
               in my case, cycling.
             </p>
             <p className="text-lg">
@@ -303,16 +305,17 @@ const BlogDetails = () => {
           <div>
             <h3 className="text-2xl font-semibold mb-2 mt-4">Call to Action</h3>
             <p className="text-lg mt-4 mb-4">
-              My call to action for you is to get out there and experience, as
+              My call to action for you is <span className="font-bold">
+              to get out there and experience</span>, as
               you never know which stories would be a good addition to build
               your narrative.
             </p>
             <p className="text-lg">
-              It is important to lean into your strengths, experience activities
-              where you find passion, and, most importantly, reflect on them
-              deeply so that you develop unique insights about yourself and/or
+              It is important to <span className="font-bold">lean into your strengths</span>, experience activities
+              where you find passion, and, most importantly, <span className="font-bold">
+              reflect on them deeply so that you develop unique insights</span> about yourself and/or
               the way you see the world. After all, two people can experience
-              the same thing but have very different insights. It is those
+              the same thing but have very <span className="font-bold">different insights.</span>  It is those
               insights and perspectives that you develop through experiences
               that set you apart.
             </p>
