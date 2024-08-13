@@ -13,7 +13,7 @@ const BlogDetails = () => {
       <img
                       src={blogHero}
                       alt="Blog"
-                      className="w-full h-full object-cover rounded-t-lg"
+                      className="w-[50%] h-full object-contain rounded-t-lg"
                     />
         <h1 className="text-white text-3xl font-bold mt-8">
           Navigating Pre-College Summers: A Guide for Parents and Students

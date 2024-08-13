@@ -73,15 +73,37 @@ const Blog = () => {
     );
   };
 
+  // const filteredBlogs = blogs.filter((blog) => {
+  //   const matchesSearchTerm = blog.title.toLowerCase().includes(searchTerm.toLowerCase());
+  //   const matchesFilters = selectedFilters.length > 0
+  //     ? selectedFilters.every((filter) => blog.hashtags.some((tag) => tag.toLowerCase().includes(filter.toLowerCase())))
+  //     : true;
+
+  //   return matchesSearchTerm && matchesFilters;
+  // });
+
+  const normalizeString = (str) => {
+    return str.toLowerCase().replace(/[\s/#-]/g, ""); // Normalize by removing spaces, slashes, and converting to lowercase
+  };
+
   const filteredBlogs = blogs.filter((blog) => {
     const matchesSearchTerm = blog.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilters = selectedFilters.length > 0
-      ? selectedFilters.every((filter) => blog.hashtags.some((tag) => tag.toLowerCase().includes(filter.toLowerCase())))
-      : true;
+
+    const blogHashtags = blog.hashtags[0]
+      .split(" ")
+      .map((tag) => normalizeString(tag));
+
+    const matchesFilters =
+      selectedFilters.length > 0
+        ? selectedFilters.every((filter) => 
+            blogHashtags.some((tag) => 
+              normalizeString(tag).startsWith(normalizeString(filter)[0]) // Check if the first letter of the hashtag matches the first letter of the filter category
+            )
+          )
+        : true;
 
     return matchesSearchTerm && matchesFilters;
   });
-
   const fetchRandomBlog = async () => {
     try {
       const response = await axios.get("/api/blog/random");
