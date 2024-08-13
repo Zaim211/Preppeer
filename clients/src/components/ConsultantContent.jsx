@@ -269,40 +269,73 @@ const ConsultantContent = () => {
         </div>
 
         <div className="bg-gray-200 w-full mb-16">
-          <div className="flex flex-wrap  mt-2 overflow-x-auto pl-12 pb-4">
+          <div className="flex flex-wrap gap-6 mt-2 overflow-x-auto pl-12 pb-4">
             {paginatedConsultants.map((consultant) => (
+              // <Link
+              //   key={consultant._id}
+              //   to={`/consultant/${consultant._id}?name=${encodeURIComponent(
+              //     consultant.name
+              //   )}&category=${encodeURIComponent(consultant.major.join(","))}`}
+              //   className="w-[23%] relative px-4 py-2 overflow-hidden"
+              // >
+              //   <div className="flex items-center justify-between mt-4">
+              //     <img
+              //       src={consultant.profilePicture}
+              //       alt={consultant.name}
+              //       className="w-full h-[300px] object-cover"
+              //     />
+              //   </div>
+
+              //   <div className="mt-2  justify-center flex-1">
+              //     <div className="flex-1 items-center gap-16">
+              //       <h2 className="text-2xl font-bold">{consultant.name}</h2>
+              //       <p className="text-lg font-bold">{consultant.country}</p>
+              //     </div>
+
+              //     <div className="flex">
+              //       <p className="text-lg font-semibold">{consultant.major}</p>
+              //     </div>
+
+              //     <div className="flex items-center gap-1 mb-4">
+              //       <p className="font-semibold text-lg">
+              //         ${consultant.price[0]} / 30 mins
+              //       </p>
+              //     </div>
+              //   </div>
+              // </Link>
               <Link
-                key={consultant._id}
-                to={`/consultant/${consultant._id}?name=${encodeURIComponent(
-                  consultant.name
-                )}&category=${encodeURIComponent(consultant.major.join(","))}`}
-                className="w-[23%] relative px-4 py-2 overflow-hidden"
-              >
-                <div className="flex  items-center justify-between mt-4">
-                  <img
-                    src={consultant.profilePicture}
-                    alt={consultant.name}
-                    className="w-full h-[300px] object-cover"
-                  />
-                </div>
+  key={consultant._id}
+  to={`/consultant/${consultant._id}?name=${encodeURIComponent(
+    consultant.name
+  )}&category=${encodeURIComponent(consultant.major.join(","))}`}
+  className="w-[23%] relative p-2 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden group"
+>
+  <div className="relative overflow-hidden rounded-lg">
+    <img
+      src={consultant.profilePicture}
+      alt={consultant.name}
+      className="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-300"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
+  </div>
 
-                <div className="mt-2 ml-20 justify-center flex-1">
-                  <div className="flex-1 items-center gap-16">
-                    <h2 className="text-2xl font-bold">{consultant.name}</h2>
-                    <p className="text-lg font-bold">{consultant.country}</p>
-                  </div>
+  <div className="mt-4 text-center">
+    <h2 className="text-2xl font-bold text-gray-800">{consultant.name}</h2>
+    <p className="text-lg font-semibold text-gray-500">{consultant.country}</p>
+    <p className="text-lg font-medium text-gray-700 mt-2">{consultant.major.join(", ")}</p>
+  </div>
 
-                  <div className="flex">
-                    <p className="text-lg font-semibold">{consultant.major}</p>
-                  </div>
+  <div className="mt-4 flex justify-center">
+    <div className="bg-gradient-to-r from-blue-500 to-teal-500 text-white py-2 px-4 rounded-full font-semibold text-lg">
+      ${consultant.price[0]} / 30 mins
+    </div>
+  </div>
 
-                  <div className="flex items-center gap-1 mb-4">
-                    <p className="font-semibold text-lg">
-                      ${consultant.price[0]} / 30 mins
-                    </p>
-                  </div>
-                </div>
-              </Link>
+  <div className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md">
+    <span className="text-gray-700 font-bold text-lg">{consultant.rating} ★</span>
+  </div>
+</Link>
+
             ))}
           </div>
         </div>

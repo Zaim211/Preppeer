@@ -39,13 +39,10 @@ const AboutMobile = () => {
       <div className="text-center">
         
         <div className="flex-1 justify-start mt-4">
-          <h1 className="text-xl text-destructive font-bold">
-          Our <span className="underline">Vetted</span>{" "} 
-          <span className=" text-secondary">Insiders:</span>
-          </h1>
+        
        <div>
-       <p className="mt-2 font-lg text-md text-destructive s">
-        Educated at Leading Universities, Trained in Top Summer Programs, Selected for Prestigious Internships.
+       <p className="mt-2 font-semibold text-lg text-destructive s">
+       Our Insiders come from Top universities, Elite programs, and Prestigious Internships
         </p>
        </div>
         </div>
