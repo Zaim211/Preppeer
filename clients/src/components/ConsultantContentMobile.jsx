@@ -380,7 +380,7 @@ const ConsultantContentMobile = () => {
           </div>
         </section>
       )}
-      <div className="bg-gray-200 justify-center flex">
+      {/* <div className="bg-gray-200 justify-center flex">
         <section className="flex flex-col md:flex-row justify-center border p-8 w-[70%] rounded-lg bg-gray-300  mb-12 gap-16 md:gap-24">
           <div className="flex flex-col gap-4">
             <h2 className="text-lg md:text-xl font-bold">
@@ -401,7 +401,7 @@ const ConsultantContentMobile = () => {
             <Input placeholder="Address Email*" className="rounded-xl" />
           </div>
         </section>
-      </div>
+      </div> */}
     </>
   );
 };
