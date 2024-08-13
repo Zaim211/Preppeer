@@ -60,6 +60,7 @@ function BookingModal({consultantName,consultantId}) {
             const isFormValidated = validateForm()
             if(!isFormValidated) return
             const response = await axios.post('/api/bookMeeting', formData)
+            console.log("response", response)
             if(response.status === 201){
                 navigate('/booking-confirmed')
                 setIsOpen(false)

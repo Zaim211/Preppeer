@@ -47,7 +47,7 @@ function App() {
     
     <Route path="/insider/:id" element={<VideoCallPage />} />
     <Route path="/be-an-insider" element={<MemberPage />} />
-    <Route path="/blog" element={<Blog />} />
+    <Route path="/insights" element={<Blog />} />
     <Route path='/insider/payment/:id' element={<Payment />} />
     <Route path='/consultant/:id' element={<Consultant/>} />
 
