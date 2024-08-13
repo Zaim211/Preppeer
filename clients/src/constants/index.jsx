@@ -389,19 +389,20 @@ export const uniqueFilters = [
 
   export const priceOptions = [
     { value: 30, label: "$30/30min" },
-    { value: 25, label: "$é(/30min" },
+    { value: 25, label: "$25/30min" },
 
     { value: 35, label: "$35/30min" },
     { value: 40, label: "$40/30min" },
     { value: 40, label: "$40/60min" },
 
     { value: 45, label: "$45/30min" },
-    { value: 45, label: "$45/60min" },
+    
     { value: 60, label: "$60/60min" },
     { value: 51, label: "$51/60min" },
     { value: 80, label: "$80/60min" },
     { value: 81, label: "$81/60min" },
     { value: 50, label: "$50/60min" },
+
 
   ];
   export const UniversityOptions = [
@@ -445,7 +446,7 @@ export const languages = [
   "Lithuanian", "Latvian", "Estonian", "Maltese", "Icelandic", "Albanian",
   "Serbian", "Macedonian", "Montenegrin", "Bosnian", "Kurdish", "Georgian",
   "Armenian", "Azerbaijani", "Kazakh", "Turkmen", "Uzbek", "Tajik", "Kyrgyz",
-  "Tatar", "Bashkir", "Mongolian", "Chinese"
+  "Tatar", "Bashkir", "Mongolian", "Chinese", "Persian"
  
 ];
 
