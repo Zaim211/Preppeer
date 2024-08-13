@@ -263,7 +263,7 @@ const ConsultantContentMobile = () => {
                       <img
                         src={consultant.profilePicture}
                         alt={consultant.name}
-                        className="w-48 ml-2 h-[300px] object-cover"
+                        className="w-48 ml-2 h-[200px] object-cover"
                       />
                      
                     <div className="p-1 justify-center flex-1 ml-14">
