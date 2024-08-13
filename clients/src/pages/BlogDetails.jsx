@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
   return (
-    <div className="w-full p-12" style={{ backgroundColor: "#060724" }}>
+    <div className="w-full p-2" style={{ backgroundColor: "#060724" }}>
       <div className="p-8">
         <Link to={'/'} className="text-5xl text-white font-bold mb-2">
           Ins<span className="text-secondary">i</span>ghts
@@ -13,7 +13,7 @@ const BlogDetails = () => {
       <img
                       src={blogHero}
                       alt="Blog"
-                      className="w-[50%] h-full object-contain rounded-t-lg"
+                      className="md:w-[50%] sm:w-[100%] h-full object-contain rounded-t-lg"
                     />
         <h1 className="text-white text-3xl font-bold mt-8">
           Navigating Pre-College Summers: A Guide for Parents and Students
@@ -34,7 +34,7 @@ const BlogDetails = () => {
       
 
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-white p-12 max-w-12xl mx-auto">
+        <div className="text-white px-8 max-w-12xl mx-auto">
         <p className="text-white text-xl  mb-6">June 4, 2024</p>
           <p className="text-white text-2xl leading-12">
             {`College summers can be stressful for both parents and high school
@@ -198,7 +198,129 @@ const BlogDetails = () => {
                 </div>
               </div>
             </div>
+            <div className="space-y-6 mt-6">
+          <div>
+            <p className="text-xl font-bold mb-6">
+              You might ask, "Zebo, what should I do if I don’t know which
+              activities to pick?"
+            </p>
+            <p className="text-base mt-6 mb-4">
+              It's okay if you don't know which activities to pick at first. I
+              didn't either. I used my internal compass to choose activities: I
+              leaned into my strengths.
+            </p>
+            <p className="text-base mt-6 mb-4">
+              Instead of trying to be a well-rounded student, I focused on what
+              energized me and what I was passionate about.
+            </p>
+            <p className="text-lg font-bold mb-2">
+              Ask yourself these questions:
+            </p>
+            <ul className="list-disc pl-8">
+              <li>What gives me energy?</li>
+              <li>What helps me lose track of time?</li>
+              <li>What motivates me to jump out of bed in the morning?</li>
+              <li>What can I talk about for hours?</li>
+              <li>When do my eyes shine?</li>
+              <li>What do I do in my free time?</li>
+              <li>
+                What kind of movies/activities do I like, and what do they hint
+                about my interests?
+              </li>
+            </ul>
           </div>
+
+          <div>
+            <h3 className="text-2xl font-bold mb-2">The Challenge that I Faced</h3>
+            <p className="text-lg">
+              Before doing the activities on my list, seeing the common thread
+              among my different activities. I spent a lot of time thinking
+              about my unique "spike." Looking back, I learned that <span className="font-bold">
+              it's hard to
+              identify a common thread without experiencing the activities
+              first.
+              </span>
+            </p>
+            <p className="text-lg mt-4">
+              I suggest answering the questions above and jumping headfirst into
+              your chosen activities. Afterward, reflect on your experiences.
+              You'll be able to connect the dots and see the patterns.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-semibold mb-2">
+              Connect the Dots & Summer Experiences
+            </h3>
+            <div className="p-4 gap-4">
+            <p className="text-lg mb-4">
+              <strong>1.</strong> I love storytelling, which is why I applied
+              to be a TEDx Organizer and founded Writerama, where we helped
+              students develop their writing and storytelling skills.
+            </p>
+
+            <p className="text-lg mb-4">
+              <strong>2.</strong> I enjoy challenging myself in areas where I
+              believe learning a new skill can enhance the meaning of what I
+              love doing, such as storytelling. The course I took at Virginia
+              Tech University on storytelling with data showed me that to deepen
+              my passion for storytelling, I’m willing to step out of my comfort
+              zone and learn about data.
+            </p>
+
+            <p className="text-lg">
+              <strong>3.</strong> Having fun and building relationships are
+              important to me. That’s why I spent time with friends and host
+              families while exploring Singapore. I realized the crucial role
+              that having fun plays while pursuing other academic and
+              professional goals. I noticed that I tend to learn more about
+              myself, my thoughts, and my actions when interacting with others.
+              Engaging in group activities helped me be fully present. Later on,
+              I could ask friends and family more questions about my strengths
+              and what sets me apart. This reflection also helped me decide
+              which stories to share with the admissions officer.
+            </p>
+            </div>
+            <p className="text-xl mb-4 font-bold mt-4">
+              Remember, stories and learning can come from various sources, also
+              from ordinary activities in life.
+            </p>
+            <p className="text-lg mb-4">
+              Amazing stories don't only come from academic settings, summer
+              camps, and classes. They can also stem from ordinary activities in
+              your life, such as cooking with your mom, helping your sibling, or,
+              in my case, cycling.
+            </p>
+            <p className="text-lg">
+              For example, when I was writing my CommonApp personal statement
+              for <span className="text-secondary">New York University Abu Dhabi</span>, I shared the example of trying
+              to learn cycling, falling many times, and reflecting on what it
+              meant to me about having a sense of fun while pursuing challenges
+              and my perspective on failure.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-semibold mb-2 mt-4">Call to Action</h3>
+            <p className="text-lg mt-4 mb-4">
+              My call to action for you is to get out there and experience, as
+              you never know which stories would be a good addition to build
+              your narrative.
+            </p>
+            <p className="text-lg">
+              It is important to lean into your strengths, experience activities
+              where you find passion, and, most importantly, reflect on them
+              deeply so that you develop unique insights about yourself and/or
+              the way you see the world. After all, two people can experience
+              the same thing but have very different insights. It is those
+              insights and perspectives that you develop through experiences
+              that set you apart.
+            </p>
+          </div>
+
+        </div>
+          </div>
+          
         </div>
       </div>
     </div>

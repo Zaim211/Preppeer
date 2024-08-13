@@ -58,6 +58,7 @@ const ConsultantContent = () => {
     }
     setFilteredConsultants(filtered);
   }, [selectedFilter, selectedSubcategories, consultants]);
+  
 
   useEffect(() => {
     if (selectedFilter && mentorsSectionRef.current) {
@@ -100,10 +101,48 @@ const ConsultantContent = () => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+ 
 
   const handleApplyFilters = () => {
+    let filtered = consultants;
+
+    if (selectedFilter) {
+      filtered = filtered.filter((consultant) =>
+        consultant.category.includes(selectedFilter)
+      );
+    }
+    if (selectedSubcategories.length > 0) {
+      filtered = filtered.filter((consultant) =>
+        selectedSubcategories.every((subcat) =>
+          consultant.subcategories.includes(subcat)
+        )
+      );
+    }
+    if (selectedLanguage) {
+      filtered = filtered.filter((consultant) =>
+        consultant.language.includes(selectedLanguage)
+      );
+    }
+    if (selectedRegions) {
+      filtered = filtered.filter(
+        (consultant) => consultant.universityRegion === selectedRegions
+      );
+    }
+    if (selectedCountries) {
+      filtered = filtered.filter(
+        (consultant) => consultant.country === selectedCountries
+      );
+    }
+    if (selectedMajors.length > 0) {
+      filtered = filtered.filter((consultant) =>
+        selectedMajors.some((major) => consultant.major.includes(major))
+      );
+    }
+
+    setFilteredConsultants(filtered);
     setIsModalOpen(false);
   };
+  
 
   const handleRegionChange = (region) => {
     setSelectedRegions(region.target.value);
@@ -297,7 +336,7 @@ const ConsultantContent = () => {
             >
               &times;
             </button>
-            {/* <h2 className="text-2xl font-semibold">Filters</h2> */}
+  
             <div className="flex-cols gap-6">
               <div className="">
                 <h3 className="font-semibold text-xl underline">
@@ -321,7 +360,7 @@ const ConsultantContent = () => {
 
               <div className="mt-4">
                 <h3 className="font-semibold text-xl underline">
-                  Location of University
+                  Name of University
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
                   <select
@@ -329,7 +368,7 @@ const ConsultantContent = () => {
                     onChange={handleRegionChange}
                     className="border border-gray-300 p-2 w-full rounded-sm"
                   >
-                    <option value="">Select Region</option>
+                    <option value="">Select your university</option>
                     {countries.map((reg) => (
                       <option key={reg} value={reg}>
                         {reg}
@@ -387,28 +426,6 @@ const ConsultantContent = () => {
               </div>
             </div>
 
-            {selectedFilterObj && (
-              <div className="mb-4">
-                <h3 className="font-semibold text-lg underline">
-                  Subcategories
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {selectedFilterObj.subcategories.map((subcategory) => (
-                    <label
-                      key={subcategory}
-                      className="flex items-center gap-2 cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedSubcategories.includes(subcategory)}
-                        onChange={() => handleSubcategoryClick(subcategory)}
-                      />
-                      {subcategory}
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )}
 
             <div className="flex justify-center mt-4 gap-4">
               <button

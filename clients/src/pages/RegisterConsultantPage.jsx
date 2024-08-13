@@ -258,7 +258,7 @@ const RegisterConsultantPage = () => {
                     htmlFor="country"
                     className="block text-lg font-semibold mb-1"
                   >
-                    <span className="text-white">Location of University *</span>
+                    <span className="text-white">Name of University *</span>
                   </label>
                   <input
                     type="text"

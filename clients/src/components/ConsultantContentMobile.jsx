@@ -99,6 +99,42 @@ const ConsultantContentMobile = () => {
   };
 
   const handleApplyFilters = () => {
+    let filtered = consultants;
+
+    if (selectedFilter) {
+      filtered = filtered.filter((consultant) =>
+        consultant.category.includes(selectedFilter)
+      );
+    }
+    if (selectedSubcategories.length > 0) {
+      filtered = filtered.filter((consultant) =>
+        selectedSubcategories.every((subcat) =>
+          consultant.subcategories.includes(subcat)
+        )
+      );
+    }
+    if (selectedLanguage) {
+      filtered = filtered.filter((consultant) =>
+        consultant.language.includes(selectedLanguage)
+      );
+    }
+    if (selectedRegions) {
+      filtered = filtered.filter(
+        (consultant) => consultant.universityRegion === selectedRegions
+      );
+    }
+    if (selectedCountries) {
+      filtered = filtered.filter(
+        (consultant) => consultant.country === selectedCountries
+      );
+    }
+    if (selectedMajors.length > 0) {
+      filtered = filtered.filter((consultant) =>
+        selectedMajors.some((major) => consultant.major.includes(major))
+      );
+    }
+
+    setFilteredConsultants(filtered);
     setIsModalOpen(false);
   };
 
@@ -298,7 +334,7 @@ const ConsultantContentMobile = () => {
 
               <div className="mb-6">
                 <h3 className="font-semibold lg:text-2xl underline">
-                  Location of University
+                  Name of University
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
                   <select
@@ -306,7 +342,7 @@ const ConsultantContentMobile = () => {
                     onChange={handleRegionChange}
                     className="border border-gray-300 p-2 w-full rounded-lg"
                   >
-                    <option value="">Select Region</option>
+                    <option value="">Select your university</option>
                     {countries.map((reg) => (
                       <option key={reg} value={reg}>
                         {reg}
@@ -380,28 +416,7 @@ const ConsultantContentMobile = () => {
           </div>
         </section>
       )}
-      {/* <div className="bg-gray-200 justify-center flex">
-        <section className="flex flex-col md:flex-row justify-center border p-8 w-[70%] rounded-lg bg-gray-300  mb-12 gap-16 md:gap-24">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-lg md:text-xl font-bold">
-              Refer us and gain access to{" "}
-              <span className="text-secondary">exclusive discounts</span>.
-            </h2>
-            <div className="flex flex-col md:flex-row gap-4">
-              <Input placeholder="First Name*" className="rounded-xl" />
-              <Input placeholder="Last Name*" className="rounded-xl" />
-            </div>
-            <Input placeholder="Address Email*" className="rounded-xl" />
-          </div>
-          <div className="flex flex-col gap-4">
-            <h2 className="font-bold md:text-lg">
-              Would you like to refer <strong className="text-secondary">PrepPeer</strong> to someone?
-            </h2>
-            <Input placeholder="Their Name*" className="rounded-xl" />
-            <Input placeholder="Address Email*" className="rounded-xl" />
-          </div>
-        </section>
-      </div> */}
+      
     </>
   );
 };
