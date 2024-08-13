@@ -247,7 +247,7 @@ const ConsultantContent = () => {
         </div>
         <div className="flex justify-end mb-2">
           <button
-            className="text-black justify-end p-3 border-black items-end flex gap-2 lg:p-4 font-semibold rounded-lg border mr-20"
+            className="text-black justify-end p-3 border-black items-end flex gap-2 lg:p-4 font-semibold rounded-lg border mr-6"
             onClick={toggleModal}
           >
             Filter
@@ -271,38 +271,7 @@ const ConsultantContent = () => {
         <div className="bg-gray-200 w-full mb-16">
           <div className="flex flex-wrap gap-6 mt-2 overflow-x-auto pl-12 pb-4">
             {paginatedConsultants.map((consultant) => (
-              // <Link
-              //   key={consultant._id}
-              //   to={`/consultant/${consultant._id}?name=${encodeURIComponent(
-              //     consultant.name
-              //   )}&category=${encodeURIComponent(consultant.major.join(","))}`}
-              //   className="w-[23%] relative px-4 py-2 overflow-hidden"
-              // >
-              //   <div className="flex items-center justify-between mt-4">
-              //     <img
-              //       src={consultant.profilePicture}
-              //       alt={consultant.name}
-              //       className="w-full h-[300px] object-cover"
-              //     />
-              //   </div>
-
-              //   <div className="mt-2  justify-center flex-1">
-              //     <div className="flex-1 items-center gap-16">
-              //       <h2 className="text-2xl font-bold">{consultant.name}</h2>
-              //       <p className="text-lg font-bold">{consultant.country}</p>
-              //     </div>
-
-              //     <div className="flex">
-              //       <p className="text-lg font-semibold">{consultant.major}</p>
-              //     </div>
-
-              //     <div className="flex items-center gap-1 mb-4">
-              //       <p className="font-semibold text-lg">
-              //         ${consultant.price[0]} / 30 mins
-              //       </p>
-              //     </div>
-              //   </div>
-              // </Link>
+             
               <Link
   key={consultant._id}
   to={`/consultant/${consultant._id}?name=${encodeURIComponent(
