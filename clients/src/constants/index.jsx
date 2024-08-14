@@ -315,7 +315,8 @@ export const uniqueFilters = [
     "Sports Admission",
     "Tests",
     "Volunteering",
-    "Competitions & Awards"
+    "Competitions & Awards",
+    
   ];
 
   export const subcategoriesMap = {
@@ -368,7 +369,8 @@ export const uniqueFilters = [
     "STEM",
     "Social Sciences",
     "Humanities",
-    "Electrical and Information Engineering"
+    "Electrical and Information Engineering",
+    "Music & Arts",
   ];
 
   export const titles = [

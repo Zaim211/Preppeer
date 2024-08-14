@@ -32,6 +32,7 @@ import {
   alt,
   oxfordUni,
   nus,
+  img30,
   
 } from "../assets/index.js";
 
@@ -53,7 +54,7 @@ const NavMobile = () => {
     [img5, cornel],
     [jhu, img9],
     [img11, cornel],
-    [img7, dartmouth],
+    [img30, dartmouth],
     [img1, alt],
   ];
 
