@@ -394,8 +394,8 @@ export const uniqueFilters = [
     { value: 25, label: "$25/30min" },
 
     { value: 35, label: "$35/30min" },
-    { value: 40, label: "$40/30min" },
-    { value: 40, label: "$40/60min" },
+
+  
 
     { value: 45, label: "$45/30min" },
     
@@ -404,6 +404,7 @@ export const uniqueFilters = [
     { value: 80, label: "$80/60min" },
     { value: 81, label: "$81/60min" },
     { value: 50, label: "$50/60min" },
+    { value: 40, label: "$40/60min" },
 
 
   ];
