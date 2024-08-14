@@ -16,7 +16,7 @@ const ConsultantContentMobile = () => {
   const [selectedFilter, setSelectedFilter] = useState("");
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [selectedFilterObj, setSelectedFilterObj] = useState(null);
-  const [visibleConsultants, setVisibleConsultants] = useState(8);
+  const [visibleConsultants, setVisibleConsultants] = useState(42);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRegions, setSelectedRegions] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState("");
