@@ -290,12 +290,12 @@ const ConsultantContent = () => {
 
   <div className="mt-4 text-center">
     <h2 className="text-2xl font-bold text-gray-800">{consultant.name}</h2>
-    <p className="text-lg font-semibold text-gray-500">{consultant.country}</p>
-    <p className="text-lg font-medium text-gray-700 mt-2">{consultant.major.join(", ")}</p>
+    <p className="text-lg font-semibold text-black">{consultant.country}</p>
+    <p className="text-lg font-medium text-black mt-2">{consultant.major.join(", ")}</p>
   </div>
 
   <div className="mt-4 flex justify-center">
-    <div className="bg-gradient-to-r from-blue-500 to-teal-500 text-white py-2 px-4 rounded-full font-semibold text-lg">
+    <div className="bg-gradient-to-r bg-primary text-white py-2 px-4 rounded-full font-semibold text-md">
       ${consultant.price[0]} / 30 mins
     </div>
   </div>
