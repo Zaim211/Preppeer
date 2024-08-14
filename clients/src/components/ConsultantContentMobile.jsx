@@ -210,9 +210,9 @@ const ConsultantContentMobile = () => {
                       onClick={() => handleSubcategoryClick(subcat.value)}
                     >
                       <div className="w-18 md:w-52 px-2 h-6 flex items-center justify-center">
-                       <span className="text-center font-semibold text-sm md:text-base">
-                      {subcat.name}
-                       </span>
+                        <span className="text-center font-semibold text-sm md:text-base">
+                          {subcat.name}
+                        </span>
                       </div>
                     </div>
                   ))}
@@ -297,39 +297,46 @@ const ConsultantContentMobile = () => {
           </div>
         </div> */}
         <div className="bg-gray-200 w-full mb-16">
-  <div className="flex mt-6  overflow-x-auto space-x-6 pb-4">
-    <div className="flex flex-nowrap space-x-6">
-      {filteredConsultants
-        .slice(0, visibleConsultants)
-        .map((consultant) => (
-          <Link
-            to={`/consultant/${
-              consultant._id
-            }?name=${encodeURIComponent(consultant.name)}&category=${encodeURIComponent(
-              consultant.major.join(",")
-            )}`}
-            key={consultant._id}
-            className="w-48 flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden"
-          >
-            <img
-              src={consultant.profilePicture}
-              alt={consultant.name}
-              className="w-full h-[200px] object-cover"
-            />
-            <div className="p-4 w-full">
-              <h2 className="text-lg font-bold text-gray-800">{consultant.name}</h2>
-              <p className="text-sm text-gray-500">{consultant.country}</p>
-              <p className="text-sm font-medium text-gray-700 mt-1 ">{consultant.major.join(", ")}</p>
-              <button className="mt-2 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg w-full text-center">
-              ${consultant.price[0]} / 30 mins
-            </button>
+          <div className="flex mt-6  overflow-x-auto space-x-6 pb-4">
+            <div className="flex flex-nowrap space-x-6">
+              {filteredConsultants
+                .slice(0, visibleConsultants)
+                .map((consultant) => (
+                  <Link
+                    to={`/consultant/${
+                      consultant._id
+                    }?name=${encodeURIComponent(
+                      consultant.name
+                    )}&category=${encodeURIComponent(
+                      consultant.major.join(",")
+                    )}`}
+                    key={consultant._id}
+                    className="w-48 flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden"
+                  >
+                    <img
+                      src={consultant.profilePicture}
+                      alt={consultant.name}
+                      className="w-full h-[200px] object-cover"
+                    />
+                    <div className="p-4 w-full">
+                      <h2 className="text-lg font-bold text-gray-800">
+                        {consultant.name}
+                      </h2>
+                      <p className="text-sm font-bold text-black">
+                        {consultant.country}
+                      </p>
+                      <p className="text-sm font-bold text-black mt-1 ">
+                        {consultant.major.join(", ")}
+                      </p>
+                      <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
+                        ${consultant.price[0]} / 30 mins
+                      </button>
+                    </div>
+                  </Link>
+                ))}
             </div>
-          </Link>
-        ))}
-    </div>
-  </div>
-</div>
-
+          </div>
+        </div>
       </section>
 
       {isModalOpen && (
@@ -450,7 +457,6 @@ const ConsultantContentMobile = () => {
           </div>
         </section>
       )}
-      
     </>
   );
 };

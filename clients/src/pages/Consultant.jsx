@@ -10,7 +10,6 @@ function Consultant() {
 
   const [consultant, setConsultant] = useState(null);
 
-
   useEffect(() => {
     const fetchConsultant = async () => {
       try {
@@ -34,23 +33,25 @@ function Consultant() {
   const parseBio = (bio) => {
     // Split sections by double line breaks for separating different titles
     const sections = bio.split("\n\n");
-  
+
     // Function to format lines based on the presence of "•"
     const formatContent = (content) => {
       return content.map((line, index) => {
         const hasBullet = line.includes("•");
         return hasBullet ? (
-          <span key={index} className="text-base">{line}</span>
+          <span key={index} className="text-base">
+            {line}
+          </span>
         ) : (
           <strong key={index}>{line}</strong>
         );
       });
     };
-  
+
     // Format each section
     const formattedSections = sections.map((section, index) => {
       const [title, ...content] = section.split("\n");
-  
+
       return (
         <div key={index} className="flex flex-col">
           {/* Always bold the section title */}
@@ -63,16 +64,10 @@ function Consultant() {
         </div>
       );
     });
-  
+
     return formattedSections;
   };
-  
- 
-  
- 
 
-
-  
   return (
     <div className="flex flex-col py-12 px-6 md:py-24 md:px-24 w-screen">
       <section className="grid gap-12 md:gap-24 md:grid-cols-[auto,1fr]">
@@ -86,13 +81,16 @@ function Consultant() {
           <div className="flex flex-col gap-4 md:gap-8">
             <BookingModal consultantName={consultant.name} consultantId={id} />
             <div>
-            <p className="text-base">
-  Price: ${consultant.price[0]} / 30mins &nbsp; | &nbsp; ${consultant.price[1]} / 60mins
-</p>
+              <p className="text-base">
+                Price: ${consultant.price[0]} / 30mins &nbsp; | &nbsp; $
+                {consultant.price[1]} / 60mins
+              </p>
 
-            <p className="text-base">University: {consultant.country}</p>
-            <p className="text-base">Major: {consultant.major}</p>
-              <p className="text-base">Country of Origin: {consultant.universityCountry}</p>
+              <p className="text-base">University: {consultant.country}</p>
+              <p className="text-base">Major: {consultant.major}</p>
+              <p className="text-base">
+                Country of Origin: {consultant.universityCountry}
+              </p>
               <p className="text-base">
                 Languages: {consultant.language.join(", ")}
               </p>
@@ -100,45 +98,53 @@ function Consultant() {
           </div>
         </div>
         <div className="flex flex-col gap-12 md:gap-16">
-         
-        <div className="flex flex-col gap-4 md:gap-8">
-    {/* Bio Section */}
-    {parseBio(consultant.bio)}
-  </div>
+          <div className="flex flex-col gap-4 md:gap-8">
+            {/* Bio Section */}
+            {parseBio(consultant.bio)}
+          </div>
         </div>
       </section>
       <div className="justify-center flex mt-12">
-  <section className="flex flex-col md:flex-row mt-12 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg md:text-xl font-bold">
-        Refer us and gain access to{" "}
-        <span className="text-secondary">exclusive discounts</span>.
-      </h2>
-      <div className="flex flex-col md:flex-row gap-4">
-        <Input placeholder="First Name*" className="rounded-xl" />
-        <Input placeholder="Last Name*" className="rounded-xl" />
+        <section className="flex flex-col md:flex-row mt-12 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-lg md:text-xl font-bold">
+              Refer us and gain access to{" "}
+              <span className="text-secondary">exclusive discounts</span>.
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Input placeholder="First Name*" className="rounded-xl" />
+              <Input placeholder="Last Name*" className="rounded-xl" />
+            </div>
+            <Input placeholder="Email Address*" className="rounded-xl" />
+          </div>
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold md:text-lg">
+              Would you like to refer{" "}
+              <strong className="text-secondary">PrepPeer</strong> to someone?
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Input placeholder="Their Name*" className="rounded-xl" />
+              <Input placeholder="Email Address*" className="rounded-xl" />
+            </div>
+            <select className="rounded-lg p-2 text-sm border-gray-300 text-gray-500">
+              <option
+                value=""
+                disabled
+                selected
+                hidden
+                className=" text-black forn-semibold text-sm"
+              >
+                Select roles*
+              </option>
+              <option value="mentor" className="text-md text-black font-semibold">As a mentor</option>
+              <option value="mentee" className="text-md text-black font-semibold">As a mentee</option>
+            </select>
+            <button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
+              Send
+            </button>
+          </div>
+        </section>
       </div>
-      <Input placeholder="Email Address*" className="rounded-xl" />
-    </div>
-    <div className="flex flex-col gap-4">
-      <h2 className="font-bold md:text-lg">
-        Would you like to refer <strong className="text-secondary">PrepPeer</strong> to someone?
-      </h2>
-      <div className="flex flex-col md:flex-row gap-4">
-      <Input placeholder="Their Name*" className="rounded-xl" />
-      <Input placeholder="Email Address*" className="rounded-xl" />
-      </div>
-      <select className="rounded-lg p-2  border-gray-300">
-  <option value="" disabled selected hidden>Select roles*</option>
-  <option value="mentor">As a mentor</option>
-  <option value="mentee">As a mentee</option>
-</select>
-<button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
-        Send
-      </button>
-    </div>
-  </section>
-</div>
       <section className="flex flex-col my-12 md:my-24 gap-4 md:gap-8">
         <h2 className="text-2xl md:text-4xl font-bold">FAQs</h2>
         <FaqAccordion
@@ -169,11 +175,11 @@ function Consultant() {
           title={`Do you support international and U.S. domestic high schoolers?`}
           content={`Yes, we support both international and U.S. domestic high schoolers. We have insiders from various backgrounds to provide valuable insights for all students.`}
         />
-         <FaqAccordion
+        <FaqAccordion
           title={`Can I reschedule or cancel my session?`}
           content={`Yes, you can reschedule at least 48 hours before the session. Cancellations or reschedules within 48 hours incur a fee to compensate the expert for the last-minute change. It’s important to manage these changes responsibly to ensure a smooth experience for everyone.`}
         />
-         <FaqAccordion
+        <FaqAccordion
           title={`What if I’m not satisfied with the PrepPeer session?`}
           content={`We aim to provide valuable experiences, but if you’re not satisfied, please let us know and we will work to make things right.`}
         />
