@@ -8,7 +8,15 @@ import {
   languages,
   UniversityOptions,
 } from "../constants";
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../components/ui/pagination"
 import { useMediaQuery } from "react-responsive";
 import ConsultantContentMobile from "./ConsultantContentMobile";
 
@@ -299,33 +307,42 @@ const ConsultantContent = () => {
       ${consultant.price[0]} / 30 mins
     </div>
   </div>
-
-  <div className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md">
-    <span className="text-gray-700 font-bold text-lg">{consultant.rating} ★</span>
-  </div>
 </Link>
 
             ))}
           </div>
         </div>
 
-        <div className="flex justify-center gap-12 mt-4 mb-16">
-          <div className="flex gap-2">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2 font-bold rounded-full ${
-                  currentPage === index + 1
-                    ? "bg-primary text-white p-4"
-                    : " text-black text-lg"
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
-        </div>
+        <Pagination className="mb-8 mt-4">
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+          />
+        </PaginationItem>
+        {[1, 2, 3].map((page) => (
+          <PaginationItem key={page}>
+            <PaginationLink
+              
+              onClick={() => handlePageChange(page)}
+              isActive={currentPage === page}
+            >
+              {page}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+        {totalPages > 3 && (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        )}
+        <PaginationItem>
+          <PaginationNext
+            onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
       </section>
 
       {isModalOpen && (
