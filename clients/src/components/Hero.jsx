@@ -43,7 +43,6 @@ const Hero = () => {
   const imagePairs = [
     [cornel, img6],
     [img13, nyu2],
-    
     [img4, columbiaUni],
     [img2, bowdoin],
     [nus, img12],
@@ -112,7 +111,7 @@ const Hero = () => {
   }
 
   return (
-    <div className="aspect-auto  flex w-full sm:w-full bg-primary">
+    <div className="aspect-auto flex w-full sm:w-full bg-primary">
       <div className="w-[50%] mt-2 md:w-1/2 h-max-auto h-full mb-1 md:block">
         <div className="grid-container">
           {imagePairs.map((pair, index) => (
