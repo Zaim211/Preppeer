@@ -208,16 +208,15 @@ const ConsultantContent = () => {
   return (
     <>
       <nav className="bg-gray-200 p-4 w-full" id="insiders">
-        <div className="flex justify-between items-center">
-          <h2 className="font-bold text-4xl ">
-            <span className="text-secondary">In</span>siders{" "}
-            <span className="text-secondary">At</span> Your Fingertips
+        <div className="flex justify-center mb-8 mt-8 items-center">
+          <h2 className="font-bold text-3xl ">
+          Get personalized advice from those who have walked the path and succeeded
           </h2>
-          <img
+          {/* <img
             src={logo}
             alt="logo"
             className="lg:w-50 lg:h-32 lg:mr-10 w-20 object-cover"
-          />
+          /> */}
         </div>
         <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-1 space-x-4">
           {uniqueFilters.map((filter, index) => (

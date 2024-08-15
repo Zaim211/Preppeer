@@ -92,7 +92,7 @@ function Consultant() {
             <div>
             <div className="max-w-xs">
   <p className="text-base font-semibold break-words">
-    University: {consultant.country}
+    {consultant.country}
   </p>
 </div>
 
