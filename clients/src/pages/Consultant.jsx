@@ -4,6 +4,15 @@ import { useParams } from "react-router-dom";
 import { Input } from "../components/ui/input";
 import FaqAccordion from "../components/FaqAccordion";
 import BookingModal from "../components/modals/BookingModal";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select"
 
 function Consultant() {
   const { id } = useParams();
@@ -126,19 +135,31 @@ function Consultant() {
               <Input placeholder="Their Name*" className="rounded-xl" />
               <Input placeholder="Email Address*" className="rounded-xl" />
             </div>
-            <select className="rounded-lg p-2 text-sm border-gray-300 text-gray-500">
-              <option
-                value=""
-                disabled
-                selected
-                hidden
-                className=" text-black forn-semibold text-sm"
-              >
-                Select roles*
-              </option>
-              <option value="mentor" className="text-md text-black font-semibold">As a mentor</option>
-              <option value="mentee" className="text-md text-black font-semibold">As a mentee</option>
-            </select>
+            {/* <select className="rounded-lg p-2 text-sm border-gray-300 text-black">
+  <option
+    value=""
+    disabled
+    selected
+    hidden
+    className="text-gray-200"
+  >
+    Select roles*
+  </option>
+  <option value="mentor" className="text-md text-black font-semibold">As a mentor</option>
+  <option value="mentee" className="text-md text-black font-semibold">As a mentee</option>
+</select> */}
+<Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select roles*" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>roles*</SelectLabel>
+          <SelectItem value="mentor">As a mentor</SelectItem>
+          <SelectItem value="mentee">As a mentee</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
             <button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
               Send
             </button>
