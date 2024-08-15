@@ -8,7 +8,7 @@ import {
   languages,
   UniversityOptions,
 } from "../constants";
-import { Input } from "./ui/input";
+
 
 const ConsultantContentMobile = () => {
   const [consultants, setConsultants] = useState([]);
@@ -157,7 +157,15 @@ const ConsultantContentMobile = () => {
         : [...prevMajors, major]
     );
   };
+  const splitConsultantsIntoGroups = (consultants, groupSize) => {
+    const groups = [];
+    for (let i = 0; i < consultants.length; i += groupSize) {
+      groups.push(consultants.slice(i, i + groupSize));
+    }
+    return groups;
+  };
 
+  const consultantGroups = splitConsultantsIntoGroups(filteredConsultants, 14);
   return (
     <>
       <nav className="bg-gray-200 p-4 w-full">
@@ -244,59 +252,6 @@ const ConsultantContentMobile = () => {
         </div>
 
         {/* <div className="bg-gray-200 w-full mb-16">
-          <div className="flex md:grid-cols-3 mt-6 overflow-x-auto space-x-1  pb-4">
-            <div className="flex flex-nowrap">
-              {filteredConsultants
-                .slice(0, visibleConsultants)
-                .map((consultant) => (
-                  <Link
-                    to={`/consultant/${
-                      consultant._id
-                    }?name=${encodeURIComponent(
-                      consultant.name
-                    )}&category=${encodeURIComponent(
-                      consultant.major.join(",")
-                    )}`}
-                    key={consultant._id}
-                    className="w-48 relative overflow-hidden flex-shrink-0"
-                  >
-                      <img
-                        src={consultant.profilePicture}
-                        alt={consultant.name}
-                        className="w-48 ml-2 h-[200px] object-cover"
-                      />
-                     
-                    <div className="p-1 justify-center flex-1 ml-14">
-                      <h2 className="text-xl font-bold">
-                        {consultant.name}
-                      </h2>
-                      <div className="flex gap-4">
-                        <p className="text-lg font-bold">
-                          {consultant.country}
-                        </p>
-                      </div>
-
-                     
-                    <div className="">
-                    
-                    <p className="text-base font-bold">
-                    {consultant.major}
-                    </p>
-               
-                  
-                    
-                  </div>
-
-                  <p className="font-bold text-lg">
-                    ${consultant.price[0]} / 30 mins
-                    </p>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          </div>
-        </div> */}
-        <div className="bg-gray-200 w-full mb-16">
           <div className="flex mt-6  overflow-x-auto space-x-6 pb-4">
             <div className="flex flex-nowrap space-x-6">
               {filteredConsultants
@@ -336,7 +291,49 @@ const ConsultantContentMobile = () => {
                 ))}
             </div>
           </div>
+        </div> */}
+
+      <section className="w-full px-4 py-4 bg-gray-200">
+        <div className="flex flex-col space-y-4">
+          {consultantGroups.map((group, index) => (
+            <div key={index} className="flex overflow-x-auto space-x-6 pb-4">
+              {group.map((consultant) => (
+                <Link
+                  to={`/consultant/${
+                    consultant._id
+                  }?name=${encodeURIComponent(
+                    consultant.name
+                  )}&category=${encodeURIComponent(
+                    consultant.major.join(",")
+                  )}`}
+                  key={consultant._id}
+                  className="w-48 flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden"
+                >
+                  <img
+                    src={consultant.profilePicture}
+                    alt={consultant.name}
+                    className="w-full h-[200px] object-cover"
+                  />
+                  <div className="p-4 w-full">
+                    <h2 className="text-lg font-bold text-gray-800">
+                      {consultant.name}
+                    </h2>
+                    <p className="text-sm font-bold text-black">
+                      {consultant.country}
+                    </p>
+                    <p className="text-sm font-bold text-black mt-1 ">
+                      {consultant.major.join(", ")}
+                    </p>
+                    <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
+                      ${consultant.price[0]} / 30 mins
+                    </button>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ))}
         </div>
+      </section>
       </section>
 
       {isModalOpen && (
