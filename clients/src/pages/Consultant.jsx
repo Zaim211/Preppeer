@@ -86,24 +86,28 @@ function Consultant() {
             alt={consultant.name}
             className="object-contain w-[300px] h-42 max-w-xs md:max-w-none"
           />
-          <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
+          <h2 className="text-3xl md:text-2xl text-center font-bold">{consultant.name}</h2>
           <div className="flex flex-col gap-4 md:gap-8">
-            <BookingModal consultantName={consultant.name} consultantId={id} />
+            
             <div>
-              <p className="text-base">
+              <p className="text-base font-semibold">University: {consultant.country}</p>
+              <p className="text-base font-semibold">Major: {consultant.major}</p>
+              <p className="text-base font-semibold">
+                Country of Origin: {consultant.universityCountry}
+              </p>
+              <p className="text-base font-semibold">
+                Languages: {consultant.language.join(", ")}
+              </p>
+              <p className="text-base font-semibold mb-4">
                 Price: ${consultant.price[0]} / 30mins &nbsp; | &nbsp; $
                 {consultant.price[1]} / 60mins
               </p>
-
-              <p className="text-base">University: {consultant.country}</p>
-              <p className="text-base">Major: {consultant.major}</p>
-              <p className="text-base">
-                Country of Origin: {consultant.universityCountry}
-              </p>
-              <p className="text-base">
-                Languages: {consultant.language.join(", ")}
-              </p>
+              <div className="flex justify-start">
+              <BookingModal  consultantName={consultant.name} consultantId={id} />
+              </div>
+              
             </div>
+
           </div>
         </div>
         <div className="flex flex-col gap-12 md:gap-16">
@@ -135,19 +139,7 @@ function Consultant() {
               <Input placeholder="Their Name*" className="rounded-xl" />
               <Input placeholder="Email Address*" className="rounded-xl" />
             </div>
-            {/* <select className="rounded-lg p-2 text-sm border-gray-300 text-black">
-  <option
-    value=""
-    disabled
-    selected
-    hidden
-    className="text-gray-200"
-  >
-    Select roles*
-  </option>
-  <option value="mentor" className="text-md text-black font-semibold">As a mentor</option>
-  <option value="mentee" className="text-md text-black font-semibold">As a mentee</option>
-</select> */}
+          
 <Select>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select roles*" />
