@@ -100,7 +100,7 @@ const About = () => {
       <div className="w-full max-w-full mb-6">
         <div className="flex-1 pl-16 justify-center mt-6">
          
-          <h1 className="text-3xl text-destructive font-semibold">
+          <h1 className="text-3xl text-destructive font-bold">
           Our Insiders come from Top universities, Elite programs, and Prestigious Internships
           </h1>
        <div>
