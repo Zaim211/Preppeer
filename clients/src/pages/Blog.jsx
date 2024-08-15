@@ -122,7 +122,7 @@ const Blog = () => {
           <div className="w-full lg:w-[20%] mb-12">
             <Link to="/" className="flex items-center gap-4">
               <h2 className="text-4xl lg:text-6xl text-white font-bold mb-4">
-                Ins<span className="text-secondary">i</span>ghts
+                Insights
               </h2>
             </Link>
             <div className="flex-1 lg:flex-col gap-2 mt-8">
@@ -161,8 +161,7 @@ const Blog = () => {
               />
             </div> */}
             <div  className="lg:w-[70%] w-full">
-              <h2 className="text-2xl text-white font-bold mb-4">Blog Posts</h2>
-
+              
               {showRandomBlog && randomBlog ? (
                 <Link
                   to={`/Insights/${randomBlog._id}`}

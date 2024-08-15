@@ -90,7 +90,12 @@ function Consultant() {
           <div className="flex flex-col gap-4 md:gap-8">
             
             <div>
-              <p className="text-base font-semibold">University: {consultant.country}</p>
+            <div className="max-w-xs">
+  <p className="text-base font-semibold break-words">
+    University: {consultant.country}
+  </p>
+</div>
+
               <p className="text-base font-semibold">Major: {consultant.major}</p>
               <p className="text-base font-semibold">
                 Country of Origin: {consultant.universityCountry}
