@@ -140,13 +140,13 @@ const Hero = () => {
           <div className="flex font-bold items-center gap-12">
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
-              className="underline font-bold text-xl text-white"
+              className="underline font-bold text-2xl text-white"
             >
               Be an insider
             </a>
             <Link
               to="/Insights"
-              className="underline font-bold text-xl text-white"
+              className="underline font-bold text-2xl text-white"
             >
               Insights
             </Link>
@@ -156,14 +156,14 @@ const Hero = () => {
               <img
                 src={logo}
                 alt="logo"
-                className="w-20 h-20 mr-1 object-cover"
+                className="w-24 h-24 mr-1 object-cover"
               />
             </Link>
           </div>
         </div>
         
         <div className="mr-48">
-          <h1 className="text-3xl font-bold text-white mb-8">
+          <h1 className="text-4xl font-bold text-white mb-8">
             Book calls with{" "}
             <span className="text-secondary  leading-[160%]">insiders</span>
             <br /> to supercharge your
@@ -173,7 +173,7 @@ const Hero = () => {
             </span>
           </h1>
           <div className="bg-secondary px-6 py-2 rounded-lg inline-block mt-10 mb-16">
-            <button onClick={()=> scrollToSection('insiders') }  className="text-white  text-xl font-bold text-center flex items-center">
+            <button onClick={()=> scrollToSection('insiders') }  className="text-white  text-2xl font-bold text-center flex items-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"

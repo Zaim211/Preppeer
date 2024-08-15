@@ -211,7 +211,7 @@
 .flip-card-inner {
   position: relative;
   width: 98%;
-  height: 96%;
+  height: 98%;
   text-align: center;
   transition: transform 1s;
   transform-style: preserve-3d;

@@ -16,7 +16,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../components/ui/pagination"
+} from "../components/ui/pagination";
 import { useMediaQuery } from "react-responsive";
 import ConsultantContentMobile from "./ConsultantContentMobile";
 
@@ -66,7 +66,6 @@ const ConsultantContent = () => {
     }
     setFilteredConsultants(filtered);
   }, [selectedFilter, selectedSubcategories, consultants]);
-  
 
   useEffect(() => {
     if (selectedFilter && mentorsSectionRef.current) {
@@ -109,7 +108,6 @@ const ConsultantContent = () => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
- 
 
   const handleApplyFilters = () => {
     let filtered = consultants;
@@ -150,7 +148,6 @@ const ConsultantContent = () => {
     setFilteredConsultants(filtered);
     setIsModalOpen(false);
   };
-  
 
   const handleRegionChange = (region) => {
     setSelectedRegions(region.target.value);
@@ -172,8 +169,21 @@ const ConsultantContent = () => {
     );
   };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  
+  const maxVisiblePages = 3; // Number of visible pages before showing ellipsis
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const getVisiblePages = () => {
+    if (currentPage <= maxVisiblePages) {
+      return [1, 2, 3];
+    } else if (currentPage > totalPages - maxVisiblePages) {
+      return [totalPages - 2, totalPages - 1, totalPages];
+    } else {
+      return [currentPage - 1, currentPage, currentPage + 1];
+    }
   };
 
   const isMobileDevice = useMediaQuery({ query: "(max-width: 768px)" });
@@ -279,40 +289,43 @@ const ConsultantContent = () => {
         <div className="bg-gray-200 w-full mb-16">
           <div className="flex flex-wrap gap-6 mt-2 overflow-x-auto pl-12 pb-4">
             {paginatedConsultants.map((consultant) => (
-             
               <Link
-  key={consultant._id}
-  to={`/consultant/${consultant._id}?name=${encodeURIComponent(
-    consultant.name
-  )}&category=${encodeURIComponent(consultant.major.join(","))}`}
-  className="w-[23%] relative p-2 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden group"
->
-  <div className="relative overflow-hidden rounded-lg">
-    <img
-      src={consultant.profilePicture}
-      alt={consultant.name}
-      className="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-300"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
-  </div>
+                key={consultant._id}
+                to={`/consultant/${consultant._id}?name=${encodeURIComponent(
+                  consultant.name
+                )}&category=${encodeURIComponent(consultant.major.join(","))}`}
+                className="w-[23%] relative p-2 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden group"
+              >
+                <div className="relative overflow-hidden rounded-lg">
+                  <img
+                    src={consultant.profilePicture}
+                    alt={consultant.name}
+                    className="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
+                </div>
 
-  <div className="mt-4 text-center">
-    <h2 className="text-2xl font-bold text-gray-800">{consultant.name}</h2>
-    <p className="text-lg font-semibold text-black">{consultant.country}</p>
-    <p className="text-lg font-medium text-black mt-2">{consultant.major.join(", ")}</p>
-  </div>
+                <div className="mt-4 text-center">
+                  <h2 className="text-2xl font-bold text-gray-800">
+                    {consultant.name}
+                  </h2>
+                  <p className="text-lg font-semibold text-black">
+                    {consultant.country}
+                  </p>
+                  <p className="text-lg font-medium text-black mt-2">
+                    {consultant.major.join(", ")}
+                  </p>
+                </div>
 
-  <div className="mt-4 flex justify-center">
-    <div className="bg-gradient-to-r bg-primary text-white py-2 px-4 rounded-full font-semibold text-md">
-      ${consultant.price[0]} / 30 mins
-    </div>
-  </div>
-</Link>
-
+                <div className="mt-4 flex justify-center">
+                  <div className="bg-gradient-to-r bg-primary text-white py-2 px-4 rounded-full font-semibold text-md">
+                    ${consultant.price[0]} / 30 mins
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
-
         <Pagination className="mb-8 mt-4">
       <PaginationContent>
         <PaginationItem>
@@ -320,10 +333,10 @@ const ConsultantContent = () => {
             onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
           />
         </PaginationItem>
-        {[1, 2, 3].map((page) => (
+        
+        {getVisiblePages().map((page) => (
           <PaginationItem key={page}>
             <PaginationLink
-              
               onClick={() => handlePageChange(page)}
               isActive={currentPage === page}
             >
@@ -331,18 +344,54 @@ const ConsultantContent = () => {
             </PaginationLink>
           </PaginationItem>
         ))}
-        {totalPages > 3 && (
+        
+        {currentPage < totalPages - maxVisiblePages && (
           <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
         )}
-        <PaginationItem>
-          <PaginationNext
-            onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-          />
-        </PaginationItem>
+        
+        {currentPage < totalPages && (
+          <PaginationItem>
+            <PaginationNext
+              onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+            />
+          </PaginationItem>
+        )}
       </PaginationContent>
     </Pagination>
+{/* 
+        <Pagination className="mb-8 mt-4">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+              />
+            </PaginationItem>
+            {[1, 2, 3].map((page) => (
+              <PaginationItem key={page}>
+                <PaginationLink
+                  onClick={() => handlePageChange(page)}
+                  isActive={currentPage === page}
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            {totalPages > 3 && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+            <PaginationItem>
+              <PaginationNext
+                onClick={() =>
+                  handlePageChange(Math.min(totalPages, currentPage + 1))
+                }
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination> */}
       </section>
 
       {isModalOpen && (
@@ -355,7 +404,7 @@ const ConsultantContent = () => {
             >
               &times;
             </button>
-  
+
             <div className="flex-cols gap-6">
               <div className="">
                 <h3 className="font-semibold text-xl underline">
@@ -444,7 +493,6 @@ const ConsultantContent = () => {
                 </div>
               </div>
             </div>
-
 
             <div className="flex justify-center mt-4 gap-4">
               <button
