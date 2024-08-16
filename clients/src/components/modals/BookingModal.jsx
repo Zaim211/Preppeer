@@ -81,13 +81,13 @@ function BookingModal({consultantName,consultantId}) {
   </DialogTrigger>
   <DialogContent>
     <DialogHeader >
-      <DialogTitle>Please Fill the form to book a call with {consultantName}</DialogTitle>
+      <DialogTitle>Please fill out the form to book a call with {consultantName}</DialogTitle>
       <div className='flex flex-col gap-4 py-8'>
         <InputBox title={'Full Name'} isRequired={true} placeholder={'Enter full name'} value={formData.fullName} onChange={e => setFormData({...formData,fullName: e.target.value}) } error={errors.fullName} />
         <InputBox title={'Email'} isRequired={true} placeholder={'Enter email'} value={formData.email} onChange={e => setFormData({...formData,email: e.target.value}) } error={errors.email} />
         <div className='grid grid-cols-2 gap-2'>
           <InputBox title={'Current Grade'} isRequired={true} placeholder={'Enter current grade'} value={formData.currentGrade} onChange={e => setFormData({...formData,currentGrade: e.target.value}) } error={errors.currentGrade} />
-          <InputBox title={'Languages Spoken Fluently'} isRequired={false} placeholder={'Enter your languages'} value={formData.language} onChange={e => setFormData({...formData,language: e.target.value}) } error={errors.language} />
+          <InputBox title={'Fluent in Languages'} isRequired={false} placeholder={'Enter your languages'} value={formData.language} onChange={e => setFormData({...formData,language: e.target.value}) } error={errors.language} />
         </div>
         <PhoneInputBox title={'Whatsapp/WeChat Number'} isRequired={false} placeholder={'Enter whatsapp/wechat number'} value={formData.phone} onChange={phone => setFormData({...formData,phone}) } error={errors.phone} />
         <TextAreaBox title={``} isRequired={false} placeholder={'Answers (no word limit)'} value={formData.questions} onChange={e => setFormData({...formData,questions: e.target.value}) } error={errors.questions} />
@@ -115,12 +115,13 @@ export function InputBox({title,value,placeholder,onChange, isRequired, error}) 
     )
 }
 
-export function TextAreaBox({value,placeholder,onChange, error}) {
+export function TextAreaBox({value,placeholder,onChange, title, isRequired, error}) {
     return (
         <div className='flex flex-col gap-2'>
-            <p className='text-md'>To personalize the session and maximize its value, 
-please let us know <strong>the questions you want to discuss with the mentor</strong>.
-We aim to deliver the most value for you.</p>
+            <p className='text-md'>
+              To personalize the session and maximize its value, let us know your questions for the mentor.<span className='font-bold'>*</span>
+            </p>
+            <p className='text-sm font-semibold'>{title}{isRequired ? '*' : ''}</p>
             <Textarea placeholder={placeholder} value={value} onChange={onChange} />
             {error && <p className='text-red-500 text-sm'>{error}</p>}
         </div>

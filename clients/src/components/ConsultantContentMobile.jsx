@@ -171,14 +171,9 @@ const ConsultantContentMobile = () => {
       <nav className="bg-gray-200 p-4 w-full">
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mb-6">
-            <span className="text-secondary">In</span>siders{" "}
-            <span className="text-secondary">At</span> Your Fingertips
+          Get personalized advice from those who have walked the path and succeeded
           </h2>
-          <img
-            src={logo}
-            alt="logo"
-            className="lg:w-50 lg:h-32 lg:mr-10 w-20 mb-4 object-cover"
-          />
+          
         </div>
         <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-2 space-x-2 md:space-x-6">
           {uniqueFilters.map((filter, index) => (
@@ -282,7 +277,7 @@ const ConsultantContentMobile = () => {
               {consultant.major.join(", ")}
             </p>
             <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
-              ${consultant.price[0]} / 30 mins
+            View more
             </button>
           </div>
         </Link>
@@ -318,8 +313,8 @@ const ConsultantContentMobile = () => {
                   {consultant.major.join(", ")}
                 </p>
                 <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
-                  ${consultant.price[0]} / 30 mins
-                </button>
+            View more
+            </button>
               </div>
             </Link>
           ))}

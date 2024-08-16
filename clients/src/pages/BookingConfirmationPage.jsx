@@ -13,12 +13,10 @@ function BookingConfirmationPage({amount, price, appointmentDate,appointmentTime
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
       <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-8 max-w-md w-full text-center">
         <CheckCircleIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">Booking Confirmed!</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">Registered!</h1>
+        
         <p className="text-lg text-gray-600 mb-6">
-          Welcome to PrepPeer!
-        </p>
-        <p className="text-lg text-gray-600 mb-6">
-          We have received your booking and will be in touch soon via email to coordinate the timing of your meeting with the mentor. We are excited to work with you!
+        We received your form and will reach out to you shortly. Next, you will receive an email to schedule your meeting with the mentor.
         </p>
         {/* <div className="flex justify-center mb-6">
           <div className="bg-gray-200 border border-gray-300 rounded-lg p-4 w-full">

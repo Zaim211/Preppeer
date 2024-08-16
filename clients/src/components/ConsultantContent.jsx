@@ -318,8 +318,10 @@ const ConsultantContent = () => {
 
                 <div className="mt-4 flex justify-center">
                   <div className="bg-gradient-to-r bg-primary text-white py-2 px-4 rounded-full font-semibold text-md">
-                    ${consultant.price[0]} / 30 mins
+                    View more
                   </div>
+                    {/* ${consultant.price[0]} / 30 mins */}
+                
                 </div>
               </Link>
             ))}
