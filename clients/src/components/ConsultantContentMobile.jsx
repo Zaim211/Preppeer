@@ -251,89 +251,84 @@ const ConsultantContentMobile = () => {
           </button>
         </div>
 
-        {/* <div className="bg-gray-200 w-full mb-16">
-          <div className="flex mt-6  overflow-x-auto space-x-6 pb-4">
-            <div className="flex flex-nowrap space-x-6">
-              {filteredConsultants
-                .slice(0, visibleConsultants)
-                .map((consultant) => (
-                  <Link
-                    to={`/consultant/${
-                      consultant._id
-                    }?name=${encodeURIComponent(
-                      consultant.name
-                    )}&category=${encodeURIComponent(
-                      consultant.major.join(",")
-                    )}`}
-                    key={consultant._id}
-                    className="w-48 flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden"
-                  >
-                    <img
-                      src={consultant.profilePicture}
-                      alt={consultant.name}
-                      className="w-full h-[200px] object-cover"
-                    />
-                    <div className="p-4 w-full">
-                      <h2 className="text-lg font-bold text-gray-800">
-                        {consultant.name}
-                      </h2>
-                      <p className="text-sm font-bold text-black">
-                        {consultant.country}
-                      </p>
-                      <p className="text-sm font-bold text-black mt-1 ">
-                        {consultant.major.join(", ")}
-                      </p>
-                      <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
-                        ${consultant.price[0]} / 30 mins
-                      </button>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          </div>
-        </div> */}
 
-      <section className="w-full px-4 py-4 bg-gray-200">
-        <div className="flex flex-col space-y-4">
-          {consultantGroups.map((group, index) => (
-            <div key={index} className="flex overflow-x-auto space-x-6 pb-4">
-              {group.map((consultant) => (
-                <Link
-                  to={`/consultant/${
-                    consultant._id
-                  }?name=${encodeURIComponent(
-                    consultant.name
-                  )}&category=${encodeURIComponent(
-                    consultant.major.join(",")
-                  )}`}
-                  key={consultant._id}
-                  className="w-48 flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden"
-                >
-                  <img
-                    src={consultant.profilePicture}
-                    alt={consultant.name}
-                    className="w-full h-[200px] object-cover"
-                  />
-                  <div className="p-4 w-full">
-                    <h2 className="text-lg font-bold text-gray-800">
-                      {consultant.name}
-                    </h2>
-                    <p className="text-sm font-bold text-black">
-                      {consultant.country}
-                    </p>
-                    <p className="text-sm font-bold text-black mt-1 ">
-                      {consultant.major.join(", ")}
-                    </p>
-                    <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
-                      ${consultant.price[0]} / 30 mins
-                    </button>
-                  </div>
-                </Link>
-              ))}
-            </div>
+        {selectedFilter || selectedSubcategories.length > 0 ? (
+  <div className="grid grid-cols-2 gap-4"> {/* Two cards per row on small screens */}
+    {filteredConsultants.map((consultant) => (
+      <div
+        key={consultant._id}
+        className="w-full border-gray-300 border rounded-lg shadow-md flex flex-col overflow-hidden"
+      >
+        <Link
+          to={`/consultant/${
+            consultant._id
+          }?name=${encodeURIComponent(consultant.name)}&category=${encodeURIComponent(consultant.major.join(","))}`}
+          key={consultant._id}
+          className="w-full flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden"
+        >
+          <img
+            src={consultant.profilePicture}
+            alt={consultant.name}
+            className="w-full h-[200px] object-cover"
+          />
+          <div className="p-4 w-full">
+            <h2 className="text-lg font-bold text-gray-800">
+              {consultant.name}
+            </h2>
+            <p className="text-sm font-bold text-black">
+              {consultant.country}
+            </p>
+            <p className="text-sm font-bold text-black mt-1 ">
+              {consultant.major.join(", ")}
+            </p>
+            <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
+              ${consultant.price[0]} / 30 mins
+            </button>
+          </div>
+        </Link>
+      </div>
+    ))}
+  </div>
+) : (
+  <section className="w-full px-4 py-4 bg-gray-200">
+    <div className="flex flex-col space-y-4">
+      {consultantGroups.map((group, index) => (
+        <div key={index} className="flex overflow-x-auto space-x-6 pb-4">
+          {group.map((consultant) => (
+            <Link
+              to={`/consultant/${
+                consultant._id
+              }?name=${encodeURIComponent(consultant.name)}&category=${encodeURIComponent(consultant.major.join(","))}`}
+              key={consultant._id}
+              className="w-48 flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden"
+            >
+              <img
+                src={consultant.profilePicture}
+                alt={consultant.name}
+                className="w-full h-[200px] object-cover"
+              />
+              <div className="p-4 w-full">
+                <h2 className="text-lg font-bold text-gray-800">
+                  {consultant.name}
+                </h2>
+                <p className="text-sm font-bold text-black">
+                  {consultant.country}
+                </p>
+                <p className="text-sm font-bold text-black mt-1 ">
+                  {consultant.major.join(", ")}
+                </p>
+                <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
+                  ${consultant.price[0]} / 30 mins
+                </button>
+              </div>
+            </Link>
           ))}
         </div>
-      </section>
+      ))}
+    </div>
+  </section>
+)}
+
       </section>
 
       {isModalOpen && (
@@ -390,26 +385,7 @@ const ConsultantContentMobile = () => {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <h3 className="font-semibold lg:text-2xl underline">
-                  Country of Origin
-                </h3>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <select
-                    value={selectedCountries}
-                    onChange={handleUniversityLocation}
-                    className="border border-gray-300 p-2 w-full rounded-lg"
-                  >
-                    <option value="">Select Country</option>
-                    {UniversityOptions.map((Uni) => (
-                      <option key={Uni} value={Uni}>
-                        {Uni}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
+              
               <div className="mb-4">
                 <h3 className="font-semibold lg:text-2xl underline">Major</h3>
                 <div className="lg:flex-1 gap-2 lg:mt-2">
@@ -459,3 +435,4 @@ const ConsultantContentMobile = () => {
 };
 
 export default ConsultantContentMobile;
+

@@ -359,46 +359,14 @@ const ConsultantContent = () => {
         )}
       </PaginationContent>
     </Pagination>
-{/* 
-        <Pagination className="mb-8 mt-4">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-              />
-            </PaginationItem>
-            {[1, 2, 3].map((page) => (
-              <PaginationItem key={page}>
-                <PaginationLink
-                  onClick={() => handlePageChange(page)}
-                  isActive={currentPage === page}
-                >
-                  {page}
-                </PaginationLink>
-              </PaginationItem>
-            ))}
-            {totalPages > 3 && (
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-            )}
-            <PaginationItem>
-              <PaginationNext
-                onClick={() =>
-                  handlePageChange(Math.min(totalPages, currentPage + 1))
-                }
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination> */}
       </section>
 
       {isModalOpen && (
         <section className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">
-          <div className="bg-white p-8 h-full rounded-md w-full md:w-1/2 lg:w-1/4 xl:w-1/3 relative">
+          <div className="bg-white p-8  rounded-md w-1/4relative">
             <button
               onClick={toggleModal}
-              className="absolute top-2 right-2 text-black text-4xl"
+              className="absolute top-20 right-2 text-black text-4xl"
               aria-label="Close"
             >
               &times;
@@ -439,26 +407,6 @@ const ConsultantContent = () => {
                     {countries.map((reg) => (
                       <option key={reg} value={reg}>
                         {reg}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="mt-4">
-                <h3 className="font-semibold text-xl underline">
-                  Country of Origin
-                </h3>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <select
-                    value={selectedCountries}
-                    onChange={handleUniversityLocation}
-                    className="border border-gray-300 p-2 w-full rounded-sm"
-                  >
-                    <option value="">Select Country</option>
-                    {UniversityOptions.map((Uni) => (
-                      <option key={Uni} value={Uni}>
-                        {Uni}
                       </option>
                     ))}
                   </select>
