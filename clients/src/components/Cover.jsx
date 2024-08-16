@@ -1,55 +1,27 @@
-import React from "react";
-import hero2 from "../assets/images/hero2.png";
-import CoverMobile from "./CoverMobile";
-import { useMediaQuery } from "react-responsive";
+
+import React from 'react';
+import { Picture1, Picture2, Picture3 } from '../assets';
 
 const Cover = () => {
-
-  const isMobileDevice = useMediaQuery({ query: '(max-width: 768px)' });
-
-  if (isMobileDevice) {
-    return (
-      <div className="">
-        <CoverMobile />
-      </div>
-    );
-  }
   return (
-    <div
-       className="relative text-white min-h-screen bg-cover bg-center flex items-center justify-center"
-        style={{backgroundImage: `url(${hero2})`}}
-    >
-      
-      <div className="relative w-full flex">
-        <div className="flex flex-col p-16 mt-12 mb-12 h-[80%] w-full z-10 bg-gradient-to-r from-black/80 to-black/50">
-          <div className="flex-1 justify-between items-center">
-            <h1 className="text-5xl font-semibold mb-2">
-              Why <span className="text-secondary">PrepPeer ?</span>
-            </h1>
-            
-            <p className="font-lg text-2xl mt-6">One critical insight can make or break your battle plan.</p>
-          </div>
-          <div>
-            <h1 className="text-2xl mt-12 font-semibold">Differentiate Yourself</h1>
-            <p className="text-2xl mt-4">
-              Gain insider knowledge about the university before you even attend. Understand the vibe and
-              <br /> identity of the institution, and use this key information to make your essays stand out.
-            </p>
-            <h1 className="text-2xl mt-12 font-semibold">Valuable Insider’s Background at Your Fingertips</h1>
-            <p className="text-2xl mt-4">
-              Every minute counts in the college application process. Explore the profiles of our mentors,
-              <br /> learn from their experiences, and ask questions to boost your chances of acceptance.
-            </p>
-            <h1 className="text-2xl mt-12 font-semibold">Choose a University Where You’ll Thrive</h1>
-            <p className="text-2xl mt-4">
-              Discuss your concerns and questions with our insiders. Access exclusive information about
-              <br /> the school that you won't find on websites, and select the university where you will truly thrive.
-            </p>
-          </div>
+    <div className="cover-container bg-gray-200 text-center p-4 md:p-8">
+      <h1 className="text-2xl md:text-3xl font-bold mb-8">Why Us?</h1>
+      <div className="cards-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+        <div className="card flex flex-col items-center bg-white shadow-lg p-6 rounded-lg transition-transform transform hover:scale-105 w-full max-w-sm">
+          <img src={Picture1} alt="Picture 1" className="w-full h-auto object-cover mb-4 rounded-t-lg"/>
+          <p className="text-base sm:text-lg text-gray-700">Get insights and build a list where you’ll thrive.</p>
+        </div>
+        <div className="card flex flex-col items-center bg-white shadow-lg p-6 rounded-lg transition-transform transform hover:scale-105 w-full max-w-sm">
+          <img src={Picture2} alt="Picture 2" className="w-full h-auto object-cover mb-4 rounded-t-lg"/>
+          <p className="text-base sm:text-lg text-gray-700">Learn about the university's vibe and identity.</p>
+        </div>
+        <div className="card flex flex-col items-center bg-white shadow-lg p-6 rounded-lg transition-transform transform hover:scale-105 w-full max-w-sm">
+          <img src={Picture3} alt="Picture 3" className="w-full h-auto object-cover mb-4 rounded-t-lg"/>
+          <p className="text-base sm:text-lg text-gray-700">Personalize your essays for each university.</p>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Cover;

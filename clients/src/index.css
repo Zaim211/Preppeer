@@ -212,6 +212,7 @@
   width: 98%;
   height: 98%;
   text-align: center;
+  justify-content: center;
   transition: transform 1s;
   transform-style: preserve-3d;
   background-color: #f1f1f1;
@@ -231,12 +232,16 @@
   backface-visibility: hidden;
   background-size: cover;
   background-position: center;
+  padding-top: 170px;
+  background-position: center;
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
   background-color: #f1f1f1;
 }
+
+
 
 
 

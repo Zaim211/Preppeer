@@ -17,6 +17,7 @@ import img16 from "../assets/images/mentors/img16.jpg";
 import img30 from "../assets/images/mentors/img30.jpg";
 
 
+
 import alto from '../assets/images/University_Logos/Aalto-University.png'
 import bowdoin from '../assets/images/University_Logos/Bowdoin.png'
 import columbia from '../assets/images/University_Logos/columbia-university.png'
@@ -38,6 +39,11 @@ import columbiaUni from '../assets/images/University_Logos/columbia-uni.png'
 import cornel from '../assets/images/University_Logos/cornel.png';
 import newyu from '../assets/images/University_Logos/newyu.png';
 import alt from '../assets/images/University_Logos/alt.png';
+import Picture1 from "../assets/images/Picture1.png"
+import Picture2 from "../assets/images/Picture2.jpg"
+import Picture3 from "../assets/images/Picture3.jpg"
+
+
 
 
 // Import images
@@ -78,5 +84,5 @@ export {
     cocacola, jpmorgan, roland, shoroq, slush, cornel,
     c5, erasmus, lumiere, techgirls, notredame, opensociety,
     technovation, virginia, yygs, nus, oxfordUni, pekingUni, columbiaUni,
-    newyu, nyu2, alt
-}
+    newyu, nyu2, alt, Picture1, Picture2, Picture3
+ }
