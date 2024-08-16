@@ -3,10 +3,10 @@ import logo from "../assets/logo.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  countries,
+ NameUniv,
   uniqueFilters,
   languages,
-  UniversityOptions,
+ 
 } from "../constants";
 
 
@@ -16,13 +16,10 @@ const ConsultantContentMobile = () => {
   const [selectedFilter, setSelectedFilter] = useState("");
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [selectedFilterObj, setSelectedFilterObj] = useState(null);
-  const [visibleConsultants, setVisibleConsultants] = useState(42);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRegions, setSelectedRegions] = useState([]);
-  const [selectedCountries, setSelectedCountries] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [selectedRegions, setSelectedRegions] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState([]);
   const [selectedMajors, setSelectedMajors] = useState([]);
-
   const mentorsSectionRef = useRef(null);
   const navigate = useNavigate();
 
@@ -98,46 +95,6 @@ const ConsultantContentMobile = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleApplyFilters = () => {
-    let filtered = consultants;
-
-    if (selectedFilter) {
-      filtered = filtered.filter((consultant) =>
-        consultant.category.includes(selectedFilter)
-      );
-    }
-    if (selectedSubcategories.length > 0) {
-      filtered = filtered.filter((consultant) =>
-        selectedSubcategories.every((subcat) =>
-          consultant.subcategories.includes(subcat)
-        )
-      );
-    }
-    if (selectedLanguage) {
-      filtered = filtered.filter((consultant) =>
-        consultant.language.includes(selectedLanguage)
-      );
-    }
-    if (selectedRegions) {
-      filtered = filtered.filter(
-        (consultant) => consultant.universityRegion === selectedRegions
-      );
-    }
-    if (selectedCountries) {
-      filtered = filtered.filter(
-        (consultant) => consultant.country === selectedCountries
-      );
-    }
-    if (selectedMajors.length > 0) {
-      filtered = filtered.filter((consultant) =>
-        selectedMajors.some((major) => consultant.major.includes(major))
-      );
-    }
-
-    setFilteredConsultants(filtered);
-    setIsModalOpen(false);
-  };
-
   const handleRegionChange = (region) => {
     setSelectedRegions(region.target.value);
   };
@@ -146,9 +103,7 @@ const ConsultantContentMobile = () => {
     setSelectedLanguage(event.target.value);
   };
 
-  const handleUniversityLocation = (event) => {
-    setSelectedCountries(event.target.value);
-  };
+  
 
   const handleMajorChange = (major) => {
     setSelectedMajors((prevMajors) =>
@@ -157,6 +112,44 @@ const ConsultantContentMobile = () => {
         : [...prevMajors, major]
     );
   };
+
+
+  
+  const handleApplyFilters = () => {
+    let filtered = consultants;
+  
+    if (selectedFilter) {
+      filtered = filtered.filter((consultant) =>
+        consultant.category.includes(selectedFilter)
+      );
+    }
+  
+    if (selectedRegions) {
+      filtered = filtered.filter(
+        (consultant) => consultant.country === selectedRegions
+      );
+    }
+  
+    if (selectedLanguage.length > 0) {
+      filtered = filtered.filter((consultant) =>
+        selectedLanguage.includes(consultant.language)
+      );
+    }
+  
+    if (selectedMajors.length > 0) {
+      filtered = filtered.filter((consultant) =>
+        selectedMajors.some((major) => consultant.major.includes(major))
+      );
+    }
+  
+    setFilteredConsultants(filtered);
+    setIsModalOpen(false);
+  };
+  
+
+  
+
+  
   const splitConsultantsIntoGroups = (consultants, groupSize) => {
     const groups = [];
     for (let i = 0; i < consultants.length; i += groupSize) {
@@ -371,7 +364,7 @@ const ConsultantContentMobile = () => {
                     className="border border-gray-300 p-2 w-full rounded-lg"
                   >
                     <option value="">Select your university</option>
-                    {countries.map((reg) => (
+                    {NameUniv.map((reg) => (
                       <option key={reg} value={reg}>
                         {reg}
                       </option>

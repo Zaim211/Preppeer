@@ -86,7 +86,7 @@ function Consultant() {
             alt={consultant.name}
             className="object-contain w-[300px] h-42 max-w-xs md:max-w-none"
           />
-          <h2 className="text-3xl md:text-2xl text-center font-bold">{consultant.name}</h2>
+          <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
           <div className="flex flex-col gap-4 md:gap-8">
             
             <div>
