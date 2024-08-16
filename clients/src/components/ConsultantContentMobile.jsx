@@ -266,14 +266,14 @@ const ConsultantContentMobile = () => {
             alt={consultant.name}
             className="w-full h-[200px] object-cover"
           />
-          <div className="p-4 w-full">
-            <h2 className="text-lg font-bold text-gray-800">
+          <div className="p-4 w-full flex-1 justify-center">
+            <h2 className="text-lg font-bold text-center text-gray-800">
               {consultant.name}
             </h2>
-            <p className="text-sm font-bold text-black">
+            <p className="text-sm font-bold text-center text-black">
               {consultant.country}
             </p>
-            <p className="text-sm font-bold text-black mt-1 ">
+            <p className="text-sm font-bold text-center text-black mt-1 ">
               {consultant.major.join(", ")}
             </p>
             <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
@@ -302,14 +302,14 @@ const ConsultantContentMobile = () => {
                 alt={consultant.name}
                 className="w-full h-[200px] object-cover"
               />
-              <div className="p-4 w-full">
-                <h2 className="text-lg font-bold text-gray-800">
+              <div className="p-4 w-full flex-1 justify-center">
+                <h2 className="text-lg text-center font-bold text-gray-800">
                   {consultant.name}
                 </h2>
-                <p className="text-sm font-bold text-black">
+                <p className="text-sm text-center font-bold text-black">
                   {consultant.country}
                 </p>
-                <p className="text-sm font-bold text-black mt-1 ">
+                <p className="text-sm font-bold text-center text-black mt-1 ">
                   {consultant.major.join(", ")}
                 </p>
                 <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
