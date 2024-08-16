@@ -132,7 +132,7 @@ const ConsultantContentMobile = () => {
   
     if (selectedLanguage.length > 0) {
       filtered = filtered.filter((consultant) =>
-        selectedLanguage.includes(consultant.language)
+        consultant.language.some((lang) => selectedLanguage.includes(lang))
       );
     }
   

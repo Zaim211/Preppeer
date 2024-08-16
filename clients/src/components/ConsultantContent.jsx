@@ -39,6 +39,7 @@ const ConsultantContent = () => {
     const fetchConsultants = async () => {
       try {
         const response = await axios.get("/api/registerConsultant");
+        console.log('response', response)
         setConsultants(response.data.consultants);
         setFilteredConsultants(response.data.consultants);
       } catch (error) {
@@ -143,7 +144,7 @@ const ConsultantContent = () => {
   
     if (selectedLanguage.length > 0) {
       filtered = filtered.filter((consultant) =>
-        selectedLanguage.includes(consultant.language)
+        consultant.language.some((lang) => selectedLanguage.includes(lang))
       );
     }
   
