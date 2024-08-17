@@ -41,7 +41,7 @@ const AboutMobile = () => {
         <div className="flex-1 justify-start mt-4">
         
        <div>
-       <p className="mt-2 font-semibold text-lg text-destructive s">
+       <p className="mt-2 text-2xl font-bold lg:text-lg text-destructive s">
        Our Insiders come from Top universities, Elite programs, and Prestigious Internships
         </p>
        </div>
