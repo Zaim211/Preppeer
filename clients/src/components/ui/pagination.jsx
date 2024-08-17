@@ -37,7 +37,7 @@ const PaginationLink = ({
   <a
     aria-current={isActive ? "page" : undefined}
     className={cn(buttonVariants({
-      variant: isActive ? "outline w-32 h-8 font-bold" : "ghost font-bold",
+      variant: isActive ? "outline" : "ghost",
       size,
     }), className)}
     {...props} />
@@ -80,7 +80,7 @@ const PaginationEllipsis = ({
 }) => (
   <span
     aria-hidden
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn("flex h-9 w-9 mt-4 items-center justify-center", className)}
     {...props}>
     <MoreHorizontal className="h-8 w-8" />
     <span className="sr-only">More pages</span>

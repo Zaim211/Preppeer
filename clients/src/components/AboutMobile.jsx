@@ -17,14 +17,14 @@ const AboutMobile = () => {
   const renderRow = (images, animationClass) => {
     return (
       <div className={`sponsor-row ${animationClass}`}>
-        <div className="flex gap-2 mb-6">
+        <div className="flex mb-6">
           {[...images,...images].map((image, index) => {
             return (
               <img
               key={index}
               src={image}
               alt={`Image ${index}`}
-              className="h-20 w-10 object-contain"
+              className="h-16 w-[10%] object-contain"
             />
             )
           })}
@@ -34,7 +34,7 @@ const AboutMobile = () => {
   };
 
   return (
-    <div className="p-2 bg-gray-200 flex flex-col items-center">
+    <div className=" bg-gray-200 flex flex-col items-center">
       {/* Main Content */}
       <div className="text-center">
         

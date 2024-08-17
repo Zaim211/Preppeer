@@ -159,7 +159,6 @@ const ConsultantContent = () => {
   };
   
 
-
   
   const maxVisiblePages = 3; 
 
@@ -203,11 +202,6 @@ const ConsultantContent = () => {
           <h2 className="font-bold text-3xl ">
           Get personalized advice from those who have walked the path and succeeded
           </h2>
-          {/* <img
-            src={logo}
-            alt="logo"
-            className="lg:w-50 lg:h-32 lg:mr-10 w-20 object-cover"
-          /> */}
         </div>
         <div className="overflow-x-auto scrollbar-thin  scrollbar-webkit flex p-1 space-x-4">
           {uniqueFilters.map((filter, index) => (
