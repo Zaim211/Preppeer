@@ -164,7 +164,7 @@ const ConsultantContentMobile = () => {
           </h2>
           
         </div>
-        <div className="overflow-x-auto scrollbar-thin scrollbar-hidden scrollbar-webkit flex py-2 space-x-2 md:space-x-6">
+        <div className="overflow-x-auto scrollbar-thin scrollbar-hidden scrollbar-webkit flex py-2 space-x-2 md:space-x-8">
           {uniqueFilters.map((filter, index) => (
             <div
               key={index}
@@ -185,7 +185,7 @@ const ConsultantContentMobile = () => {
         </div>
       </nav>
 
-      <section ref={mentorsSectionRef} className="w-full px-4 py-4 bg-gray-200">
+      <section ref={mentorsSectionRef} className="w-full px-4 py-4  bg-gray-200">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-4 scrollbar-hidden overflow-x-auto whitespace-nowrap">
             {selectedFilterObj &&

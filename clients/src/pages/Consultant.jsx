@@ -12,7 +12,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../components/ui/select"
+} from "../components/ui/select";
 
 function Consultant() {
   const { id } = useParams();
@@ -88,15 +88,16 @@ function Consultant() {
           />
           <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
           <div className="flex flex-col gap-4 md:gap-8">
-            
             <div>
-            <div className="max-w-xs">
-  <p className="text-base font-semibold break-words">
-    {consultant.country}
-  </p>
-</div>
+              <div className="max-w-xs">
+                <p className="text-base font-semibold break-words">
+                  {consultant.country}
+                </p>
+              </div>
 
-              <p className="text-base font-semibold">Major: {consultant.major}</p>
+              <p className="text-base font-semibold">
+                Major: {consultant.major}
+              </p>
               <p className="text-base font-semibold">
                 Country of Origin: {consultant.universityCountry}
               </p>
@@ -108,11 +109,12 @@ function Consultant() {
                 {consultant.price[1]} / 60mins
               </p>
               <div className="flex justify-start">
-              <BookingModal  consultantName={consultant.name} consultantId={id} />
+                <BookingModal
+                  consultantName={consultant.name}
+                  consultantId={id}
+                />
               </div>
-              
             </div>
-
           </div>
         </div>
         <div className="flex flex-col gap-12 md:gap-16">
@@ -144,19 +146,19 @@ function Consultant() {
               <Input placeholder="Their Name*" className="rounded-xl" />
               <Input placeholder="Email Address*" className="rounded-xl" />
             </div>
-          
-<Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select roles*" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>roles*</SelectLabel>
-          <SelectItem value="mentor">As a mentor</SelectItem>
-          <SelectItem value="mentee">As a mentee</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select roles*" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>roles*</SelectLabel>
+                  <SelectItem value="mentor">As a mentor</SelectItem>
+                  <SelectItem value="mentee">As a mentee</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
             <button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
               Send
             </button>
