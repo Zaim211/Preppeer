@@ -95,6 +95,8 @@ const ConsultantContentMobile = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+
+
   const handleRegionChange = (region) => {
     setSelectedRegions(region.target.value);
   };
@@ -117,12 +119,6 @@ const ConsultantContentMobile = () => {
   
   const handleApplyFilters = () => {
     let filtered = consultants;
-  
-    if (selectedFilter) {
-      filtered = filtered.filter((consultant) =>
-        consultant.category.includes(selectedFilter)
-      );
-    }
   
     if (selectedRegions) {
       filtered = filtered.filter(
@@ -168,7 +164,7 @@ const ConsultantContentMobile = () => {
           </h2>
           
         </div>
-        <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-2 space-x-2 md:space-x-6">
+        <div className="overflow-x-auto scrollbar-thin scrollbar-hidden scrollbar-webkit flex py-2 space-x-2 md:space-x-6">
           {uniqueFilters.map((filter, index) => (
             <div
               key={index}
@@ -190,8 +186,8 @@ const ConsultantContentMobile = () => {
       </nav>
 
       <section ref={mentorsSectionRef} className="w-full px-4 py-4 bg-gray-200">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-4 scrollbar-hidden overflow-x-auto whitespace-nowrap">
             {selectedFilterObj &&
               selectedFilterObj.subcategories.length > 0 && (
                 <div className="flex gap-4">
@@ -240,8 +236,8 @@ const ConsultantContentMobile = () => {
         </div>
 
 
-  {selectedFilter  || selectedSubcategories.length > 0 ? (
-  <div className="grid grid-cols-2 gap-4"> {/* Two cards per row on small screens */}
+  {selectedFilter || selectedSubcategories.length > 0  ? (
+  <div className="grid grid-cols-2 gap-4"> 
     {filteredConsultants.map((consultant) => (
       <div
         key={consultant._id}
@@ -278,7 +274,7 @@ const ConsultantContentMobile = () => {
     ))}
   </div>
 ) : (
-  <section className="w-full px-4 py-4 bg-gray-200">
+  <section className="w-full bg-gray-200">
     <div className="flex flex-col space-y-4">
       {consultantGroups.map((group, index) => (
         <div key={index} className="flex overflow-x-auto space-x-6 pb-4">
@@ -295,7 +291,8 @@ const ConsultantContentMobile = () => {
                 alt={consultant.name}
                 className="w-full h-[200px] object-cover"
               />
-              <div className="p-4 w-full flex-1 justify-center">
+             <div className="flex-1 h-50">
+             <div className="px-4 mt-2 w-full flex-1 justify-center">
                 <h2 className="text-lg text-center font-bold text-gray-800">
                   {consultant.name}
                 </h2>
@@ -305,10 +302,15 @@ const ConsultantContentMobile = () => {
                 <p className="text-sm font-bold text-center text-black mt-1 ">
                   {consultant.major.join(", ")}
                 </p>
-                <button className="mt-2 bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
+               
+              </div>
+              <div className="flex pt-6 px-2">
+              <button className=" bg-primary text-white font-semibold p-1 rounded-lg w-full text-center">
             View more
             </button>
               </div>
+             </div>
+              
             </Link>
           ))}
         </div>
