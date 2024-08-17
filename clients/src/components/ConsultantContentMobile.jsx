@@ -157,7 +157,7 @@ const ConsultantContentMobile = () => {
   const consultantGroups = splitConsultantsIntoGroups(filteredConsultants, 14);
   return (
     <>
-      <nav className="bg-gray-200 p-4 w-full">
+      <nav className="bg-gray-200 p-4 w-full" id="insiders">
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mb-6">
           Get personalized advice from those who have walked the path and succeeded

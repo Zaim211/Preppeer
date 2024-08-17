@@ -95,11 +95,16 @@ const NavMobile = () => {
 
 
   
-  function scrollToSection(id){
+  function scrollToSection(id) {
     const element = document.getElementById(id);
-    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    if (element) {
+      console.log("Scrolling to element:", element);
+      element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    } else {
+      console.log("Element not found:", id);
+    }
   }
-
+  
   return (
     <div className="flex flex-col md:flex-row bg-primary">
       {/* Right side: Content */}

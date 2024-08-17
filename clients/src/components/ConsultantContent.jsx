@@ -39,7 +39,6 @@ const ConsultantContent = () => {
     const fetchConsultants = async () => {
       try {
         const response = await axios.get("/api/registerConsultant");
-        console.log('response', response)
         setConsultants(response.data.consultants);
         setFilteredConsultants(response.data.consultants);
       } catch (error) {
