@@ -240,8 +240,7 @@ const ConsultantContentMobile = () => {
         </div>
 
 
-  {selectedFilter || selectedLanguage ||
-selectedMajors || selectedSubcategories.length > 0 ? (
+  {selectedFilter  || selectedSubcategories.length > 0 ? (
   <div className="grid grid-cols-2 gap-4"> {/* Two cards per row on small screens */}
     {filteredConsultants.map((consultant) => (
       <div
