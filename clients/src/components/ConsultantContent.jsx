@@ -209,7 +209,7 @@ const ConsultantContent = () => {
             className="lg:w-50 lg:h-32 lg:mr-10 w-20 object-cover"
           /> */}
         </div>
-        <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-1 space-x-4">
+        <div className="overflow-x-auto scrollbar-thin  scrollbar-webkit flex p-1 space-x-4">
           {uniqueFilters.map((filter, index) => (
             <div
               key={index}
@@ -253,7 +253,7 @@ const ConsultantContent = () => {
               )}
           </div>
         </div>
-        <div className="flex justify-end mb-2">
+        <div className="flex justify-end pr-4 mb-2">
           <button
             className="text-black justify-end p-3 border-black items-end flex gap-2 lg:p-4 font-semibold rounded-lg border mr-6"
             onClick={toggleModal}
