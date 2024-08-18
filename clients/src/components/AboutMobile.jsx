@@ -2,8 +2,8 @@ import React from 'react';
 
 import { 
   alto, bowdoin, columbia, cornel, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys, nyu2,
-  oxford, peking, jhu, antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
-  shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs,
+  oxford, peking, jhu, antler, bi, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
+  shoroq,  c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs,
   Altouni,
   berkeleyuni,
   boston,
@@ -88,7 +88,7 @@ const AboutMobile = () => {
     yaleU,
   ];
   const programs = [c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs];
-  const sponsors = [antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs];
+  const sponsors = [antler, bi,  us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, shoroq,  c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs];
 
   const renderRow = (images, animationClass) => {
     return (
