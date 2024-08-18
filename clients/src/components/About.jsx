@@ -83,14 +83,15 @@ const About = () => {
     kimp,
     Michg,
     Menirv,
+    
+  ];
+  const universities2 = [
     Nan,
     nyuA,
     NyuN,
     oxfo,
     Pek,
     Plite,
-  ];
-  const universities2 = [
     Princ,
     Rio,
     russ,

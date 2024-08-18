@@ -64,14 +64,15 @@ const AboutMobile = () => {
     kimp,
     Michg,
     Menirv,
+    
+  ];
+  const universities2 = [
     Nan,
     nyuA,
     NyuN,
     oxfo,
     Pek,
     Plite,
-  ];
-  const universities2 = [
     Princ,
     Rio,
     russ,
@@ -127,7 +128,7 @@ const AboutMobile = () => {
       <div className="w-full mt-6 mb-4">
       {renderRow(universities1, "row-0")}
       {renderRow([...universities2, ...programs], "row-1")}
-        {renderRow(programs, "row-0")}
+        {renderRow(sponsors, "row-0")}
       </div>
     </div>
   );
