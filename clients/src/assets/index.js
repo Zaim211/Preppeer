@@ -45,6 +45,48 @@ import Picture3 from "../assets/images/Picture3.jpg"
 
 
 
+// uni-logos
+
+import Altouni from '../assets/images/uni-logos/Aalto.png';
+import berkeleyuni from '../assets/images/uni-logos/berkel.png'
+import boston from '../assets/images/uni-logos/Boston.png'
+import Bowdoin from '../assets/images/uni-logos/Bowdoin.png'
+import BrockU from '../assets/images/uni-logos/Brock.webp'
+// import Cali from '../assets/images/uni-logos/Clifor.png'
+import columb from '../assets/images/uni-logos/columbia.png'
+import corn from '../assets/images/uni-logos/Cornell-U.png'
+import Darh from '../assets/images/uni-logos/Dartmouth-C.png'
+import Duk from '../assets/images/uni-logos/Duke.png'
+import Edin from '../assets/images/uni-logos/Edinburgh-U.webp'
+import Geor from '../assets/images/uni-logos/George-W.png'
+import harv from '../assets/images/uni-logos/harvard.png'
+import HonKon from '../assets/images/uni-logos/Hong-Kong.png'
+import Insea from '../assets/images/uni-logos/INSEAD-U.png'
+import jhuu from '../assets/images/uni-logos/jhu-logo.png'
+import kimp from '../assets/images/uni-logos/KIMEP.png'
+import Michg from '../assets/images/uni-logos/Michigan-U.png'
+import Menirv from '../assets/images/uni-logos/Minerva.png'
+import Nan from '../assets/images/uni-logos/Nanyang_U.png'
+import nyuA from '../assets/images/uni-logos/NYU-Abu-Dhabi.png'
+import NyuN from '../assets/images/uni-logos/NYU.jpg'
+import oxfo from '../assets/images/uni-logos/Oxford.jpg'
+import Pek from '../assets/images/uni-logos/Peking.png'
+import Plite from '../assets/images/uni-logos/Politecnico_U.png'
+import Princ from '../assets/images/uni-logos/Princeton-U.png'
+import Rio from '../assets/images/uni-logos/RioDe.jpg'
+import russ from '../assets/images/uni-logos/russell-U.png'
+import sing from '../assets/images/uni-logos/singapore.jpg'
+import ucl from '../assets/images/uni-logos/ucl.jpg'
+import camb from '../assets/images/uni-logos/university-of-cambridge-logo.png'
+import tex from '../assets/images/uni-logos/U-of-Texas.jpg'
+import unsw from '../assets/images/uni-logos/unsw-logo.png'
+import usf from '../assets/images/uni-logos/USF.png'
+import syracuse from '../assets/images/uni-logos/Syracuse.jpg'
+import weslyyan from '../assets/images/uni-logos/Wesleyan.jpg'
+import wrocl from '../assets/images/uni-logos/Wroclawska.png'
+import yaleU from '../assets/images/uni-logos/Yale-Logo.png'
+
+
 
 // Import images
 
@@ -84,5 +126,43 @@ export {
     cocacola, jpmorgan, roland, shoroq, slush, cornel,
     c5, erasmus, lumiere, techgirls, notredame, opensociety,
     technovation, virginia, yygs, nus, oxfordUni, pekingUni, columbiaUni,
-    newyu, nyu2, alt, Picture1, Picture2, Picture3
+    newyu, nyu2, alt, Picture1, Picture2, Picture3,
+    Altouni,
+berkeleyuni,
+boston,
+Bowdoin,
+BrockU,
+
+columb,
+corn,
+Darh,
+Duk,
+Edin,
+Geor,
+harv,
+HonKon,
+Insea,
+jhuu,
+kimp,
+Michg,
+Menirv,
+Nan,
+nyuA,
+NyuN,
+oxfo,
+Pek,
+Plite,
+Princ,
+Rio,
+russ,
+sing,
+ucl,
+camb,
+tex,
+unsw,
+usf,
+syracuse,
+weslyyan,
+wrocl,
+yaleU,
  }

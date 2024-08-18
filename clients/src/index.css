@@ -74,7 +74,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
@@ -83,14 +83,12 @@
     transform: translateX(0);
   }
   0% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
   
 }
 
-.hide-scrollbar {
-  overflow: hidden;
-}
+
 
 .sponsor-row {
   display: flex;
@@ -106,7 +104,8 @@
 }
 
 .row-0 > .flex {
-  animation: scrollLeftToRight 20s linear infinite;
+  animation: scrollLeftToRight 40s linear infinite;
+  
 }
 
 .row-1 > .flex {
@@ -114,12 +113,12 @@
 }
 
 .row-2 > .flex {
-  animation: scrollLeftToRight 20s linear infinite;
+  animation: scrollLeftToRight 40s linear infinite;
 }
 
 .sponsor-row img {
   flex-shrink: 0;
-  width: 100px; 
+  width: 140px; 
   margin: 0 10px; 
 }
 
