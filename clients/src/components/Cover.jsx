@@ -16,7 +16,7 @@ const Cover = () => {
           <p className="text-xl sm:text-lg text-black font-semibold">Learn about the university's vibe and identity.</p>
         </div>
         <div className="card flex flex-col items-center bg-white shadow-2xl p-8 rounded-xl transition-transform transform hover:scale-105 w-full max-w-sm">
-          <img src={Picture3} alt="Picture 3" className="w-auto h-full object-contain shadow-2xl mb-4 rounded-xl"/>
+          <img src={Picture3} alt="Picture 3" className="w-auto h-full object-cover shadow-2xl mb-4 rounded-lg"/>
           <p className="text-xl sm:text-lg text-black font-semibold">Personalize your essays for each university.</p>
         </div>
       </div>
