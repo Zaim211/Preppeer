@@ -271,7 +271,7 @@ export const uniqueFilters = [
   },
   {
     name: "Self-initiated Projects",
-    value: "Self-initiated projects",
+    value: "Self-initiated Projects",
     subcategories: [],
   },
   {
