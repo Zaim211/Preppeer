@@ -1,7 +1,7 @@
 import {
   antler,
   bi,
-  boldr,
+  
   us,
   vc,
   ey,
@@ -12,7 +12,7 @@ import {
   jpmorgan,
   roland,
   shoroq,
-  slush,
+  
   c5,
   erasmus,
   lumiere,
@@ -120,7 +120,7 @@ const About = () => {
   const sponsors = [
     antler,
     bi,
-    boldr,
+ 
     us,
     vc,
     ey,
@@ -131,7 +131,7 @@ const About = () => {
     jpmorgan,
     roland,
     shoroq,
-    slush,
+    
   ];
 
   const renderRow = (images, animationClass) => {
