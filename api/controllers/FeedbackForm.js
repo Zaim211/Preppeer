@@ -1,5 +1,7 @@
 const Feedback = require("../models/feedback.model");
 const Blog = require("../models/blog.models");
+const Refer = require("../models/refer.model");
+
 
 class FeedbackForm {
   static async createFeedback(req, res) {
@@ -70,8 +72,28 @@ class FeedbackForm {
   }
 };
 
+static async createRefer(req, res) {
+  const {firstName,lastName,addressEmail,theirName,theirAddressEmail,selectRole} = req.body;
+  if (!firstName || !lastName || !addressEmail || !theirName || !theirAddressEmail || !selectRole) {
+    return res.status(400).json({ message: "Please fill all fields" });
+  }
 
-
+  try {
+    const refer = await Refer.create({
+      firstName,
+      lastName,
+      addressEmail,
+      theirName,
+      theirAddressEmail,
+      selectRole
+    });
+    console.log("Refer: ", refer);
+    res.status(201).json({ message: "Blog created successfully", refer });
+  } catch (error) {
+    console.error("Error creating blog:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+} 
 
 }
 

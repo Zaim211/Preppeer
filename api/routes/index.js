@@ -52,5 +52,7 @@ router.post('/api/blog', FeedbackForm.createBlog);
 router.get('/api/blog', FeedbackForm.getBlogs);
 router.get('/api/blog/random', FeedbackForm.getRandomBlog);
 
+router.post('/api/refer', FeedbackForm.createRefer)
+
 
 module.exports = router;
