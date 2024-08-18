@@ -133,7 +133,7 @@ const NavMobile = () => {
             <span className="text-secondary">insiders</span>
             <br /> to supercharge your
             <br />
-            <span className="underline">college applications</span>
+            <span className="underline">college applications.</span>
           </h1>
           <Link to="#" className="bg-secondary p-2 rounded-lg inline-block mt-6">
             <button onClick={()=>scrollToSection('insiders')} className="text-white text-lg font-bold flex items-center">

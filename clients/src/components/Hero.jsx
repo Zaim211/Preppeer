@@ -168,7 +168,7 @@ const Hero = () => {
             <br /> to supercharge your
             <br />
             <span className="underline leading-[160%]">
-              college applications
+              college applications.
             </span>
           </h1>
           <div className="bg-secondary px-6 py-2 rounded-lg inline-block mt-10 mb-16">
