@@ -3,13 +3,88 @@ import React from 'react';
 import { 
   alto, bowdoin, columbia, cornel, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys, nyu2,
   oxford, peking, jhu, antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
-  shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs
+  shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs,
+  Altouni,
+  berkeleyuni,
+  boston,
+  Bowdoin,
+  BrockU,
+  columb,
+  corn,
+  Darh,
+  Duk,
+  Edin,
+  Geor,
+  harv,
+  HonKon,
+  Insea,
+  jhuu,
+  kimp,
+  Michg,
+  Menirv,
+  Nan,
+  nyuA,
+  NyuN,
+  oxfo,
+  Pek,
+  Plite,
+  Princ,
+  Rio,
+  russ,
+  sing,
+  ucl,
+  camb,
+  tex,
+  unsw,
+  usf,
+  syracuse,
+  weslyyan,
+  wrocl,
+  yaleU,
 } from "../assets";
 
 const AboutMobile = () => {
 
-  const universities1 = [bowdoin, columbia, cornel, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys,
-    minerve, nyu2, oxford, peking, jhu, alto
+  const universities1 = [
+    Altouni,
+    berkeleyuni,
+    boston,
+    Bowdoin,
+    BrockU,
+    columb,
+    corn,
+    Darh,
+    Duk,
+    Edin,
+    Geor,
+    harv,
+    HonKon,
+    Insea,
+    jhuu,
+    kimp,
+    Michg,
+    Menirv,
+    Nan,
+    nyuA,
+    NyuN,
+    oxfo,
+    Pek,
+    Plite,
+  ];
+  const universities2 = [
+    Princ,
+    Rio,
+    russ,
+    sing,
+    ucl,
+    camb,
+    tex,
+    unsw,
+    usf,
+    syracuse,
+    weslyyan,
+    wrocl,
+    yaleU,
   ];
   const programs = [c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs];
   const sponsors = [antler, bi, boldr, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, shoroq, slush, c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs];
@@ -50,8 +125,8 @@ const AboutMobile = () => {
 
       {/* Logos with Titles */}
       <div className="w-full mt-6 mb-4">
-        {renderRow(universities1, "row-0")}
-        {renderRow(sponsors, "row-1")}
+      {renderRow(universities1, "row-0")}
+      {renderRow([...universities2, ...programs], "row-1")}
         {renderRow(programs, "row-0")}
       </div>
     </div>
