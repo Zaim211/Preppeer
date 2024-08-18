@@ -18,6 +18,17 @@ function Consultant() {
   const { id } = useParams();
 
   const [consultant, setConsultant] = useState(null);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [addressEmail, setAddressEmail] = useState('');
+  const [theirName, setTheirName] = useState('');
+  const [theirAddressEmail, setTheirAddressEmail] = useState('');
+  const [selectRole, setSelectRole] = useState([]);
+  const [errors, setErrors] = useState({});
+
+
+  
+      
 
   useEffect(() => {
     const fetchConsultant = async () => {
@@ -77,6 +88,59 @@ function Consultant() {
     return formattedSections;
   };
 
+  const validateForm = () => {
+    const errors = {};
+
+    if (!firstName.trim()) {
+      errors.firstName = "First name is required";
+    }
+    if (!lastName.trim()) {
+      errors.lastName = "Last name is required";
+    }
+    if (!addressEmail.trim()) {
+      errors.addressEmail = "Email address is required";
+    } else if (!addressEmail.includes("@")) {
+      errors.addressEmail = "Email address must contain @";
+    }
+    if (!theirName.trim()) {
+      errors.theirName = "Their name is required";
+    }
+    if (!theirAddressEmail.trim()) {
+      errors.theirAddressEmail = "Their email address is required";
+    } else if (!theirAddressEmail.includes("@")) {
+      errors.theirAddressEmail = "Their email address must contain @";
+    }
+    if (!selectRole) {
+      errors.selectRole = "Please select a role";
+    }
+
+    return errors;
+  };
+
+  async function handleSendRefer(ev) {
+    ev.preventDefault();
+
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    try {
+      const response = await axios.post('/api/refer', {
+        firstName,
+        lastName,
+        addressEmail,
+        theirName,
+        theirAddressEmail,
+        selectRole
+      });
+      console.log("Response from server:", response);
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div className="flex flex-col py-12 px-6 md:py-24 md:px-24 w-screen">
       <section className="grid gap-12 md:gap-24 md:grid-cols-[auto,1fr]">
@@ -124,7 +188,8 @@ function Consultant() {
           </div>
         </div>
       </section>
-      <div className="justify-center flex mt-12">
+
+      {/* <div className="justify-center flex mt-12">
         <section className="flex flex-col md:flex-row mt-12 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
           <div className="flex flex-col gap-4">
             <h2 className="text-lg md:text-xl font-bold">
@@ -159,12 +224,108 @@ function Consultant() {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <button className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
+            <button onClick={handleSendRefer} className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
+              Send
+            </button>
+          </div>
+        </section>
+      </div> */}
+
+<div className="justify-center flex mt-12">
+        <section className="flex flex-col md:flex-row mt-12 justify-center border w-[100%] p-8 lg:w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-lg md:text-xl font-bold">
+              Refer us and gain access to{" "}
+              <span className="text-secondary">exclusive discounts</span>.
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Input
+                placeholder="First Name*"
+                className="rounded-xl"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+               {errors.firstName && (
+                <p className="text-red-500 text-sm">{errors.firstName}</p>
+              )}
+              <Input
+                placeholder="Last Name*"
+                className="rounded-xl"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+               {errors.firstName && (
+                <p className="text-red-500 text-sm">{errors.firstName}</p>
+              )}
+            </div>
+            <Input
+              placeholder="Email Address*"
+              className="rounded-xl"
+              value={addressEmail}
+              onChange={(e) => setAddressEmail(e.target.value)}
+            />
+            {errors.addressEmail && (
+              <p className="text-red-500 text-sm">{errors.addressEmail}</p>
+            )}
+          </div>
+          <div className="flex flex-col gap-4">
+            <h2 className="font-bold md:text-lg">
+              Would you like to refer{" "}
+              <strong className="text-secondary">PrepPeer</strong> to someone?
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Input
+                placeholder="Their Name*"
+                className="rounded-xl"
+                value={theirName}
+                onChange={(e) => setTheirName(e.target.value)}
+              />
+               {errors.theirName && (
+                <p className="text-red-500 text-sm">{errors.theirName}</p>
+              )}
+              <Input
+                placeholder="Email Address*"
+                className="rounded-xl"
+                value={theirAddressEmail}
+                onChange={(e) => setTheirAddressEmail(e.target.value)}
+              />
+              {errors.theirAddressEmail && (
+                <p className="text-red-500 text-sm">
+                  {errors.theirAddressEmail}
+                </p>
+              )}
+            </div>
+             
+            <Select
+              value={selectRole}
+              onValueChange={(value) => setSelectRole(value)}
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select roles*" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>roles*</SelectLabel>
+                  <SelectItem value="mentor">As a mentor</SelectItem>
+                  <SelectItem value="mentee">As a mentee</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            {errors.selectRole && (
+              <p className="text-red-500 text-sm">{errors.selectRole}</p>
+            )}
+            <button
+              onClick={handleSendRefer}
+              className="bg-secondary text-white font-bold rounded-xl p-2 mt-4"
+            >
               Send
             </button>
           </div>
         </section>
       </div>
+
+
+
       <section className="flex flex-col my-12 md:my-24 gap-4 md:gap-8">
         <h2 className="text-2xl md:text-4xl font-bold">FAQs</h2>
         <FaqAccordion
