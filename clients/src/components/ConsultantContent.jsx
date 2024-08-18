@@ -301,9 +301,9 @@ const ConsultantContent = () => {
                 </div>
 
                 <div className="mt-4 flex justify-center">
-                  <div className="bg-gradient-to-r bg-primary text-white py-2 px-4 rounded-full font-semibold text-md">
-                    View more
-                  </div>
+                <div className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-2 px-4 rounded-full font-semibold text-md">
+    View more
+</div>
                     {/* ${consultant.price[0]} / 30 mins */}
                 
                 </div>

@@ -135,7 +135,16 @@ function Consultant() {
         theirAddressEmail,
         selectRole
       });
-      console.log("Response from server:", response);
+      if (response.status === 201) {
+        alert('Your referral has been sent successfully.');
+        setFirstName("");
+        setLastName("");
+        setAddressEmail("");
+        setTheirName("");
+        setTheirAddressEmail("");
+        setSelectRole("");
+      }
+      
     } catch (err) {
       console.log(err)
     }
@@ -188,48 +197,6 @@ function Consultant() {
           </div>
         </div>
       </section>
-
-      {/* <div className="justify-center flex mt-12">
-        <section className="flex flex-col md:flex-row mt-12 justify-center border p-8 w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-lg md:text-xl font-bold">
-              Refer us and gain access to{" "}
-              <span className="text-secondary">exclusive discounts</span>.
-            </h2>
-            <div className="flex flex-col md:flex-row gap-4">
-              <Input placeholder="First Name*" className="rounded-xl" />
-              <Input placeholder="Last Name*" className="rounded-xl" />
-            </div>
-            <Input placeholder="Email Address*" className="rounded-xl" />
-          </div>
-          <div className="flex flex-col gap-4">
-            <h2 className="font-bold md:text-lg">
-              Would you like to refer{" "}
-              <strong className="text-secondary">PrepPeer</strong> to someone?
-            </h2>
-            <div className="flex flex-col md:flex-row gap-4">
-              <Input placeholder="Their Name*" className="rounded-xl" />
-              <Input placeholder="Email Address*" className="rounded-xl" />
-            </div>
-
-            <Select>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select roles*" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>roles*</SelectLabel>
-                  <SelectItem value="mentor">As a mentor</SelectItem>
-                  <SelectItem value="mentee">As a mentee</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <button onClick={handleSendRefer} className="bg-secondary text-white font-bold rounded-xl p-2 mt-4">
-              Send
-            </button>
-          </div>
-        </section>
-      </div> */}
 
 <div className="justify-center flex mt-12">
         <section className="flex flex-col md:flex-row mt-12 justify-center border w-[100%] p-8 lg:w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
