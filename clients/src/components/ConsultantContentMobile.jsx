@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../assets/logo.png";
+import logoo from "../assets/logoo.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -157,21 +157,21 @@ const ConsultantContentMobile = () => {
   const consultantGroups = splitConsultantsIntoGroups(filteredConsultants, 14);
   return (
     <>
-      <nav className="bg-gray-200 p-4 w-full" id="insiders">
+      <nav className="bg-primary p-4 w-full" id="insiders">
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-2xl md:text-5xl lg:text-5xl mb-6">
+          <h2 className="font-bold text-white text-center text-2xl md:text-5xl lg:text-5xl mb-6">
           Get personalized advice from those who have walked the path and succeeded
           </h2>
           
         </div>
-        <div className="overflow-x-auto scrollbar-thin scrollbar-hidden scrollbar-webkit flex py-2 space-x-2 md:space-x-8">
+        <div className="overflow-x-auto bg-primary scrollbar-thin scrollbar-hidden scrollbar-webkit flex py-2 space-x-2 md:space-x-8">
           {uniqueFilters.map((filter, index) => (
             <div
               key={index}
               className={`flex flex-col items-center cursor-pointer ${
                 selectedFilter === filter.value
-                  ? "text-white font-semibold border-gray-700 bg-primary rounded-sm border"
-                  : "text-black border-black font-bold rounded-sm border"
+                  ? "text-black font-semibold border-white bg-gray-200 rounded-sm border"
+                  : "text-white border-white font-bold rounded-sm border"
               }`}
               onClick={() => handleFilterClick(filter.value)}
             >
@@ -185,7 +185,7 @@ const ConsultantContentMobile = () => {
         </div>
       </nav>
 
-      <section ref={mentorsSectionRef} className="w-full px-4 py-4  bg-gray-200">
+      <section ref={mentorsSectionRef} className="w-full px-4 py-4  bg-primary">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-4 scrollbar-hidden overflow-x-auto whitespace-nowrap">
             {selectedFilterObj &&
@@ -196,8 +196,8 @@ const ConsultantContentMobile = () => {
                       key={index}
                       className={`cursor-pointer ${
                         selectedSubcategories.includes(subcat.value)
-                          ? "text-white font-semibold border-black bg-primary rounded-sm border"
-                          : "text-black border-black font-semibold rounded-sm border"
+                          ? "text-black font-semibold border-white bg-gray-200 rounded-sm border"
+                          : "text-white border-white font-semibold rounded-sm border"
                       } p-2 border border-black rounded-sm`}
                       onClick={() => handleSubcategoryClick(subcat.value)}
                     >
@@ -214,7 +214,7 @@ const ConsultantContentMobile = () => {
         </div>
         <div className="flex justify-end mb-2">
           <button
-            className="text-black justify-end p-3 border-black items-end flex gap-2 lg:p-4 font-semibold rounded-lg border ml-12"
+            className="text-white justify-end p-3 border-white items-end flex gap-2 lg:p-4 font-semibold rounded-lg border ml-12"
             onClick={toggleModal}
           >
             Filter
@@ -274,7 +274,7 @@ const ConsultantContentMobile = () => {
     ))}
   </div>
 ) : (
-  <section className="w-full bg-gray-200">
+  <section className="w-full bg-primary">
     <div className="flex flex-col space-y-4">
       {consultantGroups.map((group, index) => (
         <div key={index} className="flex overflow-x-auto space-x-6 pb-4">
@@ -323,20 +323,20 @@ const ConsultantContentMobile = () => {
 
       {isModalOpen && (
         <section className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">
-          <div className="bg-white lg:p-8 p-8 rounded-md  w-2/3  lg:w-full lg:h-full xl:w-1/3 relative">
+          <div className="bg-primary lg:p-8 p-8 rounded-md  w-2/3  lg:w-full lg:h-full xl:w-1/3 relative">
             <button
               onClick={toggleModal}
-              className="absolute top-2 right-2 text-black text-4xl"
+              className="absolute top-2 right-2 text-white text-4xl"
               aria-label="Close"
             >
               &times;
             </button>
-            <h2 className="lg:text-4xl text-xl lg:mb-16 mb-4 font-semibold">
+            <h2 className="lg:text-4xl text-white text-xl lg:mb-16 mb-4 font-semibold">
               Filters
             </h2>
             <div className="flex-cols gap-6">
               <div className="mb-6">
-                <h3 className="font-semibold lg:text-2xl underline">
+                <h3 className="font-semibold text-white lg:text-2xl underline">
                   Language Fluency
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -356,7 +356,7 @@ const ConsultantContentMobile = () => {
               </div>
 
               <div className="mb-6">
-                <h3 className="font-semibold lg:text-2xl underline">
+                <h3 className="font-semibold text-white lg:text-2xl underline">
                   Name of University
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -378,7 +378,7 @@ const ConsultantContentMobile = () => {
               
               <div className="mb-4">
                 <h3 className="font-semibold lg:text-2xl underline">Major</h3>
-                <div className="lg:flex-1 gap-2 lg:mt-2">
+                <div className="lg:flex-1 text-white gap-2 lg:mt-2">
                   {[
                     "STEM",
                     "Social Sciences",
@@ -411,8 +411,8 @@ const ConsultantContentMobile = () => {
               >
                 Apply
                 <img
-                  src={logo}
-                  alt="logo"
+                  src={logoo}
+                  alt="logoo"
                   className="lg:w-24 h-16 object-cover"
                 />
               </button>

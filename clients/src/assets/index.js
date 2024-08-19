@@ -68,21 +68,21 @@ import Michg from '../assets/images/uni-logos/Michigan-U.png'
 import Menirv from '../assets/images/uni-logos/Minerva.png'
 import Nan from '../assets/images/uni-logos/Nanyang_U.png'
 import nyuA from '../assets/images/uni-logos/NYU-Abu-Dhabi.png'
-import NyuN from '../assets/images/uni-logos/NYU.jpg'
-import oxfo from '../assets/images/uni-logos/Oxford.jpg'
+import NyuN from '../assets/images/uni-logos/NYU.png'
+import oxfo from '../assets/images/uni-logos/Oxford.png'
 import Pek from '../assets/images/uni-logos/Peking.png'
 import Plite from '../assets/images/uni-logos/Politecnico_U.png'
 import Princ from '../assets/images/uni-logos/Princeton-U.png'
-import Rio from '../assets/images/uni-logos/RioDe.jpg'
+import Rio from '../assets/images/uni-logos/RioDe.png'
 import russ from '../assets/images/uni-logos/russell-U.png'
-import sing from '../assets/images/uni-logos/singapore.jpg'
-import ucl from '../assets/images/uni-logos/ucl.jpg'
+import sing from '../assets/images/uni-logos/singapore.png'
+import ucl from '../assets/images/uni-logos/ucl.png'
 import camb from '../assets/images/uni-logos/university-of-cambridge-logo.png'
-import tex from '../assets/images/uni-logos/U-of-Texas.jpg'
+import tex from '../assets/images/uni-logos/U-of-Texas.png'
 import unsw from '../assets/images/uni-logos/unsw-logo.png'
 import usf from '../assets/images/uni-logos/USF.png'
-import syracuse from '../assets/images/uni-logos/Syracuse.jpg'
-import weslyyan from '../assets/images/uni-logos/Wesleyan.jpg'
+import syracuse from '../assets/images/uni-logos/Syracuse.png'
+import weslyyan from '../assets/images/uni-logos/Wesleyan.png'
 import wrocl from '../assets/images/uni-logos/Wroclawska.png'
 import yaleU from '../assets/images/uni-logos/Yale-Logo.png'
 
@@ -132,7 +132,6 @@ berkeleyuni,
 boston,
 Bowdoin,
 BrockU,
-
 columb,
 corn,
 Darh,

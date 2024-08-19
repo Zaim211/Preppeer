@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logoo.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -196,9 +196,9 @@ const ConsultantContent = () => {
 
   return (
     <>
-      <nav className="bg-gray-200 p-4 w-full" id="insiders">
+      <nav className="bg-primary p-4 w-full" id="insiders">
         <div className="flex justify-center mb-8 mt-8 items-center">
-          <h2 className="font-bold text-3xl ">
+          <h2 className="font-bold text-white text-3xl ">
           Get personalized advice from those who have walked the path and succeeded
           </h2>
         </div>
@@ -208,8 +208,8 @@ const ConsultantContent = () => {
               key={index}
               className={`flex flex-col items-center cursor-pointer ${
                 selectedFilter === filter.value
-                  ? "text-white font-semibold border-gray-700 bg-primary rounded-sm border"
-                  : "text-black border-black font-bold rounded-sm border"
+                  ? "text-black font-semibold border-white bg-gray-200 rounded-sm border"
+                  : "text-white border-white font-bold rounded-sm border"
               }`}
               onClick={() => handleFilterClick(filter.value)}
             >
@@ -223,7 +223,7 @@ const ConsultantContent = () => {
         </div>
       </nav>
 
-      <section ref={mentorsSectionRef} className="w-full px-8 py-4 bg-gray-200">
+      <section ref={mentorsSectionRef} className="w-full px-8 py-4 bg-primary">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap">
             {selectedFilterObj &&
@@ -234,8 +234,8 @@ const ConsultantContent = () => {
                       key={index}
                       className={`cursor-pointer ${
                         selectedSubcategories.includes(subcat.value)
-                          ? "text-white font-semibold border-black bg-primary rounded-sm border"
-                          : "text-black border-black font-semibold rounded-sm border"
+                          ? "text-black font-semibold border-white bg-gray-200 rounded-sm border"
+                          : "text-white border-white font-semibold rounded-sm border"
                       } p-2 border border-black rounded-sm`}
                       onClick={() => handleSubcategoryClick(subcat.value)}
                     >
@@ -248,7 +248,7 @@ const ConsultantContent = () => {
         </div>
         <div className="flex justify-end pr-4 mb-2">
           <button
-            className="text-black justify-end p-3 border-black items-end flex gap-2 lg:p-4 font-semibold rounded-lg border mr-6"
+            className="text-white justify-end p-3 border-white items-end flex gap-2 lg:p-4 font-semibold rounded-lg border mr-6"
             onClick={toggleModal}
           >
             Filter
@@ -269,7 +269,7 @@ const ConsultantContent = () => {
           </button>
         </div>
 
-        <div className="bg-gray-200 w-full mb-16">
+        <div className="bg-primary w-full mb-16">
           <div className="flex flex-wrap gap-6 mt-2 overflow-x-auto pl-12 pb-4">
             {paginatedConsultants.map((consultant) => (
               <Link
@@ -349,10 +349,10 @@ const ConsultantContent = () => {
 
       {isModalOpen && (
         <section className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-end items-center z-50">
-          <div className="bg-white p-8  rounded-md w-1/4relative">
+          <div className="bg-primary p-8  rounded-md w-1/4relative">
             <button
               onClick={toggleModal}
-              className="absolute top-20 right-2 text-black text-4xl"
+              className="absolute top-20 right-2 text-white text-4xl"
               aria-label="Close"
             >
               &times;
@@ -360,7 +360,7 @@ const ConsultantContent = () => {
 
             <div className="flex-cols gap-6">
               <div className="">
-                <h3 className="font-semibold text-xl underline">
+                <h3 className="font-semibold text-white text-xl underline">
                   Language Fluency
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -380,7 +380,7 @@ const ConsultantContent = () => {
               </div>
 
               <div className="mt-4">
-                <h3 className="font-semibold text-xl underline">
+                <h3 className="font-semibold text-white text-xl underline">
                   Name of University
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -400,8 +400,8 @@ const ConsultantContent = () => {
               </div>
 
               <div className="mt-4">
-                <h3 className="font-semibold text-xl underline">Major</h3>
-                <div className="flex-1 gap-2 mt-2">
+                <h3 className="font-semibold text-white text-xl underline">Major</h3>
+                <div className="flex-1 text-white gap-2 mt-2">
                   {[
                     "STEM",
                     "Social Sciences",

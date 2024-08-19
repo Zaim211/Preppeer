@@ -123,7 +123,7 @@ const NavMobile = () => {
             </Link>
           </div>
           <Link to="/" className="flex-shrink-0 mb-4">
-            <img src={logo} alt="logo" className="w-24 h-16 object-cover" />
+            <img src={logo} alt="logo" className="w-32 h-16 mt-6 object-cover" />
           </Link>
         </div>
 

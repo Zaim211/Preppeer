@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { 
-  alto, bowdoin, columbia, cornel, dartmouth, cambridge, hongkong, nayyang, minerve, nyu, nys, nyu2,
-  oxford, peking, jhu, antler, bi, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
+   antler, bi, us, vc, ey, ibm, mashreq, coinhako, cocacola, jpmorgan, roland, 
   shoroq,  c5, erasmus, lumiere, techgirls, notredame, opensociety, technovation, virginia, yygs,
   Altouni,
   berkeleyuni,
@@ -110,14 +109,14 @@ const AboutMobile = () => {
   };
 
   return (
-    <div className=" bg-gray-200 flex flex-col items-center">
+    <div className=" bg-primary flex flex-col items-center">
       {/* Main Content */}
       <div className="text-center">
         
         <div className="flex-1 justify-start mt-4">
         
        <div>
-       <p className="mt-2 text-2xl font-bold lg:text-lg text-destructive s">
+       <p className="mt-2 text-2xl font-bold lg:text-lg text-white">
        Our Insiders come from Top universities, Elite programs, and Prestigious Internships
         </p>
        </div>

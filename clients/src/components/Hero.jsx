@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { UserContext } from "../UserContext";
 import { useMediaQuery } from 'react-responsive';
 
 import {
@@ -134,8 +133,32 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex lg:flex-wrap  w-[50%]  justify-center text-center md:text-left">
-        <div className="flex items-center  ml-60 gap-6 mb-12">
+      <div className="flex lg:flex-wrap  mb-4 w-[50%]  justify-center text-center md:text-left">
+        {/* <div className="flex items-center  ml-60 gap-2 mb-12">
+          <div className="flex justify-between font-bold items-center gap-12">
+          <a
+              href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
+              className="underline font-bold text-2xl text-white"
+            >
+              Be an insider
+            </a>
+            <Link
+              to="/Insights"
+              className="underline font-bold text-2xl text-white"
+            >
+              Insights
+            </Link>
+            <Link to="/" className="">
+              <img
+                src={logo}
+                alt="logo"
+                className="w-42 object-cover"
+              />
+            </Link>
+          </div>
+         
+        </div> */}
+          <div className="flex items-center  ml-60 gap-6 mb-32">
           <div className="flex font-bold items-center gap-12">
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
@@ -150,12 +173,12 @@ const Hero = () => {
               Insights
             </Link>
           </div>
-          <div>
-            <Link to="/" className="flex-shrink-0">
+          <div className=" mt-6">
+            <Link to="/" className="flex-shrink-0  mt-6">
               <img
                 src={logo}
                 alt="logo"
-                className="w-24 h-24 mr-1 object-cover"
+                className="w-36 mr-1 object-cover"
               />
             </Link>
           </div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import bloghero1 from "../assets/images/bloghero1.png";
-import logo from "../assets/logo.png";
+import logo from "../assets/logoo.png";
 
 const categories = [
   "Scholarships",
@@ -166,7 +166,7 @@ const Blog = () => {
                 <Link
                   to={`/Insights/${randomBlog._id}`}
                   key={randomBlog._id}
-                  className="border border-gray-300 w-[50%] rounded-lg shadow-lg flex flex-col items-start bg-white"
+                  className="border border-gray-300 lg:w-[40%] w-full rounded-lg shadow-lg flex flex-col items-start bg-white"
                 >
                   <div className="relative w-full">
                     <img
@@ -175,11 +175,11 @@ const Blog = () => {
                       className="w-full object-contain rounded-t-lg"
                     />
                   </div>
-                  <div className="p-2">
+                  <div className="p-2 w-full">
                     <h3 className="text-xl font-bold mb-2">{randomBlog.fullName}</h3>
                     <h3 className="text-xl font-bold text-black">{randomBlog.title}</h3>
 
-                    <div className="text-black flex flex-wrap mt-4">
+                    <div className="text-black w-full flex flex-wrap mt-4">
                       {randomBlog.hashtags[0].split(' ').map((hashtag, index) => (
                         <span
                           key={index}

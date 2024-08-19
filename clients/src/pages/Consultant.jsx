@@ -153,22 +153,27 @@ function Consultant() {
   return (
     <div className="flex flex-col py-12 px-6 md:py-24 md:px-24 w-screen">
       <section className="grid gap-12 md:gap-24 md:grid-cols-[auto,1fr]">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col">
           <img
             src={consultant.profilePicture}
             alt={consultant.name}
             className="object-contain w-[300px] h-42 max-w-xs md:max-w-none"
           />
           <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
+          <h2 className="text-base font-semibold break-words">
+                  {consultant.country}
+          </h2>
+          <div className="max-w-xs">
+                <BookingModal
+                  consultantName={consultant.name}
+                  consultantId={id}
+                />
+              </div>
+            
           <div className="flex flex-col gap-4 md:gap-8">
             <div>
-              <div className="max-w-xs">
-                <p className="text-base font-semibold break-words">
-                  {consultant.country}
-                </p>
-              </div>
-
-              <p className="text-base font-semibold">
+             
+              <p className="text-base mt-4 font-semibold">
                 Major: {consultant.major}
               </p>
               <p className="text-base font-semibold">
@@ -181,12 +186,7 @@ function Consultant() {
                 Price: ${consultant.price[0]} / 30mins &nbsp; | &nbsp; $
                 {consultant.price[1]} / 60mins
               </p>
-              <div className="flex justify-start">
-                <BookingModal
-                  consultantName={consultant.name}
-                  consultantId={id}
-                />
-              </div>
+              
             </div>
           </div>
         </div>
@@ -199,13 +199,13 @@ function Consultant() {
       </section>
 
 <div className="justify-center flex mt-12">
-        <section className="flex flex-col md:flex-row mt-12 justify-center border w-[100%] p-8 lg:w-[70%] rounded-lg bg-gray-300 mb-6 gap-16 md:gap-24">
+        <section className="flex flex-col md:flex-row mt-12 justify-center border w-[100%] p-8 lg:w-[70%] rounded-lg bg-gray-300 mb-6 gap-8 md:gap-24">
           <div className="flex flex-col gap-4">
             <h2 className="text-lg md:text-xl font-bold">
               Refer us and gain access to{" "}
               <span className="text-secondary">exclusive discounts</span>.
             </h2>
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex md:flex-row gap-4">
               <Input
                 placeholder="First Name*"
                 className="rounded-xl"
@@ -235,12 +235,13 @@ function Consultant() {
               <p className="text-red-500 text-sm">{errors.addressEmail}</p>
             )}
           </div>
+          
           <div className="flex flex-col gap-4">
             <h2 className="font-bold md:text-lg">
               Would you like to refer{" "}
               <strong className="text-secondary">PrepPeer</strong> to someone?
             </h2>
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex md:flex-row gap-4">
               <Input
                 placeholder="Their Name*"
                 className="rounded-xl"
@@ -264,15 +265,15 @@ function Consultant() {
             </div>
              
             <Select
-              value={selectRole}
+         
               onValueChange={(value) => setSelectRole(value)}
+              placeholder="Select roles*"
             >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select roles*" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>roles*</SelectLabel>
                   <SelectItem value="mentor">As a mentor</SelectItem>
                   <SelectItem value="mentee">As a mentee</SelectItem>
                 </SelectGroup>
