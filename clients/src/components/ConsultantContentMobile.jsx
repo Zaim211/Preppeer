@@ -235,8 +235,87 @@ const ConsultantContentMobile = () => {
           </button>
         </div>
 
+        {selectedFilter || selectedSubcategories.length > 0 ? (
+  <div className="grid grid-cols-2 gap-4"> 
+    {filteredConsultants.map((consultant) => (
+      <div
+        key={consultant._id}
+        className="w-full border-gray-300 border rounded-lg shadow-md flex flex-col"
+      >
+        <Link
+          to={`/consultant/${
+            consultant._id
+          }?name=${encodeURIComponent(consultant.name)}&category=${encodeURIComponent(consultant.major.join(","))}`}
+          className="w-full flex-1 flex flex-col bg-white rounded-lg overflow-hidden"
+        >
+          <img
+            src={consultant.profilePicture}
+            alt={consultant.name}
+            className="w-full h-[200px] object-cover"
+          />
+          <div className="p-4 flex-1 flex flex-col justify-between">
+            <div className="flex flex-col items-center">
+              <h2 className="text-lg font-bold text-center text-gray-800">
+                {consultant.name}
+              </h2>
+              <p className="text-sm font-bold text-center text-black">
+                {consultant.country}
+              </p>
+              <p className="text-sm font-bold text-center text-black mt-1">
+                {consultant.major.join(", ")}
+              </p>
+            </div>
+            <button className="bg-primary text-white font-semibold p-2 rounded-lg w-full mt-4">
+              View more
+            </button>
+          </div>
+        </Link>
+      </div>
+    ))}
+  </div>
+) : (
+  <section className="w-full bg-primary">
+    <div className="flex flex-col space-y-4">
+      {consultantGroups.map((group, index) => (
+        <div key={index} className="flex overflow-x-auto space-x-6 pb-4">
+          {group.map((consultant) => (
+            <Link
+              to={`/consultant/${
+                consultant._id
+              }?name=${encodeURIComponent(consultant.name)}&category=${encodeURIComponent(consultant.major.join(","))}`}
+              key={consultant._id}
+              className="w-48 flex-shrink-0 bg-white rounded-lg shadow-lg flex flex-col"
+            >
+              <img
+                src={consultant.profilePicture}
+                alt={consultant.name}
+                className="w-full h-[200px] object-cover"
+              />
+              <div className="px-4 py-2 flex-1 flex flex-col justify-between">
+                <div className="flex flex-col items-center">
+                  <h2 className="text-lg text-center font-bold text-gray-800">
+                    {consultant.name}
+                  </h2>
+                  <p className="text-sm text-center font-bold text-black">
+                    {consultant.country}
+                  </p>
+                  <p className="text-sm font-bold text-center text-black mt-1">
+                    {consultant.major.join(", ")}
+                  </p>
+                </div>
+                <button className="bg-primary text-white font-semibold p-2 rounded-lg w-full mt-4">
+                  View more
+                </button>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+)}
 
-  {selectedFilter || selectedSubcategories.length > 0  ? (
+  {/* {selectedFilter || selectedSubcategories.length > 0  ? (
   <div className="grid grid-cols-2 gap-4"> 
     {filteredConsultants.map((consultant) => (
       <div
@@ -317,7 +396,8 @@ const ConsultantContentMobile = () => {
       ))}
     </div>
   </section>
-)}
+)} */}
+
 
       </section>
 
