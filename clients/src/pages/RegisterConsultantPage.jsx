@@ -152,7 +152,7 @@ const RegisterConsultantPage = () => {
   };
 
   if (redirect) {
-    return <Navigate to={"/SignInConsltantPage"} />;
+    return <Navigate to={"/"} />;
   }
 
   return (
