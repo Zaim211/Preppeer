@@ -160,7 +160,7 @@ function Consultant() {
             className="object-contain w-[300px] h-42 max-w-xs md:max-w-none"
           />
           <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
-          <h2 className="text-base font-semibold break-words">
+          <h2 className="text-xl font-semibold break-words">
                   {consultant.country}
           </h2>
           <div className="max-w-xs">

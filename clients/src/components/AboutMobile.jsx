@@ -109,14 +109,14 @@ const AboutMobile = () => {
   };
 
   return (
-    <div className=" bg-primary flex flex-col items-center">
+    <div className=" bg-gray-200 flex flex-col items-center">
       {/* Main Content */}
       <div className="text-center">
         
         <div className="flex-1 justify-start mt-4">
         
        <div>
-       <p className="mt-2 text-2xl font-bold lg:text-lg text-white">
+       <p className="mt-2 text-2xl font-bold lg:text-lg text-primary">
        Our Insiders come from Top universities, Elite programs, and Prestigious Internships
         </p>
        </div>
