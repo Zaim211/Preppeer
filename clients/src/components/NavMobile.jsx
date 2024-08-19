@@ -108,7 +108,7 @@ const NavMobile = () => {
   return (
     <div className="flex flex-col md:flex-row bg-primary">
       {/* Right side: Content */}
-      <div className="flex-1 flex flex-col items-center justify-center mb-6 p-4 md:p-8 text-center md:text-left">
+      {/* <div className="flex-1 flex flex-col items-center justify-center mb-6 p-4 md:p-8 text-center md:text-left">
         <div className="flex  items-center md:items-end mb-8">
          
           <div className="flex  gap-4">
@@ -153,7 +153,55 @@ const NavMobile = () => {
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
+<div className="flex flex-col md:flex-row items-center justify-center mb-6 p-4 md:p-8 text-center md:text-left">
+  <div className="flex items-center gap-4 mb-8 md:mb-0">
+    <a
+      href="https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na"
+      className="underline font-bold text-lg sm:text-xl text-white"
+    >
+      Be an insider
+    </a>
+    <div className="flex items-center gap-4">
+      <Link to="/Insights" className="underline text-white font-bold text-lg sm:text-xl">
+        Insights
+      </Link>
+      <Link to="/" className="flex-shrink-0">
+        <img src={logo} alt="logo" className="w-28 h-14 sm:w-32 sm:h-16 object-cover" />
+      </Link>
+    </div>
+  </div>
+
+  <div className="text-center md:text-left">
+    <h1 className="font-bold text-2xl sm:text-3xl text-white mb-6">
+      Book calls with{" "}
+      <span className="text-secondary">insiders</span>
+      <br /> to supercharge your
+      <br />
+      <span className="underline">college applications.</span>
+    </h1>
+    <Link to="#" className="bg-secondary p-2 rounded-lg inline-block mt-6">
+      <button
+        onClick={() => scrollToSection('insiders')}
+        className="text-white text-lg font-bold flex items-center"
+      >
+        Find an Insider
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-6 h-6 ml-2"
+        >
+          <path
+            fillRule="evenodd"
+            d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+    </Link>
+  </div>
+</div>
 
       {/* Left side: 2x4 grid of images */}
 
