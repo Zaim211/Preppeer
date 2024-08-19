@@ -363,7 +363,7 @@ const ConsultantContent = () => {
                 <h3 className="font-semibold text-white text-xl underline">
                   Language Fluency
                 </h3>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-2 mb-4">
                   <select
                     value={selectedLanguage}
                     onChange={handleLanguageChange}
@@ -379,11 +379,11 @@ const ConsultantContent = () => {
                 </div>
               </div>
 
-              <div className="mt-4">
-                <h3 className="font-semibold text-white text-xl underline">
+              <div className="">
+                <h3 className="font-semibold mt-8 text-white text-xl underline">
                   Name of University
                 </h3>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-2">
                   <select
                     value={selectedRegions}
                     onChange={handleRegionChange}

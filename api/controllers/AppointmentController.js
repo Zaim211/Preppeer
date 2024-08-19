@@ -175,7 +175,6 @@ class AppointmentController {
       session.endSession();
     }
   }
-
   static async createMeetingBooking(req, res) {
     const payload = req.body;
 
@@ -208,7 +207,6 @@ class AppointmentController {
       session.endSession();
     }
 }
-
 }
 
 module.exports = AppointmentController;
