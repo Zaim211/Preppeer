@@ -255,10 +255,10 @@ const ConsultantContentMobile = () => {
           />
           <div className="p-4 flex-1 flex flex-col justify-between">
             <div className="flex flex-col items-center">
-              <h2 className="text-lg font-bold text-center text-gray-800">
+              <h2 className="text-lg font-bold text-center mb-2 text-gray-800">
                 {consultant.name}
               </h2>
-              <p className="text-sm font-bold text-center text-black">
+              <p className="text-sm font-bold text-center mb-2 text-black">
                 {consultant.country}
               </p>
               <p className="text-sm font-bold text-center text-black mt-1">
@@ -293,10 +293,10 @@ const ConsultantContentMobile = () => {
               />
               <div className="px-4 py-2 flex-1 flex flex-col justify-between">
                 <div className="flex flex-col items-center">
-                  <h2 className="text-lg text-center font-bold text-gray-800">
+                  <h2 className="text-lg text-center font-bold mb-2 text-gray-800">
                     {consultant.name}
                   </h2>
-                  <p className="text-sm text-center font-bold text-black">
+                  <p className="text-sm text-center font-bold mb-2 text-black">
                     {consultant.country}
                   </p>
                   <p className="text-sm font-bold text-center text-black mt-1">
