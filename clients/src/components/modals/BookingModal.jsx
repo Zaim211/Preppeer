@@ -74,33 +74,6 @@ function BookingModal({ consultantName, consultantId }) {
   }
 
   return (
-    // <Dialog modal={true} open={isOpen} onOpenChange={(val) => setIsOpen(val)}>
-    //   <DialogTrigger>
-    //     <Button className='text-white bg-orange-400 w-full text-lg hover:bg-orange-500 shadow-lg'>Book a Call</Button>
-    //   </DialogTrigger>
-    //   <DialogContent className="max-h-[80vh] overflow-y-auto">
-    //     <DialogHeader>
-    //       <DialogTitle>Please fill out the form to book a call with {consultantName}</DialogTitle>
-    //       <div className='flex flex-col gap-4 py-8'>
-    //         <InputBox title={'Full Name'} isRequired={true} placeholder={'Enter full name'} value={formData.fullName} onChange={e => setFormData({ ...formData, fullName: e.target.value })} error={errors.fullName} />
-    //         <InputBox title={'Email'} isRequired={true} placeholder={'Enter email'} value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} error={errors.email} />
-    //         <div className='grid grid-cols-2 gap-2'>
-    //           <InputBox title={'Current Grade'} isRequired={true} placeholder={'Enter current grade'} value={formData.currentGrade} onChange={e => setFormData({ ...formData, currentGrade: e.target.value })} error={errors.currentGrade} />
-    //           <InputBox title={'Fluent in Languages'} isRequired={false} placeholder={'Enter your languages'} value={formData.language} onChange={e => setFormData({ ...formData, language: e.target.value })} error={errors.language} />
-    //         </div>
-    //         <PhoneInputBox title={'Whatsapp/WeChat Number'} isRequired={false} placeholder={'Enter whatsapp/wechat number'} value={formData.phone} onChange={phone => setFormData({ ...formData, phone })} error={errors.phone} />
-    //         <DropdownBox title={'Which package are you choosing?'} isRequired={true} value={formData.package} onChange={e => setFormData({ ...formData, package: e.target.value })} error={errors.package} />
-    //         <TextAreaBox title={''} isRequired={false} placeholder={'Answers (no word limit)'} value={formData.questions} onChange={e => setFormData({ ...formData, questions: e.target.value })} error={errors.questions} />
-    //         <Button onClick={submitBookingHandler} disabled={isSubmitting} className='text-white disabled:bg-orange-700 bg-orange-400 w-full text-lg hover:bg-orange-500 shadow-md'>
-    //           {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Booking</> : 'Book'}
-    //         </Button>
-    //       </div>
-    //       <DialogDescription>
-    //         Once you submit this form, you will receive an email from PrepPeer to confirm your submission and mentor’s time availability.
-    //       </DialogDescription>
-    //     </DialogHeader>
-    //   </DialogContent>
-    // </Dialog>
     <Dialog modal={true} open={isOpen} onOpenChange={(val) => setIsOpen(val)}>
   <DialogTrigger>
     <Button className='text-white bg-orange-400 w-full text-lg hover:bg-orange-500 shadow-lg'>Book a Call</Button>
@@ -115,11 +88,11 @@ function BookingModal({ consultantName, consultantId }) {
             </div>
         <div className='grid grid-cols-2 gap-2'>
           <InputBox title={'Current Grade'} isRequired={true} placeholder={'Enter current grade'} value={formData.currentGrade} onChange={e => setFormData({ ...formData, currentGrade: e.target.value })} error={errors.currentGrade} />
-          <InputBox title={'Fluent in Languages'} isRequired={false} placeholder={'Enter your languages'} value={formData.language} onChange={e => setFormData({ ...formData, language: e.target.value })} error={errors.language} />
+          <InputBox title={'Fluent in Languages'} isRequired={true} placeholder={'Enter your languages'} value={formData.language} onChange={e => setFormData({ ...formData, language: e.target.value })} error={errors.language} />
         </div>
         <PhoneInputBox title={'Whatsapp/WeChat Number'} isRequired={true} placeholder={'Enter whatsapp/wechat number'} value={formData.phone} onChange={phone => setFormData({ ...formData, phone })} error={errors.phone} />
         <DropdownBox title={'Which package are you choosing?'} isRequired={true} value={formData.package} onChange={e => setFormData({ ...formData, package: e.target.value })} error={errors.package} />
-        <TextAreaBox title={''} isRequired={true} placeholder={'Answers (no word limit)'} value={formData.questions} onChange={e => setFormData({ ...formData, questions: e.target.value })} error={errors.questions} />
+        <TextAreaBox title={''} isRequired={false} placeholder={'Answers (no word limit)'} value={formData.questions} onChange={e => setFormData({ ...formData, questions: e.target.value })} error={errors.questions} />
         <Button onClick={submitBookingHandler} disabled={isSubmitting} className='text-white disabled:bg-orange-700 bg-orange-400 w-full text-lg hover:bg-orange-500 shadow-md'>
           {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Booking</> : 'Book'}
         </Button>

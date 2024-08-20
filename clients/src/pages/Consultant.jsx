@@ -26,10 +26,6 @@ function Consultant() {
   const [selectRole, setSelectRole] = useState([]);
   const [errors, setErrors] = useState({});
 
-
-  
-      
-
   useEffect(() => {
     const fetchConsultant = async () => {
       try {
@@ -92,23 +88,23 @@ function Consultant() {
     const errors = {};
 
     if (!firstName.trim()) {
-      errors.firstName = "First name is required";
+      errors.firstName = "required";
     }
     if (!lastName.trim()) {
-      errors.lastName = "Last name is required";
+      errors.lastName = "required";
     }
     if (!addressEmail.trim()) {
-      errors.addressEmail = "Email address is required";
+      errors.addressEmail = "Email must contain @";
     } else if (!addressEmail.includes("@")) {
-      errors.addressEmail = "Email address must contain @";
+      errors.addressEmail = "Email must contain @";
     }
     if (!theirName.trim()) {
-      errors.theirName = "Their name is required";
+      errors.theirName = "required";
     }
     if (!theirAddressEmail.trim()) {
-      errors.theirAddressEmail = "Their email address is required";
+      errors.theirAddressEmail = "Email must contain @";
     } else if (!theirAddressEmail.includes("@")) {
-      errors.theirAddressEmail = "Their email address must contain @";
+      errors.theirAddressEmail = "Email must contain @";
     }
     if (!selectRole) {
       errors.selectRole = "Please select a role";
@@ -206,15 +202,19 @@ function Consultant() {
               <span className="text-secondary">exclusive discounts</span>.
             </h2>
             <div className="flex md:flex-row gap-4">
-              <Input
+            
+             <div className="relative">
+             <Input
                 placeholder="First Name*"
                 className="rounded-xl"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
-               {errors.firstName && (
-                <p className="text-red-500 text-sm">{errors.firstName}</p>
+              {errors.firstName && (
+                <p className="text-red-500 text-sm top-1 left-2">{errors.firstName}</p>
               )}
+             </div>
+              <div className="relative">
               <Input
                 placeholder="Last Name*"
                 className="rounded-xl"
@@ -222,9 +222,11 @@ function Consultant() {
                 onChange={(e) => setLastName(e.target.value)}
               />
                {errors.firstName && (
-                <p className="text-red-500 text-sm">{errors.firstName}</p>
+                <p className="text-red-500 text-sm top-1 left-2">{errors.firstName}</p>
               )}
+              </div>
             </div>
+            <div className="relative">
             <Input
               placeholder="Email Address*"
               className="rounded-xl"
@@ -232,17 +234,18 @@ function Consultant() {
               onChange={(e) => setAddressEmail(e.target.value)}
             />
             {errors.addressEmail && (
-              <p className="text-red-500 text-sm">{errors.addressEmail}</p>
+              <p className="text-red-500  top-1 left-2 text-sm">{errors.addressEmail}</p>
             )}
+            </div>
           </div>
-          
           <div className="flex flex-col gap-4">
             <h2 className="font-bold md:text-lg">
               Would you like to refer{" "}
               <strong className="text-secondary">PrepPeer</strong> to someone?
             </h2>
             <div className="flex md:flex-row gap-4">
-              <Input
+            <div className="relative">
+            <Input
                 placeholder="Their Name*"
                 className="rounded-xl"
                 value={theirName}
@@ -251,17 +254,21 @@ function Consultant() {
                {errors.theirName && (
                 <p className="text-red-500 text-sm">{errors.theirName}</p>
               )}
-              <Input
+            </div>
+            <div className="relative">
+            <Input
                 placeholder="Email Address*"
                 className="rounded-xl"
                 value={theirAddressEmail}
                 onChange={(e) => setTheirAddressEmail(e.target.value)}
               />
               {errors.theirAddressEmail && (
-                <p className="text-red-500 text-sm">
+                <p className="text-red-500 text-sm top-1 left-2">
                   {errors.theirAddressEmail}
                 </p>
               )}
+            </div>
+              
             </div>
              
             <Select
@@ -280,7 +287,7 @@ function Consultant() {
               </SelectContent>
             </Select>
             {errors.selectRole && (
-              <p className="text-red-500 text-sm">{errors.selectRole}</p>
+              <p className="text-red-500 top-1 left-2 text-sm">{errors.selectRole}</p>
             )}
             <button
               onClick={handleSendRefer}
