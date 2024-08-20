@@ -153,7 +153,7 @@ function Consultant() {
           <img
             src={consultant.profilePicture}
             alt={consultant.name}
-            className="object-contain w-[300px] h-42 max-w-xs md:max-w-none"
+            className="object-contain rounded-lg w-[300px] h-42 max-w-xs md:max-w-none"
           />
           <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
           <h2 className="lg:text-xl  text-2xl font-semibold break-words">
