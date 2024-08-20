@@ -2,11 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/logoo.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import {
-   NameUniv,
-  uniqueFilters,
-  languages,
-} from "../constants";
+import { NameUniv, uniqueFilters, languages } from "../constants";
 import {
   Pagination,
   PaginationContent,
@@ -114,8 +110,6 @@ const ConsultantContent = () => {
     setSelectedLanguage(event.target.value);
   };
 
-  
-
   const handleMajorChange = (major) => {
     setSelectedMajors((prevMajors) =>
       prevMajors.includes(major)
@@ -124,42 +118,38 @@ const ConsultantContent = () => {
     );
   };
 
-
-  
   const handleApplyFilters = () => {
     let filtered = consultants;
-  
+
     if (selectedFilter) {
       filtered = filtered.filter((consultant) =>
         consultant.category.includes(selectedFilter)
       );
     }
-  
+
     if (selectedRegions) {
       filtered = filtered.filter(
         (consultant) => consultant.country === selectedRegions
       );
     }
-  
+
     if (selectedLanguage.length > 0) {
       filtered = filtered.filter((consultant) =>
         consultant.language.some((lang) => selectedLanguage.includes(lang))
       );
     }
-  
+
     if (selectedMajors.length > 0) {
       filtered = filtered.filter((consultant) =>
         selectedMajors.some((major) => consultant.major.includes(major))
       );
     }
-  
+
     setFilteredConsultants(filtered);
     setIsModalOpen(false);
   };
-  
 
-  
-  const maxVisiblePages = 3; 
+  const maxVisiblePages = 3;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -199,7 +189,8 @@ const ConsultantContent = () => {
       <nav className="bg-primary p-4 w-full" id="insiders">
         <div className="flex justify-center mb-8 mt-8 items-center">
           <h2 className="font-bold text-white text-3xl ">
-          Get personalized advice from those who have walked the path and succeeded
+            Get personalized advice from those who have walked the path and
+            succeeded
           </h2>
         </div>
         <div className="overflow-x-auto scrollbar-thin  scrollbar-webkit flex p-1 space-x-4">
@@ -301,50 +292,51 @@ const ConsultantContent = () => {
                 </div>
 
                 <div className="mt-4 flex justify-center">
-                <div className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-2 px-4 rounded-full font-semibold text-md">
-    View more
-</div>
-                    {/* ${consultant.price[0]} / 30 mins */}
-                
+                  <div className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white py-2 px-4 rounded-full font-semibold text-md">
+                    View more
+                  </div>
+                  {/* ${consultant.price[0]} / 30 mins */}
                 </div>
               </Link>
             ))}
           </div>
         </div>
         <Pagination className="mb-8 mt-4">
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious
-            onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-          />
-        </PaginationItem>
-        
-        {getVisiblePages().map((page) => (
-          <PaginationItem key={page}>
-            <PaginationLink
-              onClick={() => handlePageChange(page)}
-              isActive={currentPage === page}
-            >
-              {page}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
-        
-        {currentPage < totalPages - maxVisiblePages && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
-        
-        {currentPage < totalPages && (
-          <PaginationItem>
-            <PaginationNext
-              onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-            />
-          </PaginationItem>
-        )}
-      </PaginationContent>
-    </Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+              />
+            </PaginationItem>
+
+            {getVisiblePages().map((page) => (
+              <PaginationItem key={page}>
+                <PaginationLink
+                  onClick={() => handlePageChange(page)}
+                  isActive={currentPage === page}
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+
+            {currentPage < totalPages - maxVisiblePages && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+
+            {currentPage < totalPages && (
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() =>
+                    handlePageChange(Math.min(totalPages, currentPage + 1))
+                  }
+                />
+              </PaginationItem>
+            )}
+          </PaginationContent>
+        </Pagination>
       </section>
 
       {isModalOpen && (
@@ -400,7 +392,9 @@ const ConsultantContent = () => {
               </div>
 
               <div className="mt-4">
-                <h3 className="font-semibold text-white text-xl underline">Major</h3>
+                <h3 className="font-semibold text-white text-xl underline">
+                  Major
+                </h3>
                 <div className="flex-1 text-white gap-2 mt-2">
                   {[
                     "STEM",
