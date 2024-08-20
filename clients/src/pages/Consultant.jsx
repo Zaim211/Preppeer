@@ -71,8 +71,8 @@ function Consultant() {
       return (
         <div key={index} className="flex flex-col">
           {/* Always bold the section title */}
-          <h3 className="text-lg font-bold">{title}</h3>
-          <p className="text-lg">
+          <h3 className="lg:text-lg text-sm font-bold">{title}</h3>
+          <p className="lg:text-lg text-sm">
             {formatContent(content).map((line, idx) => (
               <div key={idx}>{line}</div>
             ))}
@@ -156,7 +156,7 @@ function Consultant() {
             className="object-contain w-[300px] h-42 max-w-xs md:max-w-none"
           />
           <h2 className="text-3xl md:text-2xl font-bold">{consultant.name}</h2>
-          <h2 className="text-xl font-semibold break-words">
+          <h2 className="lg:text-xl  text-2xl font-semibold break-words">
                   {consultant.country}
           </h2>
           <div className="max-w-xs">
@@ -169,16 +169,16 @@ function Consultant() {
           <div className="flex flex-col gap-4 md:gap-8">
             <div>
              
-              <p className="text-base mt-4 font-semibold">
+              <p className="text-lg mt-4 text-black font-semibold">
                 Major: {consultant.major}
               </p>
-              <p className="text-base font-semibold">
+              <p className="text-lg text-black font-semibold">
                 Country of Origin: {consultant.universityCountry}
               </p>
-              <p className="text-base font-semibold">
+              <p className="text-lg text-black font-semibold">
                 Languages: {consultant.language.join(", ")}
               </p>
-              <p className="text-base font-semibold mb-4">
+              <p className="text-lg text-black font-semibold mb-4">
                 Price: ${consultant.price[0]} / 30mins &nbsp; | &nbsp; $
                 {consultant.price[1]} / 60mins
               </p>
@@ -302,7 +302,7 @@ function Consultant() {
 
 
       <section className="flex flex-col my-12 md:my-24 gap-4 md:gap-8">
-        <h2 className="text-2xl md:text-4xl font-bold">FAQs</h2>
+        <h2 className="text-4xl text-center underline md:text-4xl font-bold">FAQs</h2>
         <FaqAccordion
           title={"Why did we build PrepPeer?"}
           content={`Choosing the right university is tough without inside knowledge. PrepPeer provides prospective students with insights from current college students, which can be crucial for admissions and decision-making. We created PrepPeer to offer the resource we wished we had in high school. `}
