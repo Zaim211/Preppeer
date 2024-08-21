@@ -34,9 +34,17 @@ const ConsultantContent = () => {
   useEffect(() => {
     const fetchConsultants = async () => {
       try {
+        console.log("PRINT- Before request");
         const response = await axios.get("/api/registerConsultant");
+        console.log("PRINT- response came in");
         setConsultants(response.data.consultants);
+        console.log("PRINT- setConsultants");
         setFilteredConsultants(response.data.consultants);
+        console.log(
+          "PRINT- image " + response.data.consultants[0].profilePicture
+        );
+        // console.log();
+        console.log("PRINT- setFilteredConsultants");
       } catch (error) {
         console.error("Error fetching consultants:", error);
       }
