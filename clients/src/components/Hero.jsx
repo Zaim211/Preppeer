@@ -134,7 +134,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex lg:flex-wrap  mb-4 w-[50%]  justify-center text-center md:text-left">
+      <div className="flex lg:flex-wrap  mb-32 w-[50%]  justify-center text-center md:text-left">
         {/* <div className="flex items-center  ml-60 gap-2 mb-12">
           <div className="flex justify-between font-bold items-center gap-12">
           <a
@@ -159,7 +159,7 @@ const Hero = () => {
           </div>
          
         </div> */}
-          <div className="flex items-center  ml-60 gap-6 mb-32">
+          <div className="flex items-center  ml-60 gap-6 ">
           <div className="flex font-bold items-center gap-12">
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
@@ -186,7 +186,7 @@ const Hero = () => {
         </div>
         
         <div className="mr-48">
-          <h1 className="text-4xl font-bold text-white mb-8">
+          <h1 className="text-4xl font-bold text-white">
             Book calls with{" "}
             <span className="text-secondary  leading-[160%]">insiders</span>
             <br /> to supercharge your

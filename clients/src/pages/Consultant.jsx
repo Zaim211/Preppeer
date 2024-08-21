@@ -170,7 +170,7 @@ function Consultant() {
             <div>
              
               <p className="text-lg mt-4 text-black font-semibold">
-                Major: {consultant.major}
+                Major: {consultant.major.join(", ")}
               </p>
               <p className="text-lg text-black font-semibold">
                 Country of Origin: {consultant.universityCountry}
