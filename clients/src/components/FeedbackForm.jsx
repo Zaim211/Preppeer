@@ -53,7 +53,7 @@ const FeedbackForm = () => {
               <input
                 id="firstName"
                 type="text"
-                className="w-full p-2 rounded-full bg-gray-800 border border-gray-700"
+                className="w-full p-2 rounded-xl bg-gray-800 border border-gray-700"
                 value={firstName}
                 onChange={(ev) => setFirstName(ev.target.value)}
               />
@@ -66,7 +66,7 @@ const FeedbackForm = () => {
               <input
                 id="lastName"
                 type="text"
-                className="w-full p-2 rounded-full bg-gray-800 border border-gray-700"
+                className="w-full p-2 rounded-xl bg-gray-800 border border-gray-700"
                 value={lastName}
                 onChange={(ev) => setLastName(ev.target.value)}
               />
@@ -80,7 +80,7 @@ const FeedbackForm = () => {
             <input
               id="email"
               type="email"
-              className="w-full p-2 rounded-full bg-gray-800 border border-gray-700"
+              className="w-full p-2 rounded-xl bg-gray-800 border border-gray-700"
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
             />
@@ -93,7 +93,7 @@ const FeedbackForm = () => {
             <input
               id="whatsapp"
               type="text"
-              className="w-full p-2 rounded-full bg-gray-800 border border-gray-700"
+              className="w-full p-2 rounded-xl bg-gray-800 border border-gray-700"
               value={whatsapp}
               onChange={(ev) => setWhatsapp(ev.target.value)}
             />
@@ -106,7 +106,7 @@ const FeedbackForm = () => {
             <input
               id="referral"
               type="text"
-              className="w-full p-2 rounded-full bg-gray-800 border border-gray-700"
+              className="w-full p-2 rounded-xl bg-gray-800 border border-gray-700"
               value={referral}
               onChange={(ev) => setReferral(ev.target.value)}
             />
@@ -121,7 +121,7 @@ const FeedbackForm = () => {
           <textarea
             id="universities"
             rows="9"
-            className="w-full p-2 rounded bg-gray-800 border border-gray-700"
+            className="w-full p-2 rounded-xl bg-gray-800 border border-gray-700"
             value={universities}
             onChange={(ev) => setUniversities(ev.target.value)}
           />
