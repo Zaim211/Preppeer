@@ -196,13 +196,13 @@ const Hero = () => {
             </span>
           </h1>
           <div className="bg-secondary px-6 py-2 rounded-lg inline-block mt-10 mb-16">
-            <button onClick={()=> scrollToSection('insiders') }  className="text-white  text-2xl font-bold text-center flex items-center">
+            <button onClick={()=> scrollToSection('insiders') }  className="text-white  text-2xl font-bold text-center flex items-center justify-center">
               Find an Insider
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-10 h-10 ml-2"
+                className="w-10 h-12 ml-2"
               >
                 <path
                   fillRule="evenodd"

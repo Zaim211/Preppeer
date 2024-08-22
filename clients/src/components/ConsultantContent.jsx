@@ -193,11 +193,11 @@ const ConsultantContent = () => {
             succeeded
           </h2>
         </div>
-        <div className="overflow-x-auto scrollbar-thin  scrollbar-webkit flex p-1 space-x-4">
+        <div className="overflow-x-auto scrollbar-thin scrollbar-webkit flex p-1 space-x-4">
           {uniqueFilters.map((filter, index) => (
             <div
               key={index}
-              className={`flex flex-col items-center cursor-pointer ${
+              className={`flex flex-col items-center mb-2 cursor-pointer ${
                 selectedFilter === filter.value
                   ? "text-black font-semibold border-white bg-gray-200 rounded-sm border"
                   : "text-white border-white font-bold rounded-sm border"
