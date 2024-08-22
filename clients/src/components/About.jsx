@@ -57,7 +57,7 @@ const About = () => {
   return (
     <div className="md:p-2 flex flex-col  w-full bg-gray-200">
       <div className="w-full max-w-full mb-8">
-        <div className="flex  justify-center mt-16">
+        <div className="flex  justify-center mt-8">
           <h1 className="text-3xl text-primary font-bold">
             Our Insiders come from Top universities, Elite programs, and
             Prestigious Internships
