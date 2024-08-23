@@ -172,6 +172,7 @@ const Blog = () => {
                     <img
                       src={bloghero1}
                       alt="Blog"
+                      loading="lazy"
                       className="w-full object-contain rounded-t-lg"
                     />
                   </div>
@@ -205,6 +206,7 @@ const Blog = () => {
                         <img
                           src={bloghero1}
                           alt="Blog"
+                          loading="lazy"
                           className="w-full object-contain rounded-t-lg"
                         />
                       </div>
