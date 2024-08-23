@@ -14,7 +14,7 @@ import {
 } from "../components/ui/pagination";
 import { useMediaQuery } from "react-responsive";
 import ConsultantContentMobile from "./ConsultantContentMobile";
-import { Picture1 } from "../assets";
+
 
 const ConsultantContent = () => {
   const [consultants, setConsultants] = useState([]);
