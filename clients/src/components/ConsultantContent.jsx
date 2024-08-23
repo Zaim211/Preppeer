@@ -14,6 +14,7 @@ import {
 } from "../components/ui/pagination";
 import { useMediaQuery } from "react-responsive";
 import ConsultantContentMobile from "./ConsultantContentMobile";
+import { Picture1 } from "../assets";
 
 const ConsultantContent = () => {
   const [consultants, setConsultants] = useState([]);
@@ -274,11 +275,11 @@ const ConsultantContent = () => {
                   <img
                     src={consultant.profilePicture}
                     alt={consultant.name}
-                    className="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
                 </div>
-
                 <div className="mt-4 text-center">
                   <h2 className="text-2xl font-bold text-gray-800">
                     {consultant.name}
