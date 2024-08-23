@@ -34,7 +34,7 @@ const Cover = () => {
             src={Picture3}
             loading="lazy"
             alt="Picture 3"
-            className="w-full h-auto object-contain shadow-2xl mb-4 rounded-lg"
+            className="w-full h-60 object-cover shadow-2xl mb-4 rounded-lg"
           />
           <p className="text-xl sm:text-lg text-black font-semibold">Personalize your essays for each university.</p>
         </div>
