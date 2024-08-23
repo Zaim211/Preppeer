@@ -7,6 +7,5 @@ export default defineConfig({
   assetsInclude: ['**/*.PNG'],
   server: {
     host: '0.0.0.0',
-   
   },
 })
