@@ -33,7 +33,7 @@ const NavMobile = () => {
         <div className="flex flex-col md:flex-row items-center justify-center mb-6 py-2 mt-2 md:p-8 text-center md:text-left">
           <nav>
             <div
-              className="fixed top-0 right-4 flex flex-col justify-center items-end p-6 z-30" 
+              className="absolute top-0 right-0 flex flex-col justify-center items-end p-6 z-30" 
               style={{ cursor: "pointer" }}
             >
               <button className="text-xl" onClick={toggleContentVisibility}>
