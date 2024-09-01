@@ -160,21 +160,25 @@ const Hero = () => {
           </div>
          
         </div> */}
-          <div className="flex items-center  ml-60 gap-6 ">
-          <div className="flex font-bold items-center gap-12">
+          <div className="flex items-center  ml-40 gap-6 ">
+          <div className="flex font-bold items-center gap-6">
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
-              className="underline font-bold text-2xl text-white"
+              className="underline font-bold text-xl text-white"
             >
               Be an insider
             </a>
             <Link
               to="/Insights"
-              className="underline font-bold text-2xl text-white"
+              className="underline font-bold text-xl text-white"
             >
               Insights
-            </Link>
+            </Link> <button onClick={()=> scrollToSection('insiders') }  className="text-white underline text-xl font-bold">
+              Find an Insider
+              </button>
           </div>
+          
+         
           <div className=" mt-6">
             <Link to="/" className="flex-shrink-0  mt-6">
               <img
@@ -186,7 +190,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="mr-48">
+        <div className="mr-48 mt-12">
           <h1 className="text-4xl font-bold text-white">
             Book calls with{" "}
             <span className="text-secondary  leading-[160%]">insiders</span>
@@ -197,8 +201,8 @@ const Hero = () => {
             </span>
           </h1>
           <div className="bg-secondary px-6 py-2 rounded-lg inline-block mt-10 mb-16">
-            <button onClick={()=> scrollToSection('insiders') }  className="text-white  text-2xl font-bold text-center flex items-center justify-center">
-              Find an Insider
+            <Link to="https://airtable.com/appq0uohTDXcCq600/pag2TkbhHE7FCiqIs/form"  className="text-white  text-2xl font-bold text-center flex items-center justify-center">
+            Join Our Webinar!
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -211,7 +215,7 @@ const Hero = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
 
