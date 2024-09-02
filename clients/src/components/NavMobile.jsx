@@ -70,7 +70,7 @@ const NavMobile = () => {
                 )}
               </button>
               {isContentVisible && (
-                <div className="flex flex-col z-10 bg-secondary p-4 rounded-lg">
+                <div className="flex flex-col gap-2 z-10 bg-secondary p-4 rounded-lg">
                    <button
                     onClick={(e) => {
                       e.stopPropagation();
