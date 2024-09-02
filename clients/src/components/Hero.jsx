@@ -162,6 +162,9 @@ const Hero = () => {
         </div> */}
           <div className="flex items-center  ml-40 gap-6 ">
           <div className="flex font-bold items-center gap-6">
+            <button onClick={()=> scrollToSection('insiders') }  className="text-white underline text-xl font-bold">
+              Find an Insider
+              </button>
           <a
               href='https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na'
               className="underline font-bold text-xl text-white"
@@ -173,9 +176,7 @@ const Hero = () => {
               className="underline font-bold text-xl text-white"
             >
               Insights
-            </Link> <button onClick={()=> scrollToSection('insiders') }  className="text-white underline text-xl font-bold">
-              Find an Insider
-              </button>
+            </Link> 
           </div>
           
          
@@ -202,7 +203,7 @@ const Hero = () => {
           </h1>
           <div className="bg-secondary px-6 py-2 rounded-lg inline-block mt-10 mb-16">
             <Link to="https://airtable.com/appq0uohTDXcCq600/pag2TkbhHE7FCiqIs/form"  className="text-white  text-2xl font-bold text-center flex items-center justify-center">
-            Join Our Webinar!
+            Join Our Webinar
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
