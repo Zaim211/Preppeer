@@ -71,6 +71,15 @@ const NavMobile = () => {
               </button>
               {isContentVisible && (
                 <div className="flex flex-col z-10 bg-secondary p-4 rounded-lg">
+                   <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scrollToSection("insiders");
+                    }}
+                    className="text-white underline text-lg font-bold"
+                  >
+                    Find an Insider
+                  </button>
                   <Link
                     to="https://airtable.com/app1tVh9OMDN6l18L/shrDzR9cJplUlf2Na"
                     className="underline font-bold text-lg text-white"
@@ -86,15 +95,7 @@ const NavMobile = () => {
                   >
                     Insights
                   </Link>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      scrollToSection("insiders");
-                    }}
-                    className="text-white underline text-lg font-bold"
-                  >
-                    Find an Insider
-                  </button>
+                 
                 </div>
               )}
             </div>
@@ -120,7 +121,7 @@ const NavMobile = () => {
               className="bg-secondary p-2 rounded-lg inline-block mt-6 z-40"
             >
               <button className="text-white text-lg font-bold flex items-center">
-                Join Our Webinar!
+                Join Our Webinar
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
