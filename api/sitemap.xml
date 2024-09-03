@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        
+        <url>
+            <loc>https://www.preppeer.org/</loc>
+            <lastmod>2024-09-03</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+        <url>
+            <loc>https://www.preppeer.org/Insights</loc>
+            <lastmod>2024-09-03</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+        <url>
+            <loc>https://www.preppeer.org/Insights/66b67ecc64ad1c02a4f6f49c</loc>
+            <lastmod>2024-09-03</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+    </urlset>
