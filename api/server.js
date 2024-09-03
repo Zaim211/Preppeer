@@ -1,6 +1,7 @@
 const router = require("./routes/index");
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
 const app = express();
 const cookieParser = require('cookie-parser')
 const mongoose = require("mongoose");
@@ -39,6 +40,16 @@ app.use(cors({
 }));
 
 app.options('*', cors())
+
+// Route to serve sitemap.xml
+app.get('/sitemap.xml', (req, res) => {
+  res.sendFile(path.join(__dirname, 'sitemap.xml'));
+});
+
+// Route to serve robots.txt
+app.get('/robots.txt', (req, res) => {
+  res.sendFile(path.join(__dirname, 'robots.txt'));
+});
 
 
 app.use('/uploads', express.static(__dirname+'/uploads'));
