@@ -179,8 +179,7 @@ function Consultant() {
                 Languages: {consultant.language.join(", ")}
               </p>
               <p className="text-lg text-black font-semibold mb-4">
-                Price: ${consultant.price[0]} / 30mins &nbsp; | &nbsp; $
-                {consultant.price[1]} / 60mins
+                Price: ${consultant.price[0]} / 15mins&nbsp;| ${consultant.price[1]} / 30mins&nbsp;|&nbsp;${consultant.price[2]} / 1h
               </p>
               
             </div>
