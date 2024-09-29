@@ -160,8 +160,8 @@ const Hero = () => {
           </div>
          
         </div> */}
-          <div className="flex items-center  ml-40 gap-6 ">
-          <div className="flex font-bold items-center gap-6">
+          <div className="flex items-center ml-10">
+          <div className="flex font-bold items-center ml-14 gap-4">
             <button onClick={()=> scrollToSection('insiders') }  className="text-white underline text-xl font-bold">
               Find an Insider
               </button>
@@ -191,7 +191,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="mr-48 mt-12">
+        <div className="mr-48 mt-12 ml-10">
           <h1 className="text-4xl font-bold text-white">
             Book calls with{" "}
             <span className="text-secondary  leading-[160%]">insiders</span>
